@@ -40,6 +40,10 @@ Route::get('/test', function() {
     return view('test');
 });
 
+Route::get('/pindai', function() {
+    return view('pindaiHome');
+});
+
 
 Route::post('/test', function(Request $request) {
     //
