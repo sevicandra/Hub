@@ -15,7 +15,7 @@ class CreatePermohonansTable extends Migration
     {
         Schema::create('permohonans', function (Blueprint $table) {
             $table->id();
-            $table->uuid('tiket_id');
+            $table->foreignId('tiket_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->string('pemohon');
