@@ -12,11 +12,5 @@ class tiket extends Model
     public function permohonan(){
         return $this->hasOne(permohonan::class);
     }
-    protected $fillable = [
-        'tiket',
-        // 'permohonan',
-        // 'penilaian',
-        // 'persetujuan',
-        // 'lelang',
-    ];
+
 }

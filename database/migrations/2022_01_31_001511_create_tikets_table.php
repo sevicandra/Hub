@@ -16,10 +16,10 @@ class CreateTiketsTable extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
             $table->string('tiket');
-            $table->boolean('permohonan')->default(0);
-            $table->boolean('penilaian')->default(0);
-            $table->boolean('persetujuan')->default(0);
-            $table->boolean('lelang')->default(0);
+            $table->boolean('permohonan');
+            $table->boolean('penilaian');
+            $table->boolean('persetujuan');
+            $table->boolean('lelang');
             $table->timestamps();
         });
     }
