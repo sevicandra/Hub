@@ -23,7 +23,7 @@ class PivotTable extends Migration
         Schema::create('laporan_penilaian_penyampaian_laporan', function (Blueprint $table) {
             $table->foreignId('laporan_penilaian_id');
             $table->foreignId('penyampaian_laporan_id');
-            $table->primary(['laporan_penilaian_id', 'penyampaian_laporan_id']);
+            
         });
     }
 

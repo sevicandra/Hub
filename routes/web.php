@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\agendaController;
+use App\Http\Controllers\tiketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,9 +41,9 @@ Route::get('/test', function() {
     return view('test');
 });
 
-Route::get('/pindai', function() {
-    return view('pindaiHome');
-});
+
+Route::resource('/pindai', tiketController::class);
+
 
 
 Route::post('/test', function(Request $request) {

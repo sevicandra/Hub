@@ -39,20 +39,40 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-2 border rounded-bottom" style="height: 85vh; padding:5px">
-                            <div class="text-center btn" style="background-color: blue; width:100%">
-                                <p style="color: aliceblue; margin:auto">
-                                    PKN000001
-                                </p>
-                            </div>
+                            @foreach ($permohonan as $item)
+                                <div class="text-center btn" style="background-color: blue; width:100%">
+                                    <p style="color: aliceblue; margin:auto">
+                                        {{$item->tiket}}
+                                    </p>
+                                </div>    
+                            @endforeach
                         </div>
-                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh">
-                            
+                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh; padding:5px">
+                            @foreach ($penilaian as $item)
+                                <div class="text-center btn" style="background-color: blue; width:100%">
+                                    <p style="color: aliceblue; margin:auto">
+                                        {{$item->tiket}}
+                                    </p>
+                                </div>    
+                            @endforeach
                         </div>
-                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh">
-                            
+                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh; padding:5px">
+                            @foreach ($persetujuan as $item)
+                                <div class="text-center btn" style="background-color: blue; width:100%">
+                                    <p style="color: aliceblue; margin:auto">
+                                        {{$item->tiket}}
+                                    </p>
+                                </div>    
+                            @endforeach
                         </div>
-                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh">
-                            
+                        <div class="col-sm-2 border rounded-bottom" style="height: 85vh; padding:5px">
+                            @foreach ($lelang as $item)
+                                <div class="text-center btn" style="background-color: blue; width:100%">
+                                    <p style="color: aliceblue; margin:auto">
+                                        {{$item->tiket}}
+                                    </p>
+                                </div>    
+                            @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 85vh">
                             

@@ -16,6 +16,15 @@ class TiketController extends Controller
     public function index()
     {
         //
+        return view('pindaiHome',[
+            'permohonan'=>tiket::all()->where('permohonan', '=' , '1'),
+            'penilaian'=>tiket::all()->where('penilaian', '=' , '1'),
+            'persetujuan'=>tiket::all()->where('persetujuan', '=' , '1'),
+            'lelang'=>tiket::all()->where('lelang', '=' , '1')
+        ]);
+
+        
+
     }
 
     /**
