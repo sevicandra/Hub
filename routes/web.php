@@ -6,6 +6,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\agendaController;
 use App\Http\Controllers\tiketController;
+use App\Http\Controllers\permohonanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,23 +19,23 @@ use App\Http\Controllers\tiketController;
 */
 
 
-Route::post('/register', [registerController::class, 'store']);
+Route::post('/register', [registerController::class, 'store'])->middleware('guest');
 
-Route::post('/login', [loginController::class, 'login']);
-Route::post('/logout', [loginController::class, 'logout']);
+Route::post('/login', [loginController::class, 'login'])->middleware('guest');
+Route::post('/logout', [loginController::class, 'logout'])->middleware('auth');
 
 Route::get('/login', function () {
     return view('login');
-});
+})->middleware('guest')->name('login');
 
-Route::get('/Home', [loginController::class, 'home'])->middleware('auth');
+Route::get('/home', [loginController::class, 'home'])->middleware('auth');
 
 
 Route::get('/register', function() {
     return view('register');
-});
+})->middleware('guest');
 
-Route::post('/asd', [agendaController::class, 'agenda']);
+Route::post('/asd', [agendaController::class, 'agenda'])->middleware('auth');
 
 
 Route::get('/test', function() {
@@ -42,7 +43,9 @@ Route::get('/test', function() {
 });
 
 
-Route::resource('/pindai', tiketController::class);
+Route::resource('/pindai', tiketController::class)->middleware('auth');
+
+Route::resource('/permohonan', permohonanController::class)->middleware('auth');
 
 
 
