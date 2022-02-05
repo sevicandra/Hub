@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\permohonan;
-use App\Http\Requests\StorepermohonanRequest;
-use App\Http\Requests\UpdatepermohonanRequest;
+use App\Models\tiket;
+use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
 {
@@ -16,6 +16,9 @@ class PermohonanController extends Controller
     public function index()
     {
         //
+        return view('pindaiPermohonan',[
+            'data'=>permohonan::all(),
+        ]);
     }
 
     /**
@@ -31,12 +34,46 @@ class PermohonanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepermohonanRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepermohonanRequest $request)
+    public function store(Request $request)
     {
         //
+        $tiket_id=tiket::count();
+        $tiket_id++;
+        $tiket='PKN';
+        if ($tiket_id < 10) {
+            $tiket .= '0000';
+        }elseif ($tiket_id < 100) {
+            $tiket .= '000';
+        }elseif ($tiket_id < 1000) {
+            $tiket .= '000';
+        }elseif ($tiket_id < 10000) {
+            $tiket .= '00';
+        }elseif ($tiket_id < 100000) {
+            $tiket .= '0';
+        }elseif ($tiket_id >= 100000) {
+            $tiket .= '';
+        }
+        $tiket .= $tiket_id; 
+        $tikets['tiket'] = $tiket;
+        $tikets['permohonan'] = 1;
+        tiket::create($tikets);
+
+        $id_tiket=tiket::latest()->first()->id;
+
+        $ValidatedData=$request->validate(
+            [
+                'nomorSurat'=>'required',
+                'tanggalSurat'=>'required',
+                'pemohon'=>'required',
+                'tanggalDiTerima'=>'required'
+            ]);
+            
+            $ValidatedData['tiket_id']=$id_tiket;
+            permohonan::create($ValidatedData);
+            return redirect('/pindaipermohonan');
     }
 
     /**
@@ -64,11 +101,11 @@ class PermohonanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatepermohonanRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\permohonan  $permohonan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepermohonanRequest $request, permohonan $permohonan)
+    public function update(Request $request, permohonan $permohonan)
     {
         //
     }
