@@ -14,8 +14,8 @@ class CreatePemberitahuanPenilaiansTable extends Migration
     public function up()
     {
         Schema::create('pemberitahuan_penilaians', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('permohonanPenilaian_id');
+            $table->uuid('id')->primary();
+            $table->uuid('permohonanPenilaian_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->timestamps();

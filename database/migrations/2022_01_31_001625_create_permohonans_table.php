@@ -14,8 +14,8 @@ class CreatePermohonansTable extends Migration
     public function up()
     {
         Schema::create('permohonans', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('tiket_id');
+            $table->uuid('id')->primary();
+            $table->uuid('tiket_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->string('pemohon');

@@ -14,8 +14,8 @@ class CreatePenetapanLelangsTable extends Migration
     public function up()
     {
         Schema::create('penetapan_lelangs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('permohonanLelang');
+            $table->uuid('id')->primary();
+            $table->uuid('permohonanLelang');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->timestamps();

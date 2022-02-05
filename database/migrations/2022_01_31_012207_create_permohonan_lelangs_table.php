@@ -14,8 +14,8 @@ class CreatePermohonanLelangsTable extends Migration
     public function up()
     {
         Schema::create('permohonan_lelangs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('suratPersetujuan_id');
+            $table->uuid('id')->primary();
+            $table->uuid('suratPersetujuan_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->date('tanggalDiTerima');

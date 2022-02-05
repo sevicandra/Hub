@@ -14,7 +14,7 @@ class CreatePenyampaianLaporansTable extends Migration
     public function up()
     {
         Schema::create('penyampaian_laporans', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->timestamps();

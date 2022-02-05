@@ -15,14 +15,14 @@ class PivotTable extends Migration
     {
         
         Schema::create('barang_laporan_penilaian', function (Blueprint $table) {
-            $table->foreignId('barang_id');
-            $table->foreignId('laporan_penilaian_id');
+            $table->uuid('barang_id');
+            $table->uuid('laporan_penilaian_id');
             $table->primary(['barang_id', 'laporan_penilaian_id']); 
         });
 
         Schema::create('laporan_penilaian_penyampaian_laporan', function (Blueprint $table) {
-            $table->foreignId('laporan_penilaian_id');
-            $table->foreignId('penyampaian_laporan_id');
+            $table->uuid('laporan_penilaian_id');
+            $table->uuid('penyampaian_laporan_id');
             
         });
     }

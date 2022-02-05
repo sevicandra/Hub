@@ -14,8 +14,8 @@ class CreateBarangsTable extends Migration
     public function up()
     {
         Schema::create('barangs', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('permohonan_id');
+            $table->uuid('id')->primary();
+            $table->uuid('permohonan_id');
             $table->string('kodeBarang');
             $table->string('NUP');
             $table->string('merkType');
