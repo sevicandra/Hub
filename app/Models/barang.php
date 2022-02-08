@@ -15,8 +15,26 @@ class barang extends Model
         return $this->belongsto(permohonan::class);
     }
 
+    public function kodeBarangs(){
+        return $this->belongsto(kodeBarang::class, 'kodeBarang', 'id');
+    }
+
     public function laporanPenilaians(){
         return $this->belongstoMany(laporanPenilaian::class);
     }
-
+    protected $fillable = [
+        'permohonan_id',
+        'kodeBarang',
+        'NUP',
+        'merkType',
+        'nomorPolisi',
+        'nomorRangka',
+        'nomorMesin',
+        'tahunPerolehan',
+        'nilaiPerolehan',
+        'keterangan',
+        'nilaiWajar',
+        'nilaiLimit',
+        'status',
+    ];
 }

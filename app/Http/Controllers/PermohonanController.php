@@ -17,7 +17,7 @@ class PermohonanController extends Controller
     {
         //
         return view('pindaiPermohonan',[
-            'data'=>permohonan::all(),
+            'data'=>permohonan::orderBy('created_at', 'desc')->get(),
         ]);
     }
 
@@ -73,7 +73,7 @@ class PermohonanController extends Controller
             
             $ValidatedData['tiket_id']=$id_tiket;
             permohonan::create($ValidatedData);
-            return redirect('/pindaipermohonan');
+            return redirect('/permohonan');
     }
 
     /**
@@ -85,6 +85,10 @@ class PermohonanController extends Controller
     public function show(permohonan $permohonan)
     {
         //
+        return view('pindaiBarang',[
+            'data'=>$permohonan,
+            
+        ]);
     }
 
     /**
@@ -96,6 +100,8 @@ class PermohonanController extends Controller
     public function edit(permohonan $permohonan)
     {
         //
+
+        
     }
 
     /**

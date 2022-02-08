@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang;
-use App\Http\Requests\StorebarangRequest;
-use App\Http\Requests\UpdatebarangRequest;
+use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
@@ -26,17 +25,39 @@ class BarangController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorebarangRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorebarangRequest $request)
+    public function store(Request $request)
     {
         //
+        
+        $ValidatedData=$request->validate(
+            [
+                'kodeBarang'=>'required',
+                'NUP'=>'required',
+                'merkType'=>'required',
+                'tahunPerolehan'=>'required',
+                'nilaiPerolehan'=>'required',
+                'permohonan_id'=>'required',
+                'nomorRangka'=>'',
+                'nomorPolisi'=>'',
+                'nomorMesin'=>'',
+                'keterangan'=>''
+            ]);
+        barang::create($ValidatedData);
+        $redirect = '/permohonan/';
+        $redirect .= $ValidatedData['permohonan_id'];
+        return redirect($redirect);
+
+
+
     }
 
     /**
@@ -48,6 +69,10 @@ class BarangController extends Controller
     public function show(barang $barang)
     {
         //
+        return view('pindaiBarang');
+
+
+
     }
 
     /**
@@ -68,7 +93,7 @@ class BarangController extends Controller
      * @param  \App\Models\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatebarangRequest $request, barang $barang)
+    public function update(Request $request, barang $barang)
     {
         //
     }

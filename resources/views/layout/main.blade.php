@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <meta charset="UTF-8">
-    <style>
-        h1{
-            font-family: istokweb;
-            font-weight: bold
-        }
-        .agenda::-webkit-scrollbar {
-            display: none;
-        }     
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .agenda {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-    </style>
+    @section('head')
+        
+    @show
     <title>KPKNL TERNATE || HUB</title>
 </head>
     <body style="background: linear-gradient(298.55deg, #4D4295 0%, #8470FE 41.63%, rgba(112, 160, 254, 0.88) 69.99%, rgba(112, 186, 254, 0.9) 96.89%); height: 100vh"> 
@@ -47,6 +33,12 @@
                 <a class="text-decoration-none" href="/home">
                     <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">KPKNL TERNATE HUB</h5>
                 </a>
+                <Span>
+                    <form action="logout" method="POST">
+                        @csrf
+                        <button class="btn">Logout</button>
+                    </form>
+                </Span>
             </div>
             <hr>
             {{--  Akhir Header  --}}
@@ -58,7 +50,7 @@
             <div class="container-fluid" style="margin-bottom: 10px;">
                 <div class="row">
                     <div class="col-sm-4">
-                        <a class="text-decoration-none" href="/pindai">
+                        <a class="text-decoration-none" href="/pindai" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="" alt="" width="64px" height="64px">
                             </div>
@@ -215,7 +207,6 @@
         </div>
         {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}
-        
         <div class="container-fluid fixed-bottom">
             <div class="row" style="margin:0; padding: 0 37px 0 37px">
                 <div class="col-sm-12" style="background-color: aliceblue; border-radius: 10px 10px 0 0">
@@ -233,14 +224,11 @@
                 </div>
             </div>
         </div>
-    
         {{--  Akhir Footer  --}}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="js/apexchart.js"></script>
-        <script src="js/chart.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="{{asset('agenda/js/index.js')}}" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        @section('foot')
+        
+        @show
     </body>
 </html>

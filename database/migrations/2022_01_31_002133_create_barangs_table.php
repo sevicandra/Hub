@@ -19,13 +19,15 @@ class CreateBarangsTable extends Migration
             $table->string('kodeBarang');
             $table->string('NUP');
             $table->string('merkType');
-            $table->string('nomorPolisi');
-            $table->string('nomorRangka');
-            $table->string('nomorMesin');
-            $table->string('keterangan');
-            $table->string('nilaiWajar');
-            $table->string('nilaiLimit');
-            $table->string('status');
+            $table->string('nomorPolisi')->nullable();
+            $table->string('nomorRangka')->nullable();
+            $table->string('nomorMesin')->nullable();
+            $table->string('tahunPerolehan');
+            $table->string('nilaiPerolehan');
+            $table->string('keterangan')->nullable();
+            $table->string('nilaiWajar')->default(0);
+            $table->string('nilaiLimit')->default(0);
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

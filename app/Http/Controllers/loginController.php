@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class loginController extends Controller
 {
-    public function login(Request $reguest){
-        $credentials =$reguest->validate([
+    public function login(Request $request){
+        $credentials =$request->validate([
             'NIP'=>'required|min:18|max:18',
             'password'=>'required',
         ]);
         if(Auth::attempt($credentials)){
-            $reguest->session()->regenerate();
-            $reguest->session()->put('tahun', $reguest->tahun);
-            return redirect()->intended('/Home');
+            $request->session()->regenerate();
+            $request->session()->put('tahun', $request->tahun);
+            return redirect()->intended('/home');
         }
         return back()->With('LoginErorr','LoginFaile');
     }

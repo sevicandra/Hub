@@ -1,5 +1,27 @@
 
 @extends('layout.main')
+
+@section('head')
+<style>
+    h1{
+        font-family: istokweb;
+        font-weight: bold
+    }
+    .agenda::-webkit-scrollbar {
+        display: none;
+    }     
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .agenda {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+</style>
+<link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
+@endsection
+
+
 @section('content')
     
 {{--  Dashboard  --}}
@@ -81,5 +103,13 @@
     {{--  Akhir Agenda  --}}
 </div>
 {{--  Akhir Dashboard  --}}
+
 @endsection
-       
+
+@section('foot')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/apexchart.js"></script>
+<script src="js/chart.js"></script>
+<script src="{{asset('agenda/js/index.js')}}" type="text/javascript"></script>
+@endsection

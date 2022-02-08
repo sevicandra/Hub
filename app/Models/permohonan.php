@@ -22,6 +22,11 @@ class permohonan extends Model
     public function permohonanPenilaian(){
         return $this->hasOne(permohonanPenilaian::class);
     }
+
+    public function satuanKerja(){
+        return $this->belongsTo(satuanKerja::class, 'pemohon', 'id');
+    }
+
     protected $fillable = [
         'nomorSurat',
         'tiket_id',
