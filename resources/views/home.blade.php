@@ -7,11 +7,11 @@
         font-family: istokweb;
         font-weight: bold
     }
-    .agenda::-webkit-scrollbar {
+    .scrollable::-webkit-scrollbar {
         display: none;
     }     
     /* Hide scrollbar for IE, Edge and Firefox */
-    .agenda {
+    .scrollable {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
@@ -25,31 +25,31 @@
 @section('content')
     
 {{--  Dashboard  --}}
-<div class="row" style="padding: 10px 37px 9px 37px">
-    <div class="col-sm-9">
+<div class="row scrollable" style="padding: 0px 37px 0px 37px; height:100%">
+    <div class="col-sm-9" style="max-height: 100%; height:100%">
         {{--  Kepuasan Pengguna Layanan dan Capaian Kinerja Organisasi  --}}
-        <div class="row">
+        <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
             {{--  Kepuasan Pengguna Layanan  --}}
-            <div class="col-sm-4" style="; padding-right:5px">
-                <div style=" background-color: #ffff; margin-bottom: 10px; border-radius: 10px;height: 445px" >
-                    <canvas id="kepuasanPelanggan" ></canvas>
+            <div class="col-sm-4" style="; padding-right:5px; max-height: 100%; height: 100%">
+                <div class="chart-container"  style="background-color: #ffff; border-radius: 10px;height: 100%" >
+                    <canvas id="kepuasanPelanggan"></canvas>
                 </div>
             </div>
             {{--  Akhir Kepuasan Pengguna Layanan  --}}
             {{--  Capaian Kinerja Organisasi  --}}
-            <div class="col-sm-8" style="; padding-left:5px">
-                <div style="height: 445px; background-color: #ffff; border-radius: 10px">
-                    <canvas id="capaianKinerja" height="100%"></canvas>
+            <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
+                <div class="chart-container" style="background-color: #ffff; border-radius: 10px; height: 100%">
+                    <canvas id="capaianKinerja"></canvas>
                 </div>
             </div>
             {{--  Akhir Capaian Kinerja Organisasi  --}}
         </div>
         {{--  AKhir Kepuasan Pengguna Layanan dan Capaian Kinerja Organisasi  --}}
         {{--  PNBP dan Jumlah Pengunjung  --}}
-        <div class="row">
+        <div class="row" style="max-height: 44%;height: 44%">
             {{--  PNBP  --}}
-            <div class="col-sm-8" style="; padding-right:5px">
-                <div class="row" style="height: 400px; background-color: #ffff; border-radius: 10px; padding:0px; margin:0">
+            <div class="col-sm-8" style="; padding-right:5px; max-height: 100%; height:100%">
+                <div class="row" style="height: 100%; background-color: #ffff; border-radius: 10px; padding:0px; margin:0">
                     <div>
                         <h1>PNBP KPKNL Ternate</h1>
                     </div>
@@ -66,9 +66,9 @@
             </div>
             {{--  Akhir PNBP  --}}
             {{--  Jumlah Pengunjung  --}}
-            <div class="col-sm-4" style="; padding-left:5px">
-                <div style="height: 400px; background-color: #ffff; border-radius: 10px">
-                    <div style="padding: 5px 0px 0px 10px">
+            <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%">
+                <div style="height: 100%; background-color: #ffff; border-radius: 10px">
+                    <div style="padding: 0">
                         <h1>Jumlah Pengunjung</h1>
                         <div class="row">
                             <div class="col-sm-6">
@@ -85,16 +85,16 @@
         </div>
     </div>
     {{--  Agenda  --}}
-    <div class="col-sm-3" style=" padding-left: 4px">
-        <div class="agenda" style="height: 800px; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: 820px; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
-            <nav class="navbar navbar-light bg-light sticky-top" style="margin: 0px 0px 7px 0px; border-radius: 10px;">
+    <div class="col-sm-3" style=" padding-left:4px; max-height: 100%;height: 100%">
+        <div class="scrollable" style="height: 93%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: 820px; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+            <nav class="navbar navbar-light bg-light sticky-top" style="margin: 0; border-radius: 10px;">
                 <div class="container-fluid"> 
                     <input class="form-control" id="tanggalagenda" type="date">
                 </div>
             </nav>
             <div id='agenda'></div>
         </div>
-        <nav class="navbar navbar-light bg-light sticky-bottom" style="margin: 0px 0px 7px 0px; border-radius: 10px;">
+        <nav class="navbar navbar-light bg-light sticky-bottom" style="margin: 0; border-radius: 10px; height:7%">
             <div class="container-fluid"> 
                 <button class="btn btn-primary container-fluid">Tambah Agenda</button>
             </div>

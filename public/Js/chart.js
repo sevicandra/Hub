@@ -38,7 +38,7 @@ const myChart2 = new Chart(kepuasanPelanggan, {
         },
         {
             label: 'Piutang Negara',
-            data: [5, 2, 4, 4, 3],
+            data: [5, 2, 4, 1, 3],
             fill: true,
             // backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgb(255, 99, 132)',
@@ -49,6 +49,8 @@ const myChart2 = new Chart(kepuasanPelanggan, {
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         r: {
             suggestedMin: 0,
             suggestedMax: 5
@@ -67,8 +69,7 @@ const myChart2 = new Chart(kepuasanPelanggan, {
                     top: 10,
                 }
             }
-        },
-            
+        },            
     }
 });
 
@@ -116,7 +117,9 @@ const myChart = new Chart(capaianKinerja, {
         x:{
             suggestedMin: 0,
             suggestedMax: 120
-        }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
     },
    
 });

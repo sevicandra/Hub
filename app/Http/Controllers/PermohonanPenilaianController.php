@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tiket;
+use App\Models\permohonan;
+use Illuminate\Http\Request;
 use App\Models\permohonanPenilaian;
-use App\Http\Requests\StorepermohonanPenilaianRequest;
-use App\Http\Requests\UpdatepermohonanPenilaianRequest;
 
 class PermohonanPenilaianController extends Controller
 {
@@ -16,6 +17,9 @@ class PermohonanPenilaianController extends Controller
     public function index()
     {
         //
+        return view('pindaiPenilaian',[
+            'data'=>permohonanPenilaian::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -31,12 +35,26 @@ class PermohonanPenilaianController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepermohonanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepermohonanPenilaianRequest $request)
+    public function store(Request $request)
     {
-        //
+        $key= permohonan::all()->find($request->permohonan_id)->tiket->permohonan;
+        if ($key === 1) {
+            $ValidatedData=$request->validate(
+                [
+                    'nomorSurat'=>'required',
+                    'tanggalSurat'=>'required',
+                    'permohonan_id'=>'required'
+                ]);
+            permohonanPenilaian::create($ValidatedData);
+            $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
+            tiket::where('id', $data)->update(['permohonan'=>0,'penilaian'=>1]);
+            return redirect('/permohonan');     
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -64,11 +82,11 @@ class PermohonanPenilaianController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatepermohonanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\permohonanPenilaian  $permohonanPenilaian
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepermohonanPenilaianRequest $request, permohonanPenilaian $permohonanPenilaian)
+    public function update(Request $request, permohonanPenilaian $permohonanPenilaian)
     {
         //
     }

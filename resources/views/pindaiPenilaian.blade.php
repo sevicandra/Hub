@@ -11,12 +11,12 @@
             </div>
             <div class="col-sm-2">
                 <a href="/permohonan">
-                    <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Surat Permohonan</button>
+                    <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Surat Permohonan</button>
                 </a>
             </div>
             <div class="col-sm-2" >
                 <a href="/penilaian" >
-                    <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Penilaian</button>
+                    <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Penilaian</button>
                 </a>
             </div>
             <div class="col-sm-2" >
@@ -26,16 +26,16 @@
             </div>
             <div class="col"></div>
             <div class="col-sm-3" style="margin:auto">
-                <form action="">
-                    <div class="row">
-                        <div class="col-sm-8" style="margin:auto; margin-right:0; padding:0">
-                            <input class="form-control" type="text">
-                        </div>
-                        <div class="col-sm-3" style="margin:auto; margin-left:0; padding:0">
-                            <div id="nomorTiket" style="background: #4D59CA; border-radius: 0px 10px 10px 0px; height:34px;"> <p align="center">#Tiket</p></div>
-                        </div>
+            <form action="">
+                <div class="row">
+                    <div class="col-sm-8" style="margin:auto; margin-right:0; padding:0">
+                        <input class="form-control" type="text">
                     </div>
-                </form>
+                    <div class="col-sm-3" style="margin:auto; margin-left:0; padding:0">
+                        <div style="background: #4D59CA; border-radius: 0px 10px 10px 0px; height:34px;"> <p align="center">#Tiket</p></div>
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
         <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
@@ -47,35 +47,24 @@
                                 <th>No</th>
                                 <th>Nomor Surat</th>
                                 <th>Tanggal Surat</th>
-                                <th>Pemohon</th>
-                                <th>Tanggal Di Terima</th>
+                                <th>Satuan Kerja</th>
+                                <th>Pemberitahuan Penilaian</th>
+                                <th>Tanggal Pemberitahuan</th>
                                 <th>Aksi</th>
                             </tr>
                             <?php $i=1 ?>
                             @foreach ($data as $item)
-                                <tr onmouseover="bigImg('{{$item->tiket->tiket}}')">
-                                    <td>{{$i}}</td>
-                                    <td>{{$item->nomorSurat}}</td>
-                                    <td>{{$item->tanggalSurat}}</td>
-                                    <td>{{$item->satuanKerja->namaSatker}}</td>
-                                    <td>{{$item->tanggalDiTerima}}</td>
-                                    <td style="max-width: 100px">
-                                        <form class="d-inline" action="/permohonan/{{$item->id}}" action="get">
-                                            <button class="btn" type="submit" style="color: green;"><i class="bi bi-eye-fill"></i></button>
-                                        </form>
-                                        @if ($item->tiket->permohonan === 1)
-                                            <form class="d-inline" action="permohonan/{{$item->id}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn" style="color: red"><i class="bi bi-trash-fill"></i></button>    
-                                            </form>
-                                        @endif
-                                        @if ($item->tiket->permohonan === 1)
-                                            <button type="button" class="btn d-inline" id='send' name='send' data-bs-toggle="modal" data-bs-target="#permohonanPenilaian" value="{{$item->id}}"><i class="bi bi-send-fill"></i></button>
-                                        @endif
-                                            <button class="btn d-inline" style="color: blue"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{$i}}</td  >
+                                <td>{{$item->nomorSurat}}</td>
+                                <td>{{$item->tanggalSurat}}</td>
+                                <td>{{$item->permohonan->satuanKerja->namaSatker}}</td>
+                                <td></td>
+                                <td></td>
+                                <td style="max-width: 100px">
+                                    
+                                </td>
+                            </tr>
                             <?php $i++ ?>
                             @endforeach    
                         </table>
@@ -145,7 +134,7 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form action="penilaian" method="POST">
+                    <form action="permohonanpenilaian" method="POST">
                         @csrf
                         <div class="row">
                             <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
@@ -175,6 +164,5 @@
 @section('foot')
 
 <script src="js/pindai/permohonanPenilaian.js"></script>
-<script src="js/pindai/nomorTiket.js"></script>
 
 @endsection

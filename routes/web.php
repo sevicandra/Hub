@@ -2,12 +2,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
-use App\Http\Controllers\agendaController;
 use App\Http\Controllers\tiketController;
-use App\Http\Controllers\permohonanController;
+use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\registerController;
+use App\Http\Controllers\permohonanController;
+use App\Http\Controllers\PermohonanPenilaianController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,8 +49,10 @@ Route::resource('/pindai', tiketController::class)->middleware('auth');
 
 Route::resource('/permohonan', permohonanController::class)->middleware('auth');
 
-
 Route::resource('/barang', barangController::class)->middleware('auth');
+
+Route::resource('/penilaian', PermohonanPenilaianController::class)->middleware('auth');
+
 
 
 Route::post('/test', function(Request $request) {

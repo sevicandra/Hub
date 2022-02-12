@@ -125,5 +125,16 @@ class PermohonanController extends Controller
     public function destroy(permohonan $permohonan)
     {
         //
+        if ($permohonan->tiket === 1) {
+            $permohonan->tiket->update(['permohonan' => 0]);
+            $barang=$permohonan->barang;
+            foreach($barang as $b){
+                $b->delete();
+            };
+            $permohonan->delete();
+            return redirect('/permohonan');
+        }else{
+            abort(403);
+        }
     }
 }

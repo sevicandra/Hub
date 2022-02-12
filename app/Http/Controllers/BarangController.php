@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\barang;
+use App\Models\permohonan;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -37,24 +38,32 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
+        $key= permohonan::all()->find($request->permohonan_id)->tiket->permohonan;
+        if ($key === 1) {
+            $ValidatedData=$request->validate(
+                [
+                    'kodeBarang'=>'required',
+                    'NUP'=>'required',
+                    'merkType'=>'required',
+                    'tahunPerolehan'=>'required',
+                    'nilaiPerolehan'=>'required',
+                    'permohonan_id'=>'required',
+                    'nomorRangka'=>'',
+                    'nomorPolisi'=>'',
+                    'nomorMesin'=>'',
+                    'keterangan'=>''
+                ]);
+            barang::create($ValidatedData);
+            $redirect = '/permohonan/';
+            $redirect .= $ValidatedData['permohonan_id'];
+            return redirect($redirect);
+        }else{
+            abort(403);
+        }
+
+
+
         
-        $ValidatedData=$request->validate(
-            [
-                'kodeBarang'=>'required',
-                'NUP'=>'required',
-                'merkType'=>'required',
-                'tahunPerolehan'=>'required',
-                'nilaiPerolehan'=>'required',
-                'permohonan_id'=>'required',
-                'nomorRangka'=>'',
-                'nomorPolisi'=>'',
-                'nomorMesin'=>'',
-                'keterangan'=>''
-            ]);
-        barang::create($ValidatedData);
-        $redirect = '/permohonan/';
-        $redirect .= $ValidatedData['permohonan_id'];
-        return redirect($redirect);
 
 
 
@@ -107,5 +116,13 @@ class BarangController extends Controller
     public function destroy(barang $barang)
     {
         //
+        if ($barang->permohonan->tiket->permohonan === 1) {
+            $redirect = '/permohonan/';
+            $redirect .= $barang->permohonan->id;
+            $barang->delete();
+            return redirect($redirect);
+        }else{
+            abort(403);
+        }
     }
 }

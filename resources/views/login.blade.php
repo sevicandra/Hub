@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <title>KPKNL TERNATE HUB || LOGIN</title>
 </head>
-<body style="background-image: url('img/login.png'); background-repeat: no-repeat">
+<body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh" >
     <div class="container-fluid sticky-top">
         <div class="row" style="padding: 0px 49px 0px 49px">
             <div class="col-sm-12" style="border-radius: 0 0 10px 10px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(240, 248, 255, 0.308)">
@@ -18,23 +18,25 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid" style="padding: 270px 150px 200px 1299px;">
-        <div class="row col-sm-12 form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; padding: 24px 0 20px">
-            <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
-            <p style="margin-bottom: 24px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, quas! Id, excepturi?</p>
-            <form action="/login" method="POST">
-                @csrf
-                <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
-                <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
-                <select name="tahun" class="form-control" placeholder="Tahun" style="margin-bottom: 12px" required name="tahun">
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                  </select>
-                <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Login</button>
-            </form>
-            <p>Dont have Account? <a href="/register">Register here!</a> </p>
+    <div class="container-fluid">
+        <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
+            <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:450px; margin:auto 0 auto auto">
+                <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
+                <p style="margin-bottom: 24px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, quas! Id, excepturi?</p>
+                <form action="/login" method="POST">
+                    @csrf
+                    <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
+                    <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
+                    <select name="tahun" class="form-control" placeholder="Tahun" style="margin-bottom: 12px" required name="tahun">
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                      </select>
+                    <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Login</button>
+                </form>
+                <p>Dont have Account? <a href="/register">Register here!</a> </p>
+            </div>
         </div>
     </div>
     {{--  Sidebar  --}}
@@ -189,9 +191,9 @@
             </div>
             {{--  Akhir Internet Apps  --}}            
         </div>
-        {{--  Akhir Sidebar  --}}
+    {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}
-        <div class="container-fluid fixed-bottom">
+        <div class="container-fluid fixed-bottom position-absolute">
             <div class="row" style="margin:0; padding: 0 37px 0 37px">
                 <div class="col-sm-12" style="background-color: rgba(240, 248, 255, 0.308); border-radius: 10px 10px 0 0">
                     <div class="row">
@@ -208,7 +210,7 @@
                 </div>
             </div>
         </div>
-        {{--  Akhir Footer  --}}
+    {{--  Akhir Footer  --}}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

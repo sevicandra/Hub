@@ -13,13 +13,13 @@ class CreateSatuanKerjasTable extends Migration
      */
     public function up()
     {
-        Schema::create('satuan_kerjas', function (Blueprint $table) {
-            $table->char('id', 6)->primary;
-            $table->char('kementerian_id', 3);
-            $table->string('namaSatker');
-            $table->string('kodeSatker');
-            $table->timestamps();
-        });
+        // Schema::create('satuan_kerjas', function (Blueprint $table) {
+        //     $table->char('id', 6)->primary;
+        //     $table->char('kementerian_id', 3);
+        //     $table->string('namaSatker');
+        //     $table->string('kodeSatker');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateSatuanKerjasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('satuan_kerjas');
+        // Schema::dropIfExists('satuan_kerjas');
     }
 }

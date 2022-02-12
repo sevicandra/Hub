@@ -17,6 +17,7 @@ class CreatePermohonanPenilaiansTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('permohonan_id');
             $table->string('nomorSurat');
+            $table->string('hal');
             $table->date('tanggalSurat');
             $table->timestamps();
         });

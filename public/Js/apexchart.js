@@ -1,8 +1,8 @@
 
 var options = {
     chart: {
-        height: 328,
-        width:270,
+        height: '100%',
+        width:'100%',
         type: 'radialBar',
     },
     series: [70],
@@ -15,8 +15,8 @@ var options = {
 
   var options1 = {
     chart: {
-        height: 328,
-        width:270,
+        height: '100%',
+        width:'100%',
         type: 'radialBar',
     },
     series: [70],
@@ -29,8 +29,8 @@ var options = {
 
   var options2 = {
     chart: {
-        height: 328,
-        width:270,
+        height: '100%',
+        width:'100%',
         type: 'radialBar',
     },
     series: [50],

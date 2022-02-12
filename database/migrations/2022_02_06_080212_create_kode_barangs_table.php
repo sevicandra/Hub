@@ -13,11 +13,11 @@ class CreateKodeBarangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kode_barangs', function (Blueprint $table) {
-            $table->char('id', 10)->primary;
-            $table->string('namaBarang');
-            $table->timestamps();
-        });
+        // Schema::create('kode_barangs', function (Blueprint $table) {
+        //     $table->char('id', 10)->primary;
+        //     $table->string('namaBarang');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateKodeBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kode_barangs');
+        // Schema::dropIfExists('kode_barangs');
     }
 }

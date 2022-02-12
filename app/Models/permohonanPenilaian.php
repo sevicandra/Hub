@@ -18,4 +18,9 @@ class permohonanPenilaian extends Model
     public function pemberitahuanPenilaian(){
         return $this->hasOne(pemberitahuanPenilaian::class);
     }
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'permohonan_id',
+    ];
 }

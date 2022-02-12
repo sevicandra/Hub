@@ -1,16 +1,22 @@
 
 @extends('layout.main')
 @section('content')
-<div class="container-fluid" style="padding: 30px 37px 9px 37px">
-    <div class="container-fluid" style="border-radius: 10px; background-color:darkgrey; ">
+<div class="container-fluid" style="padding: 30px 37px 9px 37px; height:100%">
+    <div class="container-fluid" style="border-radius: 10px; background-color:darkgrey; height:100% ">
         <div class="row" style="padding-bottom: 10px">
+            <div class="col-sm-1">
+                <a href="/permohonan">
+                    <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
+                </a>
+            </div>
             <div class="col-sm-2">
                 <div class="btn btn-primary translate-middle-y" style="width: 100%">Daftar Barang</div>
             </div>
         </div>
-        <div class="row" style="height:80vh; padding: 0 40px 0px 40px">
-            <div class="container-fluid">
-                <div class="row" style="height: 74vh; background-color:aliceblue; border-radius:10px;">
+        <div class="row" style="height:85%; padding: 0 40px 0px 40px">
+            <div class="container-fluid" style="height: 100%;">
+                
+                <div class="row" style="height: 100%; background-color:aliceblue; border-radius:10px;">
                     <div>
                         <table class="table table-hover">
                             <thead>
@@ -44,7 +50,15 @@
                                     <td scope="col">{{$item->tahunPerolehan}}</td>
                                     <td scope="col">{{$item->nilaiPerolehan}}</td>
                                     <td scope="col">{{$item->keterangan}}</td>
-                                    <td><a href="" style="color: red"><i class="bi bi-trash-fill"></i></a></td>
+                                    <td>
+                                        @if ($data->tiket->permohonan === 1)
+                                        <form class="d-inline" action="/barang/{{$item->id}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn" style="color: red"><i class="bi bi-trash-fill"></i></button>    
+                                        </form>
+                                        @endif
+                                    </td>
                                 <?php $i++ ?>
                                 </tr>
                                 @endforeach
@@ -54,13 +68,17 @@
                         </table>
                     </div>
                 </div>
-                <div class="row " style="margin: 10px 0 0 0 ">
-                    <div class=" d-flex justify-content-end" style="padding:0">
-                        <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Barang</button>
-                    </div>
-                </div>
+                
             </div>
         </div>
+        @if ($data->tiket->permohonan === 1)
+        <div class="row " style="margin: 10px 0 0 0; padding: 0 40px 0px 40px">
+            <div class=" d-flex justify-content-end" style="padding:0">
+                <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Tambah Barang</button>
+            </div>
+        </div>
+        @endif
+
     </div>
 </div>
 

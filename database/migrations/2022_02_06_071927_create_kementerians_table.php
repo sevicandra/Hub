@@ -13,11 +13,11 @@ class CreateKementeriansTable extends Migration
      */
     public function up()
     {
-        Schema::create('kementerians', function (Blueprint $table) {
-            $table->char('id', 3)->primary;
-            $table->string('namaKementerian');
-            $table->timestamps();
-        });
+        // Schema::create('kementerians', function (Blueprint $table) {
+        //     $table->char('id', 3)->primary;
+        //     $table->string('namaKementerian');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateKementeriansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kementerians');
+        // Schema::dropIfExists('kementerians');
     }
 }
