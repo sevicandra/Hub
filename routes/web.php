@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\cetakDokumen;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\tiketController;
 use App\Http\Controllers\agendaController;
@@ -54,8 +55,14 @@ Route::resource('/barang', barangController::class)->middleware('auth');
 Route::resource('/penilaian', PermohonanPenilaianController::class)->middleware('auth');
 
 
-
 Route::post('/test', function(Request $request) {
     //
     var_dump($request->date);
 });
+
+
+Route::controller(cetakDokumen::class)->group(function(){
+    Route::post('/cetak', 'cetakPermohonanSKSTPenilai');
+    
+});
+

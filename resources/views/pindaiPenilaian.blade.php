@@ -46,6 +46,7 @@
                             <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
                                 <th>No</th>
                                 <th>Nomor Surat</th>
+                                <th>hal</th>
                                 <th>Tanggal Surat</th>
                                 <th>Satuan Kerja</th>
                                 <th>Pemberitahuan Penilaian</th>
@@ -57,12 +58,13 @@
                             <tr>
                                 <td>{{$i}}</td  >
                                 <td>{{$item->nomorSurat}}</td>
+                                <td>{{$item->hal}}</td>
                                 <td>{{$item->tanggalSurat}}</td>
                                 <td>{{$item->permohonan->satuanKerja->namaSatker}}</td>
                                 <td></td>
                                 <td></td>
                                 <td style="max-width: 100px">
-                                    
+                                    <button type="button" class="btn d-inline" id='send' name='send' data-bs-toggle="modal" data-bs-target="#permohonanPenilaian" value="{{$item->id}}"><i class="bi bi-send-fill"></i></button>
                                 </td>
                             </tr>
                             <?php $i++ ?>
@@ -79,7 +81,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="permohonan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -134,18 +135,36 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form action="permohonanpenilaian" method="POST">
+                    <form action="cetak" method="POST">
                         @csrf
+                        <div class="row" id="namaTim">
+                            <div id="namaTim1" class="row">
+                                <label for="nama" class="col-sm-4 col-form-label">nama</label>
+                                <div class="col-sm-7">
+                                    <input name="nama[]" class="form-control" type="text" required>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button onClick="hapusTim(1)" class="btn" type="button"><i class="bi bi-x-square"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="tambahTim" class="btn" type="button"><i class="bi bi-plus-square"></i></i></button>
                         <div class="row">
-                            <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
+                            <label for="lokasi" class="col-sm-4 col-form-label">lokasi</label>
                             <div class="col-sm-8">
-                                <input name="nomorSurat" class="form-control" type="text" required>
+                                <input name="lokasi" class="form-control" type="text" required>
                             </div>
                         </div>
                         <div class="row">
-                            <label for="tanggalSurat" class="col-sm-4 col-form-label">Tanggal</label>
+                            <label for="tanggalMulaiSurvei" class="col-sm-4 col-form-label">tanggal Mulai</label>
                             <div class="col-sm-8">
-                                <input name="tanggalSurat" type="date" class="form-control" required>
+                                <input name="tanggalMulaiSurvei" class="form-control" type="date" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="tanggalSelesaiSurvei" class="col-sm-4 col-form-label">tanggal Selesai</label>
+                            <div class="col-sm-8">
+                                <input name="tanggalSelesaiSurvei" class="form-control" type="date" required>
                             </div>
                         </div>
                             <div>
@@ -164,5 +183,17 @@
 @section('foot')
 
 <script src="js/pindai/permohonanPenilaian.js"></script>
-
+<script>
+    $(document).ready(function(){   
+        var x = 2; 
+        $('#tambahTim').click(function () {
+            $('#namaTim').append('<div id="namaTim'+x+'" class="row"><label for="nama" class="col-sm-4 col-form-label">nama</label><div class="col-sm-7"><input name="nama[]" class="form-control" type="text" required></div><div class="col-sm-1"><button onClick="hapusTim('+x+')" class="btn" type="button"><i class="bi bi-x-square"></i></button></div></div>');
+            x++;
+        });
+    });   
+    function hapusTim(y){
+        var namaTim= 'namaTim' + y;    
+        $('#'+namaTim+'').remove();
+    }
+</script>
 @endsection
