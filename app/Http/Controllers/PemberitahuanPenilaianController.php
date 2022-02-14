@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\permohonanPenilaian;
+use Illuminate\Http\Request;
 use App\Models\pemberitahuanPenilaian;
-use App\Http\Requests\StorepemberitahuanPenilaianRequest;
-use App\Http\Requests\UpdatepemberitahuanPenilaianRequest;
+
 
 class PemberitahuanPenilaianController extends Controller
 {
@@ -31,12 +32,26 @@ class PemberitahuanPenilaianController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepemberitahuanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepemberitahuanPenilaianRequest $request)
+    public function store(Request $request)
     {
-        //
+        $key= permohonanPenilaian::all()->find($request->permohonan_penilaian_id)->pemberitahuanPenilaian;
+        if (!isset($key)) {
+            $ValidatedData=$request->validate(
+                [
+                    'nomorSurat'=>'required',
+                    'tanggalSurat'=>'required',
+                    'permohonan_penilaian_id'=>'required'
+                ]);
+                pemberitahuanPenilaian::create($ValidatedData);
+                return redirect('/penilaian');
+        }else{
+            abort(403);
+        }
+
+        
     }
 
     /**
@@ -64,11 +79,11 @@ class PemberitahuanPenilaianController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatepemberitahuanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\pemberitahuanPenilaian  $pemberitahuanPenilaian
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepemberitahuanPenilaianRequest $request, pemberitahuanPenilaian $pemberitahuanPenilaian)
+    public function update(Request $request, pemberitahuanPenilaian $pemberitahuanPenilaian)
     {
         //
     }

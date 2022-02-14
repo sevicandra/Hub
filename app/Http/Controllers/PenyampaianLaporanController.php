@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tiket;
+use Illuminate\Http\Request;
 use App\Models\penyampaianLaporan;
+use App\Models\pemberitahuanPenilaian;
 use App\Http\Requests\StorepenyampaianLaporanRequest;
 use App\Http\Requests\UpdatepenyampaianLaporanRequest;
 
@@ -31,12 +34,26 @@ class PenyampaianLaporanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepenyampaianLaporanRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepenyampaianLaporanRequest $request)
+    public function store(Request $request)
     {
-        //
+        $key = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->penyampaianLaporan;
+        if (!isset($key)) {
+            $ValidatedData=$request->validate(
+                [
+                    'nomorSurat'=>'required',
+                    'tanggalSurat'=>'required',
+                    'pemberitahuan_penilaian_id'=>'required'
+                ]);
+            $tiket_id = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->permohonanPenilaian->permohonan->tiket;
+            tiket::find($tiket_id->id)->update(['persetujuan'=>1,'penilaian'=>0]);
+            penyampaianLaporan::create($ValidatedData);
+            return redirect('/penilaian');
+        }else{
+            abort(403);
+        }
     }
 
     /**

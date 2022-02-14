@@ -22,5 +22,6 @@ class permohonanPenilaian extends Model
         'nomorSurat',
         'tanggalSurat',
         'permohonan_id',
+        'hal',
     ];
 }

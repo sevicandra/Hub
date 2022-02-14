@@ -46,7 +46,8 @@ class PermohonanPenilaianController extends Controller
                 [
                     'nomorSurat'=>'required',
                     'tanggalSurat'=>'required',
-                    'permohonan_id'=>'required'
+                    'permohonan_id'=>'required',
+                    'hal'=>'required'
                 ]);
             permohonanPenilaian::create($ValidatedData);
             $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
@@ -60,12 +61,20 @@ class PermohonanPenilaianController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\permohonanPenilaian  $permohonanPenilaian
+     * @param  \App\Models\permohonanPenilaian  $penilaian
      * @return \Illuminate\Http\Response
      */
-    public function show(permohonanPenilaian $permohonanPenilaian)
+    public function show(permohonanPenilaian $penilaian)
     {
         //
+        if (isset($penilaian->pemberitahuanPenilaian)) {
+            return view('pindaiLaporanPenilaian', [
+                'data'=>$penilaian->pemberitahuanPenilaian,
+            ]);
+        }else{
+            abort(403);
+        }
+        
     }
 
     /**
@@ -89,6 +98,7 @@ class PermohonanPenilaianController extends Controller
     public function update(Request $request, permohonanPenilaian $permohonanPenilaian)
     {
         //
+
     }
 
     /**

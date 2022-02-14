@@ -213,7 +213,7 @@
                 <div class="col-sm-12" style="background-color: aliceblue; border-radius: 10px 10px 0 0">
                     <div class="row">
                         <div class="col-sm-4">
-                            <img src="img/ico/kpknlternate.png" alt="" height="48px">
+                            <img src="/img/ico/kpknlternate.png" alt="" height="48px">
                         </div>
                         <div class="col-sm-4 d-flex justify-content-center align-items-center">
                             <p style="margin:0">Version :   <a class="text-decoration-none" href="">1.0.0</a> </p>

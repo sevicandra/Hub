@@ -18,4 +18,14 @@ class pemberitahuanPenilaian extends Model
     public function laporanPenilaian(){
         return $this->hasMany(laporanPenilaian::class);
     }
+
+    public function penyampaianLaporan(){
+        return $this->hasOne(penyampaianLaporan::class);
+    }
+
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'permohonan_penilaian_id',
+    ];
 }

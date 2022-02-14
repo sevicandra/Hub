@@ -15,7 +15,15 @@ class penyampaianLaporan extends Model
         return $this->hasOne(suratPersetujuan::class);
     }
 
-    public function laporanPenilaians(){
-        return $this->belongstoMany(laporanPenilaian::class);
+    public function pemberitahuanPenilaian(){
+        return $this->belongsTo(pemberitahuanPenilaian::class);
     }
+
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'pemberitahuan_penilaian_id'
+    ];
+
+
 }

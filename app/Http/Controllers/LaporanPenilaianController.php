@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\laporanPenilaian;
-use App\Http\Requests\StorelaporanPenilaianRequest;
-use App\Http\Requests\UpdatelaporanPenilaianRequest;
+use App\Models\pemberitahuanPenilaian;
 
 class LaporanPenilaianController extends Controller
 {
@@ -31,12 +31,19 @@ class LaporanPenilaianController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorelaporanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorelaporanPenilaianRequest $request)
+    public function store(Request $request)
     {
-        //
+        $ValidatedData=$request->validate([
+            'nomorLaporan'=>'required',
+            'tanggalLaporan'=>'required',
+            'pemberitahuan_penilaian_id'=>'required',
+        ]);
+        laporanPenilaian::create($ValidatedData);
+        $key=pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
+        return redirect('/penilaian/'. $key->permohonan_penilaian_id);
     }
 
     /**
@@ -45,9 +52,11 @@ class LaporanPenilaianController extends Controller
      * @param  \App\Models\laporanPenilaian  $laporanPenilaian
      * @return \Illuminate\Http\Response
      */
-    public function show(laporanPenilaian $laporanPenilaian)
+    public function show(laporanPenilaian $laporanpenilaian)
     {
         //
+
+        return json_encode($laporanpenilaian->barang);
     }
 
     /**
@@ -64,11 +73,11 @@ class LaporanPenilaianController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatelaporanPenilaianRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\laporanPenilaian  $laporanPenilaian
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatelaporanPenilaianRequest $request, laporanPenilaian $laporanPenilaian)
+    public function update(Request $request, laporanPenilaian $laporanPenilaian)
     {
         //
     }
@@ -79,8 +88,19 @@ class LaporanPenilaianController extends Controller
      * @param  \App\Models\laporanPenilaian  $laporanPenilaian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(laporanPenilaian $laporanPenilaian)
+    public function destroy(laporanPenilaian $laporanpenilaian)
     {
-        //
+        $key = $laporanpenilaian->pemberitahuanPenilaian->penyampaianLaporan;
+        $key2 = $laporanpenilaian->barang->first();
+        if(!isset($key2)){
+            if (!isset($key)) {
+                $laporanpenilaian->delete();
+                return redirect('/penilaian/'. $laporanpenilaian->pemberitahuanPenilaian->permohonan_penilaian_id);
+            }else{
+                abort(403);
+            }
+        }else{
+            abort(403);
+        }
     }
 }

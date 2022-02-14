@@ -92,7 +92,13 @@ class BarangController extends Controller
      */
     public function edit(barang $barang)
     {
-        //
+        $laporan = $barang->laporanPenilaian->id;
+        $permohonan = $barang->laporanPenilaian->pemberitahuanPenilaian->permohonanPenilaian->id;
+        barang::find($barang->id)->update([
+            'laporan_penilaian_id'=>null,
+            'nilaiWajar'=>''
+        ]);
+        return redirect('/penilaian/'. $permohonan)->with(['loadData' => $laporan]);
     }
 
     /**
@@ -117,10 +123,8 @@ class BarangController extends Controller
     {
         //
         if ($barang->permohonan->tiket->permohonan === 1) {
-            $redirect = '/permohonan/';
-            $redirect .= $barang->permohonan->id;
             $barang->delete();
-            return redirect($redirect);
+            return redirect('/permohonan/'. $barang->permohonan->id);
         }else{
             abort(403);
         }

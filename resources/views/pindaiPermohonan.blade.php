@@ -70,8 +70,8 @@
                                                 <button type="submit" class="btn" style="color: red"><i class="bi bi-trash-fill"></i></button>    
                                             </form>
                                         @endif
-                                        @if ($item->tiket->permohonan === 1)
-                                            <button type="button" class="btn d-inline" id='send' name='send' data-bs-toggle="modal" data-bs-target="#permohonanPenilaian" value="{{$item->id}}"><i class="bi bi-send-fill"></i></button>
+                                        @if ($item->tiket->permohonan === 1 && isset($item->barang[0]))
+                                            <button onClick="permohonanPenilaian('{{$item->id}}')" type="button" class="btn d-inline" data-bs-toggle="modal" data-bs-target="#permohonanPenilaian"><i class="bi bi-send-fill"></i></button>
                                         @endif
                                             <button class="btn d-inline" style="color: blue"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
                                     </td>
@@ -154,6 +154,12 @@
                             </div>
                         </div>
                         <div class="row">
+                            <label for="hal" class="col-sm-4 col-form-label">Hal</label>
+                            <div class="col-sm-8">
+                                <input name="hal" class="form-control" type="text" required>
+                            </div>
+                        </div>
+                        <div class="row">
                             <label for="tanggalSurat" class="col-sm-4 col-form-label">Tanggal</label>
                             <div class="col-sm-8">
                                 <input name="tanggalSurat" type="date" class="form-control" required>
@@ -174,7 +180,7 @@
 
 @section('foot')
 
-<script src="js/pindai/permohonanPenilaian.js"></script>
-<script src="js/pindai/nomorTiket.js"></script>
+    <script src="/js/pindai/permohonanPenilaian.js"></script>
+    <script src="/js/pindai/nomorTiket.js"></script>
 
 @endsection

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\permohonan;
 use App\Models\tiket;
+use App\Models\barang;
+use App\Models\permohonan;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
@@ -113,7 +114,15 @@ class PermohonanController extends Controller
      */
     public function update(Request $request, permohonan $permohonan)
     {
-        //
+        $i=0;   
+        foreach ($request->barang as $key) {
+            barang::where('id', $key)->update([
+                'laporan_penilaian_id'=>$request->laporan_penilaian_id,
+                'nilaiWajar'=>$request->value[$i]
+            ]);
+            $i++;
+        }
+        return redirect('/penilaian/'. $permohonan->permohonanPenilaian->id );
     }
 
     /**

@@ -109,7 +109,7 @@
 @section('foot')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/apexchart.js"></script>
-<script src="js/chart.js"></script>
+<script src="/js/apexchart.js"></script>
+<script src="/js/chart.js"></script>
 <script src="{{asset('agenda/js/index.js')}}" type="text/javascript"></script>
 @endsection

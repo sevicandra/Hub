@@ -19,11 +19,12 @@ class barang extends Model
         return $this->belongsto(kodeBarang::class, 'kodeBarang', 'id');
     }
 
-    public function laporanPenilaians(){
-        return $this->belongstoMany(laporanPenilaian::class);
+    public function laporanPenilaian(){
+        return $this->belongsto(laporanPenilaian::class);
     }
     protected $fillable = [
         'permohonan_id',
+        'laporan_penilaian_id',
         'kodeBarang',
         'NUP',
         'merkType',

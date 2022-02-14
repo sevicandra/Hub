@@ -15,7 +15,7 @@ class CreatePemberitahuanPenilaiansTable extends Migration
     {
         Schema::create('pemberitahuan_penilaians', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('permohonanPenilaian_id');
+            $table->uuid('permohonan_penilaian_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->timestamps();
