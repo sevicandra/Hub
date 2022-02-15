@@ -8,10 +8,18 @@ use App\Models\permohonanPenilaian;
 class cetakDokumen extends Controller
 {
     public function cetakPermohonanSKSTPenilai(Request $request){
-
-
+        
         $a = permohonanPenilaian::all()->find($request->permohonan_id);
-        $tim=count($request->nama);
+        if(isset($request->nama)){
+            foreach ($request->nama as $key) {
+                $c = permohonanPenilaian::all()->find($request->permohonan_id)->users->find($key);
+                if (!isset($c)) {
+                    permohonanPenilaian::all()->find($request->permohonan_id)->users()->attach($key);
+                }
+            }
+        }
+
+        $b = permohonanPenilaian::all()->find($request->permohonan_id);
         
         $date=date_create($a->tanggalSurat);
         $tglSurat = date_format($date,"d");
@@ -145,9 +153,6 @@ class cetakDokumen extends Controller
         }
         $tanggalSelesaiSurvei = $tglSelesaiSurvei  .' '. $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
 
-
-
-
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PermohonanSK-STPenilai.docx');
         $templateProcessor->setValue('nomorSurat', $a->nomorSurat);
         $templateProcessor->setValue('tanggalSurat', $tanggalsurat);
@@ -157,35 +162,40 @@ class cetakDokumen extends Controller
         if ($request->tanggalMulaiSurvei === $request->tanggalSelesaiSurvei) {
             $templateProcessor->setValue('tanggalSurvei', $tanggalMulaiSurvei);
         }else{
-            if($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei){
-                $survei=$tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                $templateProcessor->setValue('tanggalSurvei', $survei);
-            }else{
-                if($tahunMulaiSurvei === $tahunSelesaiSurvei){
-                    $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                if($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei){
+                    $survei=$tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
                     $templateProcessor->setValue('tanggalSurvei', $survei);
                 }else{
-                    $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' '. $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                    $templateProcessor->setValue('tanggalSurvei', $survei);
+                    if($tahunMulaiSurvei === $tahunSelesaiSurvei){
+                        $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                        $templateProcessor->setValue('tanggalSurvei', $survei);
+                    }else{
+                        $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' '. $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                        $templateProcessor->setValue('tanggalSurvei', $survei);
+                    }
                 }
             }
-        }
         
-
-        $templateProcessor->cloneRow('anggotaTim', $tim);
+        $templateProcessor->cloneRow('anggotaTim', $b->users->count());
         $i=1;
-        foreach($request->nama as $name){
+        $c = $b->users()->orderByDesc('permohonan_penilaian_user.created_at')->get();
+        foreach($c as $user){
             $anggotaTim='anggotaTim#' . $i;
+            $NIP='NIP#' . $i;
             $nomor='nomor#'. $i;
 
-            $templateProcessor->setValue($anggotaTim, $name);
+            $templateProcessor->setValue($anggotaTim, $user->nama);
+            $templateProcessor->setValue($NIP, $user->NIP);
             $templateProcessor->setValue($nomor, $i);
             $i++;
         }
         
-        
-            
-        $templateProcessor->saveAs('DocxTemplate/lampiran2.docx');
-        return response()->download(file:'DocxTemplate/lampiran2.docx')->deleteFileAfterSend(shouldDelete:true);
+        $templateProcessor->saveAs('DocxTemplate/Usulan SK & ST - '. $request->permohonan_id. '.docx');
+        return response()->download(file:'DocxTemplate/Usulan SK & ST - '. $request->permohonan_id. '.docx')->deleteFileAfterSend(shouldDelete:true);
     }
+
+    public function cetakPenyampaianJadwalPenilaian(Request $request){
+
+    }
+
 }

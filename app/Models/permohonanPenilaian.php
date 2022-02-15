@@ -24,4 +24,7 @@ class permohonanPenilaian extends Model
         'permohonan_id',
         'hal',
     ];
+    public function users(){
+        return $this->belongsToMany(user::class);
+    }
 }

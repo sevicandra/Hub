@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\suratPersetujuan;
+use App\Models\penyampaianLaporan;
 use App\Http\Requests\StoresuratPersetujuanRequest;
 use App\Http\Requests\UpdatesuratPersetujuanRequest;
 
@@ -15,7 +16,9 @@ class SuratPersetujuanController extends Controller
      */
     public function index()
     {
-        //
+        return view('pindaiPersetujuan',[
+            'data'=>penyampaianLaporan::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**

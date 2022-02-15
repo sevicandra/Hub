@@ -14,16 +14,11 @@ class PivotTable extends Migration
     public function up()
     {
         
-        Schema::create('barang_laporan_penilaian', function (Blueprint $table) {
-            $table->uuid('barang_id');
-            $table->uuid('laporan_penilaian_id');
-            $table->primary(['barang_id', 'laporan_penilaian_id']); 
-        });
-
-        Schema::create('laporan_penilaian_penyampaian_laporan', function (Blueprint $table) {
-            $table->uuid('laporan_penilaian_id');
-            $table->uuid('penyampaian_laporan_id');
-            
+        Schema::create('permohonan_penilaian_user', function (Blueprint $table) {
+            $table->uuid('user_id');
+            $table->uuid('permohonan_penilaian_id');
+            $table->timestamps();
+            // $table->primary(['user_id', 'permohonan_penilaian_id']);
         });
     }
 
@@ -37,5 +32,6 @@ class PivotTable extends Migration
         //
         Schema::dropIfExists('barang_laporan_penilaian');
         Schema::dropIfExists('laporan_penilaian_penyampaian_laporan');
+        Schema::dropIfExists('permohonan_penilaian_user');
     }
 }

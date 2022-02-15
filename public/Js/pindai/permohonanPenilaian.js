@@ -1,6 +1,19 @@
 function dowloadusulanSKST(val) {
-    console.log(val);
     $('#permohonan_id').val(val);
+    $.ajax({
+        type: "Get", 
+        url: "/timpenilai/"+val,
+        dataType: "json",
+        success: function(response){
+            var x = 1
+            $('#anggotaTim').empty();
+            $.each(response, function(res, req){
+                var value = "'" + req.id + "', '" + val +"'"
+                $('#anggotaTim').append('<div class="row"><div class="row"><div class="col-sm-1">'+x+'</div><div class="col-sm-10">'+req.nama+' / '+req.NIP+'</div><div class="col-sm-1"><button onClick="hapusAnggota('+value+')" class="btn" type="button"><i class="bi bi-x-square"></i></button></div></div></div>')
+                x++
+            })
+        },
+    });
 }
 
 function pemberitahuan(val){
@@ -10,8 +23,19 @@ function pemberitahuan(val){
 $(document).ready(function(){   
     var x = 2; 
     $('#tambahTim').click(function () {
-        $('#namaTim').append('<div id="namaTim'+x+'" class="row"><label for="nama" class="col-sm-4 col-form-label">nama</label><div class="col-sm-7"><input name="nama[]" class="form-control" type="text" required></div><div class="col-sm-1"><button onClick="hapusTim('+x+')" class="btn" type="button"><i class="bi bi-x-square"></i></button></div></div>');
-        x++;
+        $.ajax({
+            type:'GET',
+            url: '/listTim',
+            dataType: "json",
+            success: function(response){
+                $('#namaTim').append('<div id="namaTim'+x+'" class="row"><label for="nama" class="col-sm-1 col-form-label"></label><div class="col-sm-10"><select id="listTim'+x+'"  name="nama[]" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required></select></div><div class="col-sm-1"><button onClick="hapusTim('+x+')" class="btn" type="button"><i class="bi bi-x-square"></i></button></div></div>');
+                $.each(response, function(res, req) {
+                    $('#listTim'+x).append('<option value="'+req.id+'">'+req.nama+'</option>');
+                });
+                x++;
+            }
+        })
+        
     });
 });
    
@@ -61,6 +85,26 @@ function detailLaporan(val){
         });
     }
 }
+
+function hapusAnggota(val1, val2) {
+    $.ajax({
+        type: "POST",
+        url: "/hapusanggota",
+        dataType: "json",
+        data: {user_id:val1,permohonanPenilaian_id:val2},
+        success: function (response) {
+            var x = 1
+            $('#anggotaTim').empty();
+            $.each(response, function(res, req){
+                var value = "'" + req.id + "', '" + val2 +"'"
+                $('#anggotaTim').append('<div class="row"><div class="row"><div class="col-sm-1">'+x+'</div><div class="col-sm-10">'+req.nama+' / '+req.NIP+'</div><div class="col-sm-1"><button onClick="hapusAnggota('+value+')" class="btn" type="button"><i class="bi bi-x-square"></i></button></div></div></div>')
+                x++
+            })
+        }
+    })
+}
+
+
 
 function penyampaianLaporan(val){
     $('#pemberitahuan_penilaian_id').val(val);

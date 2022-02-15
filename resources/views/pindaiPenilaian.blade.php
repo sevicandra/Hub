@@ -20,7 +20,7 @@
                     </a>
                 </div>
                 <div class="col-sm-2" >
-                    <a href="/permohonan" >
+                    <a href="/persetujuan" >
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Surat Persetujuan</button>
                     </a>
                 </div>
@@ -70,8 +70,8 @@
                                     @endif
                                     <td style="max-width: 100px">
                                         @if (isset($item->pemberitahuanPenilaian))
-                                            <form action="penilaian/{{$item->id}}">
-                                                <button type="submit" class="btn d-inline"><i class="bi bi-eye-fill"></i></button>
+                                            <form class="d-inline" action="penilaian/{{$item->id}}">
+                                                <button type="submit" class="btn"><i class="bi bi-eye-fill"></i></button>
                                             </form>
                                         @endif
                                         @if (!isset($item->pemberitahuanPenilaian))
@@ -82,7 +82,7 @@
                                         @endif
                                         @if (!isset($item->pemberitahuanPenilaian->penyampaianLaporan))
                                             @if ($item->permohonan->barang->count() === $item->permohonan->barang->where('laporan_penilaian_id', '!=', null)->count())
-                                                <button onClick="penyampaianLaporan('{{$item->pemberitahuanPenilaian->id}}')" class="btn" data-bs-toggle="modal" data-bs-target="#kirimLaporan"><i class="bi bi-send-check-fill"></i></button>
+                                                <button onClick="penyampaianLaporan('{{$item->pemberitahuanPenilaian->id}}')" class="btn d-inline" data-bs-toggle="modal" data-bs-target="#kirimLaporan"><i class="bi bi-send-check-fill"></i></button>
                                             @endif
                                         @endif
                                     </td>
@@ -140,18 +140,15 @@
                     </div>
                     <div class="modal-body">
                         <div>
+                            <div class="row">
+                                <div class="col-sm-12">ANGGOTA TIM</div>
+                                <div id='anggotaTim'>
+
+                                </div>
+                            </div>
                             <form action="cetak" method="POST">
                                 @csrf
                                 <div class="row" id="namaTim">
-                                    <div id="namaTim1" class="row">
-                                        <label for="nama" class="col-sm-4 col-form-label">nama</label>
-                                        <div class="col-sm-7">
-                                            <input name="nama[]" class="form-control" type="text" required>
-                                        </div>
-                                        <div class="col-sm-1">
-                                            <button onClick="hapusTim(1)" class="btn" type="button"><i class="bi bi-x-square"></i></button>
-                                        </div>
-                                    </div>
                                 </div>
                                 <button id="tambahTim" class="btn" type="button"><i class="bi bi-plus-square"></i></i></button>
                                 <div class="row">
