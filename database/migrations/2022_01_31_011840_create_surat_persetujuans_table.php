@@ -15,7 +15,7 @@ class CreateSuratPersetujuansTable extends Migration
     {
         Schema::create('surat_persetujuans', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('penyampaianLaporan_id');
+            $table->uuid('penyampaian_laporan_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->timestamps();

@@ -26,8 +26,8 @@ class CreateBarangsTable extends Migration
             $table->string('tahunPerolehan');
             $table->string('nilaiPerolehan');
             $table->string('keterangan')->nullable();
-            $table->string('nilaiWajar')->default(0);
-            $table->string('nilaiLimit')->default(0);
+            $table->string('nilaiWajar')->nullable();
+            $table->string('nilaiLimit')->nullable();
             $table->string('status')->default(0);
             $table->timestamps();
         });

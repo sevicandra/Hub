@@ -104,8 +104,41 @@ function hapusAnggota(val1, val2) {
     })
 }
 
-
-
 function penyampaianLaporan(val){
     $('#pemberitahuan_penilaian_id').val(val);
+    $('#pemberitahuan_penilaian_id2').val(val);
+}
+
+function nilaiLimit(val){
+    $.ajax({
+        type: "POST",
+        url: "/nilailimit",
+        dataType: "json",
+        data:{penyampaian_laporan_id:val},
+        success: function (response){
+            $('#listNilaiLimit').empty()
+            $i=1;
+            $.each(response, function (res, req) {
+                var xx = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+                
+                if (req.nilaiLimit === null) {
+                    var barang = '<input name="barang_id[]" type="text" hidden value="'+req.id+'"></input><input  name="nilaiLimit[]" type="number">'
+                }else{
+                    var barang = xx.format(req.nilaiLimit)
+                }
+                
+                $('#listNilaiLimit').append('<tr><td>'+$i+'</td><td>'+req.kodeBarang+'</td><td></td><td>'+req.NUP+'</td><td>'+xx.format(req.nilaiWajar)+'</td><td>'+barang+'</td></tr>')
+            $i++
+            })
+        }
+    })
+}
+
+function suratPersetujuan(val) {
+    $('#penyampaian_laporan_id').val(val);
 }

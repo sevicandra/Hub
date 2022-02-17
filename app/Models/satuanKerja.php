@@ -11,4 +11,8 @@ class satuanKerja extends Model
     public function permohonan(){
         return $this->hasMany(permohonan::class, 'pemohon',);
     }
+
+    public function kementerian(){
+        return $this->belongsTo(kementerian::class);
+    }
 }

@@ -154,7 +154,7 @@
                                                 <td>{{$item->kodeBarang}}</td>
                                                 <td>{{$item->kodeBarangs->namaBarang}}</td>
                                                 <td>{{$item->NUP}}</td>
-                                                <td><input id="{{$item->id}}" type="text" name="value[]" disabled></td>
+                                                <td><input id="{{$item->id}}" type="number" name="value[]" disabled></td>
                                             </tr> 
                                             <?php $i++ ?>  
                                         @endif

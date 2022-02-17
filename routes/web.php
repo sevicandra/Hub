@@ -27,10 +27,10 @@ use App\Http\Controllers\PemberitahuanPenilaianController;
 |
 */
 
-
 Route::post('/register', [registerController::class, 'store'])->middleware('guest');
 
 Route::post('/login', [loginController::class, 'login'])->middleware('guest');
+
 Route::post('/logout', [loginController::class, 'logout'])->middleware('auth');
 
 Route::get('/login', function () {
@@ -39,19 +39,15 @@ Route::get('/login', function () {
 
 Route::get('/home', [loginController::class, 'home'])->middleware('auth');
 
-
 Route::get('/register', function() {
     return view('register');
 })->middleware('guest');
 
 Route::post('/asd', [agendaController::class, 'agenda'])->middleware('auth');
 
-
-
 Route::get('/test', function() {
     return view('test');
 });
-
 
 Route::resource('/pindai', tiketController::class)->middleware('auth');
 
@@ -61,29 +57,37 @@ Route::resource('/barang', barangController::class)->middleware('auth');
 
 Route::resource('/penilaian', PermohonanPenilaianController::class)->middleware('auth');
 
-Route::resource('/laporanpenilaian', LaporanPenilaianController::class);
+Route::resource('/laporanpenilaian', LaporanPenilaianController::class)->middleware('auth');
 
-Route::resource('/pemberitahuanpenilaian', PemberitahuanPenilaianController::class);
+Route::resource('/pemberitahuanpenilaian', PemberitahuanPenilaianController::class)->middleware('auth');
 
-Route::resource('/penyampaianlaporan', PenyampaianLaporanController::class);
+Route::resource('/penyampaianlaporan', PenyampaianLaporanController::class)->middleware('auth');
 
-Route::resource('/persetujuan', SuratPersetujuanController::class);
+Route::resource('/persetujuan', SuratPersetujuanController::class)->middleware('auth');
 
 Route::post('/test', function(Request $request) {
     //
     var_dump($request->date);
 });
 
-
 Route::controller(cetakDokumen::class)->group(function(){
-    Route::post('/cetak', 'cetakPermohonanSKSTPenilai');
+    Route::post('/cetak', 'cetakPermohonanSKSTPenilai')->middleware('auth');
 });
-
 
 Route::controller(backController::class)->group(function(){
-    Route::get('/timpenilai/{timpenilai}', 'anggotaTimPenilai');
-    Route::get('/listTim', 'listTim');
-    Route::post('/hapusanggota', 'hapusanggota');    
+    Route::get('/timpenilai/{timpenilai}', 'anggotaTimPenilai')->middleware('auth');
+    Route::get('/listTim', 'listTim')->middleware('auth');
+    Route::post('/hapusanggota', 'hapusanggota')->middleware('auth');
+    Route::post('/nilailimit', 'nilaiLimit')->middleware('auth');
+    Route::post('/penetapanLimit', 'penetapanLimit');
+    
+        
 });
+
+
+Route::post('/test', function(Request $request) {
+    
+});
+
 
 

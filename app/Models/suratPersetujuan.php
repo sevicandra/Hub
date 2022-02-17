@@ -19,4 +19,9 @@ class suratPersetujuan extends Model
         return $this->hasMany(permohonanLelang::class);
     }
 
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'penyampaian_laporan_id',
+    ];
 }

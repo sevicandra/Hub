@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         //
         '/asd',
         '/timpenilai',
-        '/hapusanggota'
+        '/hapusanggota',
+        '/nilailimit'
     ];
 }

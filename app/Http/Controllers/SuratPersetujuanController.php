@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tiket;
+use Illuminate\Http\Request;
 use App\Models\suratPersetujuan;
 use App\Models\penyampaianLaporan;
 use App\Http\Requests\StoresuratPersetujuanRequest;
@@ -34,12 +36,31 @@ class SuratPersetujuanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoresuratPersetujuanRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoresuratPersetujuanRequest $request)
+    public function store(Request $request)
     {
-        //
+        $tiket_id = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->id;
+        $key = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->suratPersetujuan;
+        if (!isset($key)) {
+            $ValidatedData=$request->validate([
+                'nomorSurat'=>'required',
+                'tanggalSurat'=>'required',
+                'penyampaian_laporan_id'=>'required',
+            ]);
+            suratPersetujuan::create($ValidatedData);
+            tiket::find($tiket_id)->update([
+                'persetujuan' =>0,
+                'lelang' => 0,
+            ]);
+
+
+
+            return redirect('/persetujuan');
+        }else{
+            abort(403);
+        }
     }
 
     /**

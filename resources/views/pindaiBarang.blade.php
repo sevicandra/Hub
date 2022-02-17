@@ -95,13 +95,13 @@
                         <div class="row">
                             <label for="kodeBarang" class="col-sm-4 col-form-label">Kode Barang</label>
                             <div class="col-sm-8">
-                                <input name="kodeBarang" class="form-control" type="text" required>
+                                <input name="kodeBarang" class="form-control" type="number" required>
                             </div>
                         </div>
                         <div class="row">
                             <label for="NUP" class="col-sm-4 col-form-label">NUP</label>
                             <div class="col-sm-8">
-                                <input name="NUP" type="text" class="form-control" required>
+                                <input name="NUP" type="number" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
@@ -131,13 +131,13 @@
                         <div class="row">
                             <label for="tahunPerolehan" class="col-sm-4 col-form-label">Tahun Perolehan</label>
                             <div class="col-sm-8">
-                                <input name="tahunPerolehan" type="text" class="form-control" required>
+                                <input name="tahunPerolehan" type="number" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
                             <label for="nilaiPerolehan" class="col-sm-4 col-form-label">Nilai Perolehan</label>
                             <div class="col-sm-8">
-                                <input name="nilaiPerolehan" type="text" class="form-control" required>
+                                <input name="nilaiPerolehan" type="number" class="form-control" required>
                             </div>
                         </div>
                         <div class="row">

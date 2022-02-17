@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\barang;
 use Illuminate\Http\Request;
+use App\Models\penyampaianLaporan;
 use App\Models\permohonanPenilaian;
 
 class backController extends Controller
@@ -25,4 +27,20 @@ class backController extends Controller
         return json_encode($a->users);
     }
 
+    public function nilaiLimit(Request $request){
+        $penyampaianLaporan = penyampaianLaporan::all()->find($request->penyampaian_laporan_id);
+
+        return json_encode($penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang);
+    }
+
+    public function penetapanLimit(Request $request){
+        $i=0;
+        foreach ($request->barang_id as $key) {
+            barang::where('id', $key)->update([
+                'nilaiLimit'=> $request->nilaiLimit[$i],
+            ]);
+            $i++;
+        }
+        return redirect('/persetujuan');
+    }
 }

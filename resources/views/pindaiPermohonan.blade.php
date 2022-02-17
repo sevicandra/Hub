@@ -71,9 +71,9 @@
                                             </form>
                                         @endif
                                         @if ($item->tiket->permohonan === 1 && isset($item->barang[0]))
+                                            <button class="btn d-inline" style="color: blue"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
                                             <button onClick="permohonanPenilaian('{{$item->id}}')" type="button" class="btn d-inline" data-bs-toggle="modal" data-bs-target="#permohonanPenilaian"><i class="bi bi-send-fill"></i></button>
                                         @endif
-                                            <button class="btn d-inline" style="color: blue"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
                                     </td>
                                 </tr>
                             <?php $i++ ?>

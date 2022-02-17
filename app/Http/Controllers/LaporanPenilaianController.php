@@ -36,14 +36,18 @@ class LaporanPenilaianController extends Controller
      */
     public function store(Request $request)
     {
-        $ValidatedData=$request->validate([
-            'nomorLaporan'=>'required',
-            'tanggalLaporan'=>'required',
-            'pemberitahuan_penilaian_id'=>'required',
-        ]);
-        laporanPenilaian::create($ValidatedData);
         $key=pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
-        return redirect('/penilaian/'. $key->permohonan_penilaian_id);
+        if (!isset($key->penyampaianLaporan)) {
+            $ValidatedData=$request->validate([
+                'nomorLaporan'=>'required',
+                'tanggalLaporan'=>'required',
+                'pemberitahuan_penilaian_id'=>'required',
+            ]);
+            laporanPenilaian::create($ValidatedData);
+            return redirect('/penilaian/'. $key->permohonan_penilaian_id);
+        }else{
+            abort(403);
+        }
     }
 
     /**

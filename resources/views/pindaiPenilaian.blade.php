@@ -85,6 +85,13 @@
                                                 <button onClick="penyampaianLaporan('{{$item->pemberitahuanPenilaian->id}}')" class="btn d-inline" data-bs-toggle="modal" data-bs-target="#kirimLaporan"><i class="bi bi-send-check-fill"></i></button>
                                             @endif
                                         @endif
+                                        @if (isset($item->pemberitahuanPenilaian->penyampaianLaporan))
+                                            <form action="/cetak" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="text" value="{{$item->pemberitahuanPenilaian->id}}" required hidden name="pemberitahuan_penilaian_id">
+                                                <button type="submit" class="btn" name="action" value="kajiulang"><i class="bi bi-cloud-download"></i></button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 <?php $i++ ?>
@@ -169,8 +176,18 @@
                                         <input name="tanggalSelesaiSurvei" class="form-control" type="date" required>
                                     </div>
                                 </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-primary" id='permohonan_id' name='permohonan_id' value=''>Simpan</button>
+                                <div class="row">
+                                    <div class="col-sm-8" hidden>
+                                        <input id='permohonan_id' name='permohonan_id' type="text" required>
+                                    </div>
+                                </div>
+                                    <div class="row" style="margin-top: 10px">
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-primary" name="action" value="SKST">Download Usulan SK & ST</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button type="submit" class="btn btn-primary" name="action" value="Jadwal">Penyampaian Jadwal</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -204,11 +221,20 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div>
+                                    <div class="col-sm-6">
                                         <button id="pemberitahuan_penilaian_id" name="pemberitahuan_penilaian_id" type="submit" class="btn btn-primary" value="">Simpan</button>
                                     </div>
                                 </div>
                             </form>
+                            <div class="col-sm-6">
+                                <form action="/cetak" method="post" >
+                                    @csrf
+                                    <div hidden>
+                                        <input type="text" id="pemberitahuan_penilaian_id2" name="pemberitahuan_penilaian_id" required>
+                                    </div>
+                                    <button class="btn" name="action" value="penyampaianLaporan">download</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
