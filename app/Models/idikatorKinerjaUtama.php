@@ -21,12 +21,7 @@ class idikatorKinerjaUtama extends Model
     ];
 
     public function target(){
-        return $this->hasOne(targetPersentase::class);
+        return $this->hasMany(target::class);
     }
-
-    public function targetRaw(){
-        return $this->hasOne(targetRaw::class);
-    }
-
 
 }

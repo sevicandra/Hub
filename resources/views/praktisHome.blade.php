@@ -45,7 +45,33 @@
                                     <tr>
                                         <td>{{$item->kodeIKU}}</td>
                                         <td>{{$item->namaIKU}}</td>
-                                        <td></td>
+                                        <td>
+                                            @if ($item->target->where('periode', 'Q4')->first())
+                                                @if ($item->target->where('periode', 'Q4')->first()->raw)
+                                                    {{$item->target->where('periode', 'Q4')->first()->raw}}    
+                                                @else
+                                                    {{$item->target->where('periode', 'Q4')->first()->target}}
+                                                @endif
+                                            @elseif ($item->target->where('periode', 'Q3')->first())
+                                                @if ($item->target->where('periode', 'Q3')->first()->raw)
+                                                    {{$item->target->where('periode', 'Q3')->first()->raw}}    
+                                                @else
+                                                    {{$item->target->where('periode', 'Q3')->first()->target}}
+                                                @endif
+                                            @elseif ($item->target->where('periode', 'Q2')->first())
+                                                @if ($item->target->where('periode', 'Q2')->first()->raw)
+                                                    {{$item->target->where('periode', 'Q2')->first()->raw}}    
+                                                @else
+                                                    {{$item->target->where('periode', 'Q2')->first()->target}}
+                                                @endif
+                                            @elseif ($item->target->where('periode', 'Q1')->first())
+                                                @if ($item->target->where('periode', 'Q1')->first()->raw)
+                                                    {{$item->target->where('periode', 'Q1')->first()->raw}}    
+                                                @else
+                                                    {{$item->target->where('periode', 'Q1')->first()->target}}
+                                                @endif
+                                            @endif
+                                        </td>
                                         <td></td>
                                         <td style="width: 10%">
                                             <a href="praktis/{{$item->id}}" >
@@ -55,7 +81,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                
                             </table>
                         </div>
                     </div>
