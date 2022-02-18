@@ -99,6 +99,9 @@ Route::controller(kinerja::class)->group(function(){
     Route::post('/inputTarget', 'inputTarget')->middleware('auth');
     Route::post('/updateTarget', 'updateTarget')->middleware('auth');
     Route::post('/inputCapaian', 'inputCapaian')->middleware('auth');
+    Route::get('/monitoring', 'monitoring')->middleware('auth');
+    Route::get('/monitoring/{monitoring}', 'monitoringindividu')->middleware('auth');
+    Route::post('/capkin/{capkin}', 'hapusCapkin');
     
 });
 

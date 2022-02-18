@@ -14,7 +14,7 @@
                 <input type="Nama" placeholder="Nama" class="form-control" style="margin-bottom: 12px" required name="Nama">
                 <input type="email" placeholder="E-Mail" class="form-control" style="margin-bottom: 12px" required name="email">
                 <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
-                {{--  <select name="Jabatan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
+                <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
                     <option value="01">Kepala Kantor</option>
                     <option value="02">Kepala Subbagian Umum</option>
                     <option value="03">Kepala Seksi Pengelolaan Kekayaan Negara</option>
@@ -29,9 +29,17 @@
                     <option value="12">Pelaksana Seksi Pengelolaan Kekayaan Negara</option>
                     <option value="13">Pelaksana Seksi Piutang Negara</option>
                     <option value="14">Pelaskana Seksi Kepatuhan Internal</option>
-                </select>  --}}
+                </select>
+                <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
+                    <option value="Pembina / IV.a">Pembina / IV.a</option>
+                    <option value="Penata Tk.I / III.d">Penata Tk.I / III.d</option>
+                    <option value="Penata / III.c">Penata / III.c</option>
+                    <option value="Penata Muda Tk.I / III.b">Penata Muda Tk.I / III.b</option>
+                    <option value="Penata Muda / III.a">Penata Muda / III.a</option>
+                    <option value="Pengatur Tk.I / II.d">Pengatur Tk.I / II.d</option>
+                    <option value="Pengatur / II.c">Pengatur / II.c</option>
+                </select>
                 <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
-                <input type="password2" placeholder="Re-enter Password" class="form-control" style="margin-bottom: 12px" required>
                 <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Register</button>
             </form>
         </div>

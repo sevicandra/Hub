@@ -101,15 +101,66 @@
                                             <tr>
                                                 <th style="width: 10%"></th>
                                                 <th>Bulan</th>
+                                                <th>Persentase/Indeks</th>
                                                 <th>Raw</th>
-                                                <th>Persentase</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <td></td>
-                                            <td>Bulan</td>
-                                            <td>Raw</td>
-                                            <td>Persentase</td>
+                                            @foreach ($data->capaian as $item)
+                                                <tr>
+                                                    <td>
+                                                        <form action="" method="post"></form>
+                                                        <form action="/capkin/{{$item->id}}" method="POST">
+                                                            @csrf
+                                                            
+                                                            <button class="btn" type="submit" style="color: red"><i class="bi bi-x-lg"></i></button>
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        @switch($item->bulan)
+                                                            @case(1)
+                                                                Januari    
+                                                                @break
+                                                            @case(2)
+                                                                Februari
+                                                                @break
+                                                            @case(3)
+                                                                Maret
+                                                                @break
+                                                            @case(4)
+                                                                April
+                                                                @break
+                                                            @case(5)
+                                                                Mei
+                                                                @break
+                                                            @case(6)
+                                                                Juni
+                                                                @break
+                                                            @case(7)
+                                                                Juli
+                                                                @break
+                                                            @case(8)
+                                                                Agustus
+                                                                @break
+                                                            @case(9)
+                                                                September
+                                                                @break
+                                                            @case(10)
+                                                                Oktober
+                                                                @break
+                                                            @case(11)
+                                                                November
+                                                                @break
+                                                            @case(12)
+                                                                Desember
+                                                                @break
+                                                                
+                                                        @endswitch
+                                                    </td>
+                                                    <td>{{$item->capaian}}</td>
+                                                    <td>{{number_format($item->raw, 0, ',', '.')}}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -137,7 +188,7 @@
                         <div class="modal-body">
                             <div>
                                 <form action="/inputCapaian" method="POST">
-                                    <input name="target_id" type="text" hidden required value="{{}}">
+                                    <input name="idikator_kinerja_utama_id" type="text" hidden required value="{{$data->id}}">
                                     @csrf
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="bulan" class="col-sm-4 col-form-label">Bulan</label>
@@ -159,15 +210,15 @@
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px">
-                                        <label for="raw" class="col-sm-4 col-form-label">Raw</label>
+                                        <label for="capaian" class="col-sm-4 col-form-label">Persentase / Indeks</label>
                                         <div class="col-sm-8">
-                                            <input name="raw" type="number" class="form-control" required>
+                                            <input name="capaian" type="number" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px">
-                                        <label for="persentase" class="col-sm-4 col-form-label">Persentase / Indeks</label>
+                                        <label for="raw" class="col-sm-4 col-form-label">Raw</label>
                                         <div class="col-sm-8">
-                                            <input name="persentase" type="number" class="form-control" required>
+                                            <input name="raw" type="number" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">

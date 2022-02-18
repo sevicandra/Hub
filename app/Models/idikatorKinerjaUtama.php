@@ -24,4 +24,12 @@ class idikatorKinerjaUtama extends Model
         return $this->hasMany(target::class);
     }
 
+    public function capaian(){
+        return $this->hasMany(capaian::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

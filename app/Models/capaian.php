@@ -6,7 +6,7 @@ use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class target extends Model
+class capaian extends Model
 {
     use Uuids;
     use HasFactory;
@@ -17,8 +17,9 @@ class target extends Model
 
     protected $fillable=[
         'idikator_kinerja_utama_id',
-        'periode',
-        'target',
+        'bulan',
+        'capaian',
         'raw',
     ];
+
 }

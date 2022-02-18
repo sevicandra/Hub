@@ -12,7 +12,9 @@ class registerController extends Controller
                 'Nama'=>'required|max:255',
                 'NIP'=>'required|min:18|max:18|unique:users',
                 'email'=>'required|email|unique:users',
-                'password'=>'required|min:8|max:255'
+                'password'=>'required|min:8|max:255',
+                'pangkatGolongan'=>'required',
+                'jabatan'=>'required'
             ]);
             $ValidatedData['password'] = Hash::make($ValidatedData['password']);
             user::create($ValidatedData);

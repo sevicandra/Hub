@@ -39,17 +39,17 @@ class IdikatorKinerjaUtamaController extends Controller
      */
     public function store(Request $prakti)
     {
-        $ValidatedData=$praktis->validate(
+        $ValidatedData=$prakti->validate(
             [
                 'KodeIKU'=>'required',
                 'namaIKU'=>'required',
                 'konsolidasi'=>'required',
                 'polarisasi'=>'required'
             ]);
-        $ValidatedData['tahun'] = $praktis->session()->get('tahun');
+        $ValidatedData['tahun'] = $prakti->session()->get('tahun');
         $ValidatedData['user_id'] = auth()->user()->id;
         idikatorKinerjaUtama::create($ValidatedData);
-    
+        return redirect($prakti->session()->get('_previous')['url']);  
     }
 
     /**
@@ -60,6 +60,7 @@ class IdikatorKinerjaUtamaController extends Controller
      */
     public function show(idikatorKinerjaUtama $prakti)
     {
+
         return view('praktisCapaian',[
             'data' => $prakti,
         ]);
@@ -96,8 +97,13 @@ class IdikatorKinerjaUtamaController extends Controller
      * @param  \App\Models\idikatorKinerjaUtama  $idikatorKinerjaUtama
      * @return \Illuminate\Http\Response
      */
-    public function destroy(idikatorKinerjaUtama $idikatorKinerjaUtama)
+    public function destroy(idikatorKinerjaUtama $prakti)
     {
-        //
+        if($prakti->user_id === auth()->user()->id){
+            $prakti->delete();
+            return redirect('praktis');
+        }else{
+            abort(403);
+        }
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('targets', function (Blueprint $table) {
+        Schema::create('capaians', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('idikator_kinerja_utama_id');
-            $table->string('periode');
-            $table->string('target');
+            $table->string('bulan');
+            $table->string('capaian');
             $table->string('raw')->nullable();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('targets');
+        Schema::dropIfExists('capaians');
     }
 };
