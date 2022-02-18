@@ -44,7 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function permohonanPenilaians(){
-        return $this->belongsToMany(permohonanPenilaian::class);
+    public function IKU(){
+        return $this->hasMany(idikatorKinerjaUtama::class);
     }
+
+
 }

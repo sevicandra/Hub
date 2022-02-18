@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Http\Request;
 use App\Models\laporanPenilaian;
+use App\Http\Controllers\kinerja;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cetakDokumen;
@@ -15,6 +16,7 @@ use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\SuratPersetujuanController;
 use App\Http\Controllers\PenyampaianLaporanController;
 use App\Http\Controllers\PermohonanPenilaianController;
+use App\Http\Controllers\IdikatorKinerjaUtamaController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
 /*
 |--------------------------------------------------------------------------
@@ -65,9 +67,12 @@ Route::resource('/penyampaianlaporan', PenyampaianLaporanController::class)->mid
 
 Route::resource('/persetujuan', SuratPersetujuanController::class)->middleware('auth');
 
+Route::resource('/praktis', IdikatorKinerjaUtamaController::class);
+
+
 Route::post('/test', function(Request $request) {
     //
-    var_dump($request->date);
+    return $request;
 });
 
 Route::controller(cetakDokumen::class)->group(function(){
@@ -79,15 +84,24 @@ Route::controller(backController::class)->group(function(){
     Route::get('/listTim', 'listTim')->middleware('auth');
     Route::post('/hapusanggota', 'hapusanggota')->middleware('auth');
     Route::post('/nilailimit', 'nilaiLimit')->middleware('auth');
-    Route::post('/penetapanLimit', 'penetapanLimit');
+    Route::post('/penetapanLimit', 'penetapanLimit')->middleware('auth');
     
         
 });
 
 
-Route::post('/test', function(Request $request) {
+Route::get('/test', function() {
+    return view('praktisCapaian');
+});
+
+
+Route::controller(kinerja::class)->group(function(){
+    Route::post('/inputTarget', 'inputTarget')->middleware('auth');
+    Route::post('/updateTarget', 'updateTarget')->middleware('auth');
+    Route::post('/inputCapaian', 'inputCapaian')->middleware('auth');
     
 });
+
 
 
 

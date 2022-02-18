@@ -1,0 +1,28 @@
+.judul-table{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px; color:#606F89;
+    align-items: center;
+    text-align: center;
+}
+
+.sub-judul-table{
+    font-family: Inter; font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #606F89;
+}
+
+.content{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 31px;
+    line-height: 39px;color: #000000
+}
