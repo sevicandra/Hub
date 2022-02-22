@@ -18,6 +18,7 @@ return new class extends Migration
             $table->uuid('idikator_kinerja_utama_id');
             $table->string('periode');
             $table->string('target');
+            $table->string('jeniskinerja');
             $table->string('raw')->nullable();
             $table->timestamps();
         });
