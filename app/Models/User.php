@@ -50,5 +50,8 @@ class User extends Authenticatable
         return $this->hasMany(idikatorKinerjaUtama::class);
     }
 
+    public function jabatans(){
+        return $this->belongsTo(jabatan::class, 'jabatan', 'kodeJabatan');
+    }
 
 }

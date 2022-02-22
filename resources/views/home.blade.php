@@ -15,15 +15,28 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
     }
+    .NKO{
+
+        font-size: 2vw;
+        
+        font-family: IBM Plex Sans;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 50px;
+        /* identical to box height, or 139% */
+        letter-spacing: 0.451506px;
+
+        color: #855CF8;
+    }
 </style>
 <link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 
 
 @section('content')
-    
 {{--  Dashboard  --}}
 <div class="row scrollable" style="padding: 0px 37px 0px 37px; height:100%">
     <div class="col-sm-9" style="max-height: 100%; height:100%">
@@ -32,14 +45,23 @@
             {{--  Kepuasan Pengguna Layanan  --}}
             <div class="col-sm-4" style="; padding-right:5px; max-height: 100%; height: 100%">
                 <div class="chart-container"  style="background-color: #ffff; border-radius: 10px;height: 100%" >
-                    <canvas id="kepuasanPelanggan"></canvas>
+                    @if (1)
+                        
+                    @else
+                        <canvas id="kepuasanPelanggan"></canvas>
+                    @endif
                 </div>
             </div>
             {{--  Akhir Kepuasan Pengguna Layanan  --}}
             {{--  Capaian Kinerja Organisasi  --}}
             <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
-                <div class="chart-container" style="background-color: #ffff; border-radius: 10px; height: 100%">
-                    <canvas id="capaianKinerja"></canvas>
+                <div style="background-color: #ffff; border-radius: 10px; height: 100%">
+                    <div style="height: 10%">
+                        <h2 class="NKO">Capaian Kinerja KPKNL Ternate Tahun {{session()->get('tahun')}}</h2>
+                    </div>
+                    <div class="chart-container" style="max-height: 90%">
+                        <canvas id="capaianKinerja"></canvas>
+                    </div>
                 </div>
             </div>
             {{--  Akhir Capaian Kinerja Organisasi  --}}
@@ -50,6 +72,9 @@
             {{--  PNBP  --}}
             <div class="col-sm-8" style="; padding-right:5px; max-height: 100%; height:100%">
                 <div class="row" style="height: 100%; background-color: #ffff; border-radius: 10px; padding:0px; margin:0">
+                    @if (1)
+  
+                    @else
                     <div>
                         <h1>PNBP KPKNL Ternate</h1>
                     </div>
@@ -62,12 +87,17 @@
                     <div class="col-sm-4">
                         <div id="PNBP3"></div>
                     </div>
+                    @endif
                 </div>
+            
             </div>
             {{--  Akhir PNBP  --}}
             {{--  Jumlah Pengunjung  --}}
             <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%">
                 <div style="height: 100%; background-color: #ffff; border-radius: 10px">
+                    @if (1)
+                        
+                    @else
                     <div style="padding: 0">
                         <h1>Jumlah Pengunjung</h1>
                         <div class="row">
@@ -79,6 +109,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
             {{--  Akhir Jumlah Pengunjung  --}}
@@ -107,9 +138,15 @@
 @endsection
 
 @section('foot')
+
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/apexchart.js"></script>
 <script src="/js/chart.js"></script>
 <script src="{{asset('agenda/js/index.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        praktis('{{session()->get('tahun')}}');
+    };
+</script>
 @endsection

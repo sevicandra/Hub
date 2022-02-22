@@ -24,4 +24,12 @@ class kinerjaOrganisasi extends Model
     public function capaian(){
         return $this->morphMany(capaian::class, 'idikator_kinerja_utama', 'jeniskinerja');
     }
+
+    public function capaianlast(){
+        return $this->morphOne(capaian::class, 'idikator_kinerja_utama', 'jeniskinerja')->ofMany('bulan', 'max');
+    }
+
+    public function targetlast(){
+        return $this->morphOne(target::class, 'idikator_kinerja_utama', 'jeniskinerja')->ofMany('periode', 'max');
+    }
 }

@@ -9,52 +9,55 @@
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
-                <div class="col-sm-2">
-                    <a href="praktis">
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Idikator Kinerja Utama</button>
-                    </a>
-                </div>
-                @if (1)
-                    
-                @else
-                <div class="col-sm-2" >
-                    <a href="" >
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Bawahan</button>
-                    </a>
-                </div>
-                @endif
-                @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
-                <div class="col-sm-2" >
-                    <a href="/monitoring" >
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Capaian Kinerja</button>
-                    </a>
-                </div>
-                @endif
-                @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
-                <div class="col-sm-2" >
-                    <a href="/kinerjaorganisasi" >
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Kinerja Organisasi</button>
-                    </a>
-                </div>
-                @endif
-                <div class="col"></div>
-                @if (isset($user))
-                    @if ($user === auth()->user()->id)
-                    <div class="col-sm-2" style="margin:auto">
-                        <button class="btn" style="background: #4D59CA; border-radius: 10px; width:100%" data-bs-toggle="modal" data-bs-target="#inputIKU">Tambah IKU</button>
+                @if (!isset($monitoring))
+                    <div class="col-sm-2">
+                        <a href="praktis">
+                            <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Idikator Kinerja Utama</button>
+                        </a>
+                    </div>
+                    @if (1)
+                        
+                    @else
+                    <div class="col-sm-2" >
+                        <a href="" >
+                            <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Bawahan</button>
+                        </a>
                     </div>
                     @endif
-                @else
-                    <div class="col-sm-2" style="margin:auto">
-                        <button class="btn" style="background: #4D59CA; border-radius: 10px; width:100%" data-bs-toggle="modal" data-bs-target="#inputIKU">Tambah IKU</button>
+                    @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
+                    <div class="col-sm-2" >
+                        <a href="/monitoring" >
+                            <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Capaian Kinerja</button>
+                        </a>
                     </div>
+                    @endif
+                    @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
+                    <div class="col-sm-2" >
+                        <a href="/kinerjaorganisasi" >
+                            <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Kinerja Organisasi</button>
+                        </a>
+                    </div>
+                    @endif
+                    <div class="col"></div>
+                    @if (isset($user))
+                        @if ($user === auth()->user()->id)
+                        <div class="col-sm-2" style="margin:auto">
+                            <button class="btn" style="background: #4D59CA; border-radius: 10px; width:100%" data-bs-toggle="modal" data-bs-target="#inputIKU">Tambah IKU</button>
+                        </div>
+                        @endif
+                    @else
+                        <div class="col-sm-2" style="margin:auto">
+                            <button class="btn" style="background: #4D59CA; border-radius: 10px; width:100%" data-bs-toggle="modal" data-bs-target="#inputIKU">Tambah IKU</button>
+                        </div>
+                    @endif
+                
                 @endif
             </div>
             <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height: 100%; border-radius:10px;">
                         <div class="table table-light" style="padding: 0; height: 100%; background-color:aliceblue">
-                            <table class="table table-hover table-responsive">
+                            <table class="table table-responsive">
                                 <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
                                     <th>Kode IKU</th>
                                     <th>Nama IKU</th>
@@ -136,12 +139,16 @@
                                                     }else{
                                                         $target = $item->target->where('periode', 'Q1')->first()->target;
                                                     };
+                                                }else{
+                                                    $target=null;
                                                 }
                                                 if ($item->konsolidasi = 'TKL'){
                                                     if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)){
                                                         $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->raw;    
                                                     }elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian)){
                                                         $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->capaian;
+                                                    }else{
+                                                        $realisasi=0;
                                                     }
                                                 }elseif ($item->konsolidasi = 'AVG'){
                                                     if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw){
@@ -152,10 +159,18 @@
                                                 }
                                                 if(isset($target)){
                                                     if(isset($realisasi)){
-                                                        if(($realisasi/$target) > 1.2){
-                                                            echo '120 %';
-                                                        }else{
-                                                            echo ($realisasi/$target)*100 . '%';
+                                                        if($item->polarisasi === 'MAX'){
+                                                            if(($realisasi/$target) > 1.2){
+                                                                echo '120 %';
+                                                            }else{
+                                                                echo ($realisasi/$target)*100 . '%';
+                                                            }
+                                                        }elseif($item->polarisasi === 'MIN'){
+                                                            if ((1+(1-($realisasi/$target))) > 1.2){
+                                                                echo '120 %';
+                                                            }else{
+                                                                echo (1+(1-($realisasi/$target)))*100 . '%';
+                                                            }
                                                         };
                                                     };
                                                 };
@@ -164,23 +179,23 @@
                                         <td style="width: 10%">
                                             @if (isset($user))
                                                 @if ($user === auth()->user()->id)
-                                                    <a href="praktis/{{$item->id}}" >
-                                                        <button class="btn"><i class="bi bi-pencil-square"></i></button>
-                                                    </a>
-                                                    <form action="/praktis/{{$item->id}}" method="POST">
+                                                    <form action="/praktis/{{$item->id}}" class="d-inline">
+                                                        <button class="btn d-inline" type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                    </form>
+                                                    <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
-                                                    </form>
+                                                        <button type="submit" class="btn d-inline" ><i class="bi bi-trash3-fill"></i></button>
+                                                    </form> 
                                                 @endif
                                             @else
-                                                <a href="praktis/{{$item->id}}" >
-                                                    <button class="btn"><i class="bi bi-pencil-square"></i></button>
-                                                </a>
-                                                <form action="/praktis/{{$item->id}}" method="POST">
+                                                <form action="/praktis/{{$item->id}}" class="d-inline">
+                                                    <button class="btn d-inline" type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                </form>
+                                                <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
+                                                    <button type="submit" class="btn d-inline" ><i class="bi bi-trash3-fill"></i></button>
                                                 </form> 
                                             @endif
                                         </td>

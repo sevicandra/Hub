@@ -21,11 +21,19 @@ class idikatorKinerjaUtama extends Model
     ];
 
     public function target(){
-        return $this->hasMany(target::class);
+        return $this->morphMany(target::class, 'idikator_kinerja_utama', 'jeniskinerja');
     }
 
     public function capaian(){
-        return $this->hasMany(capaian::class);
+        return $this->morphMany(capaian::class, 'idikator_kinerja_utama', 'jeniskinerja');
+    }
+
+    public function capaianlast(){
+        return $this->morphOne(capaian::class, 'idikator_kinerja_utama', 'jeniskinerja')->ofMany('bulan', 'max');
+    }
+
+    public function targetlast(){
+        return $this->morphOne(target::class, 'idikator_kinerja_utama', 'jeniskinerja')->ofMany('periode', 'max');
     }
 
     public function user(){

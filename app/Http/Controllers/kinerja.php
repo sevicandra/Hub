@@ -14,6 +14,7 @@ use App\Models\idikatorKinerjaUtama;
 class kinerja extends Controller
 {
     public function inputTarget(Request $request){
+        
         $i=0;
         foreach ($request->periode as $key) {
             $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
@@ -78,9 +79,10 @@ class kinerja extends Controller
 
     public function monitoringindividu(User $monitoring){
         return view('praktisHome',[
-            'data'=>$monitoring->IKU,
+            'data'=>$monitoring->IKU->where('tahun', session()->get('tahun')),
             'user'=>$monitoring->id,
             'back'=>'monitoring',
+            'monitoring'=>true,
         ]);
 
     }

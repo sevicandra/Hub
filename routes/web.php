@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
+use App\Http\Controllers\chart;
 use App\Models\laporanPenilaian;
 use App\Http\Controllers\kinerja;
 use Illuminate\Routing\Controller;
@@ -68,9 +69,9 @@ Route::resource('/penyampaianlaporan', PenyampaianLaporanController::class)->mid
 
 Route::resource('/persetujuan', SuratPersetujuanController::class)->middleware('auth');
 
-Route::resource('/praktis', IdikatorKinerjaUtamaController::class);
+Route::resource('/praktis', IdikatorKinerjaUtamaController::class)->middleware('auth');
 
-Route::resource('/kinerjaorganisasi', KinerjaOrganisasiController::class);
+Route::resource('/kinerjaorganisasi', KinerjaOrganisasiController::class)->middleware('auth');
 
 Route::post('/test', function(Request $request) {
     //
@@ -101,9 +102,15 @@ Route::controller(kinerja::class)->group(function(){
     Route::post('/inputCapaian', 'inputCapaian')->middleware('auth');
     Route::get('/monitoring', 'monitoring')->middleware('auth');
     Route::get('/monitoring/{monitoring}', 'monitoringindividu')->middleware('auth');
-    Route::post('/capkin/{capkin}', 'hapusCapkin');
+    Route::post('/capkin/{capkin}', 'hapusCapkin')->middleware('auth');
     
 });
+
+
+Route::controller(chart::class)->group(function(){
+    Route::POST('/NKO', 'NKO')->middleware('auth');
+});
+
 
 
 

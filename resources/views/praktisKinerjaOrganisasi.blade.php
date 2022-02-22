@@ -136,12 +136,16 @@
                                                     }else{
                                                         $target = $item->target->where('periode', 'Q1')->first()->target;
                                                     };
+                                                }else{
+                                                    $target=null;
                                                 }
                                                 if ($item->konsolidasi = 'TKL'){
                                                     if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)){
                                                         $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->raw;    
                                                     }elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian)){
                                                         $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->capaian;
+                                                    }else{
+                                                        $realisasi=0;
                                                     }
                                                 }elseif ($item->konsolidasi = 'AVG'){
                                                     if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw){
@@ -152,10 +156,18 @@
                                                 }
                                                 if(isset($target)){
                                                     if(isset($realisasi)){
-                                                        if(($realisasi/$target) > 1.2){
-                                                            echo '120 %';
-                                                        }else{
-                                                            echo ($realisasi/$target)*100 . '%';
+                                                        if($item->polarisasi === 'MAX'){
+                                                            if(($realisasi/$target) > 1.2){
+                                                                echo '120 %';
+                                                            }else{
+                                                                echo ($realisasi/$target)*100 . '%';
+                                                            }
+                                                        }elseif($item->polarisasi === 'MIN'){
+                                                            if ((1+(1-($realisasi/$target))) > 1.2){
+                                                                echo '120 %';
+                                                            }else{
+                                                                echo (1+(1-($realisasi/$target)))*100 . '%';
+                                                            }
                                                         };
                                                     };
                                                 };

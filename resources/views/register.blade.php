@@ -42,7 +42,8 @@
                         <option value="11">Pelaksana Subbagian Umum</option>
                         <option value="12">Pelaksana Seksi Pengelolaan Kekayaan Negara</option>
                         <option value="13">Pelaksana Seksi Piutang Negara</option>
-                        <option value="14">Pelaskana Seksi Kepatuhan Internal</option>
+                        <option value="14">Pelaksana Seksi Hukum dan Informasi</option>
+                        <option value="15">Pelaskana Seksi Kepatuhan Internal</option>
                     </select>
                     <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
                         <option value=""></option>

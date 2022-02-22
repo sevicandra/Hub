@@ -186,9 +186,13 @@ class cetakDokumen extends Controller
                 foreach($c as $user){
                     $anggotaTim='anggotaTim#' . $i;
                     $NIP='NIP#' . $i;
+                    $jabatan='jabatan#' . $i;
+                    $pangkat='pangkat#' . $i;
                     $nomor='nomor#'. $i;
 
                     $templateProcessor->setValue($anggotaTim, $user->nama);
+                    $templateProcessor->setValue($jabatan, $user->jabatans->namaJabatan);
+                    $templateProcessor->setValue($pangkat, $user->pangkatGolongan);
                     $templateProcessor->setValue($NIP, $user->NIP);
                     $templateProcessor->setValue($nomor, $i);
                     $i++;
@@ -373,9 +377,13 @@ class cetakDokumen extends Controller
                     $anggotaTim='anggotaTim#' . $i;
                     $NIP='NIP#' . $i;
                     $nomor='nomor#'. $i;
+                    $jabatan='jabatan#' . $i;
+                    $pangkat='pangkat#' . $i;
 
                     $templateProcessor->setValue($anggotaTim, $user->nama);
                     $templateProcessor->setValue($NIP, $user->NIP);
+                    $templateProcessor->setValue($jabatan, $user->jabatans->namaJabatan);
+                    $templateProcessor->setValue($pangkat, $user->pangkatGolongan);
                     $templateProcessor->setValue($nomor, $i);
                     $i++;
                 }
