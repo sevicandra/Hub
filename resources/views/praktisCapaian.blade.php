@@ -9,7 +9,7 @@
         <div class="container-fluid" style="border-radius: 10px; background-color:rgba(240, 248, 255, 0.281); height:100%">
             <div class="row" style="padding: 0 10px; height:60px">
                 <div class="col-sm-1">
-                    <a href="/praktis">
+                    <a href="/{{$back}}">
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
@@ -24,9 +24,10 @@
                     <div style="height: 100%; background-color:#ffffff; padding:0 10px 0 10px; border-radius:10px">
                         <form class="row" action="@if ($data->target->first()) /updateTarget @else /inputTarget @endif" method="POST" style="height: 100%">
                             <input name="idikator_kinerja_utama_id" type="text" hidden required value="{{$data->id}}">
+                            <input name="jenisKinerja" type="text" hidden required value="{{$jenisKinerja}}">
                             @csrf
                             <div style="height: 90%; overflow-y:hidden">
-                                <div class="row" style="padding-top: 10px">
+                                <div class="row" style="padding-top: 10px; height:10%">
                                     <div class="col-sm-6">
                                        <p class="judul-table">{{$data->konsolidasi}}</p>
                                     </div>
@@ -34,8 +35,8 @@
                                         <p class="judul-table">{{$data->polarisasi}}</p>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top:10px">
-                                    <div class="col-sm-12">
+                                <div class="row" style="margin-top:10px; height: 80%">
+                                    <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 1</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q1">
                                     </div>
@@ -47,42 +48,42 @@
                                         <p class="content">Raw</p>
                                     </div>
                                     <div class="col-sm-8"><input name="raw[]" type="number" class="form-control Q1" disabled @if ($data->target->where('periode', 'Q1')->first())value="{{$data->target->where('periode', 'Q1')->first()->raw}}"@endif></div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 2</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q2">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="target[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->target}}"@endif></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->target}}"@endif></div>
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="raw[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->raw}}"@endif></div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 3</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q3">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="target[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->target}}"@endif></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->target}}"@endif></div>
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="raw[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->raw}}"@endif></div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 4</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q4">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="target[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->target}}"@endif></div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->target}}"@endif></div>
+                                    <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="raw[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->raw}}"@endif></div>
                                 </div>
                             </div>
                             <div>
@@ -189,6 +190,7 @@
                             <div>
                                 <form action="/inputCapaian" method="POST">
                                     <input name="idikator_kinerja_utama_id" type="text" hidden required value="{{$data->id}}">
+                                    <input name="jeniskinerja" type="text" hidden required value="{{$jenisKinerja}}">
                                     @csrf
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="bulan" class="col-sm-4 col-form-label">Bulan</label>

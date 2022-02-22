@@ -30,6 +30,13 @@
                     </a>
                 </div>
                 @endif
+                @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
+                <div class="col-sm-2">
+                    <a href="/kinerjaorganisasi">
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Kinerja Organisasi</button>
+                    </a>
+                </div>
+                @endif
                 <div class="col"></div>
             </div>
             <div class="row" style="height:85%; padding: 0; background-color:aliceblue">

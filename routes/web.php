@@ -14,6 +14,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\SuratPersetujuanController;
+use App\Http\Controllers\KinerjaOrganisasiController;
 use App\Http\Controllers\PenyampaianLaporanController;
 use App\Http\Controllers\PermohonanPenilaianController;
 use App\Http\Controllers\IdikatorKinerjaUtamaController;
@@ -69,6 +70,7 @@ Route::resource('/persetujuan', SuratPersetujuanController::class)->middleware('
 
 Route::resource('/praktis', IdikatorKinerjaUtamaController::class);
 
+Route::resource('/kinerjaorganisasi', KinerjaOrganisasiController::class);
 
 Route::post('/test', function(Request $request) {
     //
@@ -89,11 +91,9 @@ Route::controller(backController::class)->group(function(){
         
 });
 
-
 Route::get('/test', function() {
     return view('praktisCapaian');
 });
-
 
 Route::controller(kinerja::class)->group(function(){
     Route::post('/inputTarget', 'inputTarget')->middleware('auth');

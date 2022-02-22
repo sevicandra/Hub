@@ -12,7 +12,7 @@ class target extends Model
     use HasFactory;
 
     public function IKU(){
-        return $this->belongsTo(idikatorKinerjaUtama::class, 'idikator_kinerja_utama_id', 'id');
+        return $this->morphTo(__FUNCTION__, 'jeniskinerja', 'idikator_kinerja_utama_id');
     }
 
     protected $fillable=[
@@ -20,5 +20,6 @@ class target extends Model
         'periode',
         'target',
         'raw',
+        'jeniskinerja'
     ];
 }

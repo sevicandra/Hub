@@ -18,6 +18,7 @@ class IdikatorKinerjaUtamaController extends Controller
     {
         return view('praktisHome',[
             'data' => auth()->user()->IKU,
+            'back'=>'home',
         ]);
     }
 
@@ -48,6 +49,7 @@ class IdikatorKinerjaUtamaController extends Controller
             ]);
         $ValidatedData['tahun'] = $prakti->session()->get('tahun');
         $ValidatedData['user_id'] = auth()->user()->id;
+        $ValidatedData['jeniskinerja'] = 'App\Models\idikatorKinerjaUtama';
         idikatorKinerjaUtama::create($ValidatedData);
         return redirect($prakti->session()->get('_previous')['url']);  
     }
@@ -63,6 +65,8 @@ class IdikatorKinerjaUtamaController extends Controller
 
         return view('praktisCapaian',[
             'data' => $prakti,
+            'jenisKinerja'=>'App\Models\idikatorKinerjaUtama',
+            'back'=>'praktis'
         ]);
 
 

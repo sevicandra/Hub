@@ -5,13 +5,13 @@
         <div class="container-fluid" style="border-radius: 10px; background-color:rgba(240, 248, 255, 0.281); height:100%">
             <div class="row" style="padding: 0 10px; height:60px">
                 <div class="col-sm-1">
-                    <a href="/{{$back}}">
+                    <a href="login">
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
                 <div class="col-sm-2">
                     <a href="praktis">
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Idikator Kinerja Utama</button>
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Idikator Kinerja Utama</button>
                     </a>
                 </div>
                 @if (1)
@@ -24,16 +24,16 @@
                 </div>
                 @endif
                 @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
-                <div class="col-sm-2" >
-                    <a href="/monitoring" >
+                <div class="col-sm-2">
+                    <a href="/monitoring">
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Capaian Kinerja</button>
                     </a>
                 </div>
                 @endif
                 @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14')
-                <div class="col-sm-2" >
-                    <a href="/kinerjaorganisasi" >
-                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Kinerja Organisasi</button>
+                <div class="col-sm-2">
+                    <a href="/kinerjaorganisasi">
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Kinerja Organisasi</button>
                     </a>
                 </div>
                 @endif
@@ -164,24 +164,20 @@
                                         <td style="width: 10%">
                                             @if (isset($user))
                                                 @if ($user === auth()->user()->id)
-                                                    <a href="praktis/{{$item->id}}" >
+                                                    <a href="kinerjaorganisasi/{{$item->id}}">
                                                         <button class="btn"><i class="bi bi-pencil-square"></i></button>
                                                     </a>
-                                                    <form action="/praktis/{{$item->id}}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
-                                                    </form>
+                                                    <button class="btn"><i class="bi bi-trash3-fill"></i></button>
                                                 @endif
                                             @else
-                                                <a href="praktis/{{$item->id}}" >
+                                                <a href="kinerjaorganisasi/{{$item->id}}">
                                                     <button class="btn"><i class="bi bi-pencil-square"></i></button>
                                                 </a>
                                                 <form action="/praktis/{{$item->id}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
-                                                </form> 
+                                                </form>
                                             @endif
                                         </td>
                                     </tr>
@@ -203,7 +199,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            <form action="/praktis" method="POST">
+                            <form action="/kinerjaorganisasi" method="POST">
                                 @csrf
                                 <div class="row" style="margin-bottom: 5px">
                                     <label for="KodeIKU" class="col-sm-4 col-form-label">Kode IKU</label>
