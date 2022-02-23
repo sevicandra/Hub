@@ -71,20 +71,26 @@ class kinerja extends Controller
     }
 
     public function monitoring(){
-        return view('praktisMonitoring', [
-            'data'=> User::all()
-        ]);
-
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            return view('praktisMonitoring', [
+                'data'=> User::all()
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     public function monitoringindividu(User $monitoring){
-        return view('praktisHome',[
-            'data'=>$monitoring->IKU->where('tahun', session()->get('tahun')),
-            'user'=>$monitoring->id,
-            'back'=>'monitoring',
-            'monitoring'=>true,
-        ]);
-
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            return view('praktisHome',[
+                'data'=>$monitoring->IKU->where('tahun', session()->get('tahun')),
+                'user'=>$monitoring->id,
+                'back'=>'monitoring',
+                'monitoring'=>true,
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     public function hapusCapkin(capaian $capkin){
@@ -96,7 +102,7 @@ class kinerja extends Controller
                 abort(403);
             }
         }elseif($capkin->jeniskinerja === 'App\Models\kinerjaOrganisasi'){
-            if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '14') {
+            if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
                 $capkin->delete();
                 return redirect('kinerjaorganisasi/'. $capkin->IKU->id);
             }else{

@@ -16,9 +16,13 @@ class KinerjaOrganisasiController extends Controller
      */
     public function index()
     {
-        return view('praktisKinerjaOrganisasi',[
-            'data' => kinerjaOrganisasi::all()
-        ]);
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            return view('praktisKinerjaOrganisasi',[
+                'data' => kinerjaOrganisasi::all()
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -39,16 +43,20 @@ class KinerjaOrganisasiController extends Controller
      */
     public function store(Request $request)
     {
-        $ValidatedData=$request->validate(
-            [
-                'KodeIKU'=>'required',
-                'namaIKU'=>'required',
-                'konsolidasi'=>'required',
-                'polarisasi'=>'required'
-            ]);
-        $ValidatedData['tahun'] = $request->session()->get('tahun');
-        kinerjaOrganisasi::create($ValidatedData);
-        return redirect($request->session()->get('_previous')['url']);
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            $ValidatedData=$request->validate(
+                [
+                    'KodeIKU'=>'required',
+                    'namaIKU'=>'required',
+                    'konsolidasi'=>'required',
+                    'polarisasi'=>'required'
+                ]);
+            $ValidatedData['tahun'] = $request->session()->get('tahun');
+            kinerjaOrganisasi::create($ValidatedData);
+            return redirect($request->session()->get('_previous')['url']);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -59,11 +67,15 @@ class KinerjaOrganisasiController extends Controller
      */
     public function show(kinerjaOrganisasi $kinerjaorganisasi)
     {
-        return view('praktisCapaian',[
-            'data' => $kinerjaorganisasi,
-            'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
-            'back'=>'kinerjaorganisasi'
-        ]);
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            return view('praktisCapaian',[
+                'data' => $kinerjaorganisasi,
+                'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
+                'back'=>'kinerjaorganisasi'
+            ]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
