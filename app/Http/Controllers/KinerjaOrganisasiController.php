@@ -18,7 +18,7 @@ class KinerjaOrganisasiController extends Controller
     {
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktisKinerjaOrganisasi',[
-                'data' => kinerjaOrganisasi::all()
+                'data' => kinerjaOrganisasi::orderBy('kodeIKU')->get()
             ]);
         }else{
             abort(403);

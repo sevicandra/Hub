@@ -53,147 +53,155 @@
             <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height: 100%; border-radius:10px;">
-                        <div class="table table-light" style="padding: 0; height: 100%; background-color:aliceblue">
-                            <table class="table table-hover table-responsive">
-                                <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
-                                    <th>Kode IKU</th>
-                                    <th>Nama IKU</th>
-                                    <th>Target</th>
-                                    <th>Realisasi</th>
-                                    <th>Capaian</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{$item->kodeIKU}}</td>
-                                        <td>{{$item->namaIKU}}</td>
-                                        <td>
-                                            @if ($item->target->where('periode', 'Q4')->first())
-                                                @if ($item->target->where('periode', 'Q4')->first()->raw)
-                                                {{number_format($item->target->where('periode', 'Q4')->first()->raw, 0, ',', '.')}}    
-                                                @else
-                                                    {{$item->target->where('periode', 'Q4')->first()->target}}
+                        <div class="table table-light table-responsive" style="padding: 0; height: 100%; background-color:aliceblue">
+                            <table class="table">
+                                
+                                    <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
+                                        <th>Kode IKU</th>
+                                        <th>Nama IKU</th>
+                                        <th>Target</th>
+                                        <th>Realisasi</th>
+                                        <th>Capaian</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                
+                                
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td>{{$item->kodeIKU}}</td>
+                                            <td>{{$item->namaIKU}}</td>
+                                            <td>
+                                                @if ($item->target->where('periode', 'Q4')->first())
+                                                    @if ($item->target->where('periode', 'Q4')->first()->raw)
+                                                    {{number_format($item->target->where('periode', 'Q4')->first()->raw, 0, ',', '.')}}    
+                                                    @else
+                                                        {{$item->target->where('periode', 'Q4')->first()->target}}
+                                                    @endif
+                                                @elseif ($item->target->where('periode', 'Q3')->first())
+                                                    @if ($item->target->where('periode', 'Q3')->first()->raw)
+                                                    {{number_format($item->target->where('periode', 'Q3')->first()->raw, 0, ',', '.')}}    
+                                                    @else
+                                                        {{$item->target->where('periode', 'Q3')->first()->target}}
+                                                    @endif
+                                                @elseif ($item->target->where('periode', 'Q2')->first())
+                                                    @if ($item->target->where('periode', 'Q2')->first()->raw)
+                                                        {{number_format($item->target->where('periode', 'Q2')->first()->raw, 0, ',', '.')}}   
+                                                    @else
+                                                        {{$item->target->where('periode', 'Q2')->first()->target}}
+                                                    @endif
+                                                @elseif ($item->target->where('periode', 'Q1')->first())
+                                                    @if ($item->target->where('periode', 'Q1')->first()->raw)
+                                                        {{number_format($item->target->where('periode', 'Q1')->first()->raw, 0, ',', '.')}}    
+                                                    @else
+                                                        {{$item->target->where('periode', 'Q1')->first()->target}}
+                                                    @endif
                                                 @endif
-                                            @elseif ($item->target->where('periode', 'Q3')->first())
-                                                @if ($item->target->where('periode', 'Q3')->first()->raw)
-                                                {{number_format($item->target->where('periode', 'Q3')->first()->raw, 0, ',', '.')}}    
-                                                @else
-                                                    {{$item->target->where('periode', 'Q3')->first()->target}}
+                                            </td>
+                                            <td>
+                                                @if ($item->konsolidasi = 'TKL')
+                                                    @if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw))
+                                                    {{number_format($item->capaian()->orderBy('bulan', 'DESC')->first()->raw, 0, ',', '.')}}    
+                                                    @elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian))
+                                                        {{$item->capaian()->orderBy('bulan', 'DESC')->first()->capaian}}
+                                                    @endif
+                                                @elseif ($item->konsolidasi = 'AVG')
+                                                    @if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)
+                                                        {{$item->capaian->avg('raw')}}    
+                                                    @else
+                                                        {{$item->capaian->avg('capaian')}}
+                                                    @endif
+                                                    
                                                 @endif
-                                            @elseif ($item->target->where('periode', 'Q2')->first())
-                                                @if ($item->target->where('periode', 'Q2')->first()->raw)
-                                                    {{number_format($item->target->where('periode', 'Q2')->first()->raw, 0, ',', '.')}}   
-                                                @else
-                                                    {{$item->target->where('periode', 'Q2')->first()->target}}
-                                                @endif
-                                            @elseif ($item->target->where('periode', 'Q1')->first())
-                                                @if ($item->target->where('periode', 'Q1')->first()->raw)
-                                                    {{number_format($item->target->where('periode', 'Q1')->first()->raw, 0, ',', '.')}}    
-                                                @else
-                                                    {{$item->target->where('periode', 'Q1')->first()->target}}
-                                                @endif
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($item->konsolidasi = 'TKL')
-                                                @if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw))
-                                                {{number_format($item->capaian()->orderBy('bulan', 'DESC')->first()->raw, 0, ',', '.')}}    
-                                                @elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian))
-                                                    {{$item->capaian()->orderBy('bulan', 'DESC')->first()->capaian}}
-                                                @endif
-                                            @elseif ($item->konsolidasi = 'AVG')
-                                                @if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)
-                                                    {{$item->capaian->avg('raw')}}    
-                                                @else
-                                                    {{$item->capaian->avg('capaian')}}
-                                                @endif
-                                                
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <?php
-                                                if ($item->target->where('periode', 'Q4')->first()){
-                                                    if ($item->target->where('periode', 'Q4')->first()->raw){
-                                                        $target = $item->target->where('periode', 'Q4')->first()->raw;
+                                            </td>
+                                            <td>
+                                                <?php
+                                                    if ($item->target->where('periode', 'Q4')->first()){
+                                                        if ($item->target->where('periode', 'Q4')->first()->raw){
+                                                            $target = $item->target->where('periode', 'Q4')->first()->raw;
+                                                        }else{
+                                                            $target = $item->target->where('periode', 'Q4')->first()->target;
+                                                        };
+                                                    }elseif ($item->target->where('periode', 'Q3')->first()){
+                                                        if ($item->target->where('periode', 'Q3')->first()->raw){
+                                                            $target = $item->target->where('periode', 'Q3')->first()->raw;
+                                                        }else{
+                                                            $target = $item->target->where('periode', 'Q3')->first()->target;
+                                                        };
+                                                    }elseif ($item->target->where('periode', 'Q2')->first()){
+                                                        if ($item->target->where('periode', 'Q2')->first()->raw){
+                                                            $target = $item->target->where('periode', 'Q2')->first()->raw;
+                                                        }else{
+                                                            $target = $item->target->where('periode', 'Q2')->first()->target;
+                                                        };
+                                                    }elseif ($item->target->where('periode', 'Q1')->first()){
+                                                        if ($item->target->where('periode', 'Q1')->first()->raw){
+                                                            $target = $item->target->where('periode', 'Q1')->first()->raw;
+                                                        }else{
+                                                            $target = $item->target->where('periode', 'Q1')->first()->target;
+                                                        };
                                                     }else{
-                                                        $target = $item->target->where('periode', 'Q4')->first()->target;
-                                                    };
-                                                }elseif ($item->target->where('periode', 'Q3')->first()){
-                                                    if ($item->target->where('periode', 'Q3')->first()->raw){
-                                                        $target = $item->target->where('periode', 'Q3')->first()->raw;
-                                                    }else{
-                                                        $target = $item->target->where('periode', 'Q3')->first()->target;
-                                                    };
-                                                }elseif ($item->target->where('periode', 'Q2')->first()){
-                                                    if ($item->target->where('periode', 'Q2')->first()->raw){
-                                                        $target = $item->target->where('periode', 'Q2')->first()->raw;
-                                                    }else{
-                                                        $target = $item->target->where('periode', 'Q2')->first()->target;
-                                                    };
-                                                }elseif ($item->target->where('periode', 'Q1')->first()){
-                                                    if ($item->target->where('periode', 'Q1')->first()->raw){
-                                                        $target = $item->target->where('periode', 'Q1')->first()->raw;
-                                                    }else{
-                                                        $target = $item->target->where('periode', 'Q1')->first()->target;
-                                                    };
-                                                }else{
-                                                    $target=null;
-                                                }
-                                                if ($item->konsolidasi = 'TKL'){
-                                                    if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)){
-                                                        $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->raw;    
-                                                    }elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian)){
-                                                        $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->capaian;
-                                                    }else{
-                                                        $realisasi=0;
+                                                        $target=null;
                                                     }
-                                                }elseif ($item->konsolidasi = 'AVG'){
-                                                    if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw){
-                                                        $realisasi = $item->capaian->avg('raw'); 
-                                                    }else{
-                                                        $realisasi = $item->capaian->avg('capaian');
+                                                    if ($item->konsolidasi = 'TKL'){
+                                                        if (isset($item->capaian()->orderBy('bulan', 'DESC')->first()->raw)){
+                                                            $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->raw;    
+                                                        }elseif(isset($item->capaian()->orderBy('bulan', 'DESC')->first()->capaian)){
+                                                            $realisasi = $item->capaian()->orderBy('bulan', 'DESC')->first()->capaian;
+                                                        }else{
+                                                            $realisasi=0;
+                                                        }
+                                                    }elseif ($item->konsolidasi = 'AVG'){
+                                                        if ($item->capaian()->orderBy('bulan', 'DESC')->first()->raw){
+                                                            $realisasi = $item->capaian->avg('raw'); 
+                                                        }else{
+                                                            $realisasi = $item->capaian->avg('capaian');
+                                                        }
                                                     }
-                                                }
-                                                if(isset($target)){
-                                                    if(isset($realisasi)){
-                                                        if($item->polarisasi === 'MAX'){
-                                                            if(($realisasi/$target) > 1.2){
-                                                                echo '120 %';
-                                                            }else{
-                                                                echo ($realisasi/$target)*100 . '%';
-                                                            }
-                                                        }elseif($item->polarisasi === 'MIN'){
-                                                            if ((1+(1-($realisasi/$target))) > 1.2){
-                                                                echo '120 %';
-                                                            }else{
-                                                                echo (1+(1-($realisasi/$target)))*100 . '%';
-                                                            }
+                                                    if(isset($target)){
+                                                        if(isset($realisasi)){
+                                                            if($item->polarisasi === 'MAX'){
+                                                                if(($realisasi/$target) > 1.2){
+                                                                    echo '120 %';
+                                                                }else{
+                                                                    echo ($realisasi/$target)*100 . '%';
+                                                                }
+                                                            }elseif($item->polarisasi === 'MIN'){
+                                                                if ((1+(1-($realisasi/$target))) > 1.2){
+                                                                    echo '120 %';
+                                                                }else{
+                                                                    echo (1+(1-($realisasi/$target)))*100 . '%';
+                                                                }
+                                                            };
                                                         };
                                                     };
-                                                };
-                                            ?>
-                                        </td>
-                                        <td style="width: 10%">
-                                            @if (isset($user))
-                                                @if ($user === auth()->user()->id)
-                                                    <a href="kinerjaorganisasi/{{$item->id}}">
-                                                        <button class="btn"><i class="bi bi-pencil-square"></i></button>
-                                                    </a>
-                                                    <button class="btn"><i class="bi bi-trash3-fill"></i></button>
-                                                @endif
-                                            @else
-                                                <a href="kinerjaorganisasi/{{$item->id}}">
+                                                ?>
+                                            </td>
+                                            <td style="width: 10%">
+                                                @if (isset($user))
+                                                    @if ($user === auth()->user()->id)
+                                                        <form action="kinerjaorganisasi/{{$item->id}}" class="d-inline">
+                                                            <button class="btn"><i class="bi bi-pencil-square"></i></button>
+                                                        </form>
+                                                        <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
+                                                        </form>
+                                                    @endif
+                                                @else
+                                                <form action="kinerjaorganisasi/{{$item->id}}" class="d-inline">
                                                     <button class="btn"><i class="bi bi-pencil-square"></i></button>
-                                                </a>
-                                                <form action="/praktis/{{$item->id}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
                                                 </form>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                    <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>
+                                                    </form>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                
                             </table>
                         </div>
                     </div>

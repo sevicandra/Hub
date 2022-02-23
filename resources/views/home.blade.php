@@ -2,33 +2,6 @@
 @extends('layout.main')
 
 @section('head')
-<style>
-    h1{
-        font-family: istokweb;
-        font-weight: bold
-    }
-    .scrollable::-webkit-scrollbar {
-        display: none;
-    }     
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .scrollable {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-    }
-    .NKO{
-
-        font-size: 2vw;
-        
-        font-family: IBM Plex Sans;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 50px;
-        /* identical to box height, or 139% */
-        letter-spacing: 0.451506px;
-
-        color: #855CF8;
-    }
-</style>
 <link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
@@ -59,7 +32,7 @@
                     <div style="height: 10%">
                         <h2 class="NKO">Capaian Kinerja KPKNL Ternate Tahun {{session()->get('tahun')}}</h2>
                     </div>
-                    <div class="chart-container" style="max-height: 90%">
+                    <div class="chart-container" style="max-height: 90%; height:100%">
                         <canvas id="capaianKinerja"></canvas>
                     </div>
                 </div>
@@ -70,7 +43,7 @@
         {{--  PNBP dan Jumlah Pengunjung  --}}
         <div class="row" style="max-height: 44%;height: 44%">
             {{--  PNBP  --}}
-            <div class="col-sm-8" style="; padding-right:5px; max-height: 100%; height:100%">
+            <div class="col-sm-8" style="padding-right:5px; max-height: 100%; height:100%">
                 <div class="row" style="height: 100%; background-color: #ffff; border-radius: 10px; padding:0px; margin:0">
                     @if (1)
   

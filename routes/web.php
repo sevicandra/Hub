@@ -109,6 +109,7 @@ Route::controller(kinerja::class)->group(function(){
 
 Route::controller(chart::class)->group(function(){
     Route::POST('/NKO', 'NKO')->middleware('auth');
+    Route::GET('/request', 'NKO2')->middleware('auth');
 });
 
 

@@ -43,11 +43,11 @@
                                     <div class="col-sm-4">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="target[]" type="number" class="form-control Q1" disabled @if ($data->target->where('periode', 'Q1')->first())value="{{$data->target->where('periode', 'Q1')->first()->target}}"@endif></div>
+                                    <div class="col-sm-8"><input name="target[]" type="number" step=0.01 class="form-control Q1" disabled @if ($data->target->where('periode', 'Q1')->first())value="{{$data->target->where('periode', 'Q1')->first()->target}}"@endif></div>
                                     <div class="col-sm-4">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8"><input name="raw[]" type="number" class="form-control Q1" disabled @if ($data->target->where('periode', 'Q1')->first())value="{{$data->target->where('periode', 'Q1')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-8"><input name="raw[]" type="number" step=0.01 class="form-control Q1" disabled @if ($data->target->where('periode', 'Q1')->first())value="{{$data->target->where('periode', 'Q1')->first()->raw}}"@endif></div>
                                     <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 2</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q2">
@@ -55,11 +55,11 @@
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->target}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" step=0.01 class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->target}}"@endif></div>
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" step=0.01 class="form-control Q2" disabled @if ($data->target->where('periode', 'Q2')->first())value="{{$data->target->where('periode', 'Q2')->first()->raw}}"@endif></div>
                                     <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 3</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q3">
@@ -67,11 +67,11 @@
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->target}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" step=0.01 class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->target}}"@endif></div>
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" step=0.01 class="form-control Q3" disabled @if ($data->target->where('periode', 'Q3')->first())value="{{$data->target->where('periode', 'Q3')->first()->raw}}"@endif></div>
                                     <div class="col-sm-12" style="height: 5%">
                                         <p class="sub-judul-table d-inline">Triwulan 4</p>
                                         <input name="periode[]" type="checkbox" class="d-inline" value="Q4">
@@ -79,11 +79,11 @@
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Persentase/Indeks</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->target}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="target[]" type="number" step=0.01 class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->target}}"@endif></div>
                                     <div class="col-sm-4" style="height: 10%">
                                         <p class="content">Raw</p>
                                     </div>
-                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->raw}}"@endif></div>
+                                    <div class="col-sm-8" style="height: 10%"><input name="raw[]" type="number" step=0.01 class="form-control Q4" disabled @if ($data->target->where('periode', 'Q4')->first())value="{{$data->target->where('periode', 'Q4')->first()->raw}}"@endif></div>
                                 </div>
                             </div>
                             <div>
@@ -214,13 +214,13 @@
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="capaian" class="col-sm-4 col-form-label">Persentase / Indeks</label>
                                         <div class="col-sm-8">
-                                            <input name="capaian" type="number" class="form-control" required>
+                                            <input name="capaian" type="number" step=0.01 class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="raw" class="col-sm-4 col-form-label">Raw</label>
                                         <div class="col-sm-8">
-                                            <input name="raw" type="number" class="form-control">
+                                            <input name="raw" type="number" step=0.01 class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">
