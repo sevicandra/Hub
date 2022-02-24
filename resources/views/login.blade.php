@@ -23,6 +23,12 @@
             <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:450px; margin:auto 0 auto auto">
                 <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
                 <p style="margin-bottom: 24px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, quas! Id, excepturi?</p>
+                    @if (session()->has('LoginErorr'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{session('LoginErorr')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                 <form action="/login" method="POST">
                     @csrf
                     <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">

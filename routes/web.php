@@ -31,6 +31,10 @@ use App\Http\Controllers\PemberitahuanPenilaianController;
 |
 */
 
+Route::get('', function() {
+    return redirect('/login');
+});
+
 Route::post('/register', [registerController::class, 'store'])->middleware('guest');
 
 Route::post('/login', [loginController::class, 'login'])->middleware('guest');
@@ -109,7 +113,6 @@ Route::controller(kinerja::class)->group(function(){
 
 Route::controller(chart::class)->group(function(){
     Route::POST('/NKO', 'NKO')->middleware('auth');
-    Route::GET('/request', 'NKO2')->middleware('auth');
 });
 
 

@@ -20,14 +20,29 @@
     </div>
     <div class="container-fluid">
         <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
-            <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:450px; margin:auto 0 auto auto">
+            <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; min-height:450px; margin:auto 0 auto auto">
                 <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
                 <form action="/register" method="POST">
                     @csrf
-                    <input type="Nama" placeholder="Nama" class="form-control" style="margin-bottom: 12px" required name="Nama">
-                    <input type="email" placeholder="E-Mail" class="form-control" style="margin-bottom: 12px" required name="email">
-                    <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
-                    <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
+                    <input type="text" value="{{old('Nama')}}" placeholder="Nama" class="form-control"  required name="Nama">
+                    @error('Nama')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <input type="email" value="{{old('email')}}" placeholder="E-Mail" class="form-control" style="margin-top: 12px" required name="email">
+                    @error('email')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <input type="text" value="{{old('NIP')}}" placeholder="NIP" class="form-control" style="margin-top: 12px" required name="NIP">
+                    @error('NIP')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
                         <option value=""></option>
                         <option value="01">Kepala Kantor</option>
                         <option value="02">Kepala Subbagian Umum</option>
@@ -45,7 +60,12 @@
                         <option value="14">Pelaksana Seksi Hukum dan Informasi</option>
                         <option value="15">Pelaskana Seksi Kepatuhan Internal</option>
                     </select>
-                    <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-bottom: 12px" required>
+                    @error('jabatan')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
                         <option value=""></option>
                         <option value="Pembina / IV.a">Pembina / IV.a</option>
                         <option value="Penata Tk.I / III.d">Penata Tk.I / III.d</option>
@@ -55,8 +75,18 @@
                         <option value="Pengatur Tk.I / II.d">Pengatur Tk.I / II.d</option>
                         <option value="Pengatur / II.c">Pengatur / II.c</option>
                     </select>
-                    <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
-                    <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Register</button>
+                    @error('pangkatGolongan')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <input type="password" placeholder="Password" class="form-control" style="margin-top: 12px" required name="password">
+                    @error('password')
+                        <div class="text-danger mt-1">
+                            {{$message}}
+                        </div>
+                    @enderror
+                    <button type="submit"  class="form-control btn-primary text-center" style="margin: 12px 0 12px 0;">Register</button>
                 </form>
             </div>
         </div>

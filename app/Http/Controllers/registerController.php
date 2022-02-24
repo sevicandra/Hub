@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Hash;
 class registerController extends Controller
 {
     public function store(Request $request){
+        $messages = [
+            'NIP.unique' => 'NIP Sudah Didaftarkan',
+            'email.unique' => 'Email Sudah Didaftarkan',
+        ];
         $ValidatedData=$request->validate(
             [
                 'Nama'=>'required|max:255',
@@ -15,7 +19,7 @@ class registerController extends Controller
                 'password'=>'required|min:8|max:255',
                 'pangkatGolongan'=>'required',
                 'jabatan'=>'required'
-            ]);
+            ], $messages);
             $ValidatedData['password'] = Hash::make($ValidatedData['password']);
             user::create($ValidatedData);
             $request->session()->flash('success', 'Registration Success');

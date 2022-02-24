@@ -14,7 +14,6 @@ use App\Models\idikatorKinerjaUtama;
 class kinerja extends Controller
 {
     public function inputTarget(Request $request){
-        
         $i=0;
         foreach ($request->periode as $key) {
             $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
@@ -73,7 +72,7 @@ class kinerja extends Controller
     public function monitoring(){
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktisMonitoring', [
-                'data'=> User::all()
+                'data'=> User::orderBy('jabatan')->get(),
             ]);
         }else{
             abort(403);

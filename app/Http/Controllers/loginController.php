@@ -12,13 +12,16 @@ class loginController extends Controller
             'NIP'=>'required|min:18|max:18',
             'password'=>'required',
         ]);
+
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             $request->session()->put('tahun', $request->tahun);
             return redirect()->intended('/home');
         }
-        return back()->With('LoginErorr','LoginFaile');
+
+        return back()->with('LoginErorr','LoginFailed');
     }
+
     public function logout(Request $request)
     {
         Auth::logout();
