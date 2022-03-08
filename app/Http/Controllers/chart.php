@@ -10,40 +10,47 @@ class chart extends Controller
 {
     public function NKO(Request $request){
         $NKO = kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', $request->tahun)->get();
-        $i=0;
-        foreach ($NKO as $data){
-            $namaIKU[]=$data->namaIKU;
-            if ($data->capaianlast) {
-                $capaian[]=$data->capaianlast->capaian;
-            }else{
-                $capaian[]=0;
-            }
-
-            if ($data->targetlast) {
-                $target[]=$data->targetlast->target;
-                if ($data->polarisasi === 'MAX') {
-                    if (($capaian[$i]/$target[$i]) > 1.2) {
-                        $realisasi[]=120;
-                    }else{
-                        $realisasi[]=($capaian[$i]/$target[$i])*100;
-                    }
-                }elseif($data->polarisasi === 'MIN'){
-                    if((1+(1-($capaian[$i]/$target[$i]))) > 1.2){
-                        $realisasi[]=120;    
-                    }else{
-                        $realisasi[]=(1+(1-($capaian[$i]/$target[$i])))*100;
-                    }
+        if ($NKO->first()) {
+            $i=0;
+            foreach ($NKO as $data){
+                $namaIKU[]=$data->namaIKU;
+                if ($data->capaianlast) {
+                    $capaian[]=$data->capaianlast->capaian;
+                }else{
+                    $capaian[]=0;
                 }
-            }else{
-                $target[]=null;
-                $realisasi[]=0;
+    
+                if ($data->targetlast) {
+                    $target[]=$data->targetlast->target;
+                    if ($data->polarisasi === 'MAX') {
+                        if (($capaian[$i]/$target[$i]) > 1.2) {
+                            $realisasi[]=120;
+                        }else{
+                            $realisasi[]=($capaian[$i]/$target[$i])*100;
+                        }
+                    }elseif($data->polarisasi === 'MIN'){
+                        if((1+(1-($capaian[$i]/$target[$i]))) > 1.2){
+                            $realisasi[]=120;    
+                        }else{
+                            $realisasi[]=(1+(1-($capaian[$i]/$target[$i])))*100;
+                        }
+                    }
+                }else{
+                    $target[]=null;
+                    $realisasi[]=0;
+                }
+                
+                $i++;
             }
-            
-            $i++;
+            $response['namaIKU']=$namaIKU;
+            $response['capaian']=$realisasi;
+            return json_encode($response);
+        }else{
+            $response['namaIKU']=[];
+            $response['capaian']=[];
+            return json_encode($response);
         }
-        $response['namaIKU']=$namaIKU;
-        $response['capaian']=$realisasi;
-        return json_encode($response);
+        
     }
 
     public function PNBPPKN(Request $request){
