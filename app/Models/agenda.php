@@ -10,4 +10,16 @@ class agenda extends Model
 {
     use Uuids;
     use HasFactory;
+
+    protected $fillable=[
+        'agenda',
+        'tempat',
+        'tanggal',
+        'waktu',
+        'meetingId',
+        'meetingPassword',
+        'linkRapat',
+        'linkAbsensi',
+        'user_id' 
+    ];
 }

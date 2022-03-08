@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\kinerjaOrganisasi;
 use App\Http\Requests\StorekinerjaOrganisasiRequest;
 use App\Http\Requests\UpdatekinerjaOrganisasiRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class KinerjaOrganisasiController extends Controller
 {
@@ -107,8 +108,15 @@ class KinerjaOrganisasiController extends Controller
      * @param  \App\Models\kinerjaOrganisasi  $kinerjaOrganisasi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kinerjaOrganisasi $kinerjaOrganisasi)
+    public function destroy(kinerjaOrganisasi $kinerjaorganisasi)
     {
-        //
+        
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+            $kinerjaorganisasi->delete();
+            return redirect::back();
+            
+        }else{
+            abort(403);
+        }
     }
 }

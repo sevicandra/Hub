@@ -3,34 +3,11 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/praktis/styles.css">
     <meta charset="UTF-8">
-    <style>
-        h1{
-            font-family: istokweb;
-            font-weight: bold
-        }
-        .scrollable::-webkit-scrollbar {
-            display: none;
-        }     
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .scrollable {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-        .NKO{
-    
-            font-size: 2vw;
-            
-            font-family: IBM Plex Sans;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 50px;
-            /* identical to box height, or 139% */
-            letter-spacing: 0.451506px;
-    
-            color: #855CF8;
-        }
-    </style>
     @section('head')
         
     @show

@@ -22,7 +22,7 @@
         <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
             <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:450px; margin:auto 0 auto auto">
                 <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
-                <p style="margin-bottom: 24px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, quas! Id, excepturi?</p>
+                <p style="margin-bottom: 24px"></p>
                     @if (session()->has('LoginErorr'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             {{session('LoginErorr')}}

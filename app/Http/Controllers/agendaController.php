@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\agenda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class agendaController extends Controller
 {
-    public function agenda(Request $request){
-        $agenda = agenda::whereDate('tanggal', '=', $request->dates)->get();
-        return json_encode($agenda);
+    public function daftaragenda(Request $request){
+        $agenda = agenda::whereDate('tanggal', '=', $request->dates)->orderBy('waktu')->get();
+        
+        return json_encode([$agenda,
+            'user'=>auth()->user()->id
+        ]);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -41,7 +44,24 @@ class agendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'agenda'=>'required|min:0|max:50',
+            'tanggal'=>'required',
+            'tempat'=>'required',
+            'waktu'=>'required',
+        ]);
+
+        agenda::create([
+            'agenda'=>$request->agenda,
+            'tempat'=>$request->tempat,
+            'tanggal'=>$request->tanggal,
+            'waktu'=>$request->waktu,
+            'meetingId'=>$request->meetingId,
+            'meetingPassword'=>$request->meetingPassword,
+            'linkRapat'=>$request->linkRapat,
+            'linkAbsensi'=>$request->linkAbsensi,
+            'user_id'=>auth()->user()->id,
+        ]);
     }
 
     /**
@@ -86,6 +106,11 @@ class agendaController extends Controller
      */
     public function destroy(agenda $agenda)
     {
-        //
+        if ($agenda->user_id === auth()->user()->id) {
+            $agenda->delete();
+            return Redirect::back();
+        }else{
+            abort(403);
+        }
     }
 }

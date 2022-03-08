@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use App\Models\pnbp;
+use App\Models\capaianPnbp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class loginController extends Controller
@@ -36,8 +38,36 @@ class loginController extends Controller
     public function home(Request $request)
     {
         $data = $request->session()->get('tahun');
+        $PKN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PKN')->first();
+        $LLG = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'LLG')->first();
+        $PPN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PPN')->first();
+
+        if ($PKN) {
+            $capaianPKN = $PKN->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaianPKN=[];
+        }
+
+        if ($LLG) {
+            $capaianLLG = $LLG->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaianLLG=[];
+        }
+
+        if ($PPN) {
+            $capaianPPN = $PPN->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaianPPN=[];
+        }
+
+
         return view('home', [
-            'data' => $data 
+            'PNBPPKN' => $PKN,
+            'capaianPKN' => $capaianPKN,
+            'PNBPLLG' => $LLG,
+            'capaianLLG' => $capaianLLG,
+            'PNBPPPN' => $PPN,
+            'capaianPPN' => $capaianPPN,
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pnbp;
 use Illuminate\Http\Request;
 use App\Models\kinerjaOrganisasi;
 
@@ -45,4 +46,33 @@ class chart extends Controller
         return json_encode($response);
     }
 
+    public function PNBPPKN(Request $request){
+        $PKN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PKN')->first();
+        if ($PKN) {
+            $capaian=$PKN->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaian=[];
+        }
+        return json_encode($capaian);
+    }
+
+    public function PNBPLLG(Request $request){
+        $LLG = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'LLG')->first();
+        if ($LLG) {
+            $capaian=$LLG->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaian=[];
+        }
+        return json_encode($capaian);
+    }
+
+    public function PNBPPPN(Request $request){
+        $PPN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PPN')->first();
+        if ($PPN) {
+            $capaian=$PPN->capaian()->get()->sortBy('bulan');
+        }else{
+            $capaian=[];
+        }
+        return json_encode($capaian);
+    }
 }

@@ -14,10 +14,16 @@ class CreateAgendasTable extends Migration
     public function up()
     {
         Schema::create('agendas', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->uuid('user_id');
+            $table->string('agenda');
             $table->date('tanggal');
-            $table->string('Judul');
-            $table->string('jam');
+            $table->time('waktu');
+            $table->string('tempat');
+            $table->string('meetingId')->nullable();
+            $table->string('meetingPassword')->nullable();
+            $table->string('linkRapat')->nullable();
+            $table->string('linkAbsensi')->nullable();
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('head')
 
-<link rel="stylesheet" href="/css/praktis/styles.css">
+
 
 @endsection
 @section('content')

@@ -7,12 +7,14 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cetakDokumen;
 use App\Http\Controllers\backController;
+use App\Http\Controllers\PnbpController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\tiketController;
 use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\permohonanController;
+use App\Http\Controllers\CapaianPnbpController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\SuratPersetujuanController;
 use App\Http\Controllers\KinerjaOrganisasiController;
@@ -51,11 +53,9 @@ Route::get('/register', function() {
     return view('register');
 })->middleware('guest');
 
-Route::post('/asd', [agendaController::class, 'agenda'])->middleware('auth');
+Route::post('/asd', [agendaController::class, 'daftaragenda'])->middleware('auth');
 
-Route::get('/test', function() {
-    return view('test');
-});
+Route::resource('/agenda', agendaController::class)->middleware('auth');
 
 Route::resource('/pindai', tiketController::class)->middleware('auth');
 
@@ -77,6 +77,11 @@ Route::resource('/praktis', IdikatorKinerjaUtamaController::class)->middleware('
 
 Route::resource('/kinerjaorganisasi', KinerjaOrganisasiController::class)->middleware('auth');
 
+Route::resource('/pnbp', PnbpController::Class);
+
+Route::resource('/capaianPnbp', CapaianPnbpController::Class);
+
+
 Route::post('/test', function(Request $request) {
     //
     return $request;
@@ -91,9 +96,7 @@ Route::controller(backController::class)->group(function(){
     Route::get('/listTim', 'listTim')->middleware('auth');
     Route::post('/hapusanggota', 'hapusanggota')->middleware('auth');
     Route::post('/nilailimit', 'nilaiLimit')->middleware('auth');
-    Route::post('/penetapanLimit', 'penetapanLimit')->middleware('auth');
-    
-        
+    Route::post('/penetapanLimit', 'penetapanLimit')->middleware('auth');      
 });
 
 Route::get('/test', function() {
@@ -113,6 +116,9 @@ Route::controller(kinerja::class)->group(function(){
 
 Route::controller(chart::class)->group(function(){
     Route::POST('/NKO', 'NKO')->middleware('auth');
+    Route::POST('/PNBPPKN', 'PNBPPKN')->middleware('auth');
+    Route::POST('/PNBPLLG', 'PNBPLLG')->middleware('auth');
+    Route::POST('/PNBPPPN', 'PNBPPPN')->middleware('auth');
 });
 
 

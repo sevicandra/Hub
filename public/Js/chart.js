@@ -1,4 +1,427 @@
+// PNBP PKN
+$(document).ready(function(){
+    $.ajax({
+        type:'POST',
+        url:'/PNBPPKN',
+        dataType:'json',
+        data:{jenis:'PKN'},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+            const capaian =[null,null,null,null,null,null,null,null,null,null,null,null]
+            $.each(response, function(res, req) {
+                switch (req.bulan) {
+                    case '1':
+                        capaian[0] = parseInt(req.capaian)
+                        break;
+                    case '2':
+                        capaian[1] = parseInt(req.capaian)
+                        break;
+                    case '3':
+                        capaian[2] = parseInt(req.capaian)
+                        break;
+                    case '4':
+                        capaian[3] = parseInt(req.capaian)
+                        break;
+                    case '5':
+                        capaian[4] = parseInt(req.capaian)
+                        break;
+                    case '6':
+                        capaian[5] = parseInt(req.capaian)
+                        break;
+                    case '7':
+                        capaian[6] = parseInt(req.capaian)
+                        break;
+                    case '8':
+                        capaian[7] = parseInt(req.capaian)
+                        break;
+                    case '9':
+                        capaian[8] = parseInt(req.capaian)
+                        break;
+                    case '10':
+                        capaian[9] = parseInt(req.capaian)
+                        break;
+                    case '11':
+                        capaian[10] = parseInt(req.capaian)
+                        break;
+                    case '12':
+                        capaian[11] = parseInt(req.capaian)
+                        break;
+                }
+            })
+            const PNBPPKN = document.getElementById('linechartPNBPPKN').getContext('2d');
+            const myChartPNBPPKN = new Chart(PNBPPKN,{
+                type: 'line',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: capaian,
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            });
 
+            const PNBPbarPKN = document.getElementById('barchartPNBPPKN').getContext('2d');
+            const myChartbarPKN = new Chart(PNBPbarPKN,{
+                type: 'bar',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: [
+                                capaian[0], 
+                                capaian[0]+capaian[1],
+                                capaian[0]+capaian[1]+capaian[2],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10]+capaian[11],
+                            ],
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            
+            });
+        }
+    })
+});
+
+// PNBP LLG
+$(document).ready(function(){
+    $.ajax({
+        type:'POST',
+        url:'/PNBPLLG',
+        dataType:'json',
+        data:{jenis:'LLG'},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+            const capaian =[null,null,null,null,null,null,null,null,null,null,null,null]
+            $.each(response, function(res, req) {
+                switch (req.bulan) {
+                    case '1':
+                        capaian[0] = parseInt(req.capaian)
+                        break;
+                    case '2':
+                        capaian[1] = parseInt(req.capaian)
+                        break;
+                    case '3':
+                        capaian[2] = parseInt(req.capaian)
+                        break;
+                    case '4':
+                        capaian[3] = parseInt(req.capaian)
+                        break;
+                    case '5':
+                        capaian[4] = parseInt(req.capaian)
+                        break;
+                    case '6':
+                        capaian[5] = parseInt(req.capaian)
+                        break;
+                    case '7':
+                        capaian[6] = parseInt(req.capaian)
+                        break;
+                    case '8':
+                        capaian[7] = parseInt(req.capaian)
+                        break;
+                    case '9':
+                        capaian[8] = parseInt(req.capaian)
+                        break;
+                    case '10':
+                        capaian[9] = parseInt(req.capaian)
+                        break;
+                    case '11':
+                        capaian[10] = parseInt(req.capaian)
+                        break;
+                    case '12':
+                        capaian[11] = parseInt(req.capaian)
+                        break;
+                }
+            })
+            const PNBPLLG = document.getElementById('linechartPNBPLLG').getContext('2d');
+            const myChartPNBPLLG = new Chart(PNBPLLG,{
+                type: 'line',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: capaian,
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            });
+
+            const PNBPbarLLG = document.getElementById('barchartPNBPLLG').getContext('2d');
+            const myChartbarLLG = new Chart(PNBPbarLLG,{
+                type: 'bar',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: [
+                                capaian[0], 
+                                capaian[0]+capaian[1],
+                                capaian[0]+capaian[1]+capaian[2],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10]+capaian[11],
+                            ],
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            
+            });
+        }
+    })
+});
+
+// PNBP PPN
+$(document).ready(function(){
+    $.ajax({
+        type:'POST',
+        url:'/PNBPPPN',
+        dataType:'json',
+        data:{jenis:'PPN'},
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+            const capaian =[null,null,null,null,null,null,null,null,null,null,null,null]
+            $.each(response, function(res, req) {
+                switch (req.bulan) {
+                    case '1':
+                        capaian[0] = parseInt(req.capaian)
+                        break;
+                    case '2':
+                        capaian[1] = parseInt(req.capaian)
+                        break;
+                    case '3':
+                        capaian[2] = parseInt(req.capaian)
+                        break;
+                    case '4':
+                        capaian[3] = parseInt(req.capaian)
+                        break;
+                    case '5':
+                        capaian[4] = parseInt(req.capaian)
+                        break;
+                    case '6':
+                        capaian[5] = parseInt(req.capaian)
+                        break;
+                    case '7':
+                        capaian[6] = parseInt(req.capaian)
+                        break;
+                    case '8':
+                        capaian[7] = parseInt(req.capaian)
+                        break;
+                    case '9':
+                        capaian[8] = parseInt(req.capaian)
+                        break;
+                    case '10':
+                        capaian[9] = parseInt(req.capaian)
+                        break;
+                    case '11':
+                        capaian[10] = parseInt(req.capaian)
+                        break;
+                    case '12':
+                        capaian[11] = parseInt(req.capaian)
+                        break;
+                }
+            })
+            const PNBPPPN = document.getElementById('linechartPNBPPPN').getContext('2d');
+            const myChartPNBPPPN = new Chart(PNBPPPN,{
+                type: 'line',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: capaian,
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            });
+
+            const PNBPbarPPN = document.getElementById('barchartPNBPPPN').getContext('2d');
+            const myChartbarPPN = new Chart(PNBPbarPPN,{
+                type: 'bar',
+                data:{
+                    labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                    datasets: [
+                        {
+                            data: [
+                                capaian[0], 
+                                capaian[0]+capaian[1],
+                                capaian[0]+capaian[1]+capaian[2],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10],
+                                capaian[0]+capaian[1]+capaian[2]+capaian[3]+capaian[4]+capaian[5]+capaian[6]+capaian[7]+capaian[8]+capaian[9]+capaian[10]+capaian[11],
+                            ],
+                        }
+                    ]
+                },
+                options:{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                
+                            },
+                        },
+                    }
+                }
+            
+            });
+        }
+    })
+});
+
+// Kepuasan Pelanggan
 const kepuasanPelanggan = document.getElementById('kepuasanPelanggan').getContext('2d');
 const myChart2 = new Chart(kepuasanPelanggan, {
     type: 'radar',
@@ -74,7 +497,6 @@ const myChart2 = new Chart(kepuasanPelanggan, {
     }
 });
 
-
 // Table NKO
 function praktis(tahun) {
     $.ajax({
@@ -94,7 +516,8 @@ function praktis(tahun) {
             $.each(response.capaian, function(res, req){
                 capaian.push(req);
             })
-            const capaianKinerja = document.getElementById('capaianKinerja').getContext('2d');
+            const capaianKinerja = document.getElementById('capaianKinerja');
+            capaianKinerja.height = response.namaIKU.length*50;
             const myChart = new Chart(capaianKinerja, {
                 type: 'bar',    
                 data : {
@@ -111,33 +534,49 @@ function praktis(tahun) {
                             'rgba(153, 102, 255, 0.2)',
                             'rgba(201, 203, 207, 0.2)'
                           ],
+                          minBarThickness: 50,
+                          maxBarThickness: 50
                     }],
                 },
                 options:{
                     indexAxis: 'y',
+                    layout: {
+                        padding:{
+                            right:20,
+                        },
+                    },
                     responsive: true,
                     maintainAspectRatio: false,            
                     plugins: {
                         legend: {
-                            display: false
+                            display: false,
                         },
                     },
                     scales: {
                         yAxes:{
                             grid:{
                                 display:false,
+                                borderColor:'#ffffff00',
                             },
+                            ticks: {
+                                mirror: true
+                              }
                         },
                         xAxes:{
                             grid:{
                                 display:false,
+                                borderColor:'#ffffff00',
                             },
                             suggestedMin: 0,
                             suggestedMax: 120,
-                        }
-                    }  
+                            ticks: {
+                                display:false,
+                            }
+                        },
+                    } 
                 },
             });
         }  
     })    
-}
+};
+

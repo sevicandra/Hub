@@ -192,7 +192,7 @@
                                                 <form action="kinerjaorganisasi/{{$item->id}}" class="d-inline">
                                                     <button class="btn"><i class="bi bi-pencil-square"></i></button>
                                                 </form>
-                                                    <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
+                                                    <form action="/kinerjaorganisasi/{{$item->id}}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn"><i class="bi bi-trash3-fill"></i></button>

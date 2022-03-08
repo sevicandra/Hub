@@ -38,3 +38,25 @@ input[type=checkbox]
   transform: scale(1.5);
   padding: 1px;
 }
+
+h1{
+    font-family: istokweb;
+    font-weight: bold
+}
+.scrollable::-webkit-scrollbar {
+    display: none;
+}  
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollable {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.NKO{
+    font-size: 2vw;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 150%;
+    /* identical to box height, or 139% */
+    letter-spacing: 0.451506px;
+}
