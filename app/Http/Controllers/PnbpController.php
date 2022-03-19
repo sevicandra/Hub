@@ -44,7 +44,7 @@ class PnbpController extends Controller
             
         ]);
         $validatedData['tahun']=$request->session()->get('tahun');
-        capaianPnbp::create($validatedData);
+        pnbp::create($validatedData);
         return redirect::back();
     }
 

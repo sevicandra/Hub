@@ -14,13 +14,26 @@
         {{--  Kepuasan Pengguna Layanan dan Capaian Kinerja Organisasi  --}}
             <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
                 {{--  Kepuasan Pengguna Layanan  --}}
-                    <div class="col-sm-4" style="; padding-right:5px; max-height: 100%; height: 100%">
-                        <div class="chart-container"  style="background-color: #ffff; border-radius: 10px;height: 100%" >
-                            @if (1)
-                                
-                            @else
-                                <canvas id="kepuasanPelanggan"></canvas>
-                            @endif
+                    <div class="col-sm-4" style="padding-right:5px; max-height: 100%; height: 100%">
+                        <div style="background-color: #ffff; border-radius: 10px; height:100%">
+                            <div style="height: 10%; text-align: center">
+                                <h2 class="kepuasan" style="color: #855CF8;">Kepuasan Pengguna Layanan</h2>
+                            </div>
+                            <div style="height:80%">
+                                <div class="chart-container" style="height: 100%">
+                                    <canvas id="kepuasanPelanggan"></canvas>
+                                </div>
+                            </div>
+                            <div class="row" style="width: 100%; margin:0; height:10%; padding:0 5px">
+                                <select id="kepuasanTusi" class="form-control" style="height: 90%">
+                                    <option style="text-align: center; padding:0" value="ALL">Kantor Pelayanan Kekayaan Negara dan Lelang Ternate</option>
+                                    <option style="text-align: center; padding:0"  value="PKN">Pengelolaan Kekayaan Negara</option>
+                                    <option style="text-align: center; padding:0"  value="PEN">Pelayanan Penilaian</option>
+                                    <option style="text-align: center; padding:0"  value="LLG">Pelayanan Lelang</option>
+                                    <option style="text-align: center; padding:0"  value="PPN">Pengurusan Piutang Negara</option>
+                                    <option style="text-align: center; padding:0"  value="LLN">Lain-lain</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 {{--  Akhir Kepuasan Pengguna Layanan  --}}
@@ -52,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="height: 85%" >
-                                    <div class="col-sm-4" style="height: 100%; padding:0" data-bs-toggle="modal" data-bs-target="#PNBPPKN">
+                                    <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#PNBPPKN">
                                         <div style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; border-radius: 0px 0 0 20px">
                                             <div style="height: 25%">
                                                 <div style="margin:auto; text-align: center">
@@ -91,8 +104,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-4" style="height: 100%; padding:0 " data-bs-toggle="modal" data-bs-target="#PNBPLLG">
+                                    <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer; " data-bs-toggle="modal" data-bs-target="#PNBPLLG">
                                         <div style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; ">
                                             <div style="height: 25%">
                                                 <div style="margin:auto; text-align: center">
@@ -131,8 +143,7 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-4" style="height: 100%; padding:0 " data-bs-toggle="modal" data-bs-target="#PNBPPPN">
+                                    <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer; " data-bs-toggle="modal" data-bs-target="#PNBPPPN">
                                         <div style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; border-radius: 0 0px 20px 0">
                                             <div style="height: 25%">
                                                 <div style="margin:auto; text-align: center">

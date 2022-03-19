@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pnbp;
 use Illuminate\Http\Request;
+use App\Models\kepuasanPelanggan;
 use App\Models\kinerjaOrganisasi;
 
 class chart extends Controller
@@ -81,5 +82,31 @@ class chart extends Controller
             $capaian=[];
         }
         return json_encode($capaian);
+    }
+
+    public function kepuasanPelanggan(Request $request){
+        switch ($request->tusis) {
+            case 'ALL':
+                $kepuasan['tangibles'] = kepuasanPelanggan::all()->avg('tangibles');
+                $kepuasan['reliability'] = kepuasanPelanggan::all()->avg('reliability');
+                $kepuasan['responsiveness'] = kepuasanPelanggan::all()->avg('responsiveness');
+                $kepuasan['assurance'] = kepuasanPelanggan::all()->avg('assurance');
+                $kepuasan['empathy'] = kepuasanPelanggan::all()->avg('empathy');
+                return json_encode($kepuasan);
+                break;
+            default:
+                $kepuasan['tangibles'] = kepuasanPelanggan::where('layanan', $request->tusis)->get()->avg('tangibles');
+                $kepuasan['reliability'] = kepuasanPelanggan::where('layanan', $request->tusis)->get()->avg('reliability');
+                $kepuasan['responsiveness'] = kepuasanPelanggan::where('layanan', $request->tusis)->get()->avg('responsiveness');
+                $kepuasan['assurance'] = kepuasanPelanggan::where('layanan', $request->tusis)->get()->avg('assurance');
+                $kepuasan['empathy'] = kepuasanPelanggan::where('layanan', $request->tusis)->get()->avg('empathy');
+                return json_encode($kepuasan);
+                break;
+        }
+
+
+
+
+
     }
 }

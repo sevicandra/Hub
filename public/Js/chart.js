@@ -422,80 +422,131 @@ $(document).ready(function(){
 });
 
 // Kepuasan Pelanggan
-const kepuasanPelanggan = document.getElementById('kepuasanPelanggan').getContext('2d');
-const myChart2 = new Chart(kepuasanPelanggan, {
-    type: 'radar',
-    data: {
-        labels: ['Tangibles', 'Reability', 'Responsiveness', 'Assurance', 'Empathy'],
-        datasets: [{
-            label: 'Pengelolaan Kekayaan Negara',
-            data: [5, 5, 5, 4, 5],
-            fill: true,
-            // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            // pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            // pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        },
-        {
-            label: 'Penilaian',
-            data: [5, 5, 5, 4, 5],
-            fill: true,
-            // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            // pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            // pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        },
-        {
-            label: 'Lelang',
-            data: [5, 5, 5, 4, 5],
-            fill: true,
-            // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            // pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            // pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        },
-        {
-            label: 'Piutang Negara',
-            data: [5, 2, 4, 1, 3],
-            fill: true,
-            // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            // pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            // pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        r: {
-            suggestedMin: 0,
-            suggestedMax: 5
-        },
-        legend: {
-            display: false
-        },
-        plugins: {
-                // legend: {
-                //   display: false
-                // },
-            title: {
-                display: true,
-                text: 'INDEKS KEPUASAN PENGGUNA LAYANAN',
-                padding: {
-                    top: 10,
-                }
+
+$(document).ready(function(){
+    var tusi = 'ALL';
+        $.ajax({
+            type: "POST",
+            url:"/kepuasanPelanggan",
+            dataType:"json",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              data: {
+                      tusis:tusi,
+                    },
+            success: function(response){
+                const kepuasanPelanggan = document.getElementById('kepuasanPelanggan').getContext('2d');
+                const myChart2 = new Chart(kepuasanPelanggan, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Tangibles', 'Reliability', 'Responsiveness', 'Assurance', 'Empathy'],
+                        datasets: [{
+                            data: [response.tangibles, response.reliability, response.responsiveness, response.assurance, response.empathy],
+                            fill: true,
+                            // backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            // pointBackgroundColor: 'rgb(255, 99, 132)',
+                            pointBorderColor: '#fff',
+                            // pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        r: {
+                            suggestedMin: 0,
+                            suggestedMax: 5
+                        },
+                        legend: {
+                            display: false
+                        },
+                        plugins: {
+                                legend: {
+                                  display: false
+                                },
+                            title: {
+                                display: false,
+                                text: 'INDEKS KEPUASAN PENGGUNA LAYANAN',
+                                padding: {
+                                    top: 10,
+                                }
+                            }
+                        },            
+                    }
+                });
+                $('#kepuasanTusi').change(function(){
+                    myChart2.destroy();
+                })
             }
-        },            
-    }
+        })
 });
+
+$('#kepuasanTusi').change(function(){
+    var tusi = $(this).val();
+    $.ajax({
+        type: "POST",
+        url:"/kepuasanPelanggan",
+        dataType:"json",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+                  tusis:tusi,
+        },
+        success: function(response){
+            console.log(response);
+            const kepuasanPelanggan = document.getElementById('kepuasanPelanggan').getContext('2d');
+            const myChart2 = new Chart(kepuasanPelanggan, {
+                type: 'radar',
+                data: {
+                    labels: ['Tangibles', 'Reliability', 'Responsiveness', 'Assurance', 'Empathy'],
+                    datasets: [{
+                        data: [response.tangibles, response.reliability, response.responsiveness, response.assurance, response.empathy],
+                        fill: true,
+                        // backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        // pointBackgroundColor: 'rgb(255, 99, 132)',
+                        pointBorderColor: '#fff',
+                        // pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    r: {
+                        suggestedMin: 0,
+                        suggestedMax: 5
+                    },
+                    legend: {
+                        display: false
+                    },
+                    plugins: {
+                            legend: {
+                              display: false
+                            },
+                        title: {
+                            display: false,
+                            text: 'INDEKS KEPUASAN PENGGUNA LAYANAN',
+                            padding: {
+                                top: 10,
+                            }
+                        }
+                    },            
+                },
+            });
+            $('#kepuasanTusi').change(function(){
+                myChart2.destroy();
+            })
+            myChart2.data.datasets[0].data = [response.tangibles, response.reliability, response.responsiveness, response.assurance, response.empathy];
+            myChart2.update();
+        }
+    })
+})
+
+
 
 // Table NKO
 function praktis(tahun) {

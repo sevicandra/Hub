@@ -17,6 +17,7 @@ use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\CapaianPnbpController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\SuratPersetujuanController;
+use App\Http\Controllers\KepuasanPelangganController;
 use App\Http\Controllers\KinerjaOrganisasiController;
 use App\Http\Controllers\PenyampaianLaporanController;
 use App\Http\Controllers\PermohonanPenilaianController;
@@ -119,7 +120,11 @@ Route::controller(chart::class)->group(function(){
     Route::POST('/PNBPPKN', 'PNBPPKN')->middleware('auth');
     Route::POST('/PNBPLLG', 'PNBPLLG')->middleware('auth');
     Route::POST('/PNBPPPN', 'PNBPPPN')->middleware('auth');
+    Route::POST('/kepuasanPelanggan', 'kepuasanPelanggan')->middleware('auth');
 });
+
+
+Route::resource('/survey', KepuasanPelangganController::class);
 
 
 

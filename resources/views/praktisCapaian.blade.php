@@ -214,13 +214,13 @@
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="capaian" class="col-sm-4 col-form-label">Persentase / Indeks</label>
                                         <div class="col-sm-8">
-                                            <input name="capaian" type="number" min='0.01' step=0.01 class="form-control" required>
+                                            <input name="capaian" type="number" min='0.00' step=0.01 class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px">
                                         <label for="raw" class="col-sm-4 col-form-label">Raw</label>
                                         <div class="col-sm-8">
-                                            <input name="raw" type="number" min='0.01' step=0.01 class="form-control">
+                                            <input name="raw" type="number" min='0.00' step=0.01 class="form-control">
                                         </div>
                                     </div>
                                     <div class="row">

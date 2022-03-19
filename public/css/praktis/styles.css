@@ -60,3 +60,13 @@ h1{
     /* identical to box height, or 139% */
     letter-spacing: 0.451506px;
 }
+
+.kepuasan{
+    font-size: 1vw;
+    font-family: IBM Plex Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 150%;
+    /* identical to box height, or 139% */
+    letter-spacing: 0.451506px;
+}
