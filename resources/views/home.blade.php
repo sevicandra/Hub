@@ -80,7 +80,7 @@
                                                     <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
                                                         @if ($PNBPPKN)
                                                             @if ($capaianPKN)
-                                                                {{($capaianPKN->sum('capaian')/$PNBPPKN->target)*100}}%
+                                                                {{number_format(($capaianPKN->sum('capaian')/$PNBPPKN->target)*100, 2)}}%
                                                             @else
                                                                 0%                                                            
                                                             @endif
@@ -119,7 +119,7 @@
                                                     <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
                                                         @if ($PNBPLLG)
                                                             @if ($capaianLLG)
-                                                                {{($capaianLLG->sum('capaian')/$PNBPLLG->target)*100}}%
+                                                                {{number_format(($capaianLLG->sum('capaian')/$PNBPLLG->target)*100 , 2)}}%
                                                             @else
                                                                 0%                                                            
                                                             @endif
@@ -158,7 +158,7 @@
                                                     <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
                                                         @if ($PNBPPPN)
                                                             @if ($capaianPPN)
-                                                                {{($capaianPPN->sum('capaian')/$PNBPPPN->target)*100}}%
+                                                                {{number_format(($capaianPPN->sum('capaian')/$PNBPPPN->target)*100, 2)}}%
                                                             @else
                                                                 0%                                                            
                                                             @endif
