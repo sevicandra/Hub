@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
+
 class registerController extends Controller
 {
     public function store(Request $request){
@@ -21,8 +23,8 @@ class registerController extends Controller
                 'jabatan'=>'required'
             ], $messages);
             $ValidatedData['password'] = Hash::make($ValidatedData['password']);
-            user::create($ValidatedData);
-            $request->session()->flash('success', 'Registration Success');
+            $user = user::create($ValidatedData);
+            event(new Registered($user));
             return redirect('/login');
     }
 }

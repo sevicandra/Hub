@@ -33,6 +33,13 @@
                     @csrf
                     <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
                     <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
+                    @if (session()->has('LoginErorr'))
+                    <div>
+                        <p>
+                            forgot Password reset <a href="/forgot-password">here</a>
+                        </p>
+                    </div>
+                    @endif
                     <select name="tahun" class="form-control" placeholder="Tahun" style="margin-bottom: 12px" required name="tahun">
                         <option value="2022">2022</option>
                         <option value="2023">2023</option>
@@ -41,6 +48,7 @@
                       </select>
                     <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Login</button>
                 </form>
+
                 <p>Dont have Account? <a href="/register">Register here!</a> </p>
             </div>
         </div>
