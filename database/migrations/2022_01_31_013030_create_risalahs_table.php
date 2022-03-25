@@ -15,7 +15,7 @@ class CreateRisalahsTable extends Migration
     {
         Schema::create('risalahs', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('penetapanLelang_id');
+            $table->uuid('penetapan_lelang_id');
             $table->string('nomor');
             $table->date('tanggal');
             $table->string('nilaiPokok');

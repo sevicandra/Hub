@@ -41,6 +41,13 @@ class PermohonanController extends Controller
     public function store(Request $request)
     {
         //
+        $ValidatedData=$request->validate([
+            'nomorhp'=>'required|numeric|digits_between:1,12',
+            'nomorSurat'=>'required',
+            'tanggalSurat'=>'required',
+            'pemohon'=>'required|numeric|digits:6',
+            'tanggalDiTerima'=>'required',
+        ]);
         $tiket_id=tiket::count();
         $tiket_id++;
         $tiket='PKN';
@@ -58,23 +65,20 @@ class PermohonanController extends Controller
             $tiket .= '';
         }
         $tiket .= $tiket_id; 
-        $tikets['tiket'] = $tiket;
-        $tikets['permohonan'] = 1;
-        tiket::create($tikets);
-
-        $id_tiket=tiket::latest()->first()->id;
-
-        $ValidatedData=$request->validate(
-            [
-                'nomorSurat'=>'required',
-                'tanggalSurat'=>'required',
-                'pemohon'=>'required',
-                'tanggalDiTerima'=>'required'
-            ]);
+        $tiketbaru = tiket::create([
+            'nomorhp'=>$ValidatedData['nomorhp'],
+            'tiket'=>$tiket,
+            'permohonan'=>1,
+        ]);
             
-            $ValidatedData['tiket_id']=$id_tiket;
-            permohonan::create($ValidatedData);
-            return redirect('/permohonan');
+        permohonan::create([
+            'nomorSurat'=> $ValidatedData['nomorSurat'],
+            'tanggalSurat'=> $ValidatedData['tanggalSurat'],
+            'pemohon'=> $ValidatedData['pemohon'],
+            'tanggalDiTerima'=> $ValidatedData['tanggalDiTerima'],
+            'tiket_id'=> $tiketbaru->id,
+        ]);
+        return redirect('/permohonan');
     }
 
     /**
@@ -134,7 +138,7 @@ class PermohonanController extends Controller
     public function destroy(permohonan $permohonan)
     {
         //
-        if ($permohonan->tiket === 1) {
+        if ($permohonan->tiket->permohonan === 1) {
             $permohonan->tiket->update(['permohonan' => 0]);
             $barang=$permohonan->barang;
             foreach($barang as $b){

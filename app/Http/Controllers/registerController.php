@@ -24,7 +24,6 @@ class registerController extends Controller
             ], $messages);
             $ValidatedData['password'] = Hash::make($ValidatedData['password']);
             $user = user::create($ValidatedData);
-            event(new Registered($user));
             return redirect('/login');
     }
 }

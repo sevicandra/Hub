@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\penetapanLelang;
-use App\Http\Requests\StorepenetapanLelangRequest;
+use App\Models\permohonanLelang;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\UpdatepenetapanLelangRequest;
 
 class PenetapanLelangController extends Controller
@@ -15,7 +17,9 @@ class PenetapanLelangController extends Controller
      */
     public function index()
     {
-        //
+        return view('pindaiPenetapanLelang',[
+            'data'=>penetapanLelang::orderBy('created_at', 'desc')->get()
+        ]);
     }
 
     /**
@@ -31,12 +35,24 @@ class PenetapanLelangController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepenetapanLelangRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepenetapanLelangRequest $request)
+    public function store(Request $request)
     {
-        //
+        $data = permohonanLelang::all()->find($request->permohonan_lelang_id);
+        if (!$data->penetapanLelang) {
+            $validatedData=$request->validate([
+                'nomorSurat'=>'required',
+                'tanggalSurat'=>'required',
+                'tanggalLelang'=>'required',
+                'permohonan_lelang_id'=>'required'
+            ]);
+            penetapanLelang::create($validatedData);
+            return redirect::back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -47,7 +63,9 @@ class PenetapanLelangController extends Controller
      */
     public function show(penetapanLelang $penetapanLelang)
     {
-        //
+        return view('pindaiRisalah',[
+            'data'=>$penetapanLelang
+        ]);
     }
 
     /**
@@ -64,13 +82,30 @@ class PenetapanLelangController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatepenetapanLelangRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @param  \App\Models\penetapanLelang  $penetapanLelang
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatepenetapanLelangRequest $request, penetapanLelang $penetapanLelang)
-    {
-        //
+    public function update(Request $request, penetapanLelang $penetapanLelang)
+    {   
+        if ($penetapanLelang->status != 1) {
+            foreach ($penetapanLelang->barangLelang as $item) {
+    
+                switch ($item->status) {
+                    case 1:
+                        $item->barang->update(['status'=> 2]);
+                        break;
+                    
+                    default:
+                    $item->barang->update(['status'=> null]);
+                        break;
+                }
+            };
+            $penetapanLelang->update(['status'=> 1]);
+            $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
+        }else{
+            abort(403);
+        }
     }
 
     /**

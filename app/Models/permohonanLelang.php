@@ -21,4 +21,13 @@ class permohonanLelang extends Model
         return $this->hasOne(penetapanLelang::class);
     }
     
+    public function barang(){
+        return $this->belongsToMany(barang::class);
+    }
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'tanggalDiTerima',
+        'surat_persetujuan_id',
+    ];
 }

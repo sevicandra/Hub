@@ -15,9 +15,11 @@ class CreatePenetapanLelangsTable extends Migration
     {
         Schema::create('penetapan_lelangs', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('permohonanLelang');
+            $table->uuid('permohonan_lelang_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
+            $table->date('tanggalLelang');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

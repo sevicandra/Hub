@@ -20,7 +20,8 @@ class TiketController extends Controller
             'permohonan'=>tiket::all()->where('permohonan', '=' , '1'),
             'penilaian'=>tiket::all()->where('penilaian', '=' , '1'),
             'persetujuan'=>tiket::all()->where('persetujuan', '=' , '1'),
-            'lelang'=>tiket::all()->where('lelang', '=' , '1')
+            'lelang'=>tiket::all()->where('lelang', '=' , '1'),
+            'selesaiLelang'=>tiket::all()->where('permohonan', '=' , '0')->where('penilaian', '=' , '0')->where('persetujuan', '=' , '0')->where('lelang', '=' , '0'),
         ]);
 
         

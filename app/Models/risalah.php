@@ -14,4 +14,19 @@ class risalah extends Model
     public function penetapanLelang(){
         return $this->belongsTo(penetapanLelang::class);
     }
+
+    public function barang(){
+        return $this->belongsToMany(barang::class, 'barang_lelangs', 'risalah_id', 'barang_id');
+    }
+
+    public function barangLelang(){
+        return $this->hasMany(barangLelang::class);
+    }
+    
+    protected $fillable = [
+        'nomor',
+        'tanggal',
+        'nilaiPokok',
+        'penetapan_lelang_id'
+    ];
 }

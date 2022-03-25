@@ -22,6 +22,19 @@ class barang extends Model
     public function laporanPenilaian(){
         return $this->belongsto(laporanPenilaian::class);
     }
+
+    public function permohonanLelang(){
+        return $this->belongsToMany(permohonanLelang::class);
+    }
+
+    public function risalah(){
+        return $this->belongsToMany(risalah::class, 'barang_lelang', 'barang_id', 'risalah_id');
+    }
+
+    public function barangLelang(){
+        return $this->hasMany(barangLelang::class);
+    }
+
     protected $fillable = [
         'permohonan_id',
         'laporan_penilaian_id',

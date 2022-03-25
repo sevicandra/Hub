@@ -10,11 +10,12 @@ class tiket extends Model
     use Uuids;
     use HasFactory;
     
-    public function permohonan(){
+    public function permohonans(){
         return $this->hasOne(permohonan::class);
     }
     protected $fillable = [
         'tiket',
+        'nomorhp',
         'permohonan',
         'penilaian',
         'persetujuan',

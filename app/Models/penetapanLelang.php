@@ -15,7 +15,20 @@ class penetapanLelang extends Model
     }
 
     public function risalah(){
-        return $this->hasOne(risalah::class);
+        return $this->hasMany(risalah::class);
     }
 
+    public function barangLelang(){
+        return $this->hasManyThrough(barangLelang::class, risalah::class);
+    }
+
+
+
+    protected $fillable = [
+        'nomorSurat',
+        'tanggalSurat',
+        'tanggalLelang',
+        'permohonan_lelang_id',
+        'status',
+    ];
 }

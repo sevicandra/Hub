@@ -24,6 +24,16 @@
                     <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Surat Persetujuan</button>
                 </a>
             </div>
+            <div class="col-sm-2" >
+                <a href="/potensi_lelang" >
+                    <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Potensi Lelang</button>
+                </a>
+            </div>
+            <div class="col-sm-2" >
+                <a href="/penetapan_lelang" >
+                    <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Penetapan Lelang</button>
+                </a>
+            </div>
             <div class="col"></div>
             <div class="col-sm-3" style="margin:auto">
                 <form action="">
@@ -104,27 +114,58 @@
                         <div class="row">
                             <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
                             <div class="col-sm-8">
-                                <input name="nomorSurat" class="form-control" type="text" required>
+                                <input name="nomorSurat" class="form-control" type="text" required value="{{old('nomorSurat')}}">
                             </div>
                         </div>
+                        @error('nomorSurat')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <div class="row">
                             <label for="tanggalSurat" class="col-sm-4 col-form-label">Tanggal</label>
                             <div class="col-sm-8">
-                                <input name="tanggalSurat" type="date" class="form-control" required>
+                                <input name="tanggalSurat" type="date" class="form-control" required value="{{old('tanggalSurat')}}">
                             </div>
                         </div>
+                        @error('tanggalSurat')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <div class="row">
-                            <label for="pemohon" class="col-sm-4 col-form-label">Pemohon</label>
+                            <label for="pemohon" class="col-sm-4 col-form-label" >Pemohon</label>
                             <div class="col-sm-8">
-                                <input name="pemohon" type="text" class="form-control" required>
+                                <input name="pemohon" type="text" class="form-control" required placeholder="6 Digit Kode Satker" value="{{old('pemohon')}}">
                             </div>
                         </div>
+                        @error('pemohon')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <div class="row">
+                            <label for="nomorhp" class="col-sm-4 col-form-label">Nomor HP</label>
+                            <div class="col-sm-8">
+                                <input name="nomorhp" type="text" class="form-control" required value="{{old('nomorhp')}}" placeholder="ext. 08114482333">
+                            </div>
+                        </div>
+                        @error('nomorhp')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <div class="row">
                             <label for="" class="col-sm-4 col-form-label">Tanggal Di Terima</label>
                             <div class="col-sm-8">
-                                <input name="tanggalDiTerima" class="form-control" type="date" required>
+                                <input name="tanggalDiTerima" class="form-control" type="date" required value="{{old('tanggalDiTerima')}}">
                             </div>
                         </div>
+                        @error('tanggalDiTerima')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <div class="row">
                             <div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -175,6 +216,7 @@
         </div>
     </div>
 </div>
+
 
 @endsection
 

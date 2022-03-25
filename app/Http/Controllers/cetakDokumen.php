@@ -9,11 +9,12 @@ use App\Models\pemberitahuanPenilaian;
 
 class cetakDokumen extends Controller
 {
-    public function cetakPermohonanSKSTPenilai(Request $request){
+    public function cetakPermohonanSKSTPenilai(Request $request)
+    {
         switch ($request->action) {
             case 'SKST':
                 $a = permohonanPenilaian::all()->find($request->permohonan_id);
-                if(isset($request->nama)){
+                if (isset($request->nama)) {
                     foreach ($request->nama as $key) {
                         $c = permohonanPenilaian::all()->find($request->permohonan_id)->users->find($key);
                         if (!isset($c)) {
@@ -23,138 +24,138 @@ class cetakDokumen extends Controller
                 }
 
                 $b = permohonanPenilaian::all()->find($request->permohonan_id);
-                
-                $date=date_create($a->tanggalSurat);
-                $tglSurat = date_format($date,"d");
-                $blnSurat = date_format($date,"m");
-                $tahunSurat = date_format($date,"Y");
+
+                $date = date_create($a->tanggalSurat);
+                $tglSurat = date_format($date, "d");
+                $blnSurat = date_format($date, "m");
+                $tahunSurat = date_format($date, "Y");
                 switch ($blnSurat) {
                     case '1':
-                        $blnSurat='Januari';
+                        $blnSurat = 'Januari';
                         break;
                     case '2':
-                        $blnSurat='Februari';
+                        $blnSurat = 'Februari';
                         break;
                     case '3':
-                        $blnSurat='Maret';
+                        $blnSurat = 'Maret';
                         break;
                     case '4':
-                        $blnSurat='April';
+                        $blnSurat = 'April';
                         break;
                     case '5':
-                        $blnSurat='Mei';
+                        $blnSurat = 'Mei';
                         break;
                     case '6':
-                        $blnSurat='Juni';
+                        $blnSurat = 'Juni';
                         break;
                     case '7':
-                        $blnSurat='Juli';
+                        $blnSurat = 'Juli';
                         break;
                     case '8':
-                        $blnSurat='Agustus';
+                        $blnSurat = 'Agustus';
                         break;
                     case '9':
-                        $blnSurat='September';
+                        $blnSurat = 'September';
                         break;
                     case '10':
-                        $blnSurat='Oktober';
+                        $blnSurat = 'Oktober';
                         break;
                     case '11':
-                        $blnSurat='November';
+                        $blnSurat = 'November';
                         break;
                     case '12':
-                        $blnSurat='Desember';
+                        $blnSurat = 'Desember';
                         break;
                 }
-                $tanggalsurat = $tglSurat  .' '. $blnSurat . ' '. $tahunSurat;
+                $tanggalsurat = $tglSurat  . ' ' . $blnSurat . ' ' . $tahunSurat;
 
-                $dateMulaiSurvei=date_create($request->tanggalMulaiSurvei);
-                $tglMulaiSurvei = date_format($dateMulaiSurvei,"d");
-                $blnMulaiSurvei = date_format($dateMulaiSurvei,"m");
-                $tahunMulaiSurvei = date_format($dateMulaiSurvei,"Y");
+                $dateMulaiSurvei = date_create($request->tanggalMulaiSurvei);
+                $tglMulaiSurvei = date_format($dateMulaiSurvei, "d");
+                $blnMulaiSurvei = date_format($dateMulaiSurvei, "m");
+                $tahunMulaiSurvei = date_format($dateMulaiSurvei, "Y");
                 switch ($blnMulaiSurvei) {
                     case '1':
-                        $blnMulaiSurvei='Januari';
+                        $blnMulaiSurvei = 'Januari';
                         break;
                     case '2':
-                        $blnMulaiSurvei='Februari';
+                        $blnMulaiSurvei = 'Februari';
                         break;
                     case '3':
-                        $blnMulaiSurvei='Maret';
+                        $blnMulaiSurvei = 'Maret';
                         break;
                     case '4':
-                        $blnMulaiSurvei='April';
+                        $blnMulaiSurvei = 'April';
                         break;
                     case '5':
-                        $blnMulaiSurvei='Mei';
+                        $blnMulaiSurvei = 'Mei';
                         break;
                     case '6':
-                        $blnMulaiSurvei='Juni';
+                        $blnMulaiSurvei = 'Juni';
                         break;
                     case '7':
-                        $blnMulaiSurvei='Juli';
+                        $blnMulaiSurvei = 'Juli';
                         break;
                     case '8':
-                        $blnMulaiSurvei='Agustus';
+                        $blnMulaiSurvei = 'Agustus';
                         break;
                     case '9':
-                        $blnMulaiSurvei='September';
+                        $blnMulaiSurvei = 'September';
                         break;
                     case '10':
-                        $blnMulaiSurvei='Oktober';
+                        $blnMulaiSurvei = 'Oktober';
                         break;
                     case '11':
-                        $blnMulaiSurvei='November';
+                        $blnMulaiSurvei = 'November';
                         break;
                     case '12':
-                        $blnMulaiSurvei='Desember';
+                        $blnMulaiSurvei = 'Desember';
                         break;
                 }
-                $tanggalMulaiSurvei = $tglMulaiSurvei  .' '. $blnMulaiSurvei . ' '. $tahunMulaiSurvei;
+                $tanggalMulaiSurvei = $tglMulaiSurvei  . ' ' . $blnMulaiSurvei . ' ' . $tahunMulaiSurvei;
 
-                $dateSelesaiSurvei=date_create($request->tanggalSelesaiSurvei);
-                $tglSelesaiSurvei = date_format($dateSelesaiSurvei,"d");
-                $blnSelesaiSurvei = date_format($dateSelesaiSurvei,"m");
-                $tahunSelesaiSurvei = date_format($dateSelesaiSurvei,"Y");
+                $dateSelesaiSurvei = date_create($request->tanggalSelesaiSurvei);
+                $tglSelesaiSurvei = date_format($dateSelesaiSurvei, "d");
+                $blnSelesaiSurvei = date_format($dateSelesaiSurvei, "m");
+                $tahunSelesaiSurvei = date_format($dateSelesaiSurvei, "Y");
                 switch ($blnSelesaiSurvei) {
                     case '1':
-                        $blnSelesaiSurvei='Januari';
+                        $blnSelesaiSurvei = 'Januari';
                         break;
                     case '2':
-                        $blnSelesaiSurvei='Februari';
+                        $blnSelesaiSurvei = 'Februari';
                         break;
                     case '3':
-                        $blnSelesaiSurvei='Maret';
+                        $blnSelesaiSurvei = 'Maret';
                         break;
                     case '4':
-                        $blnSelesaiSurvei='April';
+                        $blnSelesaiSurvei = 'April';
                         break;
                     case '5':
-                        $blnSelesaiSurvei='Mei';
+                        $blnSelesaiSurvei = 'Mei';
                         break;
                     case '6':
-                        $blnSelesaiSurvei='Juni';
+                        $blnSelesaiSurvei = 'Juni';
                         break;
                     case '7':
-                        $blnSelesaiSurvei='Juli';
+                        $blnSelesaiSurvei = 'Juli';
                         break;
                     case '8':
-                        $blnSelesaiSurvei='Agustus';
+                        $blnSelesaiSurvei = 'Agustus';
                         break;
                     case '9':
-                        $blnSelesaiSurvei='September';
+                        $blnSelesaiSurvei = 'September';
                         break;
                     case '10':
-                        $blnSelesaiSurvei='Oktober';
+                        $blnSelesaiSurvei = 'Oktober';
                         break;
                     case '11':
-                        $blnSelesaiSurvei='November';
+                        $blnSelesaiSurvei = 'November';
                         break;
                     case '12':
-                        $blnSelesaiSurvei='Desember';
+                        $blnSelesaiSurvei = 'Desember';
                         break;
                 }
-                $tanggalSelesaiSurvei = $tglSelesaiSurvei  .' '. $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                $tanggalSelesaiSurvei = $tglSelesaiSurvei  . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
 
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PermohonanSK-STPenilai.docx');
                 $templateProcessor->setValue('nomorSurat', $a->nomorSurat);
@@ -162,33 +163,33 @@ class cetakDokumen extends Controller
                 $templateProcessor->setValue('hal', $a->hal);
                 $templateProcessor->setValue('pemohon', $a->permohonan->satuanKerja->namaSatker);
                 $templateProcessor->setValue('lokasi', $request->lokasi);
-                
+
                 if ($request->tanggalMulaiSurvei === $request->tanggalSelesaiSurvei) {
                     $templateProcessor->setValue('tanggalSurvei', $tanggalMulaiSurvei);
-                }else{
-                        if($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei){
-                            $survei=$tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                } else {
+                    if ($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei) {
+                        $survei = $tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
+                        $templateProcessor->setValue('tanggalSurvei', $survei);
+                    } else {
+                        if ($tahunMulaiSurvei === $tahunSelesaiSurvei) {
+                            $survei = $tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
                             $templateProcessor->setValue('tanggalSurvei', $survei);
-                        }else{
-                            if($tahunMulaiSurvei === $tahunSelesaiSurvei){
-                                $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                                $templateProcessor->setValue('tanggalSurvei', $survei);
-                            }else{
-                                $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' '. $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                                $templateProcessor->setValue('tanggalSurvei', $survei);
-                            }
+                        } else {
+                            $survei = $tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' ' . $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
+                            $templateProcessor->setValue('tanggalSurvei', $survei);
                         }
                     }
-                
+                }
+
                 $templateProcessor->cloneRow('anggotaTim', $b->users->count());
-                $i=1;
+                $i = 1;
                 $c = $b->users()->orderByDesc('permohonan_penilaian_user.created_at')->get();
-                foreach($c as $user){
-                    $anggotaTim='anggotaTim#' . $i;
-                    $NIP='NIP#' . $i;
-                    $jabatan='jabatan#' . $i;
-                    $pangkat='pangkat#' . $i;
-                    $nomor='nomor#'. $i;
+                foreach ($c as $user) {
+                    $anggotaTim = 'anggotaTim#' . $i;
+                    $NIP = 'NIP#' . $i;
+                    $jabatan = 'jabatan#' . $i;
+                    $pangkat = 'pangkat#' . $i;
+                    $nomor = 'nomor#' . $i;
 
                     $templateProcessor->setValue($anggotaTim, $user->nama);
                     $templateProcessor->setValue($jabatan, $user->jabatans->namaJabatan);
@@ -197,13 +198,13 @@ class cetakDokumen extends Controller
                     $templateProcessor->setValue($nomor, $i);
                     $i++;
                 }
-                
-                $templateProcessor->saveAs('DocxTemplate/Usulan SK & ST - '. $request->permohonan_id. '.docx');
-                return response()->download(file:'DocxTemplate/Usulan SK & ST - '. $request->permohonan_id. '.docx')->deleteFileAfterSend(shouldDelete:true);
+
+                $templateProcessor->saveAs('DocxTemplate/Usulan SK & ST - ' . $request->permohonan_id . '.docx');
+                return response()->download(file: 'DocxTemplate/Usulan SK & ST - ' . $request->permohonan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
-            case('Jadwal'):
+            case 'Jadwal':
                 $a = permohonanPenilaian::all()->find($request->permohonan_id);
-                if(isset($request->nama)){
+                if (isset($request->nama)) {
                     foreach ($request->nama as $key) {
                         $c = permohonanPenilaian::all()->find($request->permohonan_id)->users->find($key);
                         if (!isset($c)) {
@@ -213,138 +214,138 @@ class cetakDokumen extends Controller
                 }
 
                 $b = permohonanPenilaian::all()->find($request->permohonan_id);
-                
-                $date=date_create($a->tanggalSurat);
-                $tglSurat = date_format($date,"d");
-                $blnSurat = date_format($date,"m");
-                $tahunSurat = date_format($date,"Y");
+
+                $date = date_create($a->tanggalSurat);
+                $tglSurat = date_format($date, "d");
+                $blnSurat = date_format($date, "m");
+                $tahunSurat = date_format($date, "Y");
                 switch ($blnSurat) {
                     case '1':
-                        $blnSurat='Januari';
+                        $blnSurat = 'Januari';
                         break;
                     case '2':
-                        $blnSurat='Februari';
+                        $blnSurat = 'Februari';
                         break;
                     case '3':
-                        $blnSurat='Maret';
+                        $blnSurat = 'Maret';
                         break;
                     case '4':
-                        $blnSurat='April';
+                        $blnSurat = 'April';
                         break;
                     case '5':
-                        $blnSurat='Mei';
+                        $blnSurat = 'Mei';
                         break;
                     case '6':
-                        $blnSurat='Juni';
+                        $blnSurat = 'Juni';
                         break;
                     case '7':
-                        $blnSurat='Juli';
+                        $blnSurat = 'Juli';
                         break;
                     case '8':
-                        $blnSurat='Agustus';
+                        $blnSurat = 'Agustus';
                         break;
                     case '9':
-                        $blnSurat='September';
+                        $blnSurat = 'September';
                         break;
                     case '10':
-                        $blnSurat='Oktober';
+                        $blnSurat = 'Oktober';
                         break;
                     case '11':
-                        $blnSurat='November';
+                        $blnSurat = 'November';
                         break;
                     case '12':
-                        $blnSurat='Desember';
+                        $blnSurat = 'Desember';
                         break;
                 }
-                $tanggalsurat = $tglSurat  .' '. $blnSurat . ' '. $tahunSurat;
+                $tanggalsurat = $tglSurat  . ' ' . $blnSurat . ' ' . $tahunSurat;
 
-                $dateMulaiSurvei=date_create($request->tanggalMulaiSurvei);
-                $tglMulaiSurvei = date_format($dateMulaiSurvei,"d");
-                $blnMulaiSurvei = date_format($dateMulaiSurvei,"m");
-                $tahunMulaiSurvei = date_format($dateMulaiSurvei,"Y");
+                $dateMulaiSurvei = date_create($request->tanggalMulaiSurvei);
+                $tglMulaiSurvei = date_format($dateMulaiSurvei, "d");
+                $blnMulaiSurvei = date_format($dateMulaiSurvei, "m");
+                $tahunMulaiSurvei = date_format($dateMulaiSurvei, "Y");
                 switch ($blnMulaiSurvei) {
                     case '1':
-                        $blnMulaiSurvei='Januari';
+                        $blnMulaiSurvei = 'Januari';
                         break;
                     case '2':
-                        $blnMulaiSurvei='Februari';
+                        $blnMulaiSurvei = 'Februari';
                         break;
                     case '3':
-                        $blnMulaiSurvei='Maret';
+                        $blnMulaiSurvei = 'Maret';
                         break;
                     case '4':
-                        $blnMulaiSurvei='April';
+                        $blnMulaiSurvei = 'April';
                         break;
                     case '5':
-                        $blnMulaiSurvei='Mei';
+                        $blnMulaiSurvei = 'Mei';
                         break;
                     case '6':
-                        $blnMulaiSurvei='Juni';
+                        $blnMulaiSurvei = 'Juni';
                         break;
                     case '7':
-                        $blnMulaiSurvei='Juli';
+                        $blnMulaiSurvei = 'Juli';
                         break;
                     case '8':
-                        $blnMulaiSurvei='Agustus';
+                        $blnMulaiSurvei = 'Agustus';
                         break;
                     case '9':
-                        $blnMulaiSurvei='September';
+                        $blnMulaiSurvei = 'September';
                         break;
                     case '10':
-                        $blnMulaiSurvei='Oktober';
+                        $blnMulaiSurvei = 'Oktober';
                         break;
                     case '11':
-                        $blnMulaiSurvei='November';
+                        $blnMulaiSurvei = 'November';
                         break;
                     case '12':
-                        $blnMulaiSurvei='Desember';
+                        $blnMulaiSurvei = 'Desember';
                         break;
                 }
-                $tanggalMulaiSurvei = $tglMulaiSurvei  .' '. $blnMulaiSurvei . ' '. $tahunMulaiSurvei;
+                $tanggalMulaiSurvei = $tglMulaiSurvei  . ' ' . $blnMulaiSurvei . ' ' . $tahunMulaiSurvei;
 
-                $dateSelesaiSurvei=date_create($request->tanggalSelesaiSurvei);
-                $tglSelesaiSurvei = date_format($dateSelesaiSurvei,"d");
-                $blnSelesaiSurvei = date_format($dateSelesaiSurvei,"m");
-                $tahunSelesaiSurvei = date_format($dateSelesaiSurvei,"Y");
+                $dateSelesaiSurvei = date_create($request->tanggalSelesaiSurvei);
+                $tglSelesaiSurvei = date_format($dateSelesaiSurvei, "d");
+                $blnSelesaiSurvei = date_format($dateSelesaiSurvei, "m");
+                $tahunSelesaiSurvei = date_format($dateSelesaiSurvei, "Y");
                 switch ($blnSelesaiSurvei) {
                     case '1':
-                        $blnSelesaiSurvei='Januari';
+                        $blnSelesaiSurvei = 'Januari';
                         break;
                     case '2':
-                        $blnSelesaiSurvei='Februari';
+                        $blnSelesaiSurvei = 'Februari';
                         break;
                     case '3':
-                        $blnSelesaiSurvei='Maret';
+                        $blnSelesaiSurvei = 'Maret';
                         break;
                     case '4':
-                        $blnSelesaiSurvei='April';
+                        $blnSelesaiSurvei = 'April';
                         break;
                     case '5':
-                        $blnSelesaiSurvei='Mei';
+                        $blnSelesaiSurvei = 'Mei';
                         break;
                     case '6':
-                        $blnSelesaiSurvei='Juni';
+                        $blnSelesaiSurvei = 'Juni';
                         break;
                     case '7':
-                        $blnSelesaiSurvei='Juli';
+                        $blnSelesaiSurvei = 'Juli';
                         break;
                     case '8':
-                        $blnSelesaiSurvei='Agustus';
+                        $blnSelesaiSurvei = 'Agustus';
                         break;
                     case '9':
-                        $blnSelesaiSurvei='September';
+                        $blnSelesaiSurvei = 'September';
                         break;
                     case '10':
-                        $blnSelesaiSurvei='Oktober';
+                        $blnSelesaiSurvei = 'Oktober';
                         break;
                     case '11':
-                        $blnSelesaiSurvei='November';
+                        $blnSelesaiSurvei = 'November';
                         break;
                     case '12':
-                        $blnSelesaiSurvei='Desember';
+                        $blnSelesaiSurvei = 'Desember';
                         break;
                 }
-                $tanggalSelesaiSurvei = $tglSelesaiSurvei  .' '. $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                $tanggalSelesaiSurvei = $tglSelesaiSurvei  . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
 
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PenyampaianJadwalPenilaian.docx');
                 $templateProcessor->setValue('nomorSurat', $a->nomorSurat);
@@ -352,33 +353,33 @@ class cetakDokumen extends Controller
                 $templateProcessor->setValue('hal', $a->hal);
                 $templateProcessor->setValue('pemohon', $a->permohonan->satuanKerja->namaSatker);
                 $templateProcessor->setValue('lokasi', $request->lokasi);
-                
+
                 if ($request->tanggalMulaiSurvei === $request->tanggalSelesaiSurvei) {
                     $templateProcessor->setValue('tanggalSurvei', $tanggalMulaiSurvei);
-                }else{
-                        if($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei){
-                            $survei=$tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
+                } else {
+                    if ($tahunMulaiSurvei === $tahunSelesaiSurvei && $blnMulaiSurvei === $blnSelesaiSurvei) {
+                        $survei = $tglMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
+                        $templateProcessor->setValue('tanggalSurvei', $survei);
+                    } else {
+                        if ($tahunMulaiSurvei === $tahunSelesaiSurvei) {
+                            $survei = $tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
                             $templateProcessor->setValue('tanggalSurvei', $survei);
-                        }else{
-                            if($tahunMulaiSurvei === $tahunSelesaiSurvei){
-                                $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                                $templateProcessor->setValue('tanggalSurvei', $survei);
-                            }else{
-                                $survei=$tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' '. $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' '. $tahunSelesaiSurvei;
-                                $templateProcessor->setValue('tanggalSurvei', $survei);
-                            }
+                        } else {
+                            $survei = $tglMulaiSurvei . ' ' . $blnMulaiSurvei . ' ' . $tahunMulaiSurvei . ' s.d. ' . $tglSelesaiSurvei . ' ' . $blnSelesaiSurvei . ' ' . $tahunSelesaiSurvei;
+                            $templateProcessor->setValue('tanggalSurvei', $survei);
                         }
                     }
-                
+                }
+
                 $templateProcessor->cloneRow('anggotaTim', $b->users->count());
-                $i=1;
+                $i = 1;
                 $c = $b->users()->orderByDesc('permohonan_penilaian_user.created_at')->get();
-                foreach($c as $user){
-                    $anggotaTim='anggotaTim#' . $i;
-                    $NIP='NIP#' . $i;
-                    $nomor='nomor#'. $i;
-                    $jabatan='jabatan#' . $i;
-                    $pangkat='pangkat#' . $i;
+                foreach ($c as $user) {
+                    $anggotaTim = 'anggotaTim#' . $i;
+                    $NIP = 'NIP#' . $i;
+                    $nomor = 'nomor#' . $i;
+                    $jabatan = 'jabatan#' . $i;
+                    $pangkat = 'pangkat#' . $i;
 
                     $templateProcessor->setValue($anggotaTim, $user->nama);
                     $templateProcessor->setValue($NIP, $user->NIP);
@@ -387,112 +388,112 @@ class cetakDokumen extends Controller
                     $templateProcessor->setValue($nomor, $i);
                     $i++;
                 }
-                
-                $templateProcessor->saveAs('DocxTemplate/Penyampaian Jadwal Penilaian - '. $request->permohonan_id. '.docx');
-                return response()->download(file:'DocxTemplate/Penyampaian Jadwal Penilaian - '. $request->permohonan_id. '.docx')->deleteFileAfterSend(shouldDelete:true);    
+
+                $templateProcessor->saveAs('DocxTemplate/Penyampaian Jadwal Penilaian - ' . $request->permohonan_id . '.docx');
+                return response()->download(file: 'DocxTemplate/Penyampaian Jadwal Penilaian - ' . $request->permohonan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
             case 'penyampaianLaporan':
                 $pemberitahuanPenilaian = pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
                 $satuanKerja = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker;
-                $date=date_create($pemberitahuanPenilaian->permohonanPenilaian->tanggalSurat);
-                $tglSurat = date_format($date,"d");
-                $blnSurat = date_format($date,"m");
-                $tahunSurat = date_format($date,"Y");
+                $date = date_create($pemberitahuanPenilaian->permohonanPenilaian->tanggalSurat);
+                $tglSurat = date_format($date, "d");
+                $blnSurat = date_format($date, "m");
+                $tahunSurat = date_format($date, "Y");
                 switch ($blnSurat) {
                     case '1':
-                        $blnSurat='Januari';
+                        $blnSurat = 'Januari';
                         break;
                     case '2':
-                        $blnSurat='Februari';
+                        $blnSurat = 'Februari';
                         break;
                     case '3':
-                        $blnSurat='Maret';
+                        $blnSurat = 'Maret';
                         break;
                     case '4':
-                        $blnSurat='April';
+                        $blnSurat = 'April';
                         break;
                     case '5':
-                        $blnSurat='Mei';
+                        $blnSurat = 'Mei';
                         break;
                     case '6':
-                        $blnSurat='Juni';
+                        $blnSurat = 'Juni';
                         break;
                     case '7':
-                        $blnSurat='Juli';
+                        $blnSurat = 'Juli';
                         break;
                     case '8':
-                        $blnSurat='Agustus';
+                        $blnSurat = 'Agustus';
                         break;
                     case '9':
-                        $blnSurat='September';
+                        $blnSurat = 'September';
                         break;
                     case '10':
-                        $blnSurat='Oktober';
+                        $blnSurat = 'Oktober';
                         break;
                     case '11':
-                        $blnSurat='November';
+                        $blnSurat = 'November';
                         break;
                     case '12':
-                        $blnSurat='Desember';
+                        $blnSurat = 'Desember';
                         break;
                 }
-                $tanggalsurat = $tglSurat  .' '. $blnSurat . ' '. $tahunSurat;
+                $tanggalsurat = $tglSurat  . ' ' . $blnSurat . ' ' . $tahunSurat;
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PenyampaianLaporan.docx');
                 $templateProcessor->setValue('nomorSurat', $pemberitahuanPenilaian->permohonanPenilaian->nomorSurat);
                 $templateProcessor->setValue('tanggalSurat', $tanggalsurat);
                 $templateProcessor->setValue('hal', $pemberitahuanPenilaian->permohonanPenilaian->hal);
                 $templateProcessor->setValue('pemohon', $satuanKerja);
                 $templateProcessor->cloneRow('no', $pemberitahuanPenilaian->laporanPenilaian->count());
-                $i=1;
+                $i = 1;
                 foreach ($pemberitahuanPenilaian->laporanPenilaian as $key) {
-                    $nomor='nomor#' . $i;
-                    $tanggal='tanggal#' . $i;
-                    $no='no#'. $i;
-                    $nilaiWajar='nilaiWajar#'. $i;
-                    $satker='satker#'. $i;
-                    $date=date_create($key->tanggalLaporan);
-                    $tglLaporan = date_format($date,"d");
-                    $blnLaporan = date_format($date,"m");
-                    $tahunLaporan = date_format($date,"Y");
+                    $nomor = 'nomor#' . $i;
+                    $tanggal = 'tanggal#' . $i;
+                    $no = 'no#' . $i;
+                    $nilaiWajar = 'nilaiWajar#' . $i;
+                    $satker = 'satker#' . $i;
+                    $date = date_create($key->tanggalLaporan);
+                    $tglLaporan = date_format($date, "d");
+                    $blnLaporan = date_format($date, "m");
+                    $tahunLaporan = date_format($date, "Y");
                     switch ($blnLaporan) {
                         case '1':
-                            $blnLaporan='Januari';
+                            $blnLaporan = 'Januari';
                             break;
                         case '2':
-                            $blnLaporan='Februari';
+                            $blnLaporan = 'Februari';
                             break;
                         case '3':
-                            $blnLaporan='Maret';
+                            $blnLaporan = 'Maret';
                             break;
                         case '4':
-                            $blnLaporan='April';
+                            $blnLaporan = 'April';
                             break;
                         case '5':
-                            $blnLaporan='Mei';
+                            $blnLaporan = 'Mei';
                             break;
                         case '6':
-                            $blnLaporan='Juni';
+                            $blnLaporan = 'Juni';
                             break;
                         case '7':
-                            $blnLaporan='Juli';
+                            $blnLaporan = 'Juli';
                             break;
                         case '8':
-                            $blnLaporan='Agustus';
+                            $blnLaporan = 'Agustus';
                             break;
                         case '9':
-                            $blnLaporan='September';
+                            $blnLaporan = 'September';
                             break;
                         case '10':
-                            $blnLaporan='Oktober';
+                            $blnLaporan = 'Oktober';
                             break;
                         case '11':
-                            $blnLaporan='November';
+                            $blnLaporan = 'November';
                             break;
                         case '12':
-                            $blnLaporan='Desember';
+                            $blnLaporan = 'Desember';
                             break;
                     }
-                    $tanggalLaporan = $tglLaporan  .' '. $blnLaporan . ' '. $tahunLaporan;
+                    $tanggalLaporan = $tglLaporan  . ' ' . $blnLaporan . ' ' . $tahunLaporan;
                     $templateProcessor->setValue($nomor, $key->nomorLaporan);
                     $templateProcessor->setValue($tanggal, $tanggalLaporan);
 
@@ -502,65 +503,65 @@ class cetakDokumen extends Controller
                     $i++;
                 }
 
-                $templateProcessor->saveAs('DocxTemplate/Penyampaian Laporan - '. $request->pemberitahuan_penilaian_id. '.docx');
-                return response()->download(file:'DocxTemplate/Penyampaian Laporan - '. $request->pemberitahuan_penilaian_id. '.docx')->deleteFileAfterSend(shouldDelete:true);
+                $templateProcessor->saveAs('DocxTemplate/Penyampaian Laporan - ' . $request->pemberitahuan_penilaian_id . '.docx');
+                return response()->download(file: 'DocxTemplate/Penyampaian Laporan - ' . $request->pemberitahuan_penilaian_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
             case 'kajiulang':
                 $pemberitahuanPenilaian = pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
                 $satuanKerja = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker;
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/KajiUlang.docx');
-                
+
                 $templateProcessor->cloneRow('no', $pemberitahuanPenilaian->laporanPenilaian->count());
-                $i=1;
+                $i = 1;
                 foreach ($pemberitahuanPenilaian->laporanPenilaian as $key) {
-                    $nomor='nomor#' . $i;
-                    $tanggal='tanggal#' . $i;
-                    $no='no#'. $i;
-                    $nilaiWajar='nilaiWajar#'. $i;
-                    $satker='satker#'. $i;
-                    $date=date_create($key->tanggalLaporan);
-                    $tglLaporan = date_format($date,"d");
-                    $blnLaporan = date_format($date,"m");
-                    $tahunLaporan = date_format($date,"Y");
+                    $nomor = 'nomor#' . $i;
+                    $tanggal = 'tanggal#' . $i;
+                    $no = 'no#' . $i;
+                    $nilaiWajar = 'nilaiWajar#' . $i;
+                    $satker = 'satker#' . $i;
+                    $date = date_create($key->tanggalLaporan);
+                    $tglLaporan = date_format($date, "d");
+                    $blnLaporan = date_format($date, "m");
+                    $tahunLaporan = date_format($date, "Y");
                     switch ($blnLaporan) {
                         case '1':
-                            $blnLaporan='Januari';
+                            $blnLaporan = 'Januari';
                             break;
                         case '2':
-                            $blnLaporan='Februari';
+                            $blnLaporan = 'Februari';
                             break;
                         case '3':
-                            $blnLaporan='Maret';
+                            $blnLaporan = 'Maret';
                             break;
                         case '4':
-                            $blnLaporan='April';
+                            $blnLaporan = 'April';
                             break;
                         case '5':
-                            $blnLaporan='Mei';
+                            $blnLaporan = 'Mei';
                             break;
                         case '6':
-                            $blnLaporan='Juni';
+                            $blnLaporan = 'Juni';
                             break;
                         case '7':
-                            $blnLaporan='Juli';
+                            $blnLaporan = 'Juli';
                             break;
                         case '8':
-                            $blnLaporan='Agustus';
+                            $blnLaporan = 'Agustus';
                             break;
                         case '9':
-                            $blnLaporan='September';
+                            $blnLaporan = 'September';
                             break;
                         case '10':
-                            $blnLaporan='Oktober';
+                            $blnLaporan = 'Oktober';
                             break;
                         case '11':
-                            $blnLaporan='November';
+                            $blnLaporan = 'November';
                             break;
                         case '12':
-                            $blnLaporan='Desember';
+                            $blnLaporan = 'Desember';
                             break;
                     }
-                    $tanggalLaporan = $tglLaporan  .' '. $blnLaporan . ' '. $tahunLaporan;
+                    $tanggalLaporan = $tglLaporan  . ' ' . $blnLaporan . ' ' . $tahunLaporan;
                     $templateProcessor->setValue($nomor, $key->nomorLaporan);
                     $templateProcessor->setValue($tanggal, $tanggalLaporan);
                     $templateProcessor->setValue($no, $i);
@@ -568,9 +569,9 @@ class cetakDokumen extends Controller
                     $i++;
                 }
 
-                $templateProcessor->saveAs('DocxTemplate/Kaji Ulang - '. $request->pemberitahuan_penilaian_id. '.docx');
-                return response()->download(file:'DocxTemplate/Kaji Ulang - '. $request->pemberitahuan_penilaian_id. '.docx')->deleteFileAfterSend(shouldDelete:true);
-                
+                $templateProcessor->saveAs('DocxTemplate/Kaji Ulang - ' . $request->pemberitahuan_penilaian_id . '.docx');
+                return response()->download(file: 'DocxTemplate/Kaji Ulang - ' . $request->pemberitahuan_penilaian_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+
                 // $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PengantarKajiUlang.docx');
                 // $templateProcessor->setValue('pemohon', $satuanKerja);
                 // $templateProcessor->saveAs('DocxTemplate/Pengantar Kaji Ulang - '. $request->pemberitahuan_penilaian_id. '.docx');
@@ -578,7 +579,7 @@ class cetakDokumen extends Controller
 
                 break;
             case 'suratpersetujuan':
-                $permohonan= permohonan::all()->find($request->permohonan_id);
+                $permohonan = permohonan::all()->find($request->permohonan_id);
                 $barang = permohonan::all()->find($request->permohonan_id)->barang;
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/LampiranSuratPersetujuan.docx');
                 $templateProcessor->setValue('kementerian', $permohonan->satuanKerja->kementerian->namaKL);
@@ -586,38 +587,38 @@ class cetakDokumen extends Controller
                 $templateProcessor->setValue('jumlahPerolehan', number_format($barang->sum('nilaiPerolehan'), 2, ',', '.'));
                 $templateProcessor->setValue('jumlahLimit', number_format($barang->sum('nilaiLimit'), 2, ',', '.'));
                 $templateProcessor->cloneRow('no', $barang->count());
-                $i=1;
+                $i = 1;
                 foreach ($barang as $key) {
-                    $no='no#'. $i;
-                    $kodeBarang='kodeBarang#'. $i;
-                    $NUP='NUP#'. $i;
-                    $jenisBMN='jenisBMN#'. $i;
-                    $merktipe='merktipe#'. $i;
-                    $nomorPolisi='nomorPolisi#'. $i;
-                    $nomorRangka='nomorRangka#'. $i;
-                    $nomorMesin='nomorMesin#'. $i;
-                    $tahunPerolehan='tahunPerolehan#'. $i;
-                    $nilaiPerolehan='nilaiPerolehan#'. $i;
-                    $nilaiLimit='nilaiLimit#'. $i;
-                    $keterangan='keterangan#'. $i;
+                    $no = 'no#' . $i;
+                    $kodeBarang = 'kodeBarang#' . $i;
+                    $NUP = 'NUP#' . $i;
+                    $jenisBMN = 'jenisBMN#' . $i;
+                    $merktipe = 'merktipe#' . $i;
+                    $nomorPolisi = 'nomorPolisi#' . $i;
+                    $nomorRangka = 'nomorRangka#' . $i;
+                    $nomorMesin = 'nomorMesin#' . $i;
+                    $tahunPerolehan = 'tahunPerolehan#' . $i;
+                    $nilaiPerolehan = 'nilaiPerolehan#' . $i;
+                    $nilaiLimit = 'nilaiLimit#' . $i;
+                    $keterangan = 'keterangan#' . $i;
                     $valueNilaiPerolehan = number_format($key->nilaiPerolehan, 2, ',', '.');
                     $valueNilaiLimit = number_format($key->nilaiLimit, 2, ',', '.');
 
-                    if(isset($key->nomorPolisi)){
-                        $valueNomorPolisi = '<w:br/>Nomor Polisi '. $key->nomorPolisi;
-                    }else{
+                    if (isset($key->nomorPolisi)) {
+                        $valueNomorPolisi = '<w:br/>Nomor Polisi ' . $key->nomorPolisi;
+                    } else {
                         $valueNomorPolisi = '';
                     }
 
-                    if(isset($key->nomorRangka)){
-                        $valueNomorRangka = '<w:br/>Nomor Rangka '. $key->nomorRangka;
-                    }else{
-                        $valueNomorRangka ='';
+                    if (isset($key->nomorRangka)) {
+                        $valueNomorRangka = '<w:br/>Nomor Rangka ' . $key->nomorRangka;
+                    } else {
+                        $valueNomorRangka = '';
                     }
 
-                    if(isset($key->nomorMesin)){
-                        $valueNomorMesin = '<w:br/>Nomor Mesin '. $key->nomorMesin;
-                    }else{
+                    if (isset($key->nomorMesin)) {
+                        $valueNomorMesin = '<w:br/>Nomor Mesin ' . $key->nomorMesin;
+                    } else {
                         $valueNomorMesin = '';
                     }
 
@@ -635,8 +636,8 @@ class cetakDokumen extends Controller
                     $templateProcessor->setValue($keterangan, $key->keterangan);
                     $i++;
                 }
-                $templateProcessor->saveAs('DocxTemplate/Lampiran Surat Persetujuan - '. $request->permohonan_id. '.docx');
-                return response()->download(file:'DocxTemplate/Lampiran Surat Persetujuan - '. $request->permohonan_id. '.docx')->deleteFileAfterSend(shouldDelete:true);
+                $templateProcessor->saveAs('DocxTemplate/Lampiran Surat Persetujuan - ' . $request->permohonan_id . '.docx');
+                return response()->download(file: 'DocxTemplate/Lampiran Surat Persetujuan - ' . $request->permohonan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
             case 'value':
                 # code...
@@ -646,8 +647,8 @@ class cetakDokumen extends Controller
                 break;
         }
     }
-    public function cetakPenyampaianJadwalPenilaian(Request $request){
+    public function cetakPenyampaianJadwalPenilaian(Request $request)
+    {
         return $request;
     }
-
 }

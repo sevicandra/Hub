@@ -24,6 +24,16 @@
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Surat Persetujuan</button>
                     </a>
                 </div>
+                <div class="col-sm-2" >
+                    <a href="/potensi_lelang" >
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Potensi Lelang</button>
+                    </a>
+                </div>
+                <div class="col-sm-2" >
+                    <a href="/penetapan_lelang" >
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Penetapan Lelang</button>
+                    </a>
+                </div>
                 <div class="col"></div>
                 <div class="col-sm-3" style="margin:auto">
                     <form action="">

@@ -15,7 +15,6 @@
         </div>
         <div class="row" style="height:85%; padding: 0 40px 0px 40px">
             <div class="container-fluid" style="height: 100%;">
-                
                 <div class="row" style="height: 100%; background-color:aliceblue; border-radius:10px;">
                     <div>
                         <table class="table table-hover">

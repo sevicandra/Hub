@@ -18,6 +18,8 @@ class CreatePemberitahuanPenilaiansTable extends Migration
             $table->uuid('permohonan_penilaian_id');
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
+            $table->date('tanggalMulaiSurvei');
+            $table->date('tanggalSelesaiSurvei');          
             $table->timestamps();
         });
     }

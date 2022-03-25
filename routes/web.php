@@ -3,6 +3,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\chart;
 use App\Models\laporanPenilaian;
+use App\Models\suratPersetujuan;
 use App\Http\Controllers\kinerja;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +17,14 @@ use App\Http\Controllers\tiketController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\BarangLelangController;
+use App\Http\Controllers\RisalahController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\CapaianPnbpController;
+use App\Http\Controllers\PenetapanLelangController;
 use App\Http\Controllers\LaporanPenilaianController;
+use App\Http\Controllers\PermohonanLelangController;
 use App\Http\Controllers\SuratPersetujuanController;
 use App\Http\Controllers\KepuasanPelangganController;
 use App\Http\Controllers\KinerjaOrganisasiController;
@@ -28,6 +33,7 @@ use App\Http\Controllers\PermohonanPenilaianController;
 use App\Http\Controllers\IdikatorKinerjaUtamaController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemberitahuanPenilaianController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,10 +89,15 @@ Route::resource('/praktis', IdikatorKinerjaUtamaController::class)->middleware('
 
 Route::resource('/kinerjaorganisasi', KinerjaOrganisasiController::class)->middleware('verified');
 
-Route::resource('/pnbp', PnbpController::Class);
+Route::resource('/pnbp', PnbpController::class)->middleware('verified');
 
-Route::resource('/capaianPnbp', CapaianPnbpController::Class);
+Route::resource('/capaianPnbp', CapaianPnbpController::class)->middleware('verified');
 
+Route::resource('/penetapan_lelang', PenetapanLelangController::class)->middleware('verified');
+
+Route::resource('/risalah', RisalahController::class)->middleware('verified');
+
+Route::resource('/barang_lelang', BarangLelangController::class)->middleware('verified');
 
 Route::post('/test', function(Request $request) {
     //
@@ -119,7 +130,6 @@ Route::controller(kinerja::class)->group(function(){
     
 });
 
-
 Route::controller(chart::class)->group(function(){
     Route::POST('/NKO', 'NKO')->middleware('verified');
     Route::POST('/PNBPPKN', 'PNBPPKN')->middleware('verified');
@@ -127,6 +137,14 @@ Route::controller(chart::class)->group(function(){
     Route::POST('/PNBPPPN', 'PNBPPPN')->middleware('verified');
     Route::POST('/kepuasanPelanggan', 'kepuasanPelanggan')->middleware('verified');
 });
+
+Route::controller(SuratPersetujuanController::class)->group(function(){
+    Route::get('potensi_lelang', 'potensi')->middleware('verified');
+    Route::get('potensi_lelang/{potensi_lelang}', 'show')->middleware('verified');
+});
+
+
+Route::resource('/permohonan_lelang', PermohonanLelangController::class)->middleware('verified');
 
 
 Route::resource('/survey', KepuasanPelangganController::class);

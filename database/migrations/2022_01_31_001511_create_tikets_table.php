@@ -16,6 +16,7 @@ class CreateTiketsTable extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('tiket');
+            $table->string('nomorhp');
             $table->boolean('permohonan')->default(0);
             $table->boolean('penilaian')->default(0);
             $table->boolean('persetujuan')->default(0);

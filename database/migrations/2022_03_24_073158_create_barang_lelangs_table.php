@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermohonanLelangsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePermohonanLelangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permohonan_lelangs', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('surat_persetujuan_id');
-            $table->string('nomorSurat');
-            $table->date('tanggalSurat');
-            $table->date('tanggalDiTerima');
+        Schema::create('barang_lelangs', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->uuid('risalah_id');
+            $table->uuid('barang_id');
+            $table->integer('status');
             $table->timestamps();
+            $table->unique(['barang_id', 'risalah_id']);
         });
     }
 
@@ -30,6 +30,6 @@ class CreatePermohonanLelangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permohonan_lelangs');
+        Schema::dropIfExists('barang_lelangs');
     }
-}
+};

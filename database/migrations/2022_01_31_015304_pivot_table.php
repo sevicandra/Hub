@@ -18,7 +18,13 @@ class PivotTable extends Migration
             $table->uuid('user_id');
             $table->uuid('permohonan_penilaian_id');
             $table->timestamps();
-            // $table->primary(['user_id', 'permohonan_penilaian_id']);
+            // $table->primary(['permohonan_penilaian_id', 'user_id']);
+        });
+        Schema::create('barang_permohonan_lelang', function (Blueprint $table) {
+            $table->uuid('barang_id');
+            $table->uuid('permohonan_lelang_id');
+            $table->timestamps();
+            $table->primary(['barang_id', 'permohonan_lelang_id']);
         });
     }
 
@@ -29,9 +35,8 @@ class PivotTable extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('barang_laporan_penilaian');
-        Schema::dropIfExists('laporan_penilaian_penyampaian_laporan');
         Schema::dropIfExists('permohonan_penilaian_user');
+        Schema::dropIfExists('barang_permohonan_lelang');
+        
     }
 }

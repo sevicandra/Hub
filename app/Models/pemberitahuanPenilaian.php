@@ -26,6 +26,8 @@ class pemberitahuanPenilaian extends Model
     protected $fillable = [
         'nomorSurat',
         'tanggalSurat',
+        'tanggalMulaiSurvei',
+        'tanggalSelesaiSurvei',
         'permohonan_penilaian_id',
     ];
 }

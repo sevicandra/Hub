@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\pnbp;
-use App\Models\capaianPnbp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

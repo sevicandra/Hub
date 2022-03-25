@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\risalah;
+use Illuminate\Http\Request;
+use App\Models\penetapanLelang;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StorerisalahRequest;
 use App\Http\Requests\UpdaterisalahRequest;
 
@@ -31,12 +34,23 @@ class RisalahController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorerisalahRequest  $request
+     * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorerisalahRequest $request)
+    public function store(Request $request)
     {
-        //
+        if (penetapanLelang::find($request->id)->status != 1) {
+            $validatedData=$request->validate([
+                'nomor'=>'required',
+                'tanggal'=>'required',
+                'nilaiPokok'=>'required|numeric',
+                'penetapan_lelang_id'=>'required'
+            ]);
+            risalah::create($validatedData);
+            return redirect::back();    
+        }else{
+            abort(403);
+        }       
     }
 
     /**
@@ -47,7 +61,10 @@ class RisalahController extends Controller
      */
     public function show(risalah $risalah)
     {
-        //
+        $barang = $risalah->barang;
+        $status = $risalah->barangLelang;
+
+        return json_encode(['barang'=>$barang, 'status'=>$status]);
     }
 
     /**
@@ -81,6 +98,10 @@ class RisalahController extends Controller
      */
     public function destroy(risalah $risalah)
     {
-        //
+        if (!$risalah->barangLelang->first()) {
+            return $risalah;
+        }else{
+            abort(403);
+        }
     }
 }

@@ -33,5 +33,6 @@ class permohonan extends Model
         'pemohon',
         'tanggalSurat',
         'tanggalDiTerima',
+        'nomorhp'
     ];
 }
