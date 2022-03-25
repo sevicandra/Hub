@@ -39,7 +39,7 @@ class RisalahController extends Controller
      */
     public function store(Request $request)
     {
-        if (penetapanLelang::find($request->id)->status != 1) {
+        if (penetapanLelang::find($request->penetapan_lelang_id)->status != 1) {
             $validatedData=$request->validate([
                 'nomor'=>'required',
                 'tanggal'=>'required',
