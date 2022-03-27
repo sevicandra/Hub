@@ -97,7 +97,7 @@ Route::resource('/risalah', RisalahController::class)->middleware('verified');
 Route::resource('/barang_lelang', BarangLelangController::class)->middleware('verified');
 
 Route::controller(cetakDokumen::class)->group(function(){
-    Route::post('/cetak', 'cetakPermohonanSKSTPenilai')->middleware('verified');
+    Route::post('/cetak', 'cetak')->middleware('verified');
 });
 
 Route::controller(backController::class)->group(function(){
