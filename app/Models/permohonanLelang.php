@@ -24,8 +24,11 @@ class permohonanLelang extends Model
     public function barang(){
         return $this->belongsToMany(barang::class);
     }
+
+
     protected $fillable = [
         'nomorSurat',
+        'hal',
         'tanggalSurat',
         'tanggalDiTerima',
         'surat_persetujuan_id',

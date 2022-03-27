@@ -23,5 +23,6 @@ class suratPersetujuan extends Model
         'nomorSurat',
         'tanggalSurat',
         'penyampaian_laporan_id',
+        'hal'
     ];
 }

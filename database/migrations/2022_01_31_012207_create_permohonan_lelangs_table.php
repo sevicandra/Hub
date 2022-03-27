@@ -17,6 +17,7 @@ class CreatePermohonanLelangsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('surat_persetujuan_id');
             $table->string('nomorSurat');
+            $table->string('hal');
             $table->date('tanggalSurat');
             $table->date('tanggalDiTerima');
             $table->timestamps();

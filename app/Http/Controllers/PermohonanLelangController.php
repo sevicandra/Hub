@@ -39,6 +39,7 @@ class PermohonanLelangController extends Controller
     {
         $validatedData=$request->validate([
             'nomorSurat'=>'required',
+            'hal'=>'required',
             'tanggalSurat'=>'required',
             'tanggalDiTerima'=>'required',
             'surat_persetujuan_id'=>'required',

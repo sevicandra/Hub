@@ -52,6 +52,7 @@ class SuratPersetujuanController extends Controller
         if (!isset($key)) {
             $ValidatedData=$request->validate([
                 'nomorSurat'=>'required',
+                'hal'=>'required',
                 'tanggalSurat'=>'required',
                 'penyampaian_laporan_id'=>'required',
             ]);

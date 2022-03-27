@@ -2,10 +2,7 @@
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\chart;
-use App\Models\laporanPenilaian;
-use App\Models\suratPersetujuan;
 use App\Http\Controllers\kinerja;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cetakDokumen;
@@ -99,11 +96,6 @@ Route::resource('/risalah', RisalahController::class)->middleware('verified');
 
 Route::resource('/barang_lelang', BarangLelangController::class)->middleware('verified');
 
-Route::post('/test', function(Request $request) {
-    //
-    return $request;
-});
-
 Route::controller(cetakDokumen::class)->group(function(){
     Route::post('/cetak', 'cetakPermohonanSKSTPenilai')->middleware('verified');
 });
@@ -116,9 +108,6 @@ Route::controller(backController::class)->group(function(){
     Route::post('/penetapanLimit', 'penetapanLimit')->middleware('verified');      
 });
 
-Route::get('/test', function() {
-    return view('praktisCapaian');
-});
 
 Route::controller(kinerja::class)->group(function(){
     Route::post('/inputTarget', 'inputTarget')->middleware('verified');

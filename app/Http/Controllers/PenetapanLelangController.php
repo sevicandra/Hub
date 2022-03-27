@@ -49,6 +49,26 @@ class PenetapanLelangController extends Controller
                 'permohonan_lelang_id'=>'required'
             ]);
             penetapanLelang::create($validatedData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
             return redirect::back();
         }else{
             abort(403);

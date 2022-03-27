@@ -72,7 +72,12 @@
                                             Rp{{number_format($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->sum('nilaiLimit'), 2, ',', '.')}}  
                                         </td>
                                         <td style="max-width: 100px">
-                                            <form action="potensi_lelang/{{$item->id}}" method="get">
+                                            <form action="/cetak" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="text" value="{{ $item->id }}" required hidden name="surat_persetujuan_id">
+                                                <button type="submit" class="btn" name="action" value="potensiLelang"><i class="bi bi-cloud-download"></i></button>
+                                            </form>
+                                            <form class="d-inline" action="potensi_lelang/{{$item->id}}" method="get">
                                                 <button type="submit" class="btn " style="color: green"><i class="bi bi-plus-square"></i></button>
                                             </form>
                                         </td>

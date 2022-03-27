@@ -29,6 +29,7 @@ class permohonan extends Model
 
     protected $fillable = [
         'nomorSurat',
+        'hal',
         'tiket_id',
         'pemohon',
         'tanggalSurat',

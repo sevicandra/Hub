@@ -17,10 +17,10 @@ class CreateTiketsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('tiket');
             $table->string('nomorhp');
-            $table->boolean('permohonan')->default(0);
-            $table->boolean('penilaian')->default(0);
-            $table->boolean('persetujuan')->default(0);
-            $table->boolean('lelang')->default(0);
+            $table->enum('permohonan',['0', '1'])->default(0);
+            $table->enum('penilaian',['0', '1'])->default(0);
+            $table->enum('persetujuan',['0', '1'])->default(0);
+            $table->enum('lelang',['0', '1'])->default(0);
             $table->timestamps();
         });
     }

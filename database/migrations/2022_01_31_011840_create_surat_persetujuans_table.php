@@ -17,6 +17,7 @@ class CreateSuratPersetujuansTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('penyampaian_laporan_id');
             $table->string('nomorSurat');
+            $table->string('hal');
             $table->date('tanggalSurat');
             $table->timestamps();
         });

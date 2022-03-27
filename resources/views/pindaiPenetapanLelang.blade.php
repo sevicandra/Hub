@@ -70,6 +70,11 @@
                                     <td>{{$item->tanggalLelang}}</td>
                                     <td>{{$item->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker}}</td>
                                     <td style="max-width: 100px">
+                                        <form action="/cetak" method="POST" class="d-inline">
+                                            @csrf
+                                            <input type="text" value="{{ $item->id }}" required hidden name="penetapan_lelang_id">
+                                            <button type="submit" class="btn" name="action" value="salinanRisalah"><i class="bi bi-cloud-download"></i></button>
+                                        </form>
                                         <form action="/penetapan_lelang/{{$item->id}}" method="GET">
                                             <button type="submit" class="btn" style="color:green"><i class="bi bi-eye-fill"></i></button>
                                         </form>

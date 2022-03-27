@@ -81,7 +81,11 @@
                                             </form>
                                         @endif
                                         @if ($item->tiket->permohonan === 1 && isset($item->barang[0]))
-                                            <button class="btn d-inline" style="color: blue"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
+                                            <form action="/cetak" method="POST" class="d-inline">
+                                                @csrf
+                                                <input type="text" value="{{ $item->id }}" required hidden name="permohonan_id">
+                                                <button type="submit" class="btn" name="action" value="permohonanPenilaian"><i class="bi bi-cloud-download"></i></button>
+                                            </form>
                                             <button onClick="permohonanPenilaian('{{$item->id}}')" type="button" class="btn d-inline" data-bs-toggle="modal" data-bs-target="#permohonanPenilaian"><i class="bi bi-send-fill"></i></button>
                                         @endif
                                     </td>
@@ -100,7 +104,7 @@
         </div>
     </div>
 </div>
-
+{{--  Modals Permohonan  --}}
 <div class="modal fade" id="permohonan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -115,6 +119,12 @@
                             <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
                             <div class="col-sm-8">
                                 <input name="nomorSurat" class="form-control" type="text" required value="{{old('nomorSurat')}}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="hal" class="col-sm-4 col-form-label">hal</label>
+                            <div class="col-sm-8">
+                                <input name="hal" class="form-control" type="text" required value="{{old('hal')}}">
                             </div>
                         </div>
                         @error('nomorSurat')
@@ -177,7 +187,9 @@
         </div>
     </div>
 </div>
+{{--  End Of Modals Permohonan  --}}
 
+{{--  Modals Permohonan Penilaian  --}}
 <div class="modal fade" id="permohonanPenilaian" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -216,7 +228,7 @@
         </div>
     </div>
 </div>
-
+{{--  End Of Modals Permohonan Penilaian  --}}
 
 @endsection
 

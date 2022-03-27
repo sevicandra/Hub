@@ -34,13 +34,14 @@
                                                 <td>{{$item->nomorSurat}}</td>
                                                 <td>{{$item->tanggalSurat}}</td>
                                                 <td>{{$item->tanggalDiTerima}}</td>
-                                                <td style="max-width: 50px">
+                                                <td style="max-width: 200px">
                                                     @if (!$item->penetapanLelang)
-                                                        <button onClick="updateBarang('{{$item->id}}')" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#inputBarang"><i class="bi bi-plus-square"></i></button>
+                                                        <button  onClick="updateBarang('{{$item->id}}')" class="btn btn-success d-inline" data-bs-toggle="modal" data-bs-target="#inputBarang"><i class="bi bi-plus-square"></i></button>
                                                         @if ($item->barang->first())
-                                                            <button onClick="penetapan('{{$item->id}}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#penetapan"><i class="bi bi-send-check"></i></i></button>
+                                                            <button onclick="downloadPenetapanInput('{{$item->id}}')" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#downloadPenetapan"><i class="bi bi-cloud-download-fill"></i></button>
+                                                            <button onClick="penetapan('{{$item->id}}')" class="btn btn-primary d-inline" data-bs-toggle="modal" data-bs-target="#penetapan"><i class="bi bi-send-check"></i></i></button>
                                                         @else
-                                                            <form action="/permohonan_lelang/{{$item->id}}" method="POST">
+                                                            <form class="d-inline" action="/permohonan_lelang/{{$item->id}}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button class="btn btn-danger" ><i class="bi bi-trash"></i></button>
@@ -105,6 +106,12 @@
                                     <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
                                     <div class="col-sm-8">
                                         <input name="nomorSurat" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label for="hal" class="col-sm-4 col-form-label">Hal</label>
+                                    <div class="col-sm-8">
+                                        <input name="hal" class="form-control" type="text" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -204,9 +211,8 @@
                                         <input name="tanggalLelang" type="date" class="form-control" required>
                                     </div>
                                 </div>
-                                    <div>
-                                        <button value="{{$data->id}}" type="submit" class="btn btn-primary" id="penetapanButton" name="permohonan_lelang_id">Simpan</button>
-                                    </div>
+                                <div>
+                                    <button value="{{$data->id}}" type="submit" class="btn btn-primary" id="penetapanButton" name="permohonan_lelang_id">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -215,6 +221,34 @@
             </div>
         </div>
     {{-- Akhir Modals penetapan  --}}
+    {{--  Modals Download Penetapan  --}}
+        <div class="modal fade" id="downloadPenetapan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <label for="jenisLelang" class="col-sm-4 col-form-label">Jenis Lelang</label>
+                            <select id="jenisLelang" class="form-control">
+                                <option hidden></option>
+                                <option value="OB">Open Bidding</option>
+                                <option value="CB">Closed Bidding</option>
+                            </select>
+                            <form action="/cetak" method="POST">
+                                @csrf
+                                <input name="permohonan_lelang_id" id="downloadPenetapanInput" type="text" value="" hidden>
+                                <div id="downloadPenetapanContainer">
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{--  End Of Modals Download Penetapan  --}}
 @endsection
 
 @section('foot')

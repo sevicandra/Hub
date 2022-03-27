@@ -19,7 +19,7 @@ class CreatePenetapanLelangsTable extends Migration
             $table->string('nomorSurat');
             $table->date('tanggalSurat');
             $table->date('tanggalLelang');
-            $table->integer('status')->default(0);
+            $table->enum('status', ['0', '1'])->default(0);
             $table->timestamps();
         });
     }

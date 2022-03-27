@@ -84,3 +84,50 @@ function barangLelang(val){
 function kirimRisalah(val) {
     $("#formKirimRisalah").attr("action", "/penetapan_lelang/"+val);
 }
+
+$('#jenisLelang').change(function () {
+    $('#downloadPenetapanContainer').empty()
+    switch ($(this).val()) {
+        case 'OB':
+            var elementmenit =''
+            for (let index = 0; index <= 59; index++) {
+                if (index <= 9) {
+                    var menit = '0'+index
+                }else{
+                    var menit = index
+                }
+                var elementmenit = elementmenit + '<option value="'+menit+'">'+menit+'</option>';
+            }
+            var jam ='<option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>'
+            var tanggalLelang = '<div class="row"><label for="tanggalLelang" class="col-sm-6 col-form-label">Tanggal Lelang</label><div class="col-sm-6"><input name="tanggalLelang" class="form-control" type="date" required></div></div>'
+            var tanggalPengumuman = '<div class="row"><label for="tanggalPengumuman" class="col-sm-6 col-form-label">Tanggal Pengumuman</label><div class="col-sm-6"><input name="tanggalPengumuman" class="form-control" type="date" required></div></div>'
+            var waktuAwalPenawaran = '<div class="row"><label for="waktuAwalPenawaran" class="col-sm-6 col-form-label">Waktu Awal Penawaran</label><div class="col-sm-6"><select name="jamAwalPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAwalPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
+            var waktuAkhirPenawaran = '<div class="row"><label for="waktuAkhirPenawaran" class="col-sm-6 col-form-label">Waktu Akhir Penawaran</label><div class="col-sm-6"><select name="jamAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
+            var lokasi = '<div class="row"><label for="lokasi" class="col-sm-6 col-form-label">Lokasi Lelang</label><div class="col-sm-6"><textarea name="lokasi" type="text" rows="4" cols="50" class="form-control" required>Kantor Pelayanan Kekayaan Negara dan Lelang Ternate Jalan Yos Sudarso No. 333, Kota Ternate</textarea></div></div>'
+            var button = '<div><button value="penetapanLelangOpen" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button></div>'
+            $('#downloadPenetapanContainer').append(tanggalLelang+tanggalPengumuman+waktuAwalPenawaran+waktuAkhirPenawaran+lokasi+button)
+            break;
+        case 'CB':
+            var elementmenit =''
+            for (let index = 0; index <= 59; index++) {
+                if (index <= 9) {
+                    var menit = '0'+index
+                }else{
+                    var menit = index
+                }
+                var elementmenit = elementmenit + '<option value="'+menit+'">'+menit+'</option>';
+            }
+            var jam ='<option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option>'
+            var tanggalLelang = '<div class="row"><label for="tanggalLelang" class="col-sm-6 col-form-label">Tanggal Lelang</label><div class="col-sm-6"><input name="tanggalLelang" class="form-control" type="date" required></div></div>'
+            var tanggalPengumuman = '<div class="row"><label for="tanggalPengumuman" class="col-sm-6 col-form-label">Tanggal Pengumuman</label><div class="col-sm-6"><input name="tanggalPengumuman" class="form-control" type="date" required></div></div>'
+            var waktuAkhirPenawaran = '<div class="row"><label for="waktuAkhirPenawaran" class="col-sm-6 col-form-label">Waktu Akhir Penawaran</label><div class="col-sm-6"><select name="jamAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
+            var lokasi = '<div class="row"><label for="lokasi" class="col-sm-6 col-form-label">Lokasi Lelang</label><div class="col-sm-6"><textarea name="lokasi" type="text" rows="4" cols="50" class="form-control" required>Kantor Pelayanan Kekayaan Negara dan Lelang Ternate Jalan Yos Sudarso No. 333, Kota Ternate</textarea></div></div>'
+            var button = '<div><button value="penetapanLelangClosed" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button></div>'
+            $('#downloadPenetapanContainer').append(tanggalLelang+tanggalPengumuman+waktuAkhirPenawaran+lokasi+button)
+            break;
+    }
+});
+
+function downloadPenetapanInput(val){
+    $('#downloadPenetapanInput').val(val);
+}

@@ -44,6 +44,7 @@ class PermohonanController extends Controller
         $ValidatedData=$request->validate([
             'nomorhp'=>'required|numeric|digits_between:1,12',
             'nomorSurat'=>'required',
+            'hal'=>'required',
             'tanggalSurat'=>'required',
             'pemohon'=>'required|numeric|digits:6',
             'tanggalDiTerima'=>'required',
@@ -73,6 +74,7 @@ class PermohonanController extends Controller
             
         permohonan::create([
             'nomorSurat'=> $ValidatedData['nomorSurat'],
+            'hal'=> $ValidatedData['hal'],
             'tanggalSurat'=> $ValidatedData['tanggalSurat'],
             'pemohon'=> $ValidatedData['pemohon'],
             'tanggalDiTerima'=> $ValidatedData['tanggalDiTerima'],

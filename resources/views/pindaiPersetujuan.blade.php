@@ -157,6 +157,12 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <label for="hal" class="col-sm-4 col-form-label">Hal</label>
+                                    <div class="col-sm-8">
+                                        <input name="hal" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <label for="tanggalSurat" class="col-sm-4 col-form-label">Tanggal</label>
                                     <div class="col-sm-8">
                                         <input name="tanggalSurat" type="date" class="form-control" required>

@@ -100,7 +100,7 @@ class PermohonanPenilaianController extends Controller
             
             $to=$tiket->nomorhp;//masukkan nomor tujuan
             $message=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-            
+            return $to. $message;
             // Send_SMS($to,$message);
             return redirect('/permohonan');     
         }else{
