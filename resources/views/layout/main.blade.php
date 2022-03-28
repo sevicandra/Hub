@@ -74,6 +74,16 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4">
+                        <a class="text-decoration-none" href="/satker" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly">
+                                Profil Satker
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <hr> 
             {{--  Akhir Modules Apps --}}

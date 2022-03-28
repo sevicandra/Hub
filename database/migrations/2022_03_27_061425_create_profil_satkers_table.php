@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTiketsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateTiketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tikets', function (Blueprint $table) {
+        Schema::create('profil_satkers', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('tiket');
-            $table->enum('permohonan',['0', '1'])->default(0);
-            $table->enum('penilaian',['0', '1'])->default(0);
-            $table->enum('persetujuan',['0', '1'])->default(0);
-            $table->enum('lelang',['0', '1'])->default(0);
+            $table->uuid('satuan_kerja_id');
+            $table->string('alamat');
+            $table->string('namaKepalaSatker');
+            $table->string('noTeleponKepalaSatker');
+            $table->string('namaOperator');
+            $table->string('noTeleponOperator');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateTiketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tikets');
+        Schema::dropIfExists('profil_satkers');
     }
-}
+};

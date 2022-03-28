@@ -154,7 +154,7 @@
                                     </tr>
                                     <?php $i=1 ?>
                                     @foreach ($data->permohonanLelang->barang as $item)
-                                        @if (!$item->barangLelang->first())
+                                        @if (!$item->barangLelang->where('status', '1')->first())
                                             <tr>
                                                 <td>{{$i}}</td>
                                                 <td><input name="barang[]" type="checkbox" value="{{$item->id}}"></td>

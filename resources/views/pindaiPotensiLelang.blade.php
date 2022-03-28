@@ -63,7 +63,13 @@
                                 </tr>
                                 <?php $i=1 ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)  
+                                            @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2)
+                                                style="background-color:yellow"
+                                            @elseif($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')===2)
+                                                style="background-color:green; color:white"
+                                            @endif
+                                        @endif>
                                         <td>{{$i}}</td>
                                         <td>{{$item->nomorSurat}}</td>
                                         <td>{{$item->tanggalSurat}}</td>

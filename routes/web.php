@@ -1,7 +1,9 @@
 <?php
+use App\Models\satuanKerja;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\chart;
+use App\Http\Controllers\satker;
 use App\Http\Controllers\kinerja;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -14,11 +16,11 @@ use App\Http\Controllers\tiketController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
-use App\Http\Controllers\BarangLelangController;
 use App\Http\Controllers\RisalahController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\CapaianPnbpController;
+use App\Http\Controllers\BarangLelangController;
 use App\Http\Controllers\PenetapanLelangController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\PermohonanLelangController;
@@ -132,9 +134,9 @@ Route::controller(SuratPersetujuanController::class)->group(function(){
     Route::get('potensi_lelang/{potensi_lelang}', 'show')->middleware('verified');
 });
 
-
 Route::resource('/permohonan_lelang', PermohonanLelangController::class)->middleware('verified');
 
+Route::resource('/satker', satker::class)->middleware('verified');
 
 Route::resource('/survey', KepuasanPelangganController::class);
 

@@ -64,7 +64,7 @@
                                 </tr>
                                 <?php $i=1 ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr @if ($item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0) style="background-color:green; color:white" @endif>
                                         <td>{{$i}}</td>
                                         <td>{{$item->nomorSurat}}</td>
                                         <td>{{$item->tanggalSurat}}</td>

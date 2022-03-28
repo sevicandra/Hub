@@ -24,7 +24,7 @@ class permohonan extends Model
     }
 
     public function satuanKerja(){
-        return $this->belongsTo(satuanKerja::class, 'pemohon', 'id');
+        return $this->belongsTo(satuanKerja::class, 'pemohon', 'kodeSatker');
     }
 
     protected $fillable = [

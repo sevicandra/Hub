@@ -15,7 +15,6 @@ class tiket extends Model
     }
     protected $fillable = [
         'tiket',
-        'nomorhp',
         'permohonan',
         'penilaian',
         'persetujuan',

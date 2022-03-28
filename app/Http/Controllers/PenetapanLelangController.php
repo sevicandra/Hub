@@ -48,27 +48,23 @@ class PenetapanLelangController extends Controller
                 'tanggalLelang'=>'required',
                 'permohonan_lelang_id'=>'required'
             ]);
-            penetapanLelang::create($validatedData);
+            $penetapanLelang=penetapanLelang::create($validatedData);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
+            $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+            $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
+            $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
 
             
+            return nl2br(
+                "Nomor Tujuan: ". $toOperator. "\n". 
+                "Pesan: ".$messageOperator. "\n". 
+                
+                "Nomor Tujuan: ". $toKaSatker. "\n". 
+                "Pesan: ".$messageKaSatker
+            );
+
+            // Send_SMS($to,$message);
             return redirect::back();
         }else{
             abort(403);
@@ -117,12 +113,13 @@ class PenetapanLelangController extends Controller
                         break;
                     
                     default:
-                    $item->barang->update(['status'=> null]);
+                    $item->barang->update(['status'=> 0]);
                         break;
                 }
             };
             $penetapanLelang->update(['status'=> 1]);
             $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
+            return Redirect::back();
         }else{
             abort(403);
         }

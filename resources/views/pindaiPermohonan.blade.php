@@ -63,7 +63,7 @@
                             </tr>
                             <?php $i=1 ?>
                             @foreach ($data as $item)
-                                <tr onmouseover="bigImg('{{$item->tiket->tiket}}')">
+                                <tr onmouseover="bigImg('{{$item->tiket->tiket}}')" @if ($item->tiket->permohonan === 0) style="background-color:green; color:white" @endif>
                                     <td>{{$i}}</td>
                                     <td>{{$item->nomorSurat}}</td>
                                     <td>{{$item->tanggalSurat}}</td>
@@ -150,17 +150,6 @@
                             </div>
                         </div>
                         @error('pemohon')
-                            <div class="text-danger mt-1">
-                                {{$message}}
-                            </div>
-                        @enderror
-                        <div class="row">
-                            <label for="nomorhp" class="col-sm-4 col-form-label">Nomor HP</label>
-                            <div class="col-sm-8">
-                                <input name="nomorhp" type="text" class="form-control" required value="{{old('nomorhp')}}" placeholder="ext. 08114482333">
-                            </div>
-                        </div>
-                        @error('nomorhp')
                             <div class="text-danger mt-1">
                                 {{$message}}
                             </div>

@@ -154,9 +154,20 @@ class PemberitahuanPenilaianController extends Controller
                 }
             }
 
-            $to = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->nomorhp; //masukkan nomor tujuan
-            $message = nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker . ",\n kami telah menjadwalkan survei lapangan penilaian atas permohonan penghapusan BMN nomor " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->nomorSurat . "  pada tanggal " . $tanggalsurvei . "\n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif"); //masukkan isi pesan
-            return $to. $message;
+            $toOperator = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator; //masukkan nomor tujuan
+            $messageOperator = nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker . ",\n kami telah menjadwalkan survei lapangan penilaian atas permohonan penghapusan BMN nomor " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->nomorSurat . "  pada tanggal " . $tanggalsurvei . "\n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif"); //masukkan isi pesan
+            $toKaSatker = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponKepalaSatker; //masukkan nomor tujuan
+            $messageKaSatker = nl2br("Yang terhormat Bapak/Ibu Kepaa Satuan Kerja " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker . ",\n kami telah menjadwalkan survei lapangan penilaian atas permohonan penghapusan BMN nomor " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->nomorSurat . "  pada tanggal " . $tanggalsurvei . "\n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif"); //masukkan isi pesan
+
+            return nl2br(
+                "Nomor Tujuan: ". $toOperator. "\n". 
+                "Pesan: ".$messageOperator. "\n". 
+                
+                "Nomor Tujuan: ". $toKaSatker. "\n". 
+                "Pesan: ".$messageKaSatker
+            );
+
+
             // Send_SMS($to,$message);
 
             return redirect('/penilaian');

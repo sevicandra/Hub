@@ -14,10 +14,11 @@ class CreateSatuanKerjasTable extends Migration
     public function up()
     {
         // Schema::create('satuan_kerjas', function (Blueprint $table) {
-        //     $table->char('id', 6)->primary;
-        //     $table->char('kementerian_id', 3);
+        //     $table->uuid('id')->primary();
+        //     $table->uuid('kementerian_id');
+        //     $table->decimal('kodeSatker', 6,0)->zerofill();
         //     $table->string('namaSatker');
-        //     $table->string('kodeSatker');
+        //     $table->string('kodeSatkerFull');
         //     $table->timestamps();
         // });
     }

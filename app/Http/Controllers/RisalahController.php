@@ -99,7 +99,8 @@ class RisalahController extends Controller
     public function destroy(risalah $risalah)
     {
         if (!$risalah->barangLelang->first()) {
-            return $risalah;
+            $risalah->delete();
+            return Redirect::back();
         }else{
             abort(403);
         }

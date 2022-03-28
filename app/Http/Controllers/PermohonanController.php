@@ -42,7 +42,6 @@ class PermohonanController extends Controller
     {
         //
         $ValidatedData=$request->validate([
-            'nomorhp'=>'required|numeric|digits_between:1,12',
             'nomorSurat'=>'required',
             'hal'=>'required',
             'tanggalSurat'=>'required',
@@ -67,7 +66,6 @@ class PermohonanController extends Controller
         }
         $tiket .= $tiket_id; 
         $tiketbaru = tiket::create([
-            'nomorhp'=>$ValidatedData['nomorhp'],
             'tiket'=>$tiket,
             'permohonan'=>1,
         ]);

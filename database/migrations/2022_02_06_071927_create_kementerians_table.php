@@ -14,7 +14,8 @@ class CreateKementeriansTable extends Migration
     public function up()
     {
         // Schema::create('kementerians', function (Blueprint $table) {
-        //     $table->char('id', 3)->primary;
+        //     $table->uuid('id')->primary();
+        //     $table->decimal('kodeKementerian', 3,0)->zero();
         //     $table->string('namaKementerian');
         //     $table->timestamps();
         // });

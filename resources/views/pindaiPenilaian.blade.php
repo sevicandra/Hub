@@ -70,7 +70,7 @@
                                 </tr>
                                 <?php $i = 1; ?>
                                 @foreach ($data as $item)
-                                    <tr>
+                                    <tr @if ($item->permohonan->tiket->penilaian === 0) style="background-color:green; color:white" @endif>
                                         <td>{{ $i }}</td>
                                         <td>{{ $item->nomorSurat }}</td>
                                         <td>{{ $item->hal }}</td>
