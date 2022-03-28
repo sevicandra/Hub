@@ -123,6 +123,7 @@ Route::controller(kinerja::class)->group(function(){
 
 Route::controller(chart::class)->group(function(){
     Route::POST('/NKO', 'NKO')->middleware('verified');
+    Route::POST('/NKOTW', 'NKOTW')->middleware('verified');
     Route::POST('/PNBPPKN', 'PNBPPKN')->middleware('verified');
     Route::POST('/PNBPLLG', 'PNBPLLG')->middleware('verified');
     Route::POST('/PNBPPPN', 'PNBPPPN')->middleware('verified');

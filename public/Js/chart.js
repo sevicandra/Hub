@@ -496,7 +496,6 @@ $('#kepuasanTusi').change(function(){
                   tusis:tusi,
         },
         success: function(response){
-            console.log(response);
             const kepuasanPelanggan = document.getElementById('kepuasanPelanggan').getContext('2d');
             const myChart2 = new Chart(kepuasanPelanggan, {
                 type: 'radar',
@@ -545,8 +544,6 @@ $('#kepuasanTusi').change(function(){
         }
     })
 })
-
-
 
 // Table NKO
 function praktis(tahun) {
@@ -627,7 +624,99 @@ function praktis(tahun) {
                     } 
                 },
             });
+            $('#CKO').change(function(){
+                myChart.destroy();
+            })
         }  
     })    
 };
+
+function praktisTW(params) {
+    $.ajax({
+        type: "POST",
+        url:"/NKOTW",
+        dataType: "json",
+        data:{
+            tahun:params[0],
+            triwulan:params[1]
+        },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success:function (response) {
+            var labels=[];
+            var capaian=[];
+            $.each(response.namaIKU, function(res, req){
+                labels.push(req);
+            })
+            $.each(response.capaian, function(res, req){
+                capaian.push(req);
+            })
+            const capaianKinerja = document.getElementById('capaianKinerja');
+            capaianKinerja.height = response.namaIKU.length*50;
+            const myChart = new Chart(capaianKinerja, {
+                type: 'bar',    
+                data : {
+                    labels: labels,
+                    datasets: [{
+                        data: capaian,
+                        fill: false,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                          ],
+                          minBarThickness: 50,
+                          maxBarThickness: 50
+                    }],
+                },
+                options:{
+                    indexAxis: 'y',
+                    layout: {
+                        padding:{
+                            right:20,
+                        },
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,            
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    scales: {
+                        yAxes:{
+                            grid:{
+                                display:false,
+                                borderColor:'#ffffff00',
+                            },
+                            ticks: {
+                                mirror: true
+                              }
+                        },
+                        xAxes:{
+                            grid:{
+                                display:false,
+                                borderColor:'#ffffff00',
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 120,
+                            ticks: {
+                                display:false,
+                            }
+                        },
+                    } 
+                },
+            });
+            $('#CKO').change(function(){
+                myChart.destroy();
+            })
+            myChart.update()
+        }
+    })
+}
 

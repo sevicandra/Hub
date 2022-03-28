@@ -16,13 +16,137 @@ class chart extends Controller
             foreach ($NKO as $data){
                 $namaIKU[]=$data->namaIKU;
                 if ($data->capaianlast) {
-                    $capaian[]=$data->capaianlast->capaian;
+                    if($data->konsolidasi === 'TLK'){
+                        $capaian[]=$data->capaianlast->capaian;
+                    }elseif($data->konsolidasi === 'AVG'){
+                        $capaian[]=$data->capaian->avg('capaian');
+                    }
                 }else{
                     $capaian[]=0;
                 }
     
                 if ($data->targetlast) {
                     $target[]=$data->targetlast->target;
+                    if ($data->polarisasi === 'MAX') {
+                        if (($capaian[$i]/$target[$i]) > 1.2) {
+                            $realisasi[]=120;
+                        }else{
+                            $realisasi[]=($capaian[$i]/$target[$i])*100;
+                        }
+                    }elseif($data->polarisasi === 'MIN'){
+                        if((1+(1-($capaian[$i]/$target[$i]))) > 1.2){
+                            $realisasi[]=120;    
+                        }else{
+                            $realisasi[]=(1+(1-($capaian[$i]/$target[$i])))*100;
+                        }
+                    }
+                }else{
+                    $target[]=null;
+                    $realisasi[]=0;
+                }
+                
+                $i++;
+            }
+            $response['namaIKU']=$namaIKU;
+            $response['capaian']=$realisasi;
+            return json_encode($response);
+        }else{
+            $response['namaIKU']=[];
+            $response['capaian']=[];
+            return json_encode($response);
+        }
+        
+    }
+
+    public function NKOTW(Request $request){
+        $NKO = kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', $request->tahun)->get();
+        if($NKO->first()){
+            $i=0;
+            foreach ($NKO as $data) {
+                $namaIKU[]=$data->namaIKU;
+                if($data->capaian){
+                    switch ($request->triwulan) {
+                        case 'Q1':
+                            if ($data->konsolidasi === 'TLK') {
+                                $capaian[]= $data->capaian->where('bulan', '<=', 3)->max()->capaian;
+                            }elseif($data->konsolidasi === 'AVG'){
+                                $capaian[]= $data->capaian->where('bulan', '<=', 3)->avg('capaian');
+                            }
+                            break;
+                        case 'Q2':
+                            if ($data->konsolidasi === 'TLK') {
+                                $capaian[]= $data->capaian->where('bulan', '<=', 6)->max()->capaian;
+                            }elseif($data->konsolidasi === 'AVG'){
+                                $capaian[]= $data->capaian->where('bulan', '<=', 6)->avg('capaian');
+                            }
+                            break;
+                        case 'Q3':
+                            if ($data->konsolidasi === 'TLK') {
+                                $capaian[]= $data->capaian->where('bulan', '<=', 9)->max()->capaian;
+                            }elseif($data->konsolidasi === 'AVG'){
+                                $capaian[]= $data->capaian->where('bulan', '<=', 9)->avg('capaian');
+                            }
+                            break;
+                        case 'Q4':
+                            if ($data->konsolidasi === 'TLK') {
+                                $capaian[]= $data->capaian->where('bulan', '<=', 12)->max()->capaian;
+                            }elseif($data->konsolidasi === 'AVG'){
+                                $capaian[]= $data->capaian->where('bulan', '<=', 12)->avg('capaian');
+                            }
+                            break;
+                    }
+                }else{
+                    $capaian[]=0;
+                }
+
+                if ($data->target) {
+                    switch ($request->triwulan) {
+                        case 'Q1':
+                            if ($data->target->where('periode','Q1')) {
+                                $target[]= $data->target->where('periode','Q1')->first()->target;
+                            }elseif($data->target->where('periode','Q2')) {
+                                $target[]= $data->target->where('periode','Q2')->first()->target;
+                            }elseif($data->target->where('periode','Q3')) {
+                                $target[]= $data->target->where('periode','Q3')->first()->target;
+                            }elseif($data->target->where('periode','Q4')) {
+                                $target[]= $data->target->where('periode','Q4')->first()->target;
+                            }
+                            break;
+                        case 'Q2':
+                            if($data->target->where('periode','Q2')) {
+                                $target[]= $data->target->where('periode','Q2')->first()->target;
+                            }elseif($data->target->where('periode','Q3')) {
+                                $target[]= $data->target->where('periode','Q3')->first()->target;
+                            }elseif($data->target->where('periode','Q4')) {
+                                $target[]= $data->target->where('periode','Q4')->first()->target;
+                            }elseif($data->target->where('periode','Q1')) {
+                                $target[]= $data->target->where('periode','Q1')->first()->target;
+                            }
+                            break;
+                        case 'Q3':
+                            if($data->target->where('periode','Q3')) {
+                                $target[]= $data->target->where('periode','Q3')->first()->target;
+                            }elseif($data->target->where('periode','Q4')) {
+                                $target[]= $data->target->where('periode','Q4')->first()->target;
+                            }elseif($data->target->where('periode','Q2')) {
+                                $target[]= $data->target->where('periode','Q2')->first()->target;
+                            }elseif($data->target->where('periode','Q1')) {
+                                $target[]= $data->target->where('periode','Q1')->first()->target;
+                            }
+                            break;
+                        case 'Q4':
+                            if($data->target->where('periode','Q4')) {
+                                $target[]= $data->target->where('periode','Q4')->first()->target;
+                            }elseif($data->target->where('periode','Q3')) {
+                                $target[]= $data->target->where('periode','Q3')->first()->target;
+                            }elseif($data->target->where('periode','Q2')) {
+                                $target[]= $data->target->where('periode','Q2')->first()->target;
+                            }elseif($data->target->where('periode','Q1')) {
+                                $target[]= $data->target->where('periode','Q1')->first()->target;
+                            }
+                            break;
+                    }
+                    
                     if ($data->polarisasi === 'MAX') {
                         if (($capaian[$i]/$target[$i]) > 1.2) {
                             $realisasi[]=120;

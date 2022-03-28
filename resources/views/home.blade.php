@@ -40,11 +40,20 @@
                 <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
                     <div style="background-color: #ffff; border-radius: 10px; height: 100%">
                         <div style="height: 10%; text-align: center">
-                            <h2 class="NKO" style="color: #855CF8;">Capaian Kinerja KPKNL Ternate Tahun
-                                {{ session()->get('tahun') }}</h2>
+                            <h2 class="NKO" style="color: #855CF8;" class="d-inline">
+                                Capaian Kinerja KPKNL Ternate Tahun{{ session()->get('tahun') }}
+                            </h2>                        
+                        </div>
+                        <div style="height: 10%; text-align: center">
+                            <select id="CKO" class="form-select">
+                                <option value="Q1">Q1</option>
+                                <option value="Q2">Q2</option>
+                                <option value="Q3">Q3</option>
+                                <option value="Q4" selected>Q4</option>
+                            </select>   
                         </div>
                         <div class="scrollable"
-                            style="height: 90%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                            style="height: 80%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                             <div class="chart-container" style="max-height: 400%;">
                                 <canvas id="capaianKinerja"></canvas>
                             </div>
@@ -979,5 +988,13 @@
         window.onload = function() {
             praktis('{{ session()->get('tahun') }}');
         };
+
+
+        $('#CKO').change(function(){
+            var val=$(this).val()
+            var data =[{{ session()->get('tahun') }}, val];
+            praktisTW(data);
+            
+        })
     </script>
 @endsection
