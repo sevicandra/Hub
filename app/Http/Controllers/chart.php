@@ -102,46 +102,46 @@ class chart extends Controller
                 if ($data->target) {
                     switch ($request->triwulan) {
                         case 'Q1':
-                            if ($data->target->where('periode','Q1')) {
+                            if ($data->target->where('periode','Q1')->first()) {
                                 $target[]= $data->target->where('periode','Q1')->first()->target;
-                            }elseif($data->target->where('periode','Q2')) {
+                            }elseif($data->target->where('periode','Q2')->first()) {
                                 $target[]= $data->target->where('periode','Q2')->first()->target;
-                            }elseif($data->target->where('periode','Q3')) {
+                            }elseif($data->target->where('periode','Q3')->first()) {
                                 $target[]= $data->target->where('periode','Q3')->first()->target;
-                            }elseif($data->target->where('periode','Q4')) {
+                            }elseif($data->target->where('periode','Q4')->first()) {
                                 $target[]= $data->target->where('periode','Q4')->first()->target;
                             }
                             break;
                         case 'Q2':
-                            if($data->target->where('periode','Q2')) {
+                            if($data->target->where('periode','Q2')->first()) {
                                 $target[]= $data->target->where('periode','Q2')->first()->target;
-                            }elseif($data->target->where('periode','Q3')) {
+                            }elseif($data->target->where('periode','Q3')->first()) {
                                 $target[]= $data->target->where('periode','Q3')->first()->target;
-                            }elseif($data->target->where('periode','Q4')) {
+                            }elseif($data->target->where('periode','Q4')->first()) {
                                 $target[]= $data->target->where('periode','Q4')->first()->target;
-                            }elseif($data->target->where('periode','Q1')) {
+                            }elseif($data->target->where('periode','Q1')->first()) {
                                 $target[]= $data->target->where('periode','Q1')->first()->target;
                             }
                             break;
                         case 'Q3':
-                            if($data->target->where('periode','Q3')) {
+                            if($data->target->where('periode','Q3')->first()) {
                                 $target[]= $data->target->where('periode','Q3')->first()->target;
-                            }elseif($data->target->where('periode','Q4')) {
+                            }elseif($data->target->where('periode','Q4')->first()) {
                                 $target[]= $data->target->where('periode','Q4')->first()->target;
-                            }elseif($data->target->where('periode','Q2')) {
+                            }elseif($data->target->where('periode','Q2')->first()) {
                                 $target[]= $data->target->where('periode','Q2')->first()->target;
-                            }elseif($data->target->where('periode','Q1')) {
+                            }elseif($data->target->where('periode','Q1')->first()) {
                                 $target[]= $data->target->where('periode','Q1')->first()->target;
                             }
                             break;
                         case 'Q4':
-                            if($data->target->where('periode','Q4')) {
+                            if($data->target->where('periode','Q4')->first()) {
                                 $target[]= $data->target->where('periode','Q4')->first()->target;
-                            }elseif($data->target->where('periode','Q3')) {
+                            }elseif($data->target->where('periode','Q3')->first()) {
                                 $target[]= $data->target->where('periode','Q3')->first()->target;
-                            }elseif($data->target->where('periode','Q2')) {
+                            }elseif($data->target->where('periode','Q2')->first()) {
                                 $target[]= $data->target->where('periode','Q2')->first()->target;
-                            }elseif($data->target->where('periode','Q1')) {
+                            }elseif($data->target->where('periode','Q1')->first()) {
                                 $target[]= $data->target->where('periode','Q1')->first()->target;
                             }
                             break;
