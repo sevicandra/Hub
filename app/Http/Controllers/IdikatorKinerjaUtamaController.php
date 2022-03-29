@@ -17,7 +17,7 @@ class IdikatorKinerjaUtamaController extends Controller
     public function index()
     {
         
-        return view('praktisHome',[
+        return view('praktis.Home',[
             'data' => idikatorKinerjaUtama::orderBy('kodeIKU')->where('user_id', auth()->user()->id)->where('tahun', session()->get('tahun'))->get(),
             'back'=>'home',
         ]);
@@ -64,7 +64,7 @@ class IdikatorKinerjaUtamaController extends Controller
     public function show(idikatorKinerjaUtama $prakti)
     {
         
-        return view('praktisCapaian',[
+        return view('praktis.Capaian',[
             'data' => $prakti,
             'jenisKinerja'=>'App\Models\idikatorKinerjaUtama',
             'back'=>'praktis'

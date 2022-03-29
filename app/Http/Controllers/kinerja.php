@@ -52,9 +52,10 @@ class kinerja extends Controller
                 $data['jeniskinerja']=$request->jenisKinerja;
                 target::create($data);
             }
-            $request->session()->flash('message', 'Successfully updated!');
-            return redirect($request->session()->get('_previous')['url']);
+            $i++;
         }
+        $request->session()->flash('message', 'Successfully updated!');
+        return redirect($request->session()->get('_previous')['url']);
     }
 
     public function inputCapaian(Request $request){
@@ -71,7 +72,7 @@ class kinerja extends Controller
 
     public function monitoring(){
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            return view('praktisMonitoring', [
+            return view('praktis.Monitoring', [
                 'data'=> User::orderBy('jabatan')->get(),
             ]);
         }else{
@@ -81,7 +82,7 @@ class kinerja extends Controller
 
     public function monitoringindividu(User $monitoring){
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            return view('praktisHome',[
+            return view('praktis.Home',[
                 'data'=>$monitoring->IKU->where('tahun', session()->get('tahun')),
                 'user'=>$monitoring->id,
                 'back'=>'monitoring',
