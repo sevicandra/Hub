@@ -37,15 +37,19 @@ class PermohonanLelangController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData=$request->validate([
-            'nomorSurat'=>'required',
-            'hal'=>'required',
-            'tanggalSurat'=>'required',
-            'tanggalDiTerima'=>'required',
-            'surat_persetujuan_id'=>'required',
-        ]);
-        permohonanLelang::create($validatedData);
-        return redirect::back();
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            $validatedData=$request->validate([
+                'nomorSurat'=>'required',
+                'hal'=>'required',
+                'tanggalSurat'=>'required',
+                'tanggalDiTerima'=>'required',
+                'surat_persetujuan_id'=>'required',
+            ]);
+            permohonanLelang::create($validatedData);
+            return redirect::back();
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -56,7 +60,11 @@ class PermohonanLelangController extends Controller
      */
     public function show(permohonanLelang $permohonanLelang)
     {
-        return json_encode($permohonanLelang->barang) ;
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            return json_encode($permohonanLelang->barang) ;
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -67,10 +75,14 @@ class PermohonanLelangController extends Controller
      */
     public function edit(Request $request, permohonanLelang $permohonanLelang)
     {
-        if (!$permohonanLelang->penetapanLelang) {
-            $permohonanLelang->barang->find($request->barang_id)->update(['status'=> 0]);
-            $permohonanLelang->barang()->detach($request->barang_id);
-            return redirect::back();
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if (!$permohonanLelang->penetapanLelang) {
+                $permohonanLelang->barang->find($request->barang_id)->update(['status'=> 0]);
+                $permohonanLelang->barang()->detach($request->barang_id);
+                return redirect::back();
+            }else{
+                abort(403);
+            }
         }else{
             abort(403);
         }
@@ -85,15 +97,19 @@ class PermohonanLelangController extends Controller
      */
     public function update(Request $request, permohonanLelang $permohonanLelang)
     {
-        if (!$permohonanLelang->penetapanLelang) {
-            foreach($request->barang as $barang){
-                $c=$permohonanLelang->barang->find($barang);
-                if (!isset($c)) {
-                    $permohonanLelang->barang()->attach($barang);
-                    permohonanLelang::find($permohonanLelang->id)->barang->find($barang)->update(['status'=> 1]);
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if (!$permohonanLelang->penetapanLelang) {
+                foreach($request->barang as $barang){
+                    $c=$permohonanLelang->barang->find($barang);
+                    if (!isset($c)) {
+                        $permohonanLelang->barang()->attach($barang);
+                        permohonanLelang::find($permohonanLelang->id)->barang->find($barang)->update(['status'=> 1]);
+                    }
                 }
+                return redirect::back();
+            }else{
+                abort(403);
             }
-            return redirect::back();
         }else{
             abort(403);
         }
@@ -107,11 +123,15 @@ class PermohonanLelangController extends Controller
      */
     public function destroy(permohonanLelang $permohonanLelang)
     {
-        if (!$permohonanLelang->penetapanLelang) {
-            $permohonanLelang->delete();
-            return redirect::back();
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if (!$permohonanLelang->penetapanLelang) {
+                $permohonanLelang->delete();
+                return redirect::back();
+            }else{
+                abort(403);
+            } 
         }else{
             abort(403);
-        } 
+        }
     }
 }

@@ -39,19 +39,23 @@ class BarangLelangController extends Controller
      */
     public function store(Request $request)
     {
-        $i=0;
-        $len = count ($request->barang);
-        while ($i < $len) {
-            if (!risalah::find($request->risalah_id)->penetapanLelang->barangLelang->where('barang_id', $request->barang[$i])->first()) {
-                barangLelang::create([
-                    'risalah_id'=>$request->risalah_id,
-                    'barang_id'=>$request->barang[$i],
-                    'status'=>$request->status[$i],
-                ]);
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            $i=0;
+            $len = count ($request->barang);
+            while ($i < $len) {
+                if (!risalah::find($request->risalah_id)->penetapanLelang->barangLelang->where('barang_id', $request->barang[$i])->first()) {
+                    barangLelang::create([
+                        'risalah_id'=>$request->risalah_id,
+                        'barang_id'=>$request->barang[$i],
+                        'status'=>$request->status[$i],
+                    ]);
+                }
+                $i++;
             }
-            $i++;
+            return redirect::back();
+        }else{
+            abort(403);
         }
-        return redirect::back();
     }
 
     /**
@@ -73,9 +77,13 @@ class BarangLelangController extends Controller
      */
     public function edit(barangLelang $barangLelang)
     {
-        if ($barangLelang->risalah->penetapanLelang->status != 1) {
-            $barangLelang->delete();
-            return redirect::back();
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if ($barangLelang->risalah->penetapanLelang->status != 1) {
+                $barangLelang->delete();
+                return redirect::back();
+            }else{
+                abort(403);
+            }
         }else{
             abort(403);
         }

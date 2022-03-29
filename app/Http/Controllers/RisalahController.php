@@ -39,18 +39,22 @@ class RisalahController extends Controller
      */
     public function store(Request $request)
     {
-        if (penetapanLelang::find($request->penetapan_lelang_id)->status != 1) {
-            $validatedData=$request->validate([
-                'nomor'=>'required',
-                'tanggal'=>'required',
-                'nilaiPokok'=>'required|numeric',
-                'penetapan_lelang_id'=>'required'
-            ]);
-            risalah::create($validatedData);
-            return redirect::back();    
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if (penetapanLelang::find($request->penetapan_lelang_id)->status != 1) {
+                $validatedData=$request->validate([
+                    'nomor'=>'required',
+                    'tanggal'=>'required',
+                    'nilaiPokok'=>'required|numeric',
+                    'penetapan_lelang_id'=>'required'
+                ]);
+                risalah::create($validatedData);
+                return redirect::back();    
+            }else{
+                abort(403);
+            }       
         }else{
             abort(403);
-        }       
+        }
     }
 
     /**
@@ -61,10 +65,14 @@ class RisalahController extends Controller
      */
     public function show(risalah $risalah)
     {
-        $barang = $risalah->barang;
-        $status = $risalah->barangLelang;
-
-        return json_encode(['barang'=>$barang, 'status'=>$status]);
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            $barang = $risalah->barang;
+            $status = $risalah->barangLelang;
+    
+            return json_encode(['barang'=>$barang, 'status'=>$status]);
+        }else{
+            abort(403);
+        }
     }
 
     /**
@@ -98,9 +106,13 @@ class RisalahController extends Controller
      */
     public function destroy(risalah $risalah)
     {
-        if (!$risalah->barangLelang->first()) {
-            $risalah->delete();
-            return Redirect::back();
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
+            if (!$risalah->barangLelang->first()) {
+                $risalah->delete();
+                return Redirect::back();
+            }else{
+                abort(403);
+            }
         }else{
             abort(403);
         }

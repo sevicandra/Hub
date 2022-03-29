@@ -18,7 +18,7 @@ class KinerjaOrganisasiController extends Controller
     public function index()
     {
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            return view('praktisKinerjaOrganisasi',[
+            return view('praktis.KinerjaOrganisasi',[
                 'data' => kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', session()->get('tahun'))->get()
             ]);
         }else{
@@ -69,7 +69,7 @@ class KinerjaOrganisasiController extends Controller
     public function show(kinerjaOrganisasi $kinerjaorganisasi)
     {
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            return view('praktisCapaian',[
+            return view('praktis.Capaian',[
                 'data' => $kinerjaorganisasi,
                 'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
                 'back'=>'kinerjaorganisasi'

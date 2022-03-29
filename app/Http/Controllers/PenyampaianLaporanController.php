@@ -39,18 +39,22 @@ class PenyampaianLaporanController extends Controller
      */
     public function store(Request $request)
     {
-        $key = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->penyampaianLaporan;
-        if (!isset($key)) {
-            $ValidatedData=$request->validate(
-                [
-                    'nomorSurat'=>'required',
-                    'tanggalSurat'=>'required',
-                    'pemberitahuan_penilaian_id'=>'required'
-                ]);
-            $tiket_id = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->permohonanPenilaian->permohonan->tiket;
-            tiket::find($tiket_id->id)->update(['persetujuan'=>1,'penilaian'=>0]);
-            penyampaianLaporan::create($ValidatedData);
-            return redirect('/penilaian');
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
+            $key = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->penyampaianLaporan;
+            if (!isset($key)) {
+                $ValidatedData=$request->validate(
+                    [
+                        'nomorSurat'=>'required',
+                        'tanggalSurat'=>'required',
+                        'pemberitahuan_penilaian_id'=>'required'
+                    ]);
+                $tiket_id = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->permohonanPenilaian->permohonan->tiket;
+                tiket::find($tiket_id->id)->update(['persetujuan'=>1,'penilaian'=>0]);
+                penyampaianLaporan::create($ValidatedData);
+                return redirect('/penilaian');
+            }else{
+                abort(403);
+            }
         }else{
             abort(403);
         }
