@@ -17,14 +17,9 @@ class PenetapanLelangController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            return view('pindai.PenetapanLelang',[
-                'data'=>penetapanLelang::orderBy('created_at', 'desc')->get(),
-                'penetapanLelangview'=>''
-            ]);
-        }else{
-            abort(403);
-        }
+        return view('pindaiPenetapanLelang',[
+            'data'=>penetapanLelang::orderBy('created_at', 'desc')->get()
+        ]);
     }
 
     /**
@@ -45,36 +40,32 @@ class PenetapanLelangController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            $data = permohonanLelang::all()->find($request->permohonan_lelang_id);
-            if (!$data->penetapanLelang) {
-                $validatedData=$request->validate([
-                    'nomorSurat'=>'required',
-                    'tanggalSurat'=>'required',
-                    'tanggalLelang'=>'required',
-                    'permohonan_lelang_id'=>'required'
-                ]);
-                $penetapanLelang=penetapanLelang::create($validatedData);
-    
-                $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-    
+        $data = permohonanLelang::all()->find($request->permohonan_lelang_id);
+        if (!$data->penetapanLelang) {
+            $validatedData=$request->validate([
+                'nomorSurat'=>'required',
+                'tanggalSurat'=>'required',
+                'tanggalLelang'=>'required',
+                'permohonan_lelang_id'=>'required'
+            ]);
+            $penetapanLelang=penetapanLelang::create($validatedData);
+
+            $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
+            $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+            $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
+            $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+
+            
+            return nl2br(
+                "Nomor Tujuan: ". $toOperator. "\n". 
+                "Pesan: ".$messageOperator. "\n". 
                 
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
-                    
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
-    
-                // Send_SMS($to,$message);
-                return redirect::back();
-            }else{
-                abort(403);
-            }
+                "Nomor Tujuan: ". $toKaSatker. "\n". 
+                "Pesan: ".$messageKaSatker
+            );
+
+            // Send_SMS($to,$message);
+            return redirect::back();
         }else{
             abort(403);
         }
@@ -88,13 +79,9 @@ class PenetapanLelangController extends Controller
      */
     public function show(penetapanLelang $penetapanLelang)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            return view('pindai.Risalah',[
-                'data'=>$penetapanLelang
-            ]);
-        }else{
-            abort(403);
-        }
+        return view('pindaiRisalah',[
+            'data'=>$penetapanLelang
+        ]);
     }
 
     /**
@@ -117,26 +104,22 @@ class PenetapanLelangController extends Controller
      */
     public function update(Request $request, penetapanLelang $penetapanLelang)
     {   
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            if ($penetapanLelang->status != 1) {
-                foreach ($penetapanLelang->barangLelang as $item) {
-        
-                    switch ($item->status) {
-                        case 1:
-                            $item->barang->update(['status'=> 2]);
-                            break;
-                        
-                        default:
-                        $item->barang->update(['status'=> 0]);
-                            break;
-                    }
-                };
-                $penetapanLelang->update(['status'=> 1]);
-                $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
-                return Redirect::back();
-            }else{
-                abort(403);
-            }
+        if ($penetapanLelang->status != 1) {
+            foreach ($penetapanLelang->barangLelang as $item) {
+    
+                switch ($item->status) {
+                    case 1:
+                        $item->barang->update(['status'=> 2]);
+                        break;
+                    
+                    default:
+                    $item->barang->update(['status'=> 0]);
+                        break;
+                }
+            };
+            $penetapanLelang->update(['status'=> 1]);
+            $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
+            return Redirect::back();
         }else{
             abort(403);
         }

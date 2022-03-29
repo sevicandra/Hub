@@ -17,26 +17,16 @@ class SuratPersetujuanController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
-            return view('pindai.Persetujuan',[
-                'data'=>penyampaianLaporan::orderBy('created_at', 'desc')->get(),
-                'persetujuanview'=>''
-            ]);
-        }else{
-            abort(403);
-        }
+        return view('pindaiPersetujuan',[
+            'data'=>penyampaianLaporan::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     public function potensi()
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            return view('pindai.PotensiLelang',[
-                'data'=>suratPersetujuan::orderBy('created_at', 'desc')->get(),
-                'potensiLelangview'=>''
-            ]);
-        }else{
-            abort(403);
-        }
+        return view('pindaiPotensiLelang',[
+            'data'=>suratPersetujuan::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -57,45 +47,41 @@ class SuratPersetujuanController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
-            $tiket = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket;
-            $key = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->suratPersetujuan;
-            if (!isset($key)) {
-                $ValidatedData=$request->validate([
-                    'nomorSurat'=>'required',
-                    'hal'=>'required',
-                    'tanggalSurat'=>'required',
-                    'penyampaian_laporan_id'=>'required',
-                ]);
-                suratPersetujuan::create($ValidatedData);
-                tiket::find($tiket->id)->update([
-                    'persetujuan' =>0,
-                    'lelang' => 1,
-                ]);
-    
+        $tiket = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket;
+        $key = penyampaianLaporan::all()->find($request->penyampaian_laporan_id)->suratPersetujuan;
+        if (!isset($key)) {
+            $ValidatedData=$request->validate([
+                'nomorSurat'=>'required',
+                'hal'=>'required',
+                'tanggalSurat'=>'required',
+                'penyampaian_laporan_id'=>'required',
+            ]);
+            suratPersetujuan::create($ValidatedData);
+            tiket::find($tiket->id)->update([
+                'persetujuan' =>0,
+                'lelang' => 1,
+            ]);
+
+            
+            $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;//masukkan nomor tujuan
+            $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
+            $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;//masukkan nomor tujuan
+            $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
+            
+
+
+
+            return nl2br(
+                "Nomor Tujuan: ". $toOperator. "\n". 
+                "Pesan: ".$messageOperator. "\n". 
                 
-                $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;//masukkan nomor tujuan
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;//masukkan nomor tujuan
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                
-    
-    
-    
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
-                    
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
-    
-    
-                // Send_SMS($to,$message);
-                return redirect('/persetujuan');
-            }else{
-                abort(403);
-            }
+                "Nomor Tujuan: ". $toKaSatker. "\n". 
+                "Pesan: ".$messageKaSatker
+            );
+
+
+            // Send_SMS($to,$message);
+            return redirect('/persetujuan');
         }else{
             abort(403);
         }
@@ -109,13 +95,9 @@ class SuratPersetujuanController extends Controller
      */
     public function show(suratPersetujuan $potensi_lelang)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            return view('pindai.PermohonanLelang',[
-                'data'=> $potensi_lelang,
-            ]);
-        }else{
-            abort(403);
-        }
+        return view('pindaiPermohonanLelang',[
+            'data'=> $potensi_lelang,
+        ]);
     }
 
     /**

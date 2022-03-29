@@ -16,14 +16,10 @@ class PermohonanPenilaianController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            return view('pindai.Penilaian',[
-                'data'=>permohonanPenilaian::orderBy('created_at', 'desc')->get(),
-                'penilaianview'=>''
-            ]);
-        }else{
-            abort(403);
-        }
+        //
+        return view('pindaiPenilaian',[
+            'data'=>permohonanPenilaian::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -44,46 +40,42 @@ class PermohonanPenilaianController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
-            $tiket = permohonan::all()->find($request->permohonan_id)->tiket;
-            $key= $tiket->permohonan;
-            if ($key === 1) {
-                $ValidatedData=$request->validate(
-                    [
-                        'nomorSurat'=>'required',
-                        'tanggalSurat'=>'required',
-                        'permohonan_id'=>'required',
-                        'hal'=>'required'
-                    ]);
-                permohonanPenilaian::create($ValidatedData);
-                $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
-                tiket::where('id', $data)->update(['permohonan'=>0,'penilaian'=>1]);
+        $tiket = permohonan::all()->find($request->permohonan_id)->tiket;
+        $key= $tiket->permohonan;
+
+        if ($key === 1) {
+            $ValidatedData=$request->validate(
+                [
+                    'nomorSurat'=>'required',
+                    'tanggalSurat'=>'required',
+                    'permohonan_id'=>'required',
+                    'hal'=>'required'
+                ]);
+            permohonanPenilaian::create($ValidatedData);
+            $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
+            tiket::where('id', $data)->update(['permohonan'=>0,'penilaian'=>1]);
+            
+            $toOperator=$tiket->permohonan->satuanKerja->profil->noTeleponOperator;
+            $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+            $toKaSatker=$tiket->permohonan->satuanKerja->noTeleponKepalaSatker;
+            $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+
+            
+            return nl2br(
+                "Nomor Tujuan: ". $toOperator. "\n". 
+                "Pesan: ".$messageOperator. "\n". 
                 
-                $toOperator=$tiket->permohonan->satuanKerja->profil->noTeleponOperator;
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                $toKaSatker=$tiket->permohonan->satuanKerja->noTeleponKepalaSatker;
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-    
-                
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
-                    
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
-    
-    
-    
-                // Send_SMS($to,$message);
-                return redirect('/permohonan');     
-            }else{
-                abort(403);
-            }
+                "Nomor Tujuan: ". $toKaSatker. "\n". 
+                "Pesan: ".$messageKaSatker
+            );
+
+
+
+            // Send_SMS($to,$message);
+            return redirect('/permohonan');     
         }else{
             abort(403);
         }
-
     }
 
     /**
@@ -94,8 +86,9 @@ class PermohonanPenilaianController extends Controller
      */
     public function show(permohonanPenilaian $penilaian)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            return view('pindai.LaporanPenilaian', [
+        //
+        if (isset($penilaian->pemberitahuanPenilaian)) {
+            return view('pindaiLaporanPenilaian', [
                 'data'=>$penilaian->pemberitahuanPenilaian,
             ]);
         }else{

@@ -36,19 +36,15 @@ class LaporanPenilaianController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            $key=pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
-            if (!isset($key->penyampaianLaporan)) {
-                $ValidatedData=$request->validate([
-                    'nomorLaporan'=>'required',
-                    'tanggalLaporan'=>'required',
-                    'pemberitahuan_penilaian_id'=>'required',
-                ]);
-                laporanPenilaian::create($ValidatedData);
-                return redirect('/penilaian/'. $key->permohonan_penilaian_id);
-            }else{
-                abort(403);
-            }
+        $key=pemberitahuanPenilaian::all()->find($request->pemberitahuan_penilaian_id);
+        if (!isset($key->penyampaianLaporan)) {
+            $ValidatedData=$request->validate([
+                'nomorLaporan'=>'required',
+                'tanggalLaporan'=>'required',
+                'pemberitahuan_penilaian_id'=>'required',
+            ]);
+            laporanPenilaian::create($ValidatedData);
+            return redirect('/penilaian/'. $key->permohonan_penilaian_id);
         }else{
             abort(403);
         }
@@ -62,11 +58,9 @@ class LaporanPenilaianController extends Controller
      */
     public function show(laporanPenilaian $laporanpenilaian)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            return json_encode($laporanpenilaian->barang);
-        }else{
-            abort(403);
-        }
+        //
+
+        return json_encode($laporanpenilaian->barang);
     }
 
     /**
@@ -100,16 +94,12 @@ class LaporanPenilaianController extends Controller
      */
     public function destroy(laporanPenilaian $laporanpenilaian)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            $key = $laporanpenilaian->pemberitahuanPenilaian->penyampaianLaporan;
-            $key2 = $laporanpenilaian->barang->first();
-            if(!isset($key2)){
-                if (!isset($key)) {
-                    $laporanpenilaian->delete();
-                    return redirect('/penilaian/'. $laporanpenilaian->pemberitahuanPenilaian->permohonan_penilaian_id);
-                }else{
-                    abort(403);
-                }
+        $key = $laporanpenilaian->pemberitahuanPenilaian->penyampaianLaporan;
+        $key2 = $laporanpenilaian->barang->first();
+        if(!isset($key2)){
+            if (!isset($key)) {
+                $laporanpenilaian->delete();
+                return redirect('/penilaian/'. $laporanpenilaian->pemberitahuanPenilaian->permohonan_penilaian_id);
             }else{
                 abort(403);
             }

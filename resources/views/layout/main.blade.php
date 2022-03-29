@@ -57,7 +57,7 @@
                     <div class="col-sm-4">
                         <a class="text-decoration-none" href="/pindai" target="_blank">
                             <div class="d-flex justify-content-evenly">
-                                <img src="/img/ico/pindai.png" alt="" width="64px" height="64px">
+                                <img src="" alt="" width="64px" height="64px">
                             </div>
                             <div class="d-flex justify-content-evenly">
                                 Pindai
@@ -67,7 +67,7 @@
                     <div class="col-sm-4">
                         <a class="text-decoration-none" href="/praktis" target="_blank">
                             <div class="d-flex justify-content-evenly">
-                                <img src="/img/ico/praktis.png" alt="" width="64px" height="64px">
+                                <img src="" alt="" width="64px" height="64px">
                             </div>
                             <div class="d-flex justify-content-evenly">
                                 Praktis
@@ -77,7 +77,7 @@
                     <div class="col-sm-4">
                         <a class="text-decoration-none" href="/satker" target="_blank">
                             <div class="d-flex justify-content-evenly">
-                                <img src="/img/ico/profile satker.png" alt="" width="64px" height="64px">
+                                <img src="" alt="" width="64px" height="64px">
                             </div>
                             <div class="d-flex justify-content-evenly">
                                 Profil Satker
@@ -97,7 +97,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/aladin.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     Aladin Vertikal
@@ -117,7 +117,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="http://10.242.77.20/diklat" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/diklat.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     Diklat DJKN
@@ -127,7 +127,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="https://pndjkn.kemenkeu.go.id/" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/Focus PN.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     Focus PN
@@ -137,7 +137,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/kep-96.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     KEP-96
@@ -147,10 +147,20 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none"  href="http://10.122.1.46/MAP" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/map.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     MAP
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-4" style="margin-bottom: 10px">
+                            <a class="text-decoration-none d-block" href="http://10.122.1.46:81/login" target="_blank">
+                                <div class="d-flex justify-content-evenly">
+                                    <img src="" alt="" width="64px" height="64px">
+                                </div>
+                                <div class="d-flex justify-content-evenly">
+                                    Aplikasi Arsip
                                 </div>
                             </a>
                         </div>
@@ -168,7 +178,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/alika.png" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     Alika
@@ -188,7 +198,7 @@
                         <div class="col-sm-4" style="margin-bottom: 10px">
                             <a class="text-decoration-none" href="https://oa.kemenkeu.go.id/" target="_blank">
                                 <div class="d-flex justify-content-evenly">
-                                    <img src="/img/ico/oa.svg" alt="" width="64px" height="64px">
+                                    <img src="" alt="" width="64px" height="64px">
                                 </div>
                                 <div class="d-flex justify-content-evenly">
                                     OA Kemenkeu
@@ -247,4 +257,3 @@
         @show
     </body>
 </html>
-

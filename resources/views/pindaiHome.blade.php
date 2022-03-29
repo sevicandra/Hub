@@ -1,6 +1,15 @@
 
-@extends('layout.pindai')
-    @section('contentpindai')
+@extends('layout.main')
+    @section('content')
+    <div class="container-fluid" style="padding: 30px 37px 9px 37px">
+        <div class="container-fluid" style="border-radius: 10px; background-color:aliceblue; ">
+            <div class="row" style="padding-bottom: 10px">
+                <div class="col-sm-2">
+                    <a href="/permohonan">
+                        <button class="btn btn-primary translate-middle-y" style="width: 100%">Proses Tiket</button>
+                    </a>
+                </div>
+            </div>
             <div class="row">
                 <div class="container">
                     <div class="row">
@@ -87,6 +96,6 @@
                     </div>
                 </div>
             </div>
-   
+        </div>
+    </div>
     @endsection
-

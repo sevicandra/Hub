@@ -37,32 +37,36 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
-            $key= permohonan::all()->find($request->permohonan_id)->tiket->permohonan;
-            if ($key === 1) {
-                $ValidatedData=$request->validate(
-                    [
-                        'kodeBarang'=>'required',
-                        'NUP'=>'required',
-                        'merkType'=>'required',
-                        'tahunPerolehan'=>'required',
-                        'nilaiPerolehan'=>'required',
-                        'permohonan_id'=>'required',
-                        'nomorRangka'=>'',
-                        'nomorPolisi'=>'',
-                        'nomorMesin'=>'',
-                        'keterangan'=>''
-                    ]);
-                barang::create($ValidatedData);
-                $redirect = '/permohonan/';
-                $redirect .= $ValidatedData['permohonan_id'];
-                return redirect($redirect);
-            }else{
-                abort(403);
-            }
+        //
+        $key= permohonan::all()->find($request->permohonan_id)->tiket->permohonan;
+        if ($key === 1) {
+            $ValidatedData=$request->validate(
+                [
+                    'kodeBarang'=>'required',
+                    'NUP'=>'required',
+                    'merkType'=>'required',
+                    'tahunPerolehan'=>'required',
+                    'nilaiPerolehan'=>'required',
+                    'permohonan_id'=>'required',
+                    'nomorRangka'=>'',
+                    'nomorPolisi'=>'',
+                    'nomorMesin'=>'',
+                    'keterangan'=>''
+                ]);
+            barang::create($ValidatedData);
+            $redirect = '/permohonan/';
+            $redirect .= $ValidatedData['permohonan_id'];
+            return redirect($redirect);
         }else{
             abort(403);
         }
+
+
+
+        
+
+
+
     }
 
     /**
@@ -73,8 +77,10 @@ class BarangController extends Controller
      */
     public function show(barang $barang)
     {
-        
-        return view('pindai.Barang');
+        //
+        return view('pindaiBarang');
+
+
 
     }
 
@@ -86,17 +92,13 @@ class BarangController extends Controller
      */
     public function edit(barang $barang)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
-            $laporan = $barang->laporanPenilaian->id;
-            $permohonan = $barang->laporanPenilaian->pemberitahuanPenilaian->permohonanPenilaian->id;
-            barang::find($barang->id)->update([
-                'laporan_penilaian_id'=>null,
-                'nilaiWajar'=>''
-            ]);
-            return redirect('/penilaian/'. $permohonan)->with(['loadData' => $laporan]);
-        }else{
-            abort(403);
-        }
+        $laporan = $barang->laporanPenilaian->id;
+        $permohonan = $barang->laporanPenilaian->pemberitahuanPenilaian->permohonanPenilaian->id;
+        barang::find($barang->id)->update([
+            'laporan_penilaian_id'=>null,
+            'nilaiWajar'=>''
+        ]);
+        return redirect('/penilaian/'. $permohonan)->with(['loadData' => $laporan]);
     }
 
     /**
@@ -119,13 +121,10 @@ class BarangController extends Controller
      */
     public function destroy(barang $barang)
     {
-        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
-            if ($barang->permohonan->tiket->permohonan === 1) {
-                $barang->delete();
-                return redirect('/permohonan/'. $barang->permohonan->id);
-            }else{
-                abort(403);
-            }
+        //
+        if ($barang->permohonan->tiket->permohonan === 1) {
+            $barang->delete();
+            return redirect('/permohonan/'. $barang->permohonan->id);
         }else{
             abort(403);
         }
