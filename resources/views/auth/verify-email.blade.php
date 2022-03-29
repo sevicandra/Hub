@@ -25,7 +25,7 @@
                         </h3>
                     </div>
                     <div style="color:white;height: 15%;text-align: center; background: #595656; margin:0; border-radius: 0 0 20px 20px">
-                        <p style="margin:0">jika belum menerima email silahkan kilk <a href="/email/re-verify">di sini</a> melakukan permohonan pengiriman link aktivasi</p>
+                        <p style="margin:0">jika belum menerima email silahkan kilk <a href="/email/verify">di sini</a> melakukan permohonan pengiriman link aktivasi</p>
                     </div>
                 </div>
             </div>

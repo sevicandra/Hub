@@ -146,10 +146,6 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
-// Permohonan Verifikasi Email Ulang
-Route::get('/email/re-verify', function () {
-    return view('auth.reverify-email');
-})->middleware('auth')->name('verification.notice');
 
 // Verifikasi Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
