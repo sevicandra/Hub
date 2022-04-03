@@ -119,16 +119,6 @@
                         </a> 
                     </div>
                     <div class="col-sm-4" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="http://10.10.1.197/Default.aspx" target="_blank">
-                            <div class="d-flex justify-content-evenly">
-                                <img src="" alt="" width="64px" height="64px">
-                            </div>
-                            <div class="d-flex justify-content-evenly">
-                                Simpeg
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="http://10.242.77.20/diklat" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="" alt="" width="64px" height="64px">
@@ -165,16 +155,6 @@
                             </div>
                             <div class="d-flex justify-content-evenly">
                                 MAP
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
-                        <a class="text-decoration-none d-block" href="http://10.122.1.46:81/login" target="_blank">
-                            <div class="d-flex justify-content-evenly">
-                                <img src="" alt="" width="64px" height="64px">
-                            </div>
-                            <div class="d-flex justify-content-evenly">
-                                Aplikasi Arsip
                             </div>
                         </a>
                     </div>

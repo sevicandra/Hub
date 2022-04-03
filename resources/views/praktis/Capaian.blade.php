@@ -110,7 +110,6 @@
                                             @foreach ($data->capaian as $item)
                                                 <tr>
                                                     <td>
-                                                        <form action="" method="post"></form>
                                                         <form action="/capkin/{{$item->id}}" method="POST">
                                                             @csrf
                                                             <button class="btn" type="submit" style="color: red"><i class="bi bi-x-lg"></i></button>

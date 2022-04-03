@@ -17,10 +17,16 @@ class satker extends Controller
      */
     public function index()
     {
-
+        $data=satuanKerja::orderBy('kodeSatkerFull');
+        if (request('key')) {
+            $data=satuanKerja::where('kodeSatker', 'like', '%'.request('key').'%')->orwhere('namaSatker', 'like', '%'.request('key').'%')->orwherehas('kementerian', function($val){
+                $val->where('namaKementerian', 'like', '%'.request('key').'%');
+            })->orderBy('kodeSatkerFull');
+        }
         return view('satker',[
-            'data'=>satuanKerja::orderBy('kodeSatkerFull')->paginate(15),
-            'kementerian'=>kementerian::orderBy('id')->get()
+            'data'=>$data->paginate(15),
+            'kementerian'=>kementerian::orderBy('id')->get(),
+            'search'=>''
         ]);
     }
 
@@ -42,7 +48,14 @@ class satker extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData=$request->validate([
+            'kementerian_id'=>'required',
+            'namaSatker'=>'required',
+            'kodeSatker'=>'required',
+            'kodeSatkerFull'=>'required'
+        ]);
+        satuanKerja::create($validatedData);
+        return Redirect::back();
     }
 
     /**

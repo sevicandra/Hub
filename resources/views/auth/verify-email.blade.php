@@ -12,20 +12,21 @@
     <body style="background: #BBBABE; max-height:100vh; height:100vh"> 
         <div class="container-fluid">
             <div class="row" style="height: 100vh">
-                <div class="col-sm-4" style="margin:auto; background: #DF9393; padding: 0; border-radius: 20px; height: 40%">
+                <div class="col-sm-4" style="margin:auto; background: #DF9393; padding: 0; border-radius: 20px; min-height: 40%; max-height:fit-content">
                     <div style="height: 15%; text-align: center; background:#595656; border-radius: 20px 20px 0 0; font-family: 'Sedan SC'; font-style: normal; font-weight: 400; font-size: 48px; line-height: 63px; color:white">
                         <h1 style="margin:0">KPKNL TERNATE HUB</h1>
                     </div>
                     <div style="color:white;height: 15%;text-align: center; font-family: 'SimSun'; font-style: normal; font-weight: 400; font-size: 48px; line-height: 63px; margin: 0 12px 24px 12px">
                         <h1>HI, {{auth()->user()->nama}}</h1>
                     </div>
-                    <div style="font-family: 'SimSun'; font-style: normal;color:white;height: 55%;text-align: center; margin: 0 12px">
-                        <h3>
+                    <div style="font-family: 'SimSun'; font-style: normal;color:white;min-height: 55%;max-height:fit-content;text-align: center; margin: 0 12px">
+                        <h3 style="font-size:1vw">
                             Kami telah melangirimkan aktivasi akun pada {{auth()->user()->email}}, silahkan lakukan konfirmasi untuk menggunakan akun anda,
                         </h3>
                     </div>
                     <div style="color:white;height: 15%;text-align: center; background: #595656; margin:0; border-radius: 0 0 20px 20px">
-                        <p style="margin:0">jika belum menerima email silahkan kilk <a href="/email/verify">di sini</a> melakukan permohonan pengiriman link aktivasi</p>
+                        <p style="margin:0">jika belum menerima email silahkan kilk <a href="/email/re-verify">di sini</a> melakukan permohonan pengiriman link aktivasi</p>
+                        {{-- <p style="margin:0">jika belum menerima email silahkan kilk <a href="/email/verify">di sini</a> melakukan permohonan pengiriman link aktivasi</p> --}}
                     </div>
                 </div>
             </div>

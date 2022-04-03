@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tiket;
 use App\Models\barang;
 use App\Models\permohonan;
+use App\Models\satuanKerja;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
@@ -52,37 +53,45 @@ class PermohonanController extends Controller
                 'pemohon'=>'required|numeric|digits:6',
                 'tanggalDiTerima'=>'required',
             ]);
-            $tiket_id=tiket::count();
-            $tiket_id++;
-            $tiket='PKN';
-            if ($tiket_id < 10) {
-                $tiket .= '0000';
-            }elseif ($tiket_id < 100) {
-                $tiket .= '000';
-            }elseif ($tiket_id < 1000) {
-                $tiket .= '000';
-            }elseif ($tiket_id < 10000) {
-                $tiket .= '00';
-            }elseif ($tiket_id < 100000) {
-                $tiket .= '0';
-            }elseif ($tiket_id >= 100000) {
-                $tiket .= '';
+            if (satuanKerja::where('kodeSatker', $ValidatedData['pemohon'])->first())  {
+                if (satuanKerja::where('kodeSatker', $ValidatedData['pemohon'])->first()->profil) {
+                    $tiket_id=tiket::count();
+                    $tiket_id++;
+                    $tiket='PKN';
+                    if ($tiket_id < 10) {
+                        $tiket .= '0000';
+                    }elseif ($tiket_id < 100) {
+                        $tiket .= '000';
+                    }elseif ($tiket_id < 1000) {
+                        $tiket .= '000';
+                    }elseif ($tiket_id < 10000) {
+                        $tiket .= '00';
+                    }elseif ($tiket_id < 100000) {
+                        $tiket .= '0';
+                    }elseif ($tiket_id >= 100000) {
+                        $tiket .= '';
+                    }
+                    $tiket .= $tiket_id; 
+                    $tiketbaru = tiket::create([
+                        'tiket'=>$tiket,
+                        'permohonan'=>1,
+                    ]);
+                        
+                    permohonan::create([
+                        'nomorSurat'=> $ValidatedData['nomorSurat'],
+                        'hal'=> $ValidatedData['hal'],
+                        'tanggalSurat'=> $ValidatedData['tanggalSurat'],
+                        'pemohon'=> $ValidatedData['pemohon'],
+                        'tanggalDiTerima'=> $ValidatedData['tanggalDiTerima'],
+                        'tiket_id'=> $tiketbaru->id,
+                    ]);
+                    return redirect('/permohonan');
+                }else{
+                    return 'Profil Satker Tidak Ditemukan Mohon Lengkapi Profil Satker Terlebih Dahulu';
+                }
+            }else{
+                return 'Data Satker Tidak Ditemukan Mohon Lengkapi Profil Satker Terlebih Dahulu';
             }
-            $tiket .= $tiket_id; 
-            $tiketbaru = tiket::create([
-                'tiket'=>$tiket,
-                'permohonan'=>1,
-            ]);
-                
-            permohonan::create([
-                'nomorSurat'=> $ValidatedData['nomorSurat'],
-                'hal'=> $ValidatedData['hal'],
-                'tanggalSurat'=> $ValidatedData['tanggalSurat'],
-                'pemohon'=> $ValidatedData['pemohon'],
-                'tanggalDiTerima'=> $ValidatedData['tanggalDiTerima'],
-                'tiket_id'=> $tiketbaru->id,
-            ]);
-            return redirect('/permohonan');
         }else{
             abort(403);
         }

@@ -1,5 +1,4 @@
 <?php
-use App\Models\satuanKerja;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\chart;
@@ -30,8 +29,12 @@ use App\Http\Controllers\KinerjaOrganisasiController;
 use App\Http\Controllers\PenyampaianLaporanController;
 use App\Http\Controllers\PermohonanPenilaianController;
 use App\Http\Controllers\IdikatorKinerjaUtamaController;
+use App\Http\Controllers\NominasiBestEmployeeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\PemilihanBestEmployeeController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
+use App\Http\Controllers\RekapitulasiBestEmployeeController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +113,10 @@ Route::controller(backController::class)->group(function(){
     Route::post('/penetapanLimit', 'penetapanLimit')->middleware('verified');      
 });
 
+// Permohonan Verifikasi Email Ulang
+Route::get('/email/re-verify', function () {
+    return view('auth.reverify-email');
+})->middleware('auth')->name('verification.notice');
 
 Route::controller(kinerja::class)->group(function(){
     Route::post('/inputTarget', 'inputTarget')->middleware('verified');
@@ -146,6 +153,10 @@ Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
+// Permohonan Verifikasi Email Ulang
+Route::get('/email/re-verify', function () {
+    return view('auth.reverify-email');
+})->middleware('auth');
 
 // Verifikasi Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
@@ -209,3 +220,20 @@ Route::post('/reset-password', function (Request $request) {
                 ? redirect()->route('login')->with('status', __($status))
                 : back()->withErrors(['email' => [__($status)]]);
 })->middleware('guest')->name('password.update');
+
+Route::get('/test', function (){
+    return view('bestemployee.index');
+});
+
+Route::resource('/best_employee', PemilihanBestEmployeeController::class)->middleware('verified');
+
+Route::controller(PemilihanBestEmployeeController::class)->group(function(){
+    Route::get('/pemilihan_best_employee', 'pemilihan')->middleware('verified');
+
+});
+
+Route::resource('/pilih_best_employee', RekapitulasiBestEmployeeController::class)->middleware('verified');
+
+Route::resource('/nominasiBestEmployee', NominasiBestEmployeeController::class)->middleware('verified');
+
+Route::resource('/user_management', UserManagementController::class)->middleware('verified');

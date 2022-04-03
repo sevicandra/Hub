@@ -2,7 +2,7 @@
 
 @section('head')
     <style>
-        tbody tr:hover {
+        .tablecontent:hover {
             background-color: aqua;
             cursor: pointer
         }
@@ -14,27 +14,30 @@
     <div class="container-fluid" style="padding: 10px 37px 9px 37px; height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="row" style="height: 100%">
-                <div class="col-sm-8 scrollable" style="height: 100%; background-color:#f0f8ff; border-radius:10px;overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
-                    <table style="height: 90%; width: 100%">
-                        <thead style="height: 6.25%">
-                            <tr>
-                                <th style="width:45%" scope="col">Kementerian/Lembaga</th>
-                                <th style="width:45%" scope="col">Satuan Kerja</th>
-                                <th style="width:10%" scope="col">Kode Satker</th>
-                            </tr>
-                        </thead>
-                        <tbody style="height: 93.75%">
+                <div class="col-sm-8" style="height: 100%; background-color:#f0f8ff; border-radius:10px">
+                    <div class="" style="height: 90%; width:100%">
+                        <div class="row" style="height: 45px;text-align:center; width:100%">
+                            <div style="width: 45%">Kementerian/Lembaga</div>
+                            <div style="width: 45%">Satuan Kerja</div>
+                            <div style="width: 10%">Kode Satker</div>
+                        </div>
+                        <div class="scrollable" style="height:90%; width:100%;overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;" >
                             @foreach ($data as $item)
-                                <tr style="height: 6.6666667%" onclick="profil('{{ $item->id }}')">
-                                    <td>{{ $item->kementerian->namaKementerian }}</td>
-                                    <td>{{ $item->namaSatker }}</td>
-                                    <td>{{ $item->kodeSatker }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div style="height: 10%" class="d-flex justify-content-center mt-2">
-                        {{ $data->links() }}
+                            <div class="row tablecontent" style="min-height: 45px;max-height:fit-content; width:100%" onclick="profil('{{ $item->id }}')">
+                                <div style="width: 45%">{{ $item->kementerian->namaKementerian }}</div>
+                                <div style="width: 45%">{{ $item->namaSatker }}</div>
+                                <div style="width: 10%">{{ $item->kodeSatker }}</div>
+                           </div>
+                           @endforeach
+                        </div>
+                    </div>
+                    <div style="height: 10%" class="row ">
+                        <div class="col-sm-8" style="height: 100%">
+                            {{ $data->links() }}
+                        </div>
+                        <div class="col-sm-4 d-flex justify-content-end">
+                            <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#inputSatker" style="font-size: 0.75vw;height:fit-content">Tambah Satuan Kerja</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-4" style="border-radius: 10px; background-color:#f0f8ff48; height:100%">
@@ -97,6 +100,43 @@
             </div>
         </div>
     </div>
+
+{{-- Modals Input Satuan Kerja --}}
+<div class="modal" id="inputSatker" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content " style="border: none; border-radius:10px">
+            <div class="modal-header" style="background-color: ">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form action="/satker" method="POST">
+                        @csrf
+                        <select class="form-select" name="kementerian_id">
+                            <option selected hidden>Nama Kementerian</option>
+                            @foreach ($kementerian as $item)
+                            <option value="{{ $item->id }}">{{ $item->namaKementerian }}</option>
+                            @endforeach
+                        </select>
+                        <input name="namaSatker" type="text" class="form-control" placeholder="nama Satuan Kerja">
+                        <input name="kodeSatker" type="text" class="form-control" placeholder="6 Digit Kode Satker">
+                        <input name="kodeSatkerFull" type="text" class="form-control" placeholder="Kode Satker">
+                        <div>
+                            <div style="margin:auto; width:fit-content">
+                                <button type="submit" class="btn">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Akhir Modals Input Satuan Kerja --}}
+
+
 @endsection
 
 @section('foot')

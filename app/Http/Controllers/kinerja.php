@@ -24,7 +24,7 @@ class kinerja extends Controller
             $i++;
             target::create($data);
         }
-        $request->session()->flash('message', 'Successfully updated!');
+        $request->session::flash('message', 'Successfully updated!');
         return redirect($request->session()->get('_previous')['url']);
     }
 
@@ -54,7 +54,7 @@ class kinerja extends Controller
             }
             $i++;
         }
-        $request->session()->flash('message', 'Successfully updated!');
+        $request->session::flash('message', 'Successfully updated!');
         return redirect($request->session()->get('_previous')['url']);
     }
 
@@ -73,7 +73,7 @@ class kinerja extends Controller
     public function monitoring(){
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktis.Monitoring', [
-                'data'=> User::orderBy('jabatan')->get(),
+                'data'=> User::where('email_verified_at', '!=', null)->orderBy('jabatan')->get(),
             ]);
         }else{
             abort(403);
