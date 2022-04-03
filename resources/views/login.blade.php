@@ -63,29 +63,41 @@
             </div>
             <hr>
             {{--  Akhir Header  --}}
-            {{--  Intranet Apps --}}
-            <div class="row" style="padding-left: 5px">
+            {{-- Intranet Apps --}}
+            <div class="row" style="padding-left: 5px;text-align:center">
                 <h6>INTRANET</h6>
             </div>
             <hr>
             <div class="container-fluid" style="margin-bottom: 10px;">
                 <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/" target="_blank">
+                        <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/"
+                            target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/aladin.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 Aladin Vertikal
                             </div>
-                        </a> 
+                        </a>
+                    </div>
+                    <div class="col-sm-4" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://dianas.djkn.kemenkeu.go.id/"
+                            target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/Dianas.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Dianas
+                            </div>
+                        </a>
                     </div>
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="http://10.242.77.20/diklat" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/diklat.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 Diklat DJKN
                             </div>
                         </a>
@@ -95,37 +107,28 @@
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/Focus PN.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 Focus PN
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-4" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn" target="_blank">
+                        <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn"
+                            target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/kep-96.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center"> 
                                 KEP-96
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
-                        <a class="text-decoration-none"  href="http://10.122.1.46/MAP" target="_blank">
-                            <div class="d-flex justify-content-evenly">
-                                <img src="/img/ico/map.png" alt="" width="64px" height="64px">
-                            </div>
-                            <div class="d-flex justify-content-evenly">
-                                MAP
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
             <hr>
-        {{--  Akhir Intranet Apps --}}
-        {{--  Internet Apps  --}}
-            <div class="row" style="padding-left: 5px">
+            {{-- Akhir Intranet Apps --}}
+            {{-- Internet Apps --}}
+            <div class="row" style="padding-left: 5px;text-align:center">
                 <h6>INTERNET</h6>
             </div>
             <hr>
@@ -136,7 +139,7 @@
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/alika.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 Alika
                             </div>
                         </a>
@@ -144,11 +147,11 @@
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://klc2.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
-                                <img src="/img/ico/klc.png" alt="" width="64px" height="64px" >
+                                <img src="/img/ico/klc.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 KLC
-                            </div>    
+                            </div>
                         </a>
                     </div>
                     <div class="col-sm-4" style="margin-bottom: 10px">
@@ -156,7 +159,7 @@
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/oa.svg" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 OA Kemenkeu
                             </div>
                         </a>
@@ -166,7 +169,7 @@
                             <div class="d-flex justify-content-evenly">
                                 <img class="d-block" src="/img/ico/hris.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 HRIS
                             </div>
                         </a>
@@ -176,14 +179,24 @@
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/eperf.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly">
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 E-Performance
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://jdih.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/JDIH.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                JDIH Kemenkeu
                             </div>
                         </a>
                     </div>
                 </div>
             </div>
-        {{--  Akhir Internet Apps  --}}             
+            {{-- Akhir Internet Apps --}}             
         </div>
     {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}
