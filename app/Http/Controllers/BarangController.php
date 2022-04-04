@@ -74,7 +74,10 @@ class BarangController extends Controller
     public function show(barang $barang)
     {
         
-        return view('pindai.Barang');
+        return view('pindai.Barang',[
+            'title'=> 'TERNATE-HUB || PINDAI',
+            'favicon'=>'/img/ico/pindai.png'
+        ]);
 
     }
 

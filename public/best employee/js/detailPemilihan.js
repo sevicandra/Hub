@@ -30,7 +30,7 @@ function detailPemilihan(params) {
                     }
                 }
                 var i = 1;
-                $.each(response.nominasi, function (res, req) {
+                $.each(_.orderBy(response.nominasi,'total', 'desc'), function (res, req) {
                     if (response.user.jabatan === '11' || response.user.jabatan === '02'|| response.user.jabatan === '01') {
                         var action = '<td><form action="/nominasiBestEmployee/'+req.nominasi_id+'" method="POST"> <input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"><input type="hidden" name="_method" value="DELETE"> <button class="btn" style="color:red"><i class="bi bi-trash3"></i></button> </form> </td>'
                     }else{

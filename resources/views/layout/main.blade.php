@@ -47,7 +47,18 @@
     @section('head')
 
     @show
-    <title>KPKNL TERNATE || HUB</title>
+    <title>
+        @if (isset($title))
+            {{ $title }}
+        @else
+        TERNATE HUB
+        @endif
+    </title>
+    @if (isset($favicon))
+        <link rel="icon" type="image/x-icon" href="{{ $favicon }}">
+    @else
+    <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
+    @endif
 </head>
 
 <body
@@ -116,8 +127,8 @@
         <div class="container-fluid scrollable"
             style="padding:0; max-height:100%; height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             {{-- Modules Apps --}}
-            <div class="row" style="padding-left: 5px; text-align:center">
-                <h6>MODULES</h6>
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">MODULES</h6>
             </div>
             <hr>
             <div class="row">
@@ -200,9 +211,9 @@
             </div>
             <hr>
             {{-- Akhir Modules Apps --}}
-            {{-- Intranet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTRANET</h6>
+            {{-- DJKN Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI DJKN</h6>
             </div>
             <hr>
             <div class="container-fluid" style="margin-bottom: 10px;">
@@ -260,17 +271,6 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <hr>
-            {{-- Akhir Intranet Apps --}}
-            {{-- Internet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTERNET</h6>
-            </div>
-            <hr>
-            <div class="container-fluid">
-                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -281,6 +281,17 @@
                             </div>
                         </a>
                     </div>
+                </div>
+            </div>
+            <hr>
+            {{-- Akhir DJKN Apps --}}
+            {{-- Kementerian Keuangan Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI KEMENTERIAN KEUANGAN</h6>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://klc2.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -331,9 +342,19 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://forms.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/formskemenkeu.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Forms Kemenkeu
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-            {{-- Akhir Internet Apps --}}
+            {{-- Akhir Kementerian Keuangan Apps --}}
         </div>
     </div>
     {{-- Akhir Sidebar --}}

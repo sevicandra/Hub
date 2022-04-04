@@ -39,9 +39,8 @@
                             <button type="button" onClick="nilaiLimit('{{$item->id}}')" class="btn d-inline"
                                 data-bs-toggle="modal" data-bs-target="#penetapanNilai"><i
                                     class="bi bi-activity"></i></button>
-                            @if
-                            ($item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->where('nilaiLimit',
-                            null)->count() === 0 && !isset($item->suratPersetujuan))
+                            @if($item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->where('nilaiLimit',null)->count()
+                            === 0 && !isset($item->suratPersetujuan))
                             <form action="/cetak" method="POST" class="d-inline">
                                 @csrf
                                 <input type="text"

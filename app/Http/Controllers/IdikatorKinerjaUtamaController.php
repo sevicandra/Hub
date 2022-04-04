@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\capaian;
 use Illuminate\Http\Request;
 use App\Models\idikatorKinerjaUtama;
 use App\Http\Requests\StoreidikatorKinerjaUtamaRequest;
@@ -20,6 +21,8 @@ class IdikatorKinerjaUtamaController extends Controller
         return view('praktis.Home',[
             'data' => idikatorKinerjaUtama::orderBy('kodeIKU')->where('user_id', auth()->user()->id)->where('tahun', session()->get('tahun'))->get(),
             'back'=>'home',
+            'title'=> 'TERNATE-HUB || PRAKTIS',
+            'favicon'=>'/img/ico/praktis.png'
         ]);
     }
 
@@ -66,8 +69,11 @@ class IdikatorKinerjaUtamaController extends Controller
         
         return view('praktis.Capaian',[
             'data' => $prakti,
+            'capaian'=>capaian::where('idikator_kinerja_utama_id', $prakti->id)->orderby('bulan', 'asc')->get(),
             'jenisKinerja'=>'App\Models\idikatorKinerjaUtama',
-            'back'=>'praktis'
+            'back'=>'praktis',
+            'title'=> 'TERNATE-HUB || PRAKTIS',
+            'favicon'=>'/img/ico/praktis.png'
         ]);
 
 

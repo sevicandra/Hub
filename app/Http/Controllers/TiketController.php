@@ -22,6 +22,9 @@ class TiketController extends Controller
             'persetujuan'=>tiket::all()->where('persetujuan', '=' , '1'),
             'lelang'=>tiket::all()->where('lelang', '=' , '1'),
             'selesaiLelang'=>tiket::all()->where('permohonan', '=' , '0')->where('penilaian', '=' , '0')->where('persetujuan', '=' , '0')->where('lelang', '=' , '0'),
+            'title'=> 'TERNATE-HUB || PINDAI',
+            'favicon'=>'/img/ico/pindai.png',
+            'tiket'=>''
         ]);
 
         

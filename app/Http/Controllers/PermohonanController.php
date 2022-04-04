@@ -20,7 +20,9 @@ class PermohonanController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
             return view('pindai.Permohonan',[
                 'data'=>permohonan::orderBy('created_at', 'desc')->get(),
-                'permohonanview'=>''
+                'permohonanview'=>'',
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);
@@ -108,6 +110,8 @@ class PermohonanController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
             return view('pindai.Barang',[
                 'data'=>$permohonan,
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);

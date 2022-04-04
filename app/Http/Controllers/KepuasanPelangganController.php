@@ -17,7 +17,9 @@ class KepuasanPelangganController extends Controller
      */
     public function index()
     {
-        return view('survey');
+        return view('survey',[
+            'title'=>'TERNATE-HUB || Survei Kepuasan Pengguna Layanan'
+        ]);
     }
 
     /**

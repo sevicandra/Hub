@@ -107,7 +107,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data->capaian as $item)
+                                            @foreach ($capaian as $item)
                                                 <tr>
                                                     <td>
                                                         <form action="/capkin/{{$item->id}}" method="POST">

@@ -166,13 +166,13 @@
                                                                 if(($realisasi/$target) > 1.2){
                                                                     echo '120 %';
                                                                 }else{
-                                                                    echo ($realisasi/$target)*100 . '%';
+                                                                    echo number_format(($realisasi/$target)*100, 2, ',', '.') . '%';
                                                                 }
                                                             }elseif($item->polarisasi === 'MIN'){
                                                                 if ((1+(1-($realisasi/$target))) > 1.2){
                                                                     echo '120 %';
                                                                 }else{
-                                                                    echo (1+(1-($realisasi/$target)))*100 . '%';
+                                                                    echo number_format((1+(1-($realisasi/$target)))*100, 2, ',', '.') . '%';
                                                                 }
                                                             };
                                                         };

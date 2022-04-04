@@ -21,14 +21,18 @@ class PemilihanBestEmployeeController extends Controller
         return view('bestemployee.index',[
             'data'=>pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
             'nominasi'=>User::where('email_verified_at', '!=', null)->get(),
-            'index'=>''
+            'index'=>'',
+            'title'=> 'Ternate-Hub || Best Employee',
+            'favicon'=>'/img/ico/bestemployee.png'
         ]);
     }
 
     public function pemilihan(){
         return view('bestemployee.survei',[
             'data'=>pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'asc')->orderby('bulan', 'asc')->first(),
-            'pemilihan'=>''
+            'pemilihan'=>'',
+            'title'=> 'Ternate-Hub || Best Employee',
+            'favicon'=>'/img/ico/bestemployee.png'
         ]);
     }
 
@@ -77,7 +81,8 @@ class PemilihanBestEmployeeController extends Controller
             $produktifitasKerja=$key->hasilPemilihan->sum('produktifitasKerja');
             $sikapKerja=$key->hasilPemilihan->sum('sikapKerja');
             $kedisiplinan=$key->hasilPemilihan->sum('kedisiplinan');
-            array_push($nominasi, ['nominasi_id'=>$key->id, 'nama'=>$nama, 'produktifitasKerja'=>$produktifitasKerja,'sikapKerja'=>$sikapKerja, 'kedisiplinan'=>$kedisiplinan, 'total' => $produktifitasKerja+$sikapKerja+$kedisiplinan]);
+            $responden=$key->hasilPemilihan->count();
+            array_push($nominasi, ['nominasi_id'=>$key->id, 'nama'=>$nama, 'produktifitasKerja'=>$produktifitasKerja,'sikapKerja'=>$sikapKerja, 'kedisiplinan'=>$kedisiplinan, 'total' =>number_format(($produktifitasKerja+$sikapKerja+$kedisiplinan)/$responden, 2, ',', '.')]);
         }
         
         return json_encode(['pemilihan'=>$best_employee, 'nominasi'=>$nominasi,'user'=>Auth()->user()]);

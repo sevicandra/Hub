@@ -76,7 +76,7 @@
                         <th style="width: 10%">Produktifitas Kerja</th>
                         <th style="width: 10%">Kedisiplinan</th>
                         <th style="width: 10%">Sikap Kerja</th>
-                        <th style="width: 10%">Total</th>
+                        <th style="width: 10%">Rata-Rata Nilai</th>
                         @if ( auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11' )
                             <th>Action</th>
                         @endif
@@ -195,6 +195,7 @@
 </div>
 {{-- Akhir Modal Input Pemilihan Best Employee --}}
 @endif
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 <script src="best employee/js/main.js"></script>
 <script src="best employee/js/detailPemilihan.js"></script>
 @endsection

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <title>KPKNL TERNATE HUB || LOGIN</title>
+    <title>TERNATE HUB || REGISTER</title>
+    <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
 </head>
-<body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh" >
+<body style="background-image: url('img/login.png'); background-repeat: no-repeat; background-size:contain; background-position:center; max-height:100vh; height:100vh" >
     <div class="container-fluid sticky-top">
         <div class="row" style="padding: 0px 49px 0px 49px">
             <div class="col-sm-12" style="border-radius: 0 0 10px 10px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(240, 248, 255, 0.308)">
@@ -20,74 +21,77 @@
     </div>
     <div class="container-fluid">
         <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
-            <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; min-height:450px; margin:auto 0 auto auto">
-                <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
-                <form action="/register" method="POST">
-                    @csrf
-                    <input type="text" value="{{old('Nama')}}" placeholder="Nama" class="form-control"  required name="Nama">
-                    @error('Nama')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <input type="email" value="{{old('email')}}" placeholder="E-Mail" class="form-control" style="margin-top: 12px" required name="email">
-                    @error('email')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <input type="text" value="{{old('NIP')}}" placeholder="NIP" class="form-control" style="margin-top: 12px" required name="NIP">
-                    @error('NIP')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
-                        <option value=""></option>
-                        <option value="01">Kepala Kantor</option>
-                        <option value="02">Kepala Subbagian Umum</option>
-                        <option value="03">Kepala Seksi Pengelolaan Kekayaan Negara</option>
-                        <option value="04">Kepala Seksi Piutang Negara</option>
-                        <option value="05">Kepala Seksi Hukum dan Informasi</option>
-                        <option value="06">Kepala Seksi Kepatuhan Internal</option>
-                        <option value="07">Fungsional Pelelang Ahli Muda</option>
-                        <option value="08">Fungsional Penilai Pemerintah Ahli Muda</option>
-                        <option value="09">Fungsional Pelelang Ahli Pertama</option>
-                        <option value="10">Fungsional Penilai Pemerintah Ahli Pertama</option>
-                        <option value="11">Pelaksana Subbagian Umum</option>
-                        <option value="12">Pelaksana Seksi Pengelolaan Kekayaan Negara</option>
-                        <option value="13">Pelaksana Seksi Piutang Negara</option>
-                        <option value="14">Pelaksana Seksi Hukum dan Informasi</option>
-                        <option value="15">Pelaskana Seksi Kepatuhan Internal</option>
-                    </select>
-                    @error('jabatan')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
-                        <option value=""></option>
-                        <option value="Pembina / IV.a">Pembina / IV.a</option>
-                        <option value="Penata Tk.I / III.d">Penata Tk.I / III.d</option>
-                        <option value="Penata / III.c">Penata / III.c</option>
-                        <option value="Penata Muda Tk.I / III.b">Penata Muda Tk.I / III.b</option>
-                        <option value="Penata Muda / III.a">Penata Muda / III.a</option>
-                        <option value="Pengatur Tk.I / II.d">Pengatur Tk.I / II.d</option>
-                        <option value="Pengatur / II.c">Pengatur / II.c</option>
-                    </select>
-                    @error('pangkatGolongan')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <input type="password" placeholder="Password" class="form-control" style="margin-top: 12px" required name="password">
-                    @error('password')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                    <button type="submit"  class="form-control btn-primary text-center" style="margin: 12px 0 12px 0;">Register</button>
-                </form>
+            <div class="col-sm-6" style="height: 100%"></div>
+            <div class="col-sm-6 position-relative" style="height: 100%">
+                <div class="form-control shadow-lg border-0 position-absolute top-50 start-50 translate-middle" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:fit-content;border-radius:10px">
+                    <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
+                    <form action="/register" method="POST">
+                        @csrf
+                        <input type="text" value="{{old('Nama')}}" placeholder="Nama" class="form-control"  required name="Nama">
+                        @error('Nama')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <input type="email" value="{{old('email')}}" placeholder="E-Mail" class="form-control" style="margin-top: 12px" required name="email">
+                        @error('email')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <input type="text" value="{{old('NIP')}}" placeholder="NIP" class="form-control" style="margin-top: 12px" required name="NIP">
+                        @error('NIP')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
+                            <option hidden selected>Jabatan</option>
+                            <option value="01">Kepala Kantor</option>
+                            <option value="02">Kepala Subbagian Umum</option>
+                            <option value="03">Kepala Seksi Pengelolaan Kekayaan Negara</option>
+                            <option value="04">Kepala Seksi Piutang Negara</option>
+                            <option value="05">Kepala Seksi Hukum dan Informasi</option>
+                            <option value="06">Kepala Seksi Kepatuhan Internal</option>
+                            <option value="07">Fungsional Pelelang Ahli Muda</option>
+                            <option value="08">Fungsional Penilai Pemerintah Ahli Muda</option>
+                            <option value="09">Fungsional Pelelang Ahli Pertama</option>
+                            <option value="10">Fungsional Penilai Pemerintah Ahli Pertama</option>
+                            <option value="11">Pelaksana Subbagian Umum</option>
+                            <option value="12">Pelaksana Seksi Pengelolaan Kekayaan Negara</option>
+                            <option value="13">Pelaksana Seksi Piutang Negara</option>
+                            <option value="14">Pelaksana Seksi Hukum dan Informasi</option>
+                            <option value="15">Pelaskana Seksi Kepatuhan Internal</option>
+                        </select>
+                        @error('jabatan')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
+                            <option hidden selected>Pangkat/Golongan</option>
+                            <option value="Pembina / IV.a">Pembina / IV.a</option>
+                            <option value="Penata Tk.I / III.d">Penata Tk.I / III.d</option>
+                            <option value="Penata / III.c">Penata / III.c</option>
+                            <option value="Penata Muda Tk.I / III.b">Penata Muda Tk.I / III.b</option>
+                            <option value="Penata Muda / III.a">Penata Muda / III.a</option>
+                            <option value="Pengatur Tk.I / II.d">Pengatur Tk.I / II.d</option>
+                            <option value="Pengatur / II.c">Pengatur / II.c</option>
+                        </select>
+                        @error('pangkatGolongan')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <input type="password" placeholder="Password" class="form-control" style="margin-top: 12px" required name="password">
+                        @error('password')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        <button type="submit"  class="form-control btn-primary text-center" style="margin: 12px 0 12px 0;">Register</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -101,9 +105,9 @@
             </div>
             <hr>
             {{--  Akhir Header  --}}
-            {{-- Intranet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTRANET</h6>
+            {{-- DJKN Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI DJKN</h6>
             </div>
             <hr>
             <div class="container-fluid" style="margin-bottom: 10px;">
@@ -161,17 +165,6 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <hr>
-            {{-- Akhir Intranet Apps --}}
-            {{-- Internet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTERNET</h6>
-            </div>
-            <hr>
-            <div class="container-fluid">
-                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -182,6 +175,17 @@
                             </div>
                         </a>
                     </div>
+                </div>
+            </div>
+            <hr>
+            {{-- Akhir DJKN Apps --}}
+            {{-- Kementerian Keuangan Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI KEMENTERIAN KEUANGAN</h6>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://klc2.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -232,9 +236,19 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://forms.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/formskemenkeu.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Forms Kemenkeu
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-            {{-- Akhir Internet Apps --}}            
+            {{-- Akhir Kementerian Keuangan Apps --}}           
         </div>
     {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}

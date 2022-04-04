@@ -18,15 +18,17 @@ class satker extends Controller
     public function index()
     {
         $data=satuanKerja::orderBy('kodeSatkerFull');
-        if (request('key')) {
-            $data=satuanKerja::where('kodeSatker', 'like', '%'.request('key').'%')->orwhere('namaSatker', 'like', '%'.request('key').'%')->orwherehas('kementerian', function($val){
-                $val->where('namaKementerian', 'like', '%'.request('key').'%');
-            })->orderBy('kodeSatkerFull');
-        }
+        // if (request('key')) {
+        //     $data=satuanKerja::where('kodeSatker', 'like', '%'.request('key').'%')->orwhere('namaSatker', 'like', '%'.request('key').'%')->orwherehas('kementerian', function($val){
+        //         $val->where('namaKementerian', 'like', '%'.request('key').'%');
+        //     })->orderBy('kodeSatkerFull');
+        // }
         return view('satker',[
-            'data'=>$data->paginate(15),
+            'data'=>$data->Search()->paginate(15)->withQueryString(),
             'kementerian'=>kementerian::orderBy('id')->get(),
-            'search'=>''
+            'search'=>'',
+            'title'=> 'TERNATE-HUB || PROFIL SATKER',
+            'favicon'=>'/img/ico/profile satker.png'
         ]);
     }
 

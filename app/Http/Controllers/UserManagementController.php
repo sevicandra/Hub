@@ -11,7 +11,9 @@ class UserManagementController extends Controller
     public function index(){
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
             return view('manajemenUser.index',[
-                'data'=>User::where('email_verified_at', '!=', null)->get()
+                'data'=>User::where('email_verified_at', '!=', null)->get(),
+                'title'=> 'TERNATE-HUB || USER MANAGEMENT',
+                'favicon'=>'/img/ico/usermanagement.png'
             ]);
         }else{
             abort(403);

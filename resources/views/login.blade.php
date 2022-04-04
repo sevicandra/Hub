@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-    <title>KPKNL TERNATE HUB || LOGIN</title>
+    <title>TERNATE HUB || LOGIN</title>
+    <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
 </head>
 <body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh" >
     <div class="container-fluid sticky-top">
@@ -19,38 +20,49 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
-            <div class="form-control shadow-lg border-0" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:450px; margin:auto 0 auto auto">
-                <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
-                <p style="margin-bottom: 24px"></p>
-                    @if (session()->has('LoginErorr'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{session('LoginErorr')}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
-                <form action="/login" method="POST">
-                    @csrf
-                    <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
-                    <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
-                    @if (session()->has('LoginErorr'))
-                    <div>
-                        <p>
-                            forgot Password reset <a href="/forgot-password">here</a>
-                        </p>
-                    </div>
-                    @endif
-                    <select name="tahun" class="form-control" placeholder="Tahun" style="margin-bottom: 12px" required name="tahun">
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                      </select>
-                    <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Login</button>
-                </form>
-
-                <p>Dont have Account? <a href="/register">Register here!</a> </p>
+        <div class="row" style="max-height: 90vh; height:90vh;">
+            <div class="col-sm-6 position-relative" style="height: 100%">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <img class="img-fluid" src="/img/ico/front image.png" alt="" >
+                </div>
+                <div class="position-absolute top-0 start-0">
+                    <img src="/img/ico/ternate hub.png" alt="" style="  max-width: 50%;height: auto;">
+                </div>
             </div>
+            <div class="col-sm-6 position-relative">
+                <div class="form-control shadow-lg border-0 position-absolute top-50 start-50 translate-middle" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; max-height:fit-content;border-radius:10px; min-height:435px">
+                    <h1 style="margin-bottom: 24px; text-align:center; color:white">KPKNL TERNATE HUB</h1>
+                    <p style="margin-bottom: 24px"></p>
+                        @if (session()->has('LoginErorr'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{session('LoginErorr')}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                    <form action="/login" method="POST">
+                        @csrf
+                        <input type="text" placeholder="NIP" class="form-control" style="margin-bottom: 12px" required name="NIP">
+                        <input type="password" placeholder="Password" class="form-control" style="margin-bottom: 12px" required name="password">
+                        @if (session()->has('LoginErorr'))
+                        <div>
+                            <p>
+                                forgot Password reset <a href="/forgot-password">here</a>
+                            </p>
+                        </div>
+                        @endif
+                        <select name="tahun" class="form-control" placeholder="Tahun" style="margin-bottom: 12px" required name="tahun">
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                          </select>
+                        <button type="submit"  class="form-control btn-primary text-center" style="margin-bottom:12px;">Login</button>
+                    </form>
+    
+                    <p>Dont have Account? <a href="/register">Register here!</a> </p>
+                </div>
+            </div>
+
         </div>
     </div>
     {{--  Sidebar  --}}
@@ -63,9 +75,9 @@
             </div>
             <hr>
             {{--  Akhir Header  --}}
-            {{-- Intranet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTRANET</h6>
+            {{-- DJKN Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI DJKN</h6>
             </div>
             <hr>
             <div class="container-fluid" style="margin-bottom: 10px;">
@@ -123,17 +135,6 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <hr>
-            {{-- Akhir Intranet Apps --}}
-            {{-- Internet Apps --}}
-            <div class="row" style="padding-left: 5px;text-align:center">
-                <h6>INTERNET</h6>
-            </div>
-            <hr>
-            <div class="container-fluid">
-                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -144,6 +145,17 @@
                             </div>
                         </a>
                     </div>
+                </div>
+            </div>
+            <hr>
+            {{-- Akhir DJKN Apps --}}
+            {{-- Kementerian Keuangan Apps --}}
+            <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
+                <h6 style="padding:0">APLIKASI KEMENTERIAN KEUANGAN</h6>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="row">
                     <div class="col-sm-4" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://klc2.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -194,9 +206,19 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://forms.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/formskemenkeu.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Forms Kemenkeu
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-            {{-- Akhir Internet Apps --}}             
+            {{-- Akhir Kementerian Keuangan Apps --}}          
         </div>
     {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}

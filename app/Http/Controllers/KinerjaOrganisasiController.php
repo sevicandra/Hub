@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\capaian;
 use Illuminate\Http\Request;
 use App\Models\kinerjaOrganisasi;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StorekinerjaOrganisasiRequest;
 use App\Http\Requests\UpdatekinerjaOrganisasiRequest;
-use Illuminate\Support\Facades\Redirect;
 
 class KinerjaOrganisasiController extends Controller
 {
@@ -19,7 +20,9 @@ class KinerjaOrganisasiController extends Controller
     {
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktis.KinerjaOrganisasi',[
-                'data' => kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', session()->get('tahun'))->get()
+                'data' => kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', session()->get('tahun'))->get(),
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }else{
             abort(403);
@@ -71,8 +74,11 @@ class KinerjaOrganisasiController extends Controller
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktis.Capaian',[
                 'data' => $kinerjaorganisasi,
+                'capaian'=>capaian::where('idikator_kinerja_utama_id', $kinerjaorganisasi->id)->orderby('bulan', 'asc')->get(),
                 'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
-                'back'=>'kinerjaorganisasi'
+                'back'=>'kinerjaorganisasi',
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }else{
             abort(403);

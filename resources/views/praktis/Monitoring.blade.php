@@ -59,10 +59,10 @@
                                         <td>{{$item->NIP}}</td>
                                         <td>{{$item->jabatans->namaJabatan}}</td>
                                         <td>
-                                            @foreach ($item->IKU->where('tahun', session()->get('tahun')) as $item)
-                                                @if ($item->targetlast)
+                                            @foreach ($item->IKU->where('tahun', session()->get('tahun')) as $items)
+                                                {{-- @if ($items->targetlast)
                                                     @php
-                                                        $target=$item->targetlast->target
+                                                        $target=$items->targetlast->target
                                                     @endphp
                                                 @else
                                                     @php
@@ -70,9 +70,9 @@
                                                     @endphp
                                                 @endif
 
-                                                @if ($item->capaianlast)
+                                                @if ($items->capaianlast)
                                                     @php
-                                                        $capaian = $item->capaianlast->capaian
+                                                        $capaian = $items->capaianlast->capaian
                                                     @endphp
                                                 @else
                                                     @php
@@ -83,10 +83,14 @@
                                                     @php
                                                         $realisasi[]= ($capaian/$target)*100
                                                     @endphp
-                                                @endif
+                                                @else
+                                                    @php
+                                                        $realisasi[]=0
+                                                    @endphp
+                                                @endif --}}
                                             @endforeach
                                             @if (isset($realisasi))
-                                                {{array_sum($realisasi)/count($realisasi)}}%
+                                                {{-- {{array_sum($realisasi)/count($realisasi)}}% --}}
                                             @endif
                                         </td>
                                     </tr>

@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="row" style="width: 100%; margin:0; height:10%; padding:0 5px">
-                            <select id="kepuasanTusi" class="form-control" style="height: 90%;">
+                            <select id="kepuasanTusi" class="form-control" style="height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0">
                                 <option style="text-align: center; padding:0" value="ALL">Kantor Pelayanan Kekayaan Negara
                                     dan Lelang Ternate</option>
                                 <option style="text-align: center; padding:0" value="PKN">Pengelolaan Kekayaan Negara
@@ -41,7 +41,7 @@
                     <div style="background-color: #ffff; border-radius: 10px; height: 100%">
                         <div style="height: 10%; text-align: center">
                             <h2 class="NKO" style="color: #855CF8;" class="d-inline">
-                                Capaian Kinerja KPKNL Ternate Tahun{{ session()->get('tahun') }}
+                                Capaian Kinerja KPKNL Ternate Tahun {{ session()->get('tahun') }}
                             </h2>                        
                         </div>
                         <div style="height: 10%; text-align: center">

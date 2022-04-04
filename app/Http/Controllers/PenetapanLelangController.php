@@ -20,7 +20,9 @@ class PenetapanLelangController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             return view('pindai.PenetapanLelang',[
                 'data'=>penetapanLelang::orderBy('created_at', 'desc')->get(),
-                'penetapanLelangview'=>''
+                'penetapanLelangview'=>'',
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);
@@ -90,7 +92,9 @@ class PenetapanLelangController extends Controller
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             return view('pindai.Risalah',[
-                'data'=>$penetapanLelang
+                'data'=>$penetapanLelang,
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);

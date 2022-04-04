@@ -20,7 +20,9 @@ class SuratPersetujuanController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
             return view('pindai.Persetujuan',[
                 'data'=>penyampaianLaporan::orderBy('created_at', 'desc')->get(),
-                'persetujuanview'=>''
+                'persetujuanview'=>'',
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);
@@ -32,7 +34,9 @@ class SuratPersetujuanController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             return view('pindai.PotensiLelang',[
                 'data'=>suratPersetujuan::orderBy('created_at', 'desc')->get(),
-                'potensiLelangview'=>''
+                'potensiLelangview'=>'',
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);
@@ -112,6 +116,8 @@ class SuratPersetujuanController extends Controller
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             return view('pindai.PermohonanLelang',[
                 'data'=> $potensi_lelang,
+                'title'=> 'TERNATE-HUB || PINDAI',
+                'favicon'=>'/img/ico/pindai.png'
             ]);
         }else{
             abort(403);

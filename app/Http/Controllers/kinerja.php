@@ -74,6 +74,8 @@ class kinerja extends Controller
         if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktis.Monitoring', [
                 'data'=> User::where('email_verified_at', '!=', null)->orderBy('jabatan')->get(),
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }else{
             abort(403);
@@ -87,6 +89,8 @@ class kinerja extends Controller
                 'user'=>$monitoring->id,
                 'back'=>'monitoring',
                 'monitoring'=>true,
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }else{
             abort(403);

@@ -60,11 +60,12 @@ class chart extends Controller
 
     public function NKOTW(Request $request){
         $NKO = kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', $request->tahun)->get();
+        
         if($NKO->first()){
             $i=0;
             foreach ($NKO as $data) {
                 $namaIKU[]=$data->namaIKU;
-                if($data->capaian){
+                if($data->capaian->first()){
                     switch ($request->triwulan) {
                         case 'Q1':
                             if ($data->konsolidasi === 'TLK') {
@@ -99,7 +100,8 @@ class chart extends Controller
                     $capaian[]=0;
                 }
 
-                if ($data->target) {
+                if ($data->target->first()) {
+                    
                     switch ($request->triwulan) {
                         case 'Q1':
                             if ($data->target->where('periode','Q1')->first()) {
@@ -167,6 +169,7 @@ class chart extends Controller
                 
                 $i++;
             }
+            
             $response['namaIKU']=$namaIKU;
             $response['capaian']=$realisasi;
             return json_encode($response);
@@ -227,10 +230,5 @@ class chart extends Controller
                 return json_encode($kepuasan);
                 break;
         }
-
-
-
-
-
     }
 }

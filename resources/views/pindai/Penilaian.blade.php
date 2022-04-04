@@ -34,9 +34,11 @@
                         <td></td>
                         @endif
                         <td style="max-width: 100px">
+                            @if (isset($item->pemberitahuanPenilaian))
                             <form class="d-inline" action="penilaian/{{ $item->id }}">
                                 <button type="submit" class="btn"><i class="bi bi-eye-fill"></i></button>
                             </form>
+                            @endif
                             @if (!isset($item->pemberitahuanPenilaian))
                             <button onClick="dowloadusulanSKST('{{ $item->id }}')" type="button" class="btn d-inline"
                                 data-bs-toggle="modal" data-bs-target="#dowloadusulanSKST"><i
