@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\kepuasanPelanggan;
 use App\Http\Requests\StorekepuasanPelangganRequest;
 use App\Http\Requests\UpdatekepuasanPelangganRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class KepuasanPelangganController extends Controller
 {
@@ -46,6 +47,7 @@ class KepuasanPelangganController extends Controller
             'empathy'=>'required',
         ]);
         kepuasanPelanggan::create($validatedData);
+        return Redirect::back();
     }
 
     /**
