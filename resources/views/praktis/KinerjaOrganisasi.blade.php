@@ -55,7 +55,6 @@
                     <div class="row" style="height: 100%; border-radius:10px;">
                         <div class="table table-light table-responsive" style="padding: 0; height: 100%; background-color:aliceblue">
                             <table class="table">
-                                
                                     <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
                                         <th>Kode IKU</th>
                                         <th>Nama IKU</th>
@@ -64,8 +63,6 @@
                                         <th>Capaian</th>
                                         <th>Aksi</th>
                                     </tr>
-                                
-                                
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{$item->kodeIKU}}</td>

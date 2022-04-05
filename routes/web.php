@@ -221,9 +221,6 @@ Route::post('/reset-password', function (Request $request) {
                 : back()->withErrors(['email' => [__($status)]]);
 })->middleware('guest')->name('password.update');
 
-Route::get('/test', function (){
-    return view('bestemployee.index');
-});
 
 Route::resource('/best_employee', PemilihanBestEmployeeController::class)->middleware('verified');
 

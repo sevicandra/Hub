@@ -7,7 +7,7 @@
     <title>TERNATE HUB || REGISTER</title>
     <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
 </head>
-<body style="background-image: url('img/login.png'); background-repeat: no-repeat; background-size:contain; background-position:center; max-height:100vh; height:100vh" >
+<body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh" >
     <div class="container-fluid sticky-top">
         <div class="row" style="padding: 0px 49px 0px 49px">
             <div class="col-sm-12" style="border-radius: 0 0 10px 10px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(240, 248, 255, 0.308)">
@@ -20,11 +20,18 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row" style="padding: 0px 10% 0px 10%;max-height: 90vh; height:90vh;">
-            <div class="col-sm-6" style="height: 100%"></div>
+        <div class="row" style="max-height: 90vh; height:90vh;">
             <div class="col-sm-6 position-relative" style="height: 100%">
-                <div class="form-control shadow-lg border-0 position-absolute top-50 start-50 translate-middle" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; width:435px; height:fit-content;border-radius:10px">
-                    <h1 style="margin-bottom: 24px">KPKNL TERNATE HUB</h1>
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <img class="img-fluid" src="/img/ico/front image.png" alt="" >
+                </div>
+            </div>
+            <div class="col-sm-6 position-relative" style="height: 100%">
+                <div class="form-control shadow-lg border-0 position-absolute top-50 start-50 translate-middle" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; max-width:fit-content; max-height:fit-content;border-radius:10px; min-height:50vh">
+                    <div class="input-group mb-3" style="background: none; border:none">
+                        <span class="input-group-text" id="basic-addon1" style="background: none; border:none; width:50px; padding-left:0; padding-right:0"><img src="/img/ico/ternate hub.png" style="max-width: 50px;height: auto;"></span>
+                        <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; color:white; font-size:2vw; width:auto; margin-bottom:0">KPKNL TERNATE HUB</span>
+                    </div>
                     <form action="/register" method="POST">
                         @csrf
                         <input type="text" value="{{old('Nama')}}" placeholder="Nama" class="form-control"  required name="Nama">
@@ -98,12 +105,15 @@
     {{--  Sidebar  --}}
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0">
             {{--  Header  --}}
-            <div class="offcanvas-header">
+            <div class="offcanvas-header" style="padding-top:0; padding-bottom:0">
                 <a class="text-decoration-none" href="/home">
-                    <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">KPKNL TERNATE HUB</h5>
+                    <div class="input-group" style="background: none; border:none">
+                        <span class="input-group-text" id="basic-addon1" style="background: none; border:none; width:50px; padding-left:0; padding-right:0"><img src="/img/ico/ternate hub.png" style="max-width: 50px;height: auto;"></span>
+                        <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; margin-bottom:0"><h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">KPKNL TERNATE HUB</h5></span>
+                    </div>
                 </a>
             </div>
-            <hr>
+            <hr style="margin-top:0">
             {{--  Akhir Header  --}}
             {{-- DJKN Apps --}}
             <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
@@ -257,6 +267,7 @@
                 <div class="col-sm-12" style="background-color: rgba(240, 248, 255, 0.308); border-radius: 10px 10px 0 0">
                     <div class="row">
                         <div class="col-sm-4">
+                            <img src="/img/ico/ternate hub.png" style="height: 48px">
                             <img src="img/ico/kpknlternate.png" alt="" height="48px">
                         </div>
                         <div class="col-sm-4 d-flex justify-content-center align-items-center">

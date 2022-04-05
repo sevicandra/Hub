@@ -209,6 +209,7 @@
                 <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%">
                     <div style="height: 100%; background-color: #ffff; border-radius: 10px">
                         @if (1)
+                        
                         @else
                             <div style="padding: 0">
                                 <h1>Jumlah Pengunjung</h1>

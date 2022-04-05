@@ -19,7 +19,7 @@ function Send_SMS($to,$text){
         $message     = array("from" => $from,
                              "destinations" => $destination,
                              "text" => $text,
-                             "smsCount" => 2);
+                             "smsCount" => 1);
         $postData           = array("messages" => array($message));
         $postDataJson       = json_encode($postData);
         $ch                 = curl_init();
