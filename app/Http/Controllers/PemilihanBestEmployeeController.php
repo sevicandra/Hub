@@ -54,7 +54,7 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
+        if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
             $validatedData=$request->validate([
                 'bulan'=>'required',
                 'tahun'=>'required',
@@ -82,8 +82,12 @@ class PemilihanBestEmployeeController extends Controller
             $sikapKerja=$key->hasilPemilihan->sum('sikapKerja');
             $kedisiplinan=$key->hasilPemilihan->sum('kedisiplinan');
             $responden=$key->hasilPemilihan->count();
+            if ($responden === 0) {
+                $responden=1;
+            }
             array_push($nominasi, ['nominasi_id'=>$key->id, 'nama'=>$nama, 'produktifitasKerja'=>$produktifitasKerja,'sikapKerja'=>$sikapKerja, 'kedisiplinan'=>$kedisiplinan, 'total' =>number_format(($produktifitasKerja+$sikapKerja+$kedisiplinan)/$responden, 2, ',', '.')]);
         }
+
         
         return json_encode(['pemilihan'=>$best_employee, 'nominasi'=>$nominasi,'user'=>Auth()->user()]);
     }
@@ -108,7 +112,7 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function update(Request $request, pemilihanBestEmployee $best_employee)
     {
-        if (auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
+        if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
             switch ($request->action) {
                 
                 case 'nominasi':

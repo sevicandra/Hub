@@ -82,7 +82,7 @@ class NominasiBestEmployeeController extends Controller
      */
     public function destroy(nominasiBestEmployee $nominasiBestEmployee)
     {
-        if (auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
+        if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
             if ($nominasiBestEmployee->pemilihan->status === '1' ) {
                 $nominasiBestEmployee->delete();
                 return Redirect::back();

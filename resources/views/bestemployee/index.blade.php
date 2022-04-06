@@ -87,7 +87,7 @@
                 </tbody>
             </table>
         </div>
-        <div style="height: 10%"  @if (auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') @else hidden @endif> 
+        <div style="height: 10%"  @if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') @else hidden @endif> 
             <div id="buttonSurvei" style="margin: auto; width:fit-content">
             </div>
         </div>
@@ -97,7 +97,7 @@
 @endsection
 
 @section('footbestemployee')
-@if (auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') 
+@if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') 
 {{-- Modal Input Pemilihan Best Employee --}}
 <div class="modal fade" id="pemilihanBestEmployee" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
