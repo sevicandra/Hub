@@ -9,7 +9,7 @@ use App\Models\capaian;
 use Illuminate\Http\Request;
 use App\Models\kinerjaOrganisasi;
 use App\Models\idikatorKinerjaUtama;
-
+use Illuminate\Support\Facades\Redirect;
 
 class kinerja extends Controller
 {
@@ -101,14 +101,14 @@ class kinerja extends Controller
         if ($capkin->jeniskinerja === 'App\Models\idikatorKinerjaUtama') {
             if ($capkin->IKU->user->id === auth()->user()->id) {
                 $capkin->delete();
-                return redirect('praktis/'. $capkin->IKU->id);
+                return Redirect::back();
             }else{
                 abort(403);
             }
         }elseif($capkin->jeniskinerja === 'App\Models\kinerjaOrganisasi'){
             if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
                 $capkin->delete();
-                return redirect('kinerjaorganisasi/'. $capkin->IKU->id);
+                return Redirect::back();
             }else{
                 abort(403);
             }

@@ -205,29 +205,57 @@
 
                 </div>
                 {{-- Akhir PNBP --}}
-                {{-- Jumlah Pengunjung --}}
+                {{-- Potensi Lelang BMN --}}
                 <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%">
-                    <div style="height: 100%; background-color: #ffff; border-radius: 10px">
-                        @if (1)
-                        
-                        @else
-                            <div style="padding: 0">
-                                <h1>Jumlah Pengunjung</h1>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h2>Tanggal</h2>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <h2>Rata-Rata</h2>
+                    <div style="height: 100%;  border-radius: 10px">
+                        <div style="height: 15%;margin: 0px" class="row position-relative">
+                            <div class="col-sm-12 position-absolute top-0 start-0"
+                                style="text-align: center;border-radius: 10px 10px 0 0; background-color:#3DA4B8; height:100%; border: 1px solid #ffff">
+                                <h2 class="NKO" style="color:#ffff;">Potensi Lelang</h2>
+                            </div>
+                        </div>
+                        <div style="height: 85%;margin: 0px;" class="row position-relative">
+                            <div class="col-sm-12 position-absolute top-0 start-0"
+                                style="text-align: center;border-radius: 0 0 10px 10px ; background-color: #6EE4FA;; height:100%; border: 1px solid #ffff">
+                                <div style="height: 25%">
+                                    <div style="margin:auto; text-align: center">
+                                        <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
+                                            Surat Persetujuan
+                                        </p>
                                     </div>
                                 </div>
+                                <hr style="margin:0">
+                                <div style="height: 45%; ">
+                                    <div style="width:100%; text-align: center">
+                                        <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
+                                            {{ count($persetujuan) }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr style="margin:0">
+                                <div style="height: 15%">
+                                    <div style="margin:auto; text-align: center">
+                                        <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
+                                            Nilai Limit
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr style="margin:0">
+                                <div style="height: 15%; ">
+                                    <div style="margin:auto; text-align: center">
+                                        <p style="color:#ffff;font-size: 1vw; margin:0;line-height: normal">
+                                            Rp{{ number_format(array_sum($limit), 2, ',', '.') }}
+                                            {{-- {{ $potensiLelang['limit'] }} --}}
+                                        </p>
+                                    </div>
+                                </div>                                
                             </div>
-                        @endif
+                        </div>
                     </div>
                 </div>
-                {{-- Akhir Jumlah Pengunjung --}}
+                {{-- Akhir Potensi Lelang BMN --}}
             </div>
-            {{-- AKHIR PNBP dan Jumlah Pengunjung --}}
+            {{-- AKHIR PNBP dan Potensi Lelang BMN --}}
         </div>
         {{-- Agenda --}}
         <div class="col-sm-3" style=" padding-left:4px; max-height: 100%;height: 100%">
@@ -344,7 +372,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="waktu" class="col-sm-4 col-form-label">Tanggal</label>
+                                <label for="waktu" class="col-sm-4 col-form-label">Jam</label>
                                 <div class="col-sm-8">
                                     <input name="waktu" type="time" class="form-control" required>
                                 </div>

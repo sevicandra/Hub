@@ -257,11 +257,11 @@
                                         <div class="row">
                                             <div class="form-check form-check-inline col-sm-6">
                                                 <input class="form-check-input" type="radio" name="polarisasi" id="polarisas1" value="MAX">
-                                                <label class="form-check-label" for="polarisas1">Maximaze</label>
+                                                <label class="form-check-label" for="polarisas1">Maximize</label>
                                             </div>
                                             <div class="form-check form-check-inline col-sm-4">
                                                 <input class="form-check-input" type="radio" name="polarisasi" id="polarisas2" value="MIN">
-                                                <label class="form-check-label" for="polarisas2">Minimaze</label>
+                                                <label class="form-check-label" for="polarisas2">Minimize</label>
                                             </div>
                                         </div>
                                     </div>

@@ -7,7 +7,7 @@
     <title>TERNATE HUB || REGISTER</title>
     <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
 </head>
-<body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh" >
+<body style="background-image: url('img/login.png'); background-repeat: no-repeat; max-height:100vh; height:100vh;background-size: cover" >
     <div class="container-fluid sticky-top">
         <div class="row" style="padding: 0px 49px 0px 49px">
             <div class="col-sm-12" style="border-radius: 0 0 10px 10px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(240, 248, 255, 0.308)">

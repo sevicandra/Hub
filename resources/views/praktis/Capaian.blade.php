@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-sm-6" style="height: 100%; padding: 0px 20px 0px 10px;"> 
                     <div style="height: 100%; background-color:#ffffff; padding:0 10px 0 10px; border-radius:10px">
-                        <form class="row" action="" style="height: 100%">
+                        
                             <div style="height: 90%; overflow-y:hidden">
                                 <div class="row" style="padding-top: 10px">
                                     <table class="table table-responsive">
@@ -169,7 +169,7 @@
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inputCapaian">Input Capaian</button>
                                 </div>
                             @endif
-                        </form>
+                        
                     </div>
                 </div>
             </div>

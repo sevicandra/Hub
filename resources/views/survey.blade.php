@@ -21,6 +21,7 @@
                 background-repeat: no-repeat;
                 background-attachment: fixed;
                 background-position: center;
+                background-size: cover
             }
             .title{
                 font-family: 'Roboto'; font-style: normal; font-weight: 400; font-size: 36px; line-height: 42px; display: flex; align-items: center; color: #FFFFFF;

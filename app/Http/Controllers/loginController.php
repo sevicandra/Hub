@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\pnbp;
 use Illuminate\Http\Request;
+use App\Models\suratPersetujuan;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -37,9 +38,9 @@ class loginController extends Controller
     public function home(Request $request)
     {
         $data = $request->session()->get('tahun');
-        $PKN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PKN')->first();
-        $LLG = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'LLG')->first();
-        $PPN = pnbp::where('tahun', $request->session()->get('tahun'))->where('jenis', 'PPN')->first();
+        $PKN = pnbp::where('tahun', $data)->where('jenis', 'PKN')->first();
+        $LLG = pnbp::where('tahun', $data)->where('jenis', 'LLG')->first();
+        $PPN = pnbp::where('tahun', $data)->where('jenis', 'PPN')->first();
 
         if ($PKN) {
             $capaianPKN = $PKN->capaian()->get()->sortBy('bulan');
@@ -58,8 +59,16 @@ class loginController extends Controller
         }else{
             $capaianPPN=[];
         }
-
-
+        $persetujuan=[];
+        $limit=[];
+        foreach (suratPersetujuan::all() as $key ) {
+            if ($key->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2){
+                $persetujuan[]=$key;
+                $limit[]=$key->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->where('status', '<', 2)->sum('nilaiLimit');
+            }
+        }
+        // return $limit;
+        $potensiLelang=['persetujuan'=>$persetujuan, 'limit'=>$limit];
         return view('home', [
             'PNBPPKN' => $PKN,
             'capaianPKN' => $capaianPKN,
@@ -67,6 +76,8 @@ class loginController extends Controller
             'capaianLLG' => $capaianLLG,
             'PNBPPPN' => $PPN,
             'capaianPPN' => $capaianPPN,
+            'persetujuan'=>$persetujuan,
+            'limit'=>$limit
         ]);
     }
 }

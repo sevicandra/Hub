@@ -197,6 +197,18 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/sewaBMN.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Sewa BMN
+                        </div>
+                    </a>
+                </div>
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
                 <div class="col-sm-4">
                     <a class="text-decoration-none"
