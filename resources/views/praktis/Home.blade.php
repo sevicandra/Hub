@@ -68,7 +68,7 @@
                                         <th>Aksi</th>
                                     </tr>
                                 
-                                
+            
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{$item->kodeIKU}}</td>
@@ -185,11 +185,16 @@
                                                         <form action="/praktis/{{$item->id}}" class="d-inline">
                                                             <button class="btn d-inline" type="submit"><i class="bi bi-pencil-square"></i></button>
                                                         </form>
-                                                        <form action="/praktis/{{$item->id}}" method="POST" class="d-inline">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn d-inline" ><i class="bi bi-trash3-fill"></i></button>
-                                                        </form> 
+                                                        <form action="/rencana_aksi/{{$item->id}}" class="d-inline">
+                                                            <button type="submit" class="btn d-inline"><i class="bi bi-journal-bookmark-fill"></i></button>
+                                                        </form>
+                                                    @elseif(auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
+                                                        <form action="/praktis/{{$item->id}}" class="d-inline">
+                                                            <button class="btn d-inline" type="submit"><i class="bi bi-pencil-square"></i></button>
+                                                        </form>
+                                                        <form action="/rencana_aksi/{{$item->id}}" class="d-inline">
+                                                            <button type="submit" class="btn d-inline"><i class="bi bi-journal-bookmark-fill"></i></button>
+                                                        </form>
                                                     @endif
                                                 @else
                                                     <form action="/praktis/{{$item->id}}" class="d-inline">
@@ -199,7 +204,10 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn d-inline" ><i class="bi bi-trash3-fill"></i></button>
-                                                    </form> 
+                                                    </form>
+                                                    <form action="/rencana_aksi/{{$item->id}}" class="d-inline">
+                                                        <button type="submit" class="btn d-inline"><i class="bi bi-journal-bookmark-fill"></i></button>
+                                                    </form>
                                                 @endif
                                             </td>
                                         </tr>

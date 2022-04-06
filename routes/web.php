@@ -34,6 +34,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemilihanBestEmployeeController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
+use App\Http\Controllers\RencanaAksiController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -234,3 +235,5 @@ Route::resource('/pilih_best_employee', RekapitulasiBestEmployeeController::clas
 Route::resource('/nominasiBestEmployee', NominasiBestEmployeeController::class)->middleware('verified');
 
 Route::resource('/user_management', UserManagementController::class)->middleware('verified');
+
+Route::resource('rencana_aksi', RencanaAksiController::class)->middleware('verified');

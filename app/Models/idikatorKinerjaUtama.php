@@ -40,4 +40,8 @@ class idikatorKinerjaUtama extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function rencanaAksi(){
+        return $this->hasMany(rencanaAksi::class);
+    }
+
 }
