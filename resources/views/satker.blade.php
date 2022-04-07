@@ -51,8 +51,8 @@
                         </div>
                         <div  id="dataloaded" style="height: 100%">
                             <div class="row" style="height: 10%">
-                                <div class="col-sm-12" style="text-align: center; color:white">
-                                    <h2 style="font-size: 1.7vw">Profil Satuan Kerja Kantor Pelayanan Kekayaan negara dan Lelang Ternate</h2>
+                                <div class="col-sm-12" style="text-align: center; color:white;padding-top:10px">
+                                    <h2 style="font-size: 3vw">Profil Satuan Kerja</h2>
                                 </div>
                             </div>
                             <hr style="height: 1%">

@@ -13,7 +13,7 @@
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
-                <div class="col-sm-2">
+                <div style="width: fit-content">
                     <a href="">
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">{{$data->kodeIKU}} {{$data->namaIKU}}</button>
                     </a>

@@ -9,6 +9,11 @@
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
+                <div style="width: fit-content">
+                    <a href="">
+                        <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">{{$data->kodeIKU}} {{$data->namaIKU}}</button>
+                    </a>
+                </div>
             </div>
             <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
                 <div class="container-fluid scrollable " style="max-height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
@@ -54,7 +59,6 @@
                         $i++;
                     @endphp
                     @endforeach
-
                 </div>
             </div>
             <div class="row" >

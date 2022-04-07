@@ -60,7 +60,7 @@ class RencanaAksiController extends Controller
     {
         if ($rencana_aksi->user_id === auth()->user()->id || auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
             return view('praktis.RancanaAksi',[
-                'back'=> '/monitoring/'.$rencana_aksi->user_id,
+                'back'=> url()->previous(),
                 'data'=>$rencana_aksi,
             ]);
         }

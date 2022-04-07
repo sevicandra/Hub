@@ -260,83 +260,17 @@
         {{-- Agenda --}}
         <div class="col-sm-3" style=" padding-left:4px; max-height: 100%;height: 100%">
             <div class="scrollable"
-                style="height: 93%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: 820px; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                style="height: 93%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                 <nav class="navbar navbar-light bg-light sticky-top" style="margin: 0; border-radius: 10px;">
                     <div class="container-fluid">
                         <input class="form-control" id="tanggalagenda" type="date">
                     </div>
                 </nav>
                 <div class="container-fluid" style="padding: 5px 20px 0 20px" id='agenda'>
-                    @if (1)
-                    @else
-                        <div class="row" style="margin-top: 1%">
-                            <div class="col-sm-12" style="border-radius:10px; background-color:#E6F5FF">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 style="color: #4D5299">14:00</h5>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <form action="/agenda/">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn" style="color: red"><i
-                                                    class="bi bi-journal-x"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 style="text-align: justify">
-                                        Rapat Pembahasan ....
-                                    </h4>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h5>Tempat</h5>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h5>:</h5>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <h5>Meeting Room</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h5>Meeting id</h5>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h5>:</h5>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <h5>042 022 001 7</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h5>password</h5>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <h5>:</h5>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <h5>042 022 001 7</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <a href=""><button class="btn btn-success">Masuk Zoom</button></a>
-                                    </div>
-                                    <div class="col">
-                                        <a href=""><button class="btn btn-success">Absensi</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
                 </div>
             </div>
-            <nav class="navbar navbar-light bg-light sticky-bottom" style="margin: 0; border-radius: 10px; height:7%">
-                <div class="container-fluid" style="height: 100%">
+            <nav class="navbar navbar-light bg-light sticky-bottom" style="margin: 0; border-radius: 10px; min-height:fit-content; max-height:fit-content">
+                <div class="container-fluid" style="min-height: 100%;max-height:fit-content">
                     <button class="btn btn-primary container-fluid" data-bs-toggle="modal" data-bs-target="#inputAgenda"
                         style="height: 100%; padding: 1px">Tambah Agenda</button>
                 </div>

@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 @if (!isset($monitoring))
-                    <div class="col-sm-2">
+                    <div style="width:fit-content">
                         <a href="praktis">
                             <button class="btn translate-middle-y" style="width: 100%; background-color:#4D59CA">Idikator Kinerja Utama</button>
                         </a>
@@ -18,21 +18,21 @@
                     @if (1)
                         
                     @else
-                    <div class="col-sm-2" >
+                    <div style="width:fit-content" >
                         <a href="" >
                             <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Bawahan</button>
                         </a>
                     </div>
                     @endif
                     @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
-                    <div class="col-sm-2" >
+                    <div style="width:fit-content" >
                         <a href="/monitoring" >
                             <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Capaian Kinerja</button>
                         </a>
                     </div>
                     @endif
                     @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
-                    <div class="col-sm-2" >
+                    <div style="width:fit-content" >
                         <a href="/kinerjaorganisasi" >
                             <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Kinerja Organisasi</button>
                         </a>
@@ -57,22 +57,19 @@
                 <div class="container-fluid" style="height:100%">
                     <div class="row" style="height: 100%; border-radius:10px;">
                         <div class="table table-light table table-responsive" style="padding: 0; height: 100%; background-color:aliceblue">
-                            <table class="table">
-                                
+                            <table class="table" style="align-items: center; text-align:center">
                                     <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 10%">
-                                        <th>Kode IKU</th>
-                                        <th>Nama IKU</th>
-                                        <th>Target</th>
-                                        <th>Realisasi</th>
-                                        <th>Capaian</th>
-                                        <th>Aksi</th>
+                                        <th style="width: 10%">Kode IKU</th>
+                                        <th style="width: 35%; text-align:left">Nama IKU</th>
+                                        <th style="width: 15%">Target</th>
+                                        <th style="width: 15%">Realisasi</th>
+                                        <th style="width: 10%">Capaian</th>
+                                        <th style="width: 15%;">Aksi</th>
                                     </tr>
-                                
-            
                                     @foreach ($data as $item)
                                         <tr>
                                             <td>{{$item->kodeIKU}}</td>
-                                            <td>{{$item->namaIKU}}</td>
+                                            <td style="; text-align:left">{{$item->namaIKU}}</td>
                                             <td>
                                                 @if ($item->target->where('periode', 'Q4')->first())
                                                     @if ($item->target->where('periode', 'Q4')->first()->raw)
@@ -179,7 +176,7 @@
                                                     };
                                                 ?>
                                             </td>
-                                            <td style="width: 10%">
+                                            <td>
                                                 @if (isset($user))
                                                     @if ($user === auth()->user()->id)
                                                         <form action="/praktis/{{$item->id}}" class="d-inline">
@@ -212,7 +209,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                
                             </table>
                         </div>
                     </div>

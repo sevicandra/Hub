@@ -9,7 +9,7 @@
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>
-                <div class="col-sm-2">
+                <div style="width:fit-content">
                     <a href="praktis">
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Idikator Kinerja Utama</button>
                     </a>
@@ -17,14 +17,14 @@
                 @if (1)
                     
                 @else
-                <div class="col-sm-2" >
+                <div style="width:fit-content" >
                     <a href="" >
                         <button class="btn translate-middle-y" style="width: 100%; background-color:#ffffff">Monitoring Bawahan</button>
                     </a>
                 </div>
                 @endif
                 @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
-                <div class="col-sm-2" >
+                <div style="width:fit-content" >
                     <a href="/monitoring" >
                         <button class="btn translate-middle-y" style="width: 100%;background-color:#4D59CA ">Monitoring Capaian Kinerja</button>
                     </a>

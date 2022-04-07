@@ -376,17 +376,14 @@
     {{-- Footer --}}
     <div class="container-fluid fixed-bottom" style="height: 5vh">
         <div class="row" style="margin:0; padding: 0 37px 0 37px; height:100%">
-            <div class="col-sm-12" style="background-color: aliceblue; border-radius: 10px 10px 0 0">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <img src="/img/ico/ternate hub.png" style="height: 48px">
-                        <img src="/img/ico/kpknlternate.png" alt="" height="48px">
+            <div class="col-sm-12" style="background-color: aliceblue; border-radius: 10px 10px 0 0;height:100%">
+                <div class="row position-relative" style="height:100%">
+                    <div class="position-absolute top-50 start-0 translate-middle-y" style="height:100%; width:fit-content">
+                        <img src="/img/ico/ternate hub.png" height="100%">
+                        <img src="/img/ico/kpknlternate.png" alt="" height="100%">
                     </div>
-                    <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                    <div class="position-absolute top-50 start-50 translate-middle" style="; width:fit-content">
                         <p style="margin:0">Version : <a class="text-decoration-none" href="">1.0.0</a> </p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="" alt="" height="48px">
                     </div>
                 </div>
             </div>

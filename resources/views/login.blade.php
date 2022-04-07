@@ -30,7 +30,7 @@
                 <div class="form-control shadow-lg border-0 position-absolute top-50 start-50 translate-middle" style="background-color:rgba(246, 245, 252, 0.25);background-position: top right; max-width:fit-content; max-height:fit-content;border-radius:10px; min-height:50vh">
                     <div class="input-group mb-3" style="background: none; border:none">
                         <span class="input-group-text" id="basic-addon1" style="background: none; border:none; width:50px; padding-left:0; padding-right:0"><img src="/img/ico/ternate hub.png" style="max-width: 50px;height: auto;"></span>
-                        <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; color:white; font-size:2vw; width:auto; margin-bottom:0">KPKNL TERNATE HUB</span>
+                        <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; color:white; font-size:2vw; width:auto; margin-bottom:0;font-family: 'Tw Cen MT';">KPKNL TERNATE HUB</span>
                     </div>
                         @if (session()->has('LoginErorr'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -224,19 +224,16 @@
         </div>
     {{--  Akhir Sidebar  --}}
         {{--  Footer  --}}
-        <div class="container-fluid fixed-bottom position-absolute">
-            <div class="row" style="margin:0; padding: 0 37px 0 37px">
+        <div class="container-fluid fixed-bottom" style="height: 5vh">
+            <div class="row" style="margin:0; padding: 0 37px 0 37px; height:100%">
                 <div class="col-sm-12" style="background-color: rgba(240, 248, 255, 0.308); border-radius: 10px 10px 0 0">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <img src="/img/ico/ternate hub.png" style="height: 48px">
-                            <img src="img/ico/kpknlternate.png" alt="" height="48px">
+                    <div class="row position-relative" style="height:100%">
+                        <div class="position-absolute top-50 start-0 translate-middle-y" style="width:fit-content;height:100%">
+                            <img src="/img/ico/ternate hub.png" height="100%">
+                            <img src="/img/ico/kpknlternate.png" alt="" height="100%">
                         </div>
-                        <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                            <p style="margin:0">Version :   <a class="text-decoration-none" href="">1.0.0</a> </p>
-                        </div>
-                        <div class="col-sm-4">
-                            <img src="" alt="" height="48px">
+                        <div class="position-absolute top-50 start-50 translate-middle" style="; width:fit-content; ">
+                            <p style="margin:0">Version : <a class="text-decoration-none" href="">1.0.0</a> </p>
                         </div>
                     </div>
                 </div>
