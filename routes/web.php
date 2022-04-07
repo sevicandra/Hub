@@ -237,3 +237,5 @@ Route::resource('/nominasiBestEmployee', NominasiBestEmployeeController::class)-
 Route::resource('/user_management', UserManagementController::class)->middleware('verified');
 
 Route::resource('rencana_aksi', RencanaAksiController::class)->middleware('verified');
+
+Route::get('monitoring_rencana_aksi/{rencana_aksi}', [RencanaAksiController::class, 'monitoringRencanaAksi'])->middleware('verified');

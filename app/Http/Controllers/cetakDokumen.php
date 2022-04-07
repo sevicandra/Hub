@@ -546,7 +546,7 @@ class cetakDokumen extends Controller
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
                 $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                 $templateProcessor->setValue('hal', $permohonanLelang->hal);
-                $templateProcessor->setValue('tanggalSurat', indonesiaDate($request->permohonan_lelang_id));
+                $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
                 $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                 $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                 $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
