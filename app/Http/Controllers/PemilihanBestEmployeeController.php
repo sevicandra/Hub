@@ -18,21 +18,22 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function index()
     {
-        return view('bestemployee.index',[
-            'data'=>pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
-            'nominasi'=>User::where('email_verified_at', '!=', null)->get(),
-            'index'=>'',
-            'title'=> 'Ternate-Hub || Best Employee',
-            'favicon'=>'/img/ico/bestemployee.png'
+        return view('bestemployee.index', [
+            'data' => pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
+            'nominasi' => User::where('email_verified_at', '!=', null)->orderBy('jabatan', 'asc')->orderBy('NIP', 'asc')->get(),
+            'index' => '',
+            'title' => 'Ternate-Hub || Best Employee',
+            'favicon' => '/img/ico/bestemployee.png'
         ]);
     }
 
-    public function pemilihan(){
-        return view('bestemployee.survei',[
-            'data'=>pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'asc')->orderby('bulan', 'asc')->first(),
-            'pemilihan'=>'',
-            'title'=> 'Ternate-Hub || Best Employee',
-            'favicon'=>'/img/ico/bestemployee.png'
+    public function pemilihan()
+    {
+        return view('bestemployee.survei', [
+            'data' => pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'asc')->orderby('bulan', 'asc')->first(),
+            'pemilihan' => '',
+            'title' => 'Ternate-Hub || Best Employee',
+            'favicon' => '/img/ico/bestemployee.png'
         ]);
     }
 
@@ -43,7 +44,6 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -54,14 +54,14 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
-            $validatedData=$request->validate([
-                'bulan'=>'required',
-                'tahun'=>'required',
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') {
+            $validatedData = $request->validate([
+                'bulan' => 'required',
+                'tahun' => 'required',
             ]);
             pemilihanBestEmployee::create($validatedData);
             return Redirect::back();
-        }else{
+        } else {
             abort(403);
         }
     }
@@ -74,22 +74,22 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function show(pemilihanBestEmployee $best_employee)
     {
-        $nominasi=[];
+        $nominasi = [];
         foreach ($best_employee->listnominasi as $key) {
-            
-            $nama=$key->user->nama;
-            $produktifitasKerja=$key->hasilPemilihan->sum('produktifitasKerja');
-            $sikapKerja=$key->hasilPemilihan->sum('sikapKerja');
-            $kedisiplinan=$key->hasilPemilihan->sum('kedisiplinan');
-            $responden=$key->hasilPemilihan->count();
+
+            $nama = $key->user->nama;
+            $produktifitasKerja = $key->hasilPemilihan->sum('produktifitasKerja');
+            $sikapKerja = $key->hasilPemilihan->sum('sikapKerja');
+            $kedisiplinan = $key->hasilPemilihan->sum('kedisiplinan');
+            $responden = $key->hasilPemilihan->count();
             if ($responden === 0) {
-                $responden=1;
+                $responden = 1;
             }
-            array_push($nominasi, ['nominasi_id'=>$key->id, 'nama'=>$nama, 'produktifitasKerja'=>$produktifitasKerja,'sikapKerja'=>$sikapKerja, 'kedisiplinan'=>$kedisiplinan, 'total' =>number_format(($produktifitasKerja+$sikapKerja+$kedisiplinan)/$responden, 2, ',', '.')]);
+            array_push($nominasi, ['nominasi_id' => $key->id, 'nama' => $nama, 'produktifitasKerja' => $produktifitasKerja, 'sikapKerja' => $sikapKerja, 'kedisiplinan' => $kedisiplinan, 'total' => number_format(($produktifitasKerja + $sikapKerja + $kedisiplinan) / $responden, 2, ',', '.')]);
         }
 
-        
-        return json_encode(['pemilihan'=>$best_employee, 'nominasi'=>$nominasi,'user'=>Auth()->user()]);
+
+        return json_encode(['pemilihan' => $best_employee, 'nominasi' => $nominasi, 'user' => Auth()->user()]);
     }
 
     /**
@@ -112,52 +112,50 @@ class PemilihanBestEmployeeController extends Controller
      */
     public function update(Request $request, pemilihanBestEmployee $best_employee)
     {
-        if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11'){
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11') {
             switch ($request->action) {
-                
+
                 case 'nominasi':
                     if ($best_employee->status === '1') {
-                        foreach ($request->nominasi as $key ) {
-                                if (nominasiBestEmployee::where('pemilihan_best_employee_id', $best_employee->id)->where('user_id', $key)->first()) {
-                                }else{
-                                    nominasiBestEmployee::create([
-                                        'pemilihan_best_employee_id'=>$best_employee->id,
-                                        'user_id'=>$key
-                                    ]);
-
-                                }
+                        foreach ($request->nominasi as $key) {
+                            if (nominasiBestEmployee::where('pemilihan_best_employee_id', $best_employee->id)->where('user_id', $key)->first()) {
+                            } else {
+                                nominasiBestEmployee::create([
+                                    'pemilihan_best_employee_id' => $best_employee->id,
+                                    'user_id' => $key
+                                ]);
                             }
-                            return Redirect::back();
-                    }else{
+                        }
+                        return Redirect::back();
+                    } else {
                         abort(403);
                     }
                     break;
-                
+
                 case 'mulaiSurvei':
                     if ($best_employee->status === '1') {
-                        $best_employee->update(['status'=>'2']);
+                        $best_employee->update(['status' => '2']);
                         return Redirect::back();
-
-                    }else{
+                    } else {
                         abort(403);
                     }
                     break;
-    
+
                 case 'tutupSurvei':
                     if ($best_employee->status === '2') {
-                        $best_employee->update(['status'=>"3"]);
+                        $best_employee->update(['status' => "3"]);
                         return Redirect::back();
-                    }else{
+                    } else {
                         abort(403);
                     }
-                    
+
                     break;
-                
+
                 default:
                     abort(404);
                     break;
             }
-        }else{
+        } else {
             abort(403);
         }
     }

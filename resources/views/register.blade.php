@@ -53,7 +53,7 @@
                             </div>
                         @enderror
                         <select name="jabatan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
-                            <option hidden selected>Jabatan</option>
+                            <option hidden>Jabatan</option>
                             <option value="01">Kepala Kantor</option>
                             <option value="02">Kepala Subbagian Umum</option>
                             <option value="03">Kepala Seksi Pengelolaan Kekayaan Negara</option>
@@ -76,7 +76,7 @@
                             </div>
                         @enderror
                         <select name="pangkatGolongan" class="form-control" placeholder="Jabatan" style="margin-top: 12px" required>
-                            <option hidden selected>Pangkat/Golongan</option>
+                            <option hidden>Pangkat/Golongan</option>
                             <option value="Pembina / IV.a">Pembina / IV.a</option>
                             <option value="Penata Tk.I / III.d">Penata Tk.I / III.d</option>
                             <option value="Penata / III.c">Penata / III.c</option>

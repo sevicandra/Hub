@@ -68,7 +68,7 @@
     </div>
     <div class="col-sm-9" style="height: 100%; background-color:#4A81E0; border-radius:10px; padding: 0">
         <div style="height: 90%; padding: 0 10px">
-            <table style="height: fit-content;max-height:100%; width: 100%; color:white; text-align:center; margin: 10px 0">
+            <table style="min-height: fit-content;max-height:100%; width: 100%; color:white; text-align:center; margin: 10px 0">
                 <thead style="min-height: fit-content">
                     <tr>
                         <th style="width: 10%">No</th>

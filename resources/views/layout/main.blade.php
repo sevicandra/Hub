@@ -223,6 +223,19 @@
                     </a>
                 </div>            
                 @endif
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="http://10.122.1.46/Sipirang"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Manajemen Peminjaman Ruangan
+                        </div>
+                    </a>
+                </div>   
+
             </div>
             <hr>
             {{-- Akhir Modules Apps --}}
