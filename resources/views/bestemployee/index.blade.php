@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="col-sm-9" style="height: 100%; background-color:#4A81E0; border-radius:10px; padding: 0">
-        <div style="height: 90%; padding: 0 10px">
+        <div class="scrollable" style="height: 90%; padding: 0 10px ; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             <table style="min-height: fit-content;max-height:100%; width: 100%; color:white; text-align:center; margin: 10px 0">
                 <thead style="min-height: fit-content">
                     <tr>
