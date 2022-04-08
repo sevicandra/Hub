@@ -12,9 +12,9 @@
             <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
                 {{-- Kepuasan Pengguna Layanan --}}
                 <div class="col-sm-4" style="padding-right:5px; max-height: 100%; height: 100%">
-                    <div style="background-color: #ffff; border-radius: 10px; height:100%">
+                    <div style="background-color: rgb(255, 255, 255); border-radius: 10px; height:100%">
                         <div style="height: 10%; text-align: center">
-                            <h2 class="kepuasan" style="color: #855CF8;">Kepuasan Pengguna Layanan</h2>
+                            <h2 class="kepuasan" style="color: #4e59f0;"> <b>KEPUASAN PENGGUNA LAYANAN</b></h2>
                         </div>
                         <div style="height:80%">
                             <div class="chart-container" style="height: 100%">
@@ -22,15 +22,15 @@
                             </div>
                         </div>
                         <div class="row" style="width: 100%; margin:0; height:10%; padding:0 5px">
-                            <select id="kepuasanTusi" class="form-control" style="height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0">
-                                <option style="text-align: center; padding:0" value="ALL">Kantor Pelayanan Kekayaan Negara
+                            <select id="kepuasanTusi" class="form-control" style=";color: #4e59f0; background-color: rgb(255, 255, 255);height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0">
+                                <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0" value="ALL">Kantor Pelayanan Kekayaan Negara
                                     dan Lelang Ternate</option>
                                 <option style="text-align: center; padding:0" value="PKN">Pengelolaan Kekayaan Negara
                                 </option>
-                                <option style="text-align: center; padding:0" value="PEN">Pelayanan Penilaian</option>
-                                <option style="text-align: center; padding:0" value="LLG">Pelayanan Lelang</option>
-                                <option style="text-align: center; padding:0" value="PPN">Pengurusan Piutang Negara</option>
-                                <option style="text-align: center; padding:0" value="LLN">Lain-lain</option>
+                                <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0" value="PEN">Pelayanan Penilaian</option>
+                                <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0" value="LLG">Pelayanan Lelang</option>
+                                <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0" value="PPN">Pengurusan Piutang Negara</option>
+                                <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0" value="LLN">Lain-lain</option>
                             </select>
                         </div>
                     </div>
@@ -38,18 +38,16 @@
                 {{-- Akhir Kepuasan Pengguna Layanan --}}
                 {{-- Capaian Kinerja Organisasi --}}
                 <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
-                    <div style="background-color: #ffff; border-radius: 10px; height: 100%">
+                    <div style="background-color: rgb(255, 255, 255); border-radius: 10px; height: 100%; font-size:1.5vw; color: #4e59f0">
                         <div style="height: 10%; text-align: center">
-                            <h2 class="NKO" style="color: #855CF8;" class="d-inline">
-                                Capaian Kinerja KPKNL Ternate Tahun {{ session()->get('tahun') }}
-                            </h2>                        
+                            <b>CAPAIAN KINERJA KPKNL TERNATE TAHUN {{ session()->get('tahun') }}</b>                    
                         </div>
                         <div style="height: 10%; text-align: center">
-                            <select id="CKO" class="form-select">
-                                <option value="Q1">Q1</option>
-                                <option value="Q2">Q2</option>
-                                <option value="Q3">Q3</option>
-                                <option value="Q4" selected>Q4</option>
+                            <select id="CKO" class="form-select" style="background-color: rgb(255, 255, 255);color: #4e59f0">
+                                <option style="background-color: rgb(255, 255, 255);" value="Q1">Q1</option>
+                                <option style="background-color: rgb(255, 255, 255);" value="Q2">Q2</option>
+                                <option style="background-color: rgb(255, 255, 255);" value="Q3">Q3</option>
+                                <option style="background-color: rgb(255, 255, 255);" value="Q4" selected>Q4</option>
                             </select>   
                         </div>
                         <div class="scrollable"
@@ -63,146 +61,80 @@
                 {{-- Akhir Capaian Kinerja Organisasi --}}
             </div>
             {{-- AKhir Kepuasan Pengguna Layanan dan Capaian Kinerja Organisasi --}}
-            {{-- PNBP dan Jumlah Pengunjung --}}
-            <div class="row" style="max-height: 44%;height: 44%">
+            {{-- PNBP dan Potensi Lelang BMN --}}
+            <div class="row" style="max-height: 44%;height: 44%;">
                 {{-- PNBP --}}
-                <div class="col-sm-8" style="padding-right:5px; max-height: 100%; height:100%">
-                    <div class="row" style="height: 100%; ; border-radius: 10px; padding:0px; margin:0">
-                        <div class="container-fluid">
-                            <div style="height: 15%;margin-bottom:px" class="row position-relative">
-                                <div class="col-sm-12 position-absolute top-0 start-0"
-                                    style="text-align: center;border-radius: 10px 10px 0 0; background-color:#3DA4B8; height:100%; border: 1px solid #ffff">
-                                    <h2 class="NKO" style="color:#ffff;">PNBP KPKNL Ternate Tahun 2022</h2>
-                                </div>
-                            </div>
-                            <div class="row" style="height: 85%">
-                                <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer;"
-                                    data-bs-toggle="modal" data-bs-target="#PNBPPKN">
-                                    <div
-                                        style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; border-radius: 0px 0 0 20px">
-                                        <div style="height: 25%">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
-                                                    Pengelolaan Kekayaan Negara
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0 0 10px 0">
-                                        <div style="height: 50%; ">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
-                                                    @if ($PNBPPKN)
-                                                        @if ($capaianPKN)
-                                                            {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }}%
-                                                        @else
-                                                            0%
-                                                        @endif
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0">
-                                        <div style="height: 20%;">
-                                            <div style="color:#ffff; text-align: center;line-height: normal; height:100%">
-                                                <p class="d-inline" style="position: relative; top:25%">
-                                                    @if ($capaianPKN)
-                                                        Rp{{ number_format($capaianPKN->sum('capaian'), 2, ',', '.') }}
-                                                    @else
-                                                        Rp0,00
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer; "
-                                    data-bs-toggle="modal" data-bs-target="#PNBPLLG">
-                                    <div style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; ">
-                                        <div style="height: 25%">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
-                                                    Lelang
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0 0 10px 0">
-                                        <div style="height: 50%; ">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
-                                                    @if ($PNBPLLG)
-                                                        @if ($capaianLLG)
-                                                            {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }}%
-                                                        @else
-                                                            0%
-                                                        @endif
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0">
-                                        <div style="height: 20%;">
-                                            <div style="color:#ffff; text-align: center;line-height: normal; height:100%">
-                                                <p class="d-inline" style="position: relative; top:25%">
-                                                    @if ($capaianLLG)
-                                                        Rp{{ number_format($capaianLLG->sum('capaian'), 2, ',', '.') }}
-                                                    @else
-                                                        Rp0,00
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4" style="height: 100%; padding:0;cursor: pointer; "
-                                    data-bs-toggle="modal" data-bs-target="#PNBPPPN">
-                                    <div
-                                        style="height: 100%; border: 1px solid #ffff; background-color:#6EE4FA; border-radius: 0 0px 20px 0">
-                                        <div style="height: 25%">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
-                                                    Pengurusan Piutang Negara
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0 0 10px 0">
-                                        <div style="height: 50%; ">
-                                            <div style="margin:auto; text-align: center">
-                                                <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
-                                                    @if ($PNBPPPN)
-                                                        @if ($capaianPPN)
-                                                            {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }}%
-                                                        @else
-                                                            0%
-                                                        @endif
-                                                    @else
-                                                        -
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr style="margin:0">
-                                        <div style="height: 20%;">
-                                            <div style="color:#ffff; text-align: center;line-height: normal; height:100%">
-                                                <p class="d-inline" style="position: relative; top:25%">
-                                                    @if ($capaianPPN)
-                                                        Rp{{ number_format($capaianPPN->sum('capaian'), 2, ',', '.') }}
-                                                    @else
-                                                        Rp0,00
-                                                    @endif
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                <div class="col-sm-8 scrollable" style="min-height:fit-content ;padding-right:5px; max-height: 100%; color: #4e59f0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; border-radius:10px">
+                    {{-- PNBP PKN --}}
+                    <div class="row" style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;" 
+                        data-bs-toggle="modal" data-bs-target="#PNBPPKN">
+                        <div style="padding: 0"> <b>PNBP Pengelolaan Kekayaan Negara</b> </div>
+                        <div style="padding: 0">
+                            @if ($capaianPKN)
+                                Rp{{ number_format($capaianPKN->sum('capaian'), 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                            /
+                            @if ($PNBPPKN)
+                                Rp{{ number_format($PNBPPKN->target, 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                        </div>
+                        <div class="progress" style="padding: 0; margin-bottom:1%">
+                            <div class="progress-bar" role="progressbar" style="width: @if ($PNBPPKN) @if ($capaianPKN) {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }} @else 0 @endif @else 0 @endif%;" aria-valuenow="@if ($PNBPPKN) @if ($capaianPKN) {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }} @else 0 @endif @else 0 @endif" aria-valuemin="0" aria-valuemax="100">@if ($PNBPPKN) @if ($capaianPKN) {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }} @else 0 @endif @else 0 @endif%</div>
                         </div>
                     </div>
-
+                    {{-- AKHIR PNBP PKN --}}
+                    <div class="row" style="height: 2%; margin:0" >
+                    </div>
+                    {{-- PNBP LELANG --}}
+                    <div class="row" style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;" 
+                        data-bs-toggle="modal" data-bs-target="#PNBPLLG">
+                        <div style="padding: 0"> <b>PNBP Lelang</b></div>
+                        <div style="padding: 0">
+                            @if ($capaianLLG)
+                                Rp{{ number_format($capaianLLG->sum('capaian'), 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                            /
+                            @if ($PNBPLLG)
+                                Rp{{ number_format($PNBPLLG->target, 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                        </div>
+                        <div class="progress" style="padding: 0; margin-bottom:1%">
+                            <div class="progress-bar" role="progressbar" style="width: @if ($PNBPLLG) @if ($capaianLLG) {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }} @else 0 @endif @else 0 @endif%;" aria-valuenow="@if ($PNBPLLG) @if ($capaianLLG) {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }} @else 0 @endif @else 0 @endif" aria-valuemin="0" aria-valuemax="100">@if ($PNBPLLG) @if ($capaianLLG) {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }} @else 0 @endif @else 0 @endif%</div>
+                        </div>
+                    </div>
+                    {{-- AKHIR PNBP LELANG --}}
+                    <div class="row" style="height: 2%; margin:0" >
+                    </div>
+                    {{-- PNBP PIUTANG NEGARA --}}
+                    <div class="row" style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;" 
+                        data-bs-toggle="modal" data-bs-target="#PNBPPPN">
+                        <div style="padding: 0"> <b>PNBP Pengurusan Piutang Negara</b></div>
+                        <div style="padding: 0">
+                            @if ($capaianPPN)
+                                Rp{{ number_format($capaianPPN->sum('capaian'), 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                            /
+                            @if ($PNBPPPN)
+                                Rp{{ number_format($PNBPPPN->target, 2, ',', '.') }}
+                            @else
+                                Rp0,00
+                            @endif
+                        </div>
+                        <div class="progress" style="padding: 0; margin-bottom:1%">
+                            <div class="progress-bar" role="progressbar" style="width: @if ($PNBPPPN) @if ($capaianPPN) {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }} @else 0 @endif @else 0 @endif%;" aria-valuenow="@if ($PNBPPPN) @if ($capaianPPN) {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }} @else 0 @endif @else 0 @endif" aria-valuemin="0" aria-valuemax="100">@if ($PNBPPPN) @if ($capaianPPN) {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }} @else 0 @endif @else 0 @endif%</div>
+                        </div>
+                    </div>
+                    {{-- AKHIR PNBP PIUTANG NEGARA --}}
                 </div>
                 {{-- Akhir PNBP --}}
                 {{-- Potensi Lelang BMN --}}
@@ -210,16 +142,16 @@
                     <div style="height: 100%;  border-radius: 10px">
                         <div style="height: 15%;margin: 0px" class="row position-relative">
                             <div class="col-sm-12 position-absolute top-0 start-0"
-                                style="text-align: center;border-radius: 10px 10px 0 0; background-color:#3DA4B8; height:100%; border: 1px solid #ffff">
-                                <h2 class="NKO" style="color:#ffff;">Potensi Lelang</h2>
+                                style="text-align: center;border-radius: 10px 10px 0 0; background-color: rgb(255, 255, 255); height:100%; border: 1px solid #855CF8">
+                                <h2 class="NKO" style="color: #4e59f0;"> <b>POTENSI LELANG</b> </h2>
                             </div>
                         </div>
                         <div style="height: 85%;margin: 0px;" class="row position-relative">
                             <div class="col-sm-12 position-absolute top-0 start-0"
-                                style="text-align: center;border-radius: 0 0 10px 10px ; background-color: #6EE4FA;; height:100%; border: 1px solid #ffff">
+                                style="text-align: center;border-radius: 0 0 10px 10px ; background-color: rgb(255, 255, 255); height:100%; border: 1px solid #855CF8">
                                 <div style="height: 25%">
                                     <div style="margin:auto; text-align: center">
-                                        <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
+                                        <p style="color: #4e59f0;font-size:1.5vw; margin:0;line-height: normal">
                                             Surat Persetujuan
                                         </p>
                                     </div>
@@ -227,7 +159,7 @@
                                 <hr style="margin:0">
                                 <div style="height: 45%; ">
                                     <div style="width:100%; text-align: center">
-                                        <p style="color:#ffff;font-size: 5vw; margin:0;line-height: normal">
+                                        <p style="color: #4e59f0;font-size: 5vw; margin:0;line-height: normal">
                                             {{ count($persetujuan) }}
                                         </p>
                                     </div>
@@ -235,7 +167,7 @@
                                 <hr style="margin:0">
                                 <div style="height: 15%">
                                     <div style="margin:auto; text-align: center">
-                                        <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
+                                        <p style="color: #4e59f0;font-size:1.5vw; margin:0;line-height: normal">
                                             Nilai Limit
                                         </p>
                                     </div>
@@ -243,7 +175,7 @@
                                 <hr style="margin:0">
                                 <div style="height: 15%; ">
                                     <div style="margin:auto; text-align: center">
-                                        <p style="color:#ffff;font-size: 1vw; margin:0;line-height: normal">
+                                        <p style="color: #4e59f0;font-size: 1vw; margin:0;line-height: normal">
                                             Rp{{ number_format(array_sum($limit), 2, ',', '.') }}
                                             {{-- {{ $potensiLelang['limit'] }} --}}
                                         </p>
@@ -259,22 +191,22 @@
         </div>
         {{-- Agenda --}}
         <div class="col-sm-3" style=" padding-left:4px; max-height: 100%;height: 100%">
-            <div class="scrollable"
-                style="height: 93%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+            <div class="scrollable position-relative"
+                style="height: 99%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                 <nav class="navbar navbar-light bg-light sticky-top" style="margin: 0; border-radius: 10px;">
                     <div class="container-fluid">
                         <input class="form-control" id="tanggalagenda" type="date">
                     </div>
                 </nav>
-                <div class="container-fluid" style="padding: 5px 20px 0 20px" id='agenda'>
+                <div class="container-fluid" style="padding: 5px 20px 30px 20px" id='agenda'>
                 </div>
+                <nav class="navbar navbar-light bg-light position-absolute bottom-0 start-50 translate-middle-x" style="margin: 0;width:100%; border-radius: 10px; min-height:fit-content; max-height:fit-content">
+                    <div class="container-fluid" style="min-height: 100%;max-height:fit-content">
+                        <button class="btn btn-primary container-fluid" data-bs-toggle="modal" data-bs-target="#inputAgenda"
+                            style="height: 30px; padding: 1px">Tambah Agenda</button>
+                    </div>
+                </nav>
             </div>
-            <nav class="navbar navbar-light bg-light sticky-bottom" style="margin: 0; border-radius: 10px; min-height:fit-content; max-height:fit-content">
-                <div class="container-fluid" style="min-height: 100%;max-height:fit-content">
-                    <button class="btn btn-primary container-fluid" data-bs-toggle="modal" data-bs-target="#inputAgenda"
-                        style="height: 100%; padding: 1px">Tambah Agenda</button>
-                </div>
-            </nav>
         </div>
         {{-- Akhir Agenda --}}
     </div>

@@ -94,7 +94,7 @@ $(document).ready(function(){
                     datasets: [
                         {
                             data: [
-                                capaian[0], 
+                                capaian[0],
                                 capaian[0]+capaian[1],
                                 capaian[0]+capaian[1]+capaian[2],
                                 capaian[0]+capaian[1]+capaian[2]+capaian[3],
@@ -455,24 +455,26 @@ $(document).ready(function(){
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+
                         r: {
                             suggestedMin: 0,
-                            suggestedMax: 5
+                            suggestedMax: 5,
                         },
                         legend: {
                             display: false
                         },
                         plugins: {
-                                legend: {
-                                  display: false
-                                },
+                            legend: {
+                                display: false,
+                            },
                             title: {
                                 display: false,
                                 text: 'INDEKS KEPUASAN PENGGUNA LAYANAN',
                                 padding: {
                                     top: 10,
                                 }
-                            }
+                            },
+                            
                         },            
                     }
                 });

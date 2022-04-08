@@ -62,13 +62,13 @@
 </head>
 
 <body
-    style="background: linear-gradient(298.55deg, #4D4295 0%, #8470FE 41.63%, rgba(112, 160, 254, 0.88) 69.99%, rgba(112, 186, 254, 0.9) 96.89%); max-height:100vh; height:100vh">
+    style="background: linear-gradient(298.55deg, #352d63 0%, #594f9c 41.63%, rgba(71, 100, 156, 0.88) 69.99%, rgba(69, 111, 151, 0.9) 96.89%); max-height:100vh; height:100vh">
 
     {{-- NAVBAR --}}
     <div class="container-fluid sticky-top" style="height: 5vh">
         <div class="row" style="padding: 0px 49px 0px 49px; height:100%">
-            <div class="col-sm-12 bg-light"
-                style="border-radius: 0 0 10px 10px; height:100%">
+            <div class="col-sm-12"
+                style="border-radius: 0 0 10px 10px; height:100%; background-color:rgba(255, 255, 255, 0.74)">
                 <div class="row" style="height:100%">
                     <div class="col-sm-8" style="height:100%">
                         <button style="max-height: 100%" class="d-inline btn border-light bg-primary" type="button" data-bs-toggle="offcanvas"
@@ -108,7 +108,7 @@
     {{-- Akhir Content --}}
     {{-- Sidebar --}}
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
-        aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0;">
+        aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0;background-color:rgb(255, 255, 255);">
         {{-- Header --}}
         <div class="offcanvas-header" style="padding-top:0; padding-bottom:0">
             <a class="text-decoration-none" href="/home">
@@ -126,7 +126,6 @@
         </div>
         <hr style="margin-top:0">
         {{-- Akhir Header --}}
-
         <div class="container-fluid scrollable"
             style="padding:0; max-height:100%; height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             {{-- Modules Apps --}}
@@ -205,10 +204,34 @@
                             <img src="/img/ico/sewaBMN.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Sewa BMN
+                            SIMONES
                         </div>
                     </a>
                 </div>
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="http://10.122.1.46/Sipirang"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Manajemen Peminjaman Ruangan
+                        </div>
+                    </a>
+                </div>   
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/spreadsheets/d/1xW1bwVzUVCGYaGiFLViDLo--tF_AHkYy-WpcMdZLMeg/edit#gid=1907929457"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/cakalang.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            capaian Kinerja Lelang
+                        </div>
+                    </a>
+                </div>   
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
                 <div class="col-sm-4">
                     <a class="text-decoration-none"
@@ -223,19 +246,7 @@
                     </a>
                 </div>            
                 @endif
-                <div class="col-sm-4">
-                    <a class="text-decoration-none"
-                        href="http://10.122.1.46/Sipirang"
-                        target="_blank">
-                        <div class="d-flex justify-content-evenly">
-                            <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
-                        </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Manajemen Peminjaman Ruangan
-                        </div>
-                    </a>
-                </div>   
-
+                
             </div>
             <hr>
             {{-- Akhir Modules Apps --}}
@@ -389,7 +400,7 @@
     {{-- Footer --}}
     <div class="container-fluid fixed-bottom" style="height: 5vh">
         <div class="row" style="margin:0; padding: 0 37px 0 37px; height:100%">
-            <div class="col-sm-12" style="background-color: aliceblue; border-radius: 10px 10px 0 0;height:100%">
+            <div class="col-sm-12" style="background-color:rgba(255, 255, 255, 0.74); border-radius: 10px 10px 0 0;height:100%">
                 <div class="row position-relative" style="height:100%">
                     <div class="position-absolute top-50 start-0 translate-middle-y" style="height:100%; width:fit-content">
                         <img src="/img/ico/ternate hub.png" height="100%">
