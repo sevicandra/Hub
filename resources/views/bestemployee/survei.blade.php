@@ -11,9 +11,50 @@
 @section('contentbestemployee')
 
 <div class="row" style="text-align: center; min-height: 10%;max-height:fit-content; font-size:100%; color:#4d59cac2">
-    @if (isset($data->listnominasi))
-    <h2 style="font-size:2vw">PEMILIHAN BEST EMPLOYEE BULAN {{ $data->bulan }} TAHUN {{ $data->tahun }}</h2>
-    @endif
+    <h2 style="font-size:2vw">
+        @if (isset($data->listnominasi))
+            PEMILIHAN BEST EMPLOYEE BULAN 
+            @switch( $data->bulan)
+                @case('01')
+                    JANUARI
+                    @break
+                @case('02')
+                    FEBRUARI
+                    @break
+                @case('03')
+                    MARET
+                    @break
+                @case('04')
+                    APRIL
+                    @break
+                @case('05')
+                    MEI
+                    @break
+                @case('06')
+                    JUNI
+                    @break
+                @case('07')
+                    JULI
+                    @break
+                @case('08')
+                    AGUSTUS
+                    @break
+                @case('09')
+                    SEPTEMBER
+                    @break
+                @case('10')
+                    OKTOBER
+                    @break
+                @case('11')
+                    NOVEMBER
+                    @break
+                @case('12')
+                    DESEMBER
+                    @break
+            @endswitch
+            TAHUN {{ $data->tahun }}        
+        @endif
+    </h2>
     <hr style="margin:0">
 </div>
 <div class="row" style="height: 90%;">

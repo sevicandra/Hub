@@ -455,13 +455,19 @@ $(document).ready(function(){
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
+                        scales:{
+                            r: {
+                                suggestedMin: 0,
+                                suggestedMax: 5,
+                                pointLabels: {
+                                    color: '#ffffff',
+                                    font: {
+                                        size: 10,
+                                        family:'TW CENT MT'
+                                    },
+                                },
+                            },
 
-                        r: {
-                            suggestedMin: 0,
-                            suggestedMax: 5,
-                        },
-                        legend: {
-                            display: false
                         },
                         plugins: {
                             legend: {
@@ -475,7 +481,7 @@ $(document).ready(function(){
                                 }
                             },
                             
-                        },            
+                        },        
                     }
                 });
                 $('#kepuasanTusi').change(function(){
@@ -609,8 +615,13 @@ function praktis(tahun) {
                                 borderColor:'#ffffff00',
                             },
                             ticks: {
-                                mirror: true
-                              }
+                                mirror: true,
+                                color: '#7A7A7A',
+                                font: {
+                                    size: 20,
+                                    family:'Tw Cen MT'
+                                }
+                            },
                         },
                         xAxes:{
                             grid:{
@@ -623,6 +634,7 @@ function praktis(tahun) {
                                 display:false,
                             }
                         },
+                        
                     } 
                 },
             });
@@ -697,8 +709,14 @@ function praktisTW(params) {
                                 borderColor:'#ffffff00',
                             },
                             ticks: {
-                                mirror: true
-                              }
+                                mirror: true,
+                                color: '#7A7A7A',
+                                font: {
+                                    size: 20,
+                                    family:'Tw Cen MT'
+                                }
+                              },
+                              
                         },
                         xAxes:{
                             grid:{

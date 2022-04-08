@@ -13,7 +13,7 @@
 <div class="row " style="height: 90%; padding: 0 10px 1% 10px">
     <div class="col-sm-3" style="height: 100%; padding:0">
         <div class="scrollable"
-            style="border-radius: 10px 10px 0 0;height: 90%; max-height:100%; padding: 0; margin:0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background: linear-gradient(90deg, #92929286 99%, #ffffff 99%)">
+            style="border-radius: 11px 11px 0 0;height: 90%; max-height:100%; padding: 0; margin:0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background: linear-gradient(90deg, #92929286 99%, #ffffff 99%)">
             @foreach ($data as $item)
             <div class="periodePemilihan" onclick="detailPemilihan('{{ $item->id }}')" id="{{ $item->id }}"
                 style="color:#ffffff;background-color: #142542; border-radius:11px; min-height:10%;max-height:fit-content; width:99%; margin-bottom:0.5%; font-size:5vh; padding:0 10px">
@@ -61,8 +61,11 @@
         </div>
         <div style="height: 10%; border: solid 1px; width: 99%; padding-top: 5px; border-radius: 0 0 10px 10px">
             <div style="margin: auto; width:fit-content">
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#pemilihanBestEmployee">Tamban
-                    Periode Survei</button>
+                @if (auth()->user()->jabatan === '01' ||auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11')
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#pemilihanBestEmployee">Tamban
+                        Periode Survei
+                    </button>
+                @endif
             </div>
         </div>
     </div>

@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 @else
-                <div style="background-color: #929292; min-height:7.5%; max-height:fit-content; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset;font-size: 100%;" >
+                <div style="color:white;background-color: #929292; min-height:7.5%; max-height:fit-content; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset;font-size: 100%;" >
                     <div style="width: fit-content; min-height:100%; max-height:fit-content; margin:auto" onclick="location.href='/best_employee';">
                         <h6 style="font-size: 1vw">HASIL PEMILIHAN BEST EMPLOYEE</h6> 
                     </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 @else
-                <div style="background-color: #929292; height:7.5%; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset;font-size: 100%;" >
+                <div style="color:white;background-color: #929292; height:7.5%; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset;font-size: 100%;" >
                     <div style="width: fit-content; min-height:100%; max-height:fit-content; margin:auto" onclick="location.href='/pemilihan_best_employee';">
                         <h6 style="font-size: 1vw">PEMILIHAN BEST EMPLOYEE</h6>
                     </div>

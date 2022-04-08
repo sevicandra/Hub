@@ -17,35 +17,31 @@ $(document).ready(function(){
           if (req.user_id === response['user']) {
             var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
             var methods = '<input type="hidden" name="_method" value="DELETE">'
-            var hapus = `<div style="padding-right:0" class="col-sm-2"><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color: red"><i class="bi bi-journal-x"></i></button></form></div>`
+            var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #ff6961; background-color:#ff6961; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
           }else{
             var hapus = ''
           }
-          
-          var waktu = '<div class="row"><div style="padding-right:0" class="col"><h5 style="color: #4D5299">'+req.waktu+'</h5></div>'+hapus+'</div>'
-          var Agenda = '<div><h4 style="text-align: justify">'+req.agenda+'</h4></div>'
-          var tempat = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Tempat</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.tempat+'</h5></div></div>'
-          if (req.meetingId) {
-            var meetingId = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Meeting id</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.meetingId+'</h5></div></div>'
+
+          var waktu = '<div class="p-2">'+req.waktu+'</div>'
+          var Agenda = '<div class="p-2">'+req.agenda+'</div>'
+          var tempat = '<div class="row"><div class="d-flex"><div class="p-2">Lokasi :</div><div class="p-2">'+req.tempat+'</div></div></div>'
+          if (req.meetingId && req.meetingPassword) {
+            var meetingRoom = '<div class="row"><div class="d-flex" style="text-align: center"><div style="width: 50%">Meeting Id</div><div style="width: 50%">Password</div></div></div><div class="row"><div class="d-flex" style="text-align: center"><div style="width: 50%">'+req.meetingId+'</div><div style="width: 50%">'+req.meetingPassword+'</div></div></div>'
           }else{
-            var meetingId = ''
-          }
-          if (req.meetingPassword) {
-            var meetingPassword = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Password</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.meetingPassword+'</h5></div></div>'
-          }else{
-            var meetingPassword = ''
+            var meetingRoom = ''
           }
           if (req.linkRapat) {
-            var linkRapat = '<div class="col"><form action="http://'+req.linkRapat+'" target="_blank"><button type="submit" class="btn btn-success">Masuk Room</button></form></div>'
+            var linkRapat = '<div style="width: 50%"><form action="http://'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
           }else{
             var linkRapat = ''
           }
           if (req.linkAbsensi) {
-            var linkAbsensi = '<div class="col"><form action="http://'+req.linkAbsensi+'" target="_blank"><button type="submit" class="btn btn-success">Isi Presensi</button></form></div>'
+            var linkAbsensi = '<div style="width: 50%"><form action="http://'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
           }else{
             var linkAbsensi = ''
           }
-          $('#agenda').append('<div class="row" style="margin-bottom: 2%"><div class="col-sm-12" style="border-radius:10px; background-color:#E6F5FF;">'+waktu+Agenda+tempat+meetingId+meetingPassword+'<div class="row" style="margin-bottom:10px">'+linkRapat+linkAbsensi+'</div></div></div>');
+          ''
+          $('#agenda').append('<div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
         });
 			},
 		});
@@ -67,35 +63,31 @@ $(document).ready(function(){
             if (req.user_id === response['user']) {
               var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
               var methods = '<input type="hidden" name="_method" value="DELETE">'
-              var hapus = `<div style="padding-right:0" class="col-sm-2"><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color: red"><i class="bi bi-journal-x"></i></button></form></div>`
+              var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #ff6961; background-color:#ff6961; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
             }else{
               var hapus = ''
             }
             
-            var waktu = '<div class="row"><div style="padding-right:0" class="col"><h5 style="color: #4D5299">'+req.waktu+'</h5></div>'+hapus+'</div>'
-            var Agenda = '<div><h4 style="text-align: justify">'+req.agenda+'</h4></div>'
-            var tempat = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Tempat</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.tempat+'</h5></div></div>'
-            if (req.meetingId) {
-              var meetingId = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Meeting id</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.meetingId+'</h5></div></div>'
-            }else{
-              var meetingId = ''
-            }
-            if (req.meetingPassword) {
-              var meetingPassword = '<div class="row"><div style="padding-right:0" class="col-sm-4"><h5>Password</h5></div><div style="padding-right:0" class="col-sm-1"><h5>:</h5></div><div style="padding-right:0" class="col-sm-7"><h5>'+req.meetingPassword+'</h5></div></div>'
-            }else{
-              var meetingPassword = ''
-            }
-            if (req.linkRapat) {
-              var linkRapat = '<div class="col"><form action=="http://'+req.linkRapat+'" target="_blank"><button type="submit" class="btn btn-success">Masuk Room</button></form></div>'
-            }else{
-              var linkRapat = ''
-            }
-            if (req.linkAbsensi) {
-              var linkAbsensi = '<div class="col"><form action=="http://'+req.linkAbsensi+'" target="_blank"><button type="submit" class="btn btn-success">Isi Presensi</button></form></div>'
-            }else{
-              var linkAbsensi = ''
-            }
-            $('#agenda').append('<div class="row" style="margin-bottom: 2%"><div class="col-sm-12" style="border-radius:10px; background-color:#E6F5FF">'+waktu+Agenda+tempat+meetingId+meetingPassword+'<div class="row" style="margin-bottom:10px">'+linkRapat+linkAbsensi+'</div></div></div>');
+            var waktu = '<div class="p-2">'+req.waktu+'</div>'
+          var Agenda = '<div class="p-2">'+req.agenda+'</div>'
+          var tempat = '<div class="row"><div class="d-flex"><div class="p-2">Lokasi :</div><div class="p-2">'+req.tempat+'</div></div></div>'
+          if (req.meetingId && req.meetingPassword) {
+            var meetingRoom = '<div class="row"><div class="d-flex" style="text-align: center"><div style="width: 50%">Meeting Id</div><div style="width: 50%">Password</div></div></div><div class="row"><div class="d-flex" style="text-align: center"><div style="width: 50%">'+req.meetingId+'</div><div style="width: 50%">'+req.meetingPassword+'</div></div></div>'
+          }else{
+            var meetingRoom = ''
+          }
+          if (req.linkRapat) {
+            var linkRapat = '<div style="width: 50%"><form action="http://'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
+          }else{
+            var linkRapat = ''
+          }
+          if (req.linkAbsensi) {
+            var linkAbsensi = '<div style="width: 50%"><form action="http://'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
+          }else{
+            var linkAbsensi = ''
+          }
+          ''
+          $('#agenda').append('<div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
           });
           },
         });

@@ -9,7 +9,7 @@ function detailPemilihan(params) {
                 $('.periodePemilihan').css("border-radius", "11px");
                 $('#'+params).css("background-color", "#4A81E0");
                 $('#'+params).css("width", "100%");
-                $('#'+params).css("border-radius", "11px 11px 0 11px");
+                $('#'+params).css("border-radius", "11px 5px 5px 11px");
                 $('#daftarNominasi').empty();
                 $('#buttonSurvei').empty();
                 var id = "'"+response.pemilihan.id+"'"

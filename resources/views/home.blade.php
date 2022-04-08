@@ -12,9 +12,9 @@
         <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
             {{-- Kepuasan Pengguna Layanan --}}
             <div class="col-sm-4" style="padding-right:5px; max-height: 100%; height: 100%">
-                <div style="background-color: rgb(255, 255, 255); border-radius: 10px; height:100%">
+                <div style="background-color: #A998B3; border-radius: 10px; height:100%; font-size:1vw; color: #ffffff; font-family:'TW CENT MT'">
                     <div style="height: 10%; text-align: center">
-                        <h2 class="kepuasan" style="color: #4e59f0;"> <b>KEPUASAN PENGGUNA LAYANAN</b></h2>
+                        <h6><b>KEPUASAN PENGGUNA LAYANAN</b></h6>
                     </div>
                     <div style="height:80%">
                         <div class="chart-container" style="height: 100%">
@@ -23,20 +23,20 @@
                     </div>
                     <div class="row" style="width: 100%; margin:0; height:10%; padding:0 5px">
                         <select id="kepuasanTusi" class="form-control"
-                            style=";color: #4e59f0; background-color: rgb(255, 255, 255);height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0">
-                            <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0"
-                                value="ALL">Kantor Pelayanan Kekayaan Negara
-                                dan Lelang Ternate</option>
-                            <option style="text-align: center; padding:0" value="PKN">Pengelolaan Kekayaan Negara
+                            style=";color: #ffffff; background-color: #A998B3;height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0; border:solid 1px #ffffff">
+                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                                value="ALL"> <b>Kantor Pelayanan Kekayaan Negara
+                                    dan Lelang Ternate</b> </option>
+                            <option style="text-align: center; padding:0" value="PKN"> <b>Pengelolaan Kekayaan Negara</b> 
                             </option>
-                            <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0"
-                                value="PEN">Pelayanan Penilaian</option>
-                            <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0"
-                                value="LLG">Pelayanan Lelang</option>
-                            <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0"
-                                value="PPN">Pengurusan Piutang Negara</option>
-                            <option style="background-color: rgb(255, 255, 255);text-align: center; padding:0"
-                                value="LLN">Lain-lain</option>
+                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                                value="PEN"> <b>Pelayanan Penilaian</b> </option>
+                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                                value="LLG"> <b>Pelayanan Lelang</b> </option>
+                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                                value="PPN"> <b>Pengurusan Piutang Negara</b> </option>
+                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                                value="LLN"> <b>Lain-lain</b> </option>
                         </select>
                     </div>
                 </div>
@@ -45,17 +45,17 @@
             {{-- Capaian Kinerja Organisasi --}}
             <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
                 <div
-                    style="background-color: rgb(255, 255, 255); border-radius: 10px; height: 100%; font-size:1.5vw; color: #4e59f0">
+                    style="background-color: #ffffff; border-radius: 10px; height: 100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
                     <div style="height: 10%; text-align: center">
-                        <b>CAPAIAN KINERJA KPKNL TERNATE TAHUN {{ session()->get('tahun') }}</b>
+                        <h6><b>CAPAIAN KINERJA KPKNL TERNATE TAHUN {{ session()->get('tahun') }}</b></h6>
                     </div>
                     <div style="height: 10%; text-align: center">
                         <select id="CKO" class="form-select"
-                            style="background-color: rgb(255, 255, 255);color: #4e59f0">
-                            <option style="background-color: rgb(255, 255, 255);" value="Q1">Q1</option>
-                            <option style="background-color: rgb(255, 255, 255);" value="Q2">Q2</option>
-                            <option style="background-color: rgb(255, 255, 255);" value="Q3">Q3</option>
-                            <option style="background-color: rgb(255, 255, 255);" value="Q4" selected>Q4</option>
+                            style="background-color: #ffffff;color: #7A7A7A; border:solid 1px #7A7A7A">
+                            <option style="background-color: #ffffff;" value="Q1">Q1</option>
+                            <option style="background-color: #ffffff;" value="Q2">Q2</option>
+                            <option style="background-color: #ffffff;" value="Q3">Q3</option>
+                            <option style="background-color: #ffffff;" value="Q4" selected>Q4</option>
                         </select>
                     </div>
                     <div class="scrollable"
@@ -69,44 +69,76 @@
             {{-- Akhir Capaian Kinerja Organisasi --}}
         </div>
         {{-- AKhir Kepuasan Pengguna Layanan dan Capaian Kinerja Organisasi --}}
-        {{-- PNBP dan Potensi Lelang BMN --}}
+        {{-- PNBP dan Potensi Lelang BMN --}}  
         <div class="row" style="max-height: 44%;height: 44%;">
             {{-- PNBP --}}
             <div class="col-sm-8 scrollable"
-                style="min-height:fit-content ;padding-right:5px; max-height: 100%; color: #4e59f0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; border-radius:10px">
+                style="min-height:fit-content ;padding-right:5px; max-height: 100%; color: #ffffff; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; border-radius:10px; font-family: 'Tw Cen MT';">
                 {{-- PNBP PKN --}}
                 <div class="row"
-                    style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
+                    style="max-height: fit-content; min-height: 32%; background: linear-gradient(90deg, #FFBD93 -1.04%, #FF8A93 100%) ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
                     data-bs-toggle="modal" data-bs-target="#PNBPPKN">
                     <div style="padding: 0"> <b>PNBP Pengelolaan Kekayaan Negara</b> </div>
                     <div style="padding: 0">
                         @if ($capaianPKN)
-                        Rp{{ number_format($capaianPKN->sum('capaian'), 2, ',', '.') }}
+                        <b>Rp{{ number_format($capaianPKN->sum('capaian'), 2, ',', '.') }}</b>
                         @else
-                        Rp0,00
+                        <b>Rp0,00</b>
                         @endif
                         /
                         @if ($PNBPPKN)
-                        Rp{{ number_format($PNBPPKN->target, 2, ',', '.') }}
+                        <b>Rp{{ number_format($PNBPPKN->target, 2, ',', '.') }}</b>
                         @else
-                        Rp0,00
+                        <b>Rp0,00</b>
                         @endif
                     </div>
                     <div class="progress" style="padding: 0; margin-bottom:1%">
                         <div class="progress-bar" role="progressbar"
-                            style="width: @if ($PNBPPKN) @if ($capaianPKN) {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }}% @else 0% @endif @else 0% @endif;"
-                            aria-valuenow="@if ($PNBPPKN) @if ($capaianPKN) {{ number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }}% @else 0% @endif @else 0% @endif"
-                            aria-valuemin="0" aria-valuemax="100">@if ($PNBPPKN) @if ($capaianPKN) {{
-                            number_format(($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100, 2) }} @else 0 @endif
-                            @else 0 @endif%</div>
+                            style="color:#7A7A7A;
+                                background-color:
+                                    @if ($PNBPPKN && $capaianPKN) 
+                                        @if((($capaianPKN->sum('capaian') / $PNBPPKN->target)*100 ) < 80)
+                                            #FF9E9E
+                                        @elseif((($capaianPKN->sum('capaian') / $PNBPPKN->target)*100 ) < 100)
+                                            #FFF48B
+                                        @else
+                                            #90FF96
+                                        @endif
+                                    @else 
+                                        #ffffff
+                                    @endif
+                                ;width: 
+                                    @if ($PNBPPKN && $capaianPKN)
+                                        {{ ($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100 }}% 
+                                    @else 
+                                        0% 
+                                    @endif;"
+                            aria-valuenow="
+                                @if ($PNBPPKN && $capaianPKN) 
+                                    {{ ($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100 }}% 
+                                @else
+                                    0%    
+                                @endif"
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                                @if ($PNBPPKN && $capaianPKN)
+                                    <b>{{($capaianPKN->sum('capaian') / $PNBPPKN->target) * 100 }}%</b>  
+                                @else 
+                                    <b>0%</b>  
+                                @endif
+                        </div>
                     </div>
                 </div>
                 {{-- AKHIR PNBP PKN --}}
                 <div class="row" style="height: 2%; margin:0">
                 </div>
                 {{-- PNBP LELANG --}}
+                
+                @php
+                    
+                @endphp
                 <div class="row"
-                    style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
+                    style="max-height: fit-content; min-height: 32%; background: linear-gradient(90deg, #8CC8FA -1.04%, #3497E6 100%); border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
                     data-bs-toggle="modal" data-bs-target="#PNBPLLG">
                     <div style="padding: 0"> <b>PNBP Lelang</b></div>
                     <div style="padding: 0">
@@ -124,11 +156,39 @@
                     </div>
                     <div class="progress" style="padding: 0; margin-bottom:1%">
                         <div class="progress-bar" role="progressbar"
-                            style="width: @if ($PNBPLLG) @if ($capaianLLG) {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }}% @else 0% @endif @else 0% @endif;"
-                            aria-valuenow="@if ($PNBPLLG) @if ($capaianLLG) {{ number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }}% @else 0% @endif @else 0% @endif"
-                            aria-valuemin="0" aria-valuemax="100">@if ($PNBPLLG) @if ($capaianLLG) {{
-                            number_format(($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100, 2) }} @else 0 @endif
-                            @else 0 @endif%</div>
+                            style="color:#7A7A7A;
+                                background-color:
+                                    @if ($PNBPLLG && $capaianLLG) 
+                                        @if((($capaianLLG->sum('capaian') / $PNBPLLG->target)*100 ) < 80)
+                                            #FF9E9E
+                                        @elseif((($capaianLLG->sum('capaian') / $PNBPLLG->target)*100 ) < 100)
+                                            #FFF48B
+                                        @else
+                                            #90FF96
+                                        @endif
+                                    @else 
+                                        #ffffff
+                                    @endif
+                                ;width: 
+                                    @if ($PNBPLLG && $capaianLLG)
+                                        {{ ($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100 }}% 
+                                    @else 
+                                        0% 
+                                    @endif;"
+                            aria-valuenow="
+                                @if ($PNBPLLG && $capaianLLG) 
+                                    {{ ($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100 }}% 
+                                @else
+                                    0%    
+                                @endif"
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                                @if ($PNBPLLG && $capaianLLG)
+                                    <b>{{($capaianLLG->sum('capaian') / $PNBPLLG->target) * 100 }}%</b>  
+                                @else 
+                                    <b>0%</b>  
+                                @endif
+                        </div>
                     </div>
                 </div>
                 {{-- AKHIR PNBP LELANG --}}
@@ -136,7 +196,7 @@
                 </div>
                 {{-- PNBP PIUTANG NEGARA --}}
                 <div class="row"
-                    style="max-height: fit-content; min-height: 32%; background-color: rgb(255, 255, 255); ; border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
+                    style="max-height: fit-content; min-height: 32%; background: linear-gradient(90deg, #72E8E1 -1.04%, #36CFBA 100%); border-radius: 10px; padding:0px 12px; margin:0; cursor: pointer;"
                     data-bs-toggle="modal" data-bs-target="#PNBPPPN">
                     <div style="padding: 0"> <b>PNBP Pengurusan Piutang Negara</b></div>
                     <div style="padding: 0">
@@ -154,11 +214,39 @@
                     </div>
                     <div class="progress" style="padding: 0; margin-bottom:1%">
                         <div class="progress-bar" role="progressbar"
-                            style="width: @if ($PNBPPPN) @if ($capaianPPN) {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }}% @else 0% @endif @else 0% @endif;"
-                            aria-valuenow="@if ($PNBPPPN) @if ($capaianPPN) {{ number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }}% @else 0% @endif @else 0% @endif"
-                            aria-valuemin="0" aria-valuemax="100">@if ($PNBPPPN) @if ($capaianPPN) {{
-                            number_format(($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100, 2) }} @else 0 @endif
-                            @else 0 @endif%</div>
+                            style="color:#7A7A7A;
+                                background-color:
+                                    @if ($PNBPPPN && $capaianPPN) 
+                                        @if((($capaianPPN->sum('capaian') / $PNBPPPN->target)*100 ) < 80)
+                                            #FF9E9E
+                                        @elseif((($capaianPPN->sum('capaian') / $PNBPPPN->target)*100 ) < 100)
+                                            #FFF48B
+                                        @else
+                                            #90FF96
+                                        @endif
+                                    @else 
+                                        #ffffff
+                                    @endif
+                                ;width: 
+                                    @if ($PNBPPPN && $capaianPPN)
+                                        {{ ($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100 }}% 
+                                    @else 
+                                        0% 
+                                    @endif;"
+                            aria-valuenow="
+                                @if ($PNBPPPN && $capaianPPN) 
+                                    {{ ($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100 }}% 
+                                @else
+                                    0%    
+                                @endif"
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                                @if ($PNBPPPN && $capaianPPN)
+                                    <b>{{($capaianPPN->sum('capaian') / $PNBPPPN->target) * 100 }}%</b>  
+                                @else 
+                                    <b>0%</b>  
+                                @endif
+                        </div>
                     </div>
                 </div>
                 {{-- AKHIR PNBP PIUTANG NEGARA --}}
@@ -169,16 +257,16 @@
                 <div style="height: 100%;  border-radius: 10px">
                     <div style="height: 15%;margin: 0px" class="row position-relative">
                         <div class="col-sm-12 position-absolute top-0 start-0"
-                            style="text-align: center;border-radius: 10px 10px 0 0; background-color: rgb(255, 255, 255); height:100%; border: 1px solid #855CF8">
-                            <h2 class="NKO" style="color: #4e59f0;"> <b>POTENSI LELANG</b> </h2>
+                            style="text-align: center;border-radius: 10px 10px 0 0; background-color: #A998B3; height:100%; border: 1px solid #ffffff">
+                            <h2 class="NKO" style="color: #ffffff;; font-family:'TW CENT MT'"> <b>POTENSI LELANG</b> </h2>
                         </div>
                     </div>
                     <div style="height: 85%;margin: 0px;" class="row position-relative">
                         <div class="col-sm-12 position-absolute top-0 start-0"
-                            style="text-align: center;border-radius: 0 0 10px 10px ; background-color: rgb(255, 255, 255); height:100%; border: 1px solid #855CF8">
+                            style="text-align: center;border-radius: 0 0 10px 10px ; background-color: #A998B3; height:100%; border: 1px solid #ffffff">
                             <div style="height: 25%">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #4e59f0;font-size:1.5vw; margin:0;line-height: normal">
+                                    <p style="color: #ffffff;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         Surat Persetujuan
                                     </p>
                                 </div>
@@ -186,7 +274,7 @@
                             <hr style="margin:0">
                             <div style="height: 45%; ">
                                 <div style="width:100%; text-align: center">
-                                    <p style="color: #4e59f0;font-size: 5vw; margin:0;line-height: normal">
+                                    <p style="color: #ffffff;font-size: 5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         {{ count($persetujuan) }}
                                     </p>
                                 </div>
@@ -194,7 +282,7 @@
                             <hr style="margin:0">
                             <div style="height: 15%">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #4e59f0;font-size:1.5vw; margin:0;line-height: normal">
+                                    <p style="color: #ffffff;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         Nilai Limit
                                     </p>
                                 </div>
@@ -202,7 +290,7 @@
                             <hr style="margin:0">
                             <div style="height: 15%; ">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #4e59f0;font-size: 1vw; margin:0;line-height: normal">
+                                    <p style="color: #ffffff;font-size: 1vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         Rp{{ number_format(array_sum($limit), 2, ',', '.') }}
                                         {{-- {{ $potensiLelang['limit'] }} --}}
                                     </p>
@@ -218,22 +306,71 @@
     </div>
     {{-- Agenda --}}
     <div class="col-sm-3" style=" padding-left:4px; max-height: 100%;height: 100%">
-        <div class="scrollable position-relative"
-            style="height: 99%; background-color: #ffffff4f; border-radius: 10px; padding: 0px 0 0 0px; max-height: fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
-            <nav class="navbar navbar-light bg-light sticky-top" style="margin: 0; border-radius: 10px;">
-                <div class="container-fluid">
-                    <input class="form-control" id="tanggalagenda" type="date">
-                </div>
-            </nav>
-            <div class="container-fluid" style="padding: 5px 20px 30px 20px" id='agenda'>
+        <div class="position-relative bottom-0 start-50 translate-middle-x"
+            style="height: 99%; background-color: #7d95b380; border-radius: 10px; padding: 0; max-height: fit-content">
+            <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 100%">
+                <nav class="navbar sticky-top" style="margin: 0; border-radius: 10px; background-color: #f4f1d6">
+                    <div class="container-fluid">
+                        <input class="form-control" id="tanggalagenda" type="date" style="background-color: #f4f1d6; border: solid 1px #ffffff">
+                    </div>
+                </nav>
             </div>
-            <nav class="navbar navbar-light bg-light position-absolute bottom-0 start-50 translate-middle-x"
-                style="margin: 0;width:100%; border-radius: 10px; min-height:fit-content; max-height:fit-content">
-                <div class="container-fluid" style="min-height: 100%;max-height:fit-content">
-                    <button class="btn btn-primary container-fluid" data-bs-toggle="modal" data-bs-target="#inputAgenda"
-                        style="height: 30px; padding: 1px">Tambah Agenda</button>
+            <div class="scrollable  container-fluid" style="height: 100%;padding: 55px 10px 55px 10px ; font-family:'TW CENT MT'; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;" id='agenda'>
+                @if (1)
+                @else
+                <div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px">
+                    <div class="row">
+                        <div class="d-flex">
+                            <div class="p-2">09:00</div>
+                            <div class="vr"></div>
+                            <div class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nam illo voluptate!</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex">
+                            <div class="p-2">Lokasi :</div>
+                            <div class="p-2">Meeting Room</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex" style="text-align: center">
+                            <div style="width: 50%">Meeting Id</div>
+                            <div style="width: 50%">Password</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex" style="text-align: center">
+                            <div style="width: 50%">Meeting Id</div>
+                            <div style="width: 50%">Password</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="d-flex">
+                            <div style="width: 50%">
+                                <form action="" style="width:100%; height:100%">
+                                    <button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%">Masuk Room Zoom</button>
+                                </form>
+                            </div>
+                            <div style="width: 50%">
+                                <form action="" style="width:100%; height:100%">
+                                    <button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%">Presensi</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"><div><form action=""><button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #ff6961; background-color:#ff6961; color:#ffffff">Hapus Agenda</i></button></form></div></div>
                 </div>
-            </nav>
+                @endif
+            </div>
+            <div class="position-absolute bottom-0 start-50 translate-middle-x" style="width: 100%">
+                <nav class="navbar sticky-top"
+                    style="margin: 0;width:100%; border-radius: 10px; min-height:fit-content; max-height:fit-content; background-color:#f4f1d6">
+                    <div class="container-fluid" style="min-height: 100%;max-height:fit-content">
+                        <button class="btn container-fluid" data-bs-toggle="modal" data-bs-target="#inputAgenda"
+                            style="height: 30px; padding: 1px; font-family:'TW CENT MT'; color:#7A7A7A; background-color:#BFE2F5" >Tambah Agenda</button>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
     {{-- Akhir Agenda --}}
@@ -301,8 +438,8 @@
                                 <input name="linkAbsensi" class="form-control" type="text">
                             </div>
                         </div>
-                        <div class="row">
-                            <div>
+                        <div style="margin-top:10px">
+                            <div style="width: fit-content;margin: auto">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
@@ -904,7 +1041,6 @@
 @endsection
 
 @section('foot')
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/chart.js"></script>
 <script src="/js/dashboard/agenda.js" type="text/javascript"></script>

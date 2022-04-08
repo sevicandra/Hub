@@ -62,7 +62,7 @@
 </head>
 
 <body
-    style="background: linear-gradient(298.55deg, #352d63 0%, #594f9c 41.63%, rgba(71, 100, 156, 0.88) 69.99%, rgba(69, 111, 151, 0.9) 96.89%); max-height:100vh; height:100vh">
+    style="background: linear-gradient(298.55deg, #352d63 0%, #594f9c 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
 
     {{-- NAVBAR --}}
     <div class="container-fluid sticky-top" style="height: 5vh">
@@ -71,7 +71,7 @@
                 style="border-radius: 0 0 10px 10px; height:100%; background-color:rgba(255, 255, 255, 0.74)">
                 <div class="row" style="height:100%">
                     <div class="col-sm-8" style="height:100%">
-                        <button style="max-height: 100%" class="d-inline btn border-light bg-primary" type="button" data-bs-toggle="offcanvas"
+                        <button style="max-height: 100%; color:white;" class="d-inline btn border-light bg-primary" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">
                             <i class="bi bi-list fa-sm"></i>
                         </button>
@@ -118,11 +118,19 @@
                 </div>
             </a>
             <Span>
-                <form action="logout" method="POST">
-                    @csrf
-                    <button class="btn">Logout</button>
-                </form>
+
             </Span>
+        </div>
+        <hr style="margin-top:0; margin-bottom:5px">
+        <div>
+            <div class="d-flex">
+                <div class="p-2 w-100 bd-highlight">
+                    <h5>{{ auth()->user()->nama }}</h5>
+                </div>
+                <div class="p-2 flex-shrink-1 bd-highlight" style="padding: 0"><form action="logout" method="POST">@csrf<button class="btn" style="color:red; height:fit-content;width:fit-content; padding:0">
+                    <h4 style="margin: 0"><i class="bi bi-box-arrow-right"></i></h4>
+                    </button></form></div>
+            </div>
         </div>
         <hr style="margin-top:0">
         {{-- Akhir Header --}}
