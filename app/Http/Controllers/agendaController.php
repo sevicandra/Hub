@@ -62,6 +62,7 @@ class agendaController extends Controller
             'linkAbsensi'=>$request->linkAbsensi,
             'user_id'=>auth()->user()->id,
         ]);
+        return Redirect::back();
     }
 
     /**
