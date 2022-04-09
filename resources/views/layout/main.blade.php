@@ -62,7 +62,7 @@
 </head>
 
 <body
-    style="background: linear-gradient(298.55deg, #352d63 0%, #594f9c 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
+    style="background: linear-gradient(298.55deg, #30629b 0%, #4b7296 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
 
     {{-- NAVBAR --}}
     <div class="container-fluid sticky-top" style="height: 5vh">
@@ -93,7 +93,7 @@
     {{-- Akhir NAVBAR --}}
     {{-- Content --}}
     <div id="loadingScreen" class="container-fluid" style="margin: 0.5vh 0 0.5vh 0; height: 89vh;display:block">
-        <div class="container-fluid" style="padding: 30px 37px 0px 37px; height:100%">
+        <div class="container-fluid" style="padding: 0px 37px 0px 37px; height:100%">
             <div class="container-fluid" style="border-radius: 10px; background-color:aliceblue; height:100%">
                 <div class="loader position-absolute top-50 start-50 translate-middle">
 

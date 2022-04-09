@@ -445,11 +445,11 @@ $(document).ready(function(){
                             data: [response.tangibles, response.reliability, response.responsiveness, response.assurance, response.empathy],
                             fill: true,
                             // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            // pointBackgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: '#54BAB9',
+                            // pointBackgroundColor: '#54BAB9',
                             pointBorderColor: '#fff',
                             // pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                            pointHoverBorderColor: '#54BAB9'
                         }]
                     },
                     options: {
@@ -460,14 +460,13 @@ $(document).ready(function(){
                                 suggestedMin: 0,
                                 suggestedMax: 5,
                                 pointLabels: {
-                                    color: '#ffffff',
+                                    color: '#7A7A7A',
                                     font: {
                                         size: 10,
                                         family:'TW CENT MT'
                                     },
                                 },
                             },
-
                         },
                         plugins: {
                             legend: {
@@ -513,19 +512,28 @@ $('#kepuasanTusi').change(function(){
                         data: [response.tangibles, response.reliability, response.responsiveness, response.assurance, response.empathy],
                         fill: true,
                         // backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        // pointBackgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: '#54BAB9',
+                        // pointBackgroundColor: '#54BAB9',
                         pointBorderColor: '#fff',
                         // pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(255, 99, 132)'
+                        pointHoverBorderColor: '#54BAB9'
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    r: {
-                        suggestedMin: 0,
-                        suggestedMax: 5
+                    scales:{
+                        r: {
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            pointLabels: {
+                                color: '#7A7A7A',
+                                font: {
+                                    size: 10,
+                                    family:'TW CENT MT'
+                                },
+                            },
+                        },
                     },
                     legend: {
                         display: false
@@ -582,13 +590,28 @@ function praktis(tahun) {
                         data: capaian,
                         fill: false,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 205, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(201, 203, 207, 0.2)'
+                            '#1A3B3A33',
+                            '#94C6C533',
+                            '#54BAB933',
+                            '#2C3B3A33',
+                            '#3D878633',
+                            '#9FD4D333',
+                            '#26545333',
+                            '#749B9A33',
+                            '#68E8E433',
+                            '#4E696833',
+                            '#50B5B233',
+                            '#28363533',
+                            '#39827D33',
+                            '#99CFCB33',
+                            '#234F4C33',
+                            '#739C9933',
+                            '#66E8DF33',
+                            '#4D696733',
+                            '#4EB5AE33',
+                            '#27363533',
+                            '#37827D33',
+                            '#95CFCB33'
                           ],
                           minBarThickness: 50,
                           maxBarThickness: 50
@@ -676,13 +699,28 @@ function praktisTW(params) {
                         data: capaian,
                         fill: false,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 205, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(201, 203, 207, 0.2)'
+                            '#1A3B3A33',
+                            '#94C6C533',
+                            '#54BAB933',
+                            '#2C3B3A33',
+                            '#3D878633',
+                            '#9FD4D333',
+                            '#26545333',
+                            '#749B9A33',
+                            '#68E8E433',
+                            '#4E696833',
+                            '#50B5B233',
+                            '#28363533',
+                            '#39827D33',
+                            '#99CFCB33',
+                            '#234F4C33',
+                            '#739C9933',
+                            '#66E8DF33',
+                            '#4D696733',
+                            '#4EB5AE33',
+                            '#27363533',
+                            '#37827D33',
+                            '#95CFCB33'
                           ],
                           minBarThickness: 50,
                           maxBarThickness: 50

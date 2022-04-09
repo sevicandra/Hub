@@ -62,6 +62,8 @@ class RencanaAksiController extends Controller
             return view('praktis.RancanaAksi',[
                 'back'=> '/praktis',
                 'data'=>$rencana_aksi,
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }
     }
@@ -72,6 +74,8 @@ class RencanaAksiController extends Controller
             return view('praktis.RancanaAksi',[
                 'back'=> '/monitoring/'.$rencana_aksi->user_id,
                 'data'=>$rencana_aksi,
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'favicon'=>'/img/ico/praktis.png'
             ]);
         }
     }

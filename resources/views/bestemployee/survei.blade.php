@@ -52,7 +52,9 @@
                     DESEMBER
                     @break
             @endswitch
-            TAHUN {{ $data->tahun }}        
+            TAHUN {{ $data->tahun }}
+        @else
+            &nbsp       
         @endif
     </h2>
     <hr style="margin:0">

@@ -151,24 +151,40 @@ Route::resource('/survey', KepuasanPelangganController::class);
 
 // Permohonan Verifikasi Email
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    if(auth()->user()->email_verified_at === null){
+        return view('auth.verify-email');
+    }else{
+        return redirect('/home');
+    }
 })->middleware('auth')->name('verification.notice');
 
 // Permohonan Verifikasi Email Ulang
 Route::get('/email/re-verify', function () {
-    return view('auth.reverify-email');
+    if(auth()->user()->email_verified_at === null){
+        return view('auth.reverify-email');
+    }else{
+        return redirect('/home');
+    }
 })->middleware('auth');
 
 // Verifikasi Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    if(auth()->user()->email_verified_at === null){
+        return redirect('/home');
+    }else{
+        return redirect('/home');
+    }
     $request->fulfill();
  
-    return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // Pengiriman Email Verifikasi
 Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
+    if(auth()->user()->email_verified_at === null){
+        $request->user()->sendEmailVerificationNotification();
+    }else{
+        return redirect('/home');
+    }
  
     return view('auth.verify-email')->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');

@@ -13,34 +13,29 @@ use Illuminate\Support\Facades\Redirect;
 
 class kinerja extends Controller
 {
-    public function inputTarget(Request $request){
-        if (idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id)->user_id === auth()->user()->id || auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            $i=0;
-            foreach ($request->periode as $key) {
-                $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
-                $data['periode']=$request->periode[$i];
-                $data['target']=$request->target[$i];
-                $data['raw']=$request->raw[$i];
-                $data['jeniskinerja']=$request->jenisKinerja;
-                $i++;
-                target::create($data);
-            }
-            $request->session()->flash('message', 'Successfully updated!');
-            return redirect($request->session()->get('_previous')['url']);    
-        }else{
-            abort(403);
+    public function inputTarget(Request $request){           
+        $i=0;
+        foreach ($request->periode as $key) {
+            $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
+            $data['periode']=$request->periode[$i];
+            $data['target']=$request->target[$i];
+            $data['raw']=$request->raw[$i];
+            $data['jeniskinerja']=$request->jenisKinerja;
+            $i++;
+            target::create($data);
         }
+        $request->session()->flash('message', 'Successfully updated!');
+        return redirect($request->session()->get('_previous')['url']);    
     }
 
     public function updateTarget(Request $request){
-        if (idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id)->user_id === auth()->user()->id || auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
-            $i=0;
-            if(idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id)){
-            $IKU = idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id);
-            }elseif(kinerjaOrganisasi::find($request->idikator_kinerja_utama_id)){
-            $IKU = kinerjaOrganisasi::find($request->idikator_kinerja_utama_id);
-            };
-            foreach($request->periode as $key){
+        $i=0;
+        if(idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id)){
+        $IKU = idikatorKinerjaUtama::find($request->idikator_kinerja_utama_id);
+        }elseif(kinerjaOrganisasi::find($request->idikator_kinerja_utama_id)){
+        $IKU = kinerjaOrganisasi::find($request->idikator_kinerja_utama_id);
+        };
+        foreach($request->periode as $key){
             $target = $IKU->target->where('periode', $key)->first();
             if ($target) {
                 $target2 = $request->target[$i];
@@ -48,22 +43,19 @@ class kinerja extends Controller
                 $target->update([
                     'target'=>$target2,
                     'raw'=>$raw
-                ]);
-            }else{
-                $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
-                $data['periode']=$request->periode[$i];
-                $data['target'] = $request->target[$i];
-                $data['raw'] = $request->raw[$i];
-                $data['jeniskinerja']=$request->jenisKinerja;
-                target::create($data);
-            }
-            $i++;
+            ]);
+        }else{
+            $data['idikator_kinerja_utama_id']=$request->idikator_kinerja_utama_id;
+            $data['periode']=$request->periode[$i];
+            $data['target'] = $request->target[$i];
+            $data['raw'] = $request->raw[$i];
+            $data['jeniskinerja']=$request->jenisKinerja;
+            target::create($data);
+        }
+        $i++;
         }
         $request->session()->flash('message', 'Successfully updated!');
         return redirect($request->session()->get('_previous')['url']);
-        }else{
-            abort(403);
-        }
     }
 
     public function inputCapaian(Request $request){

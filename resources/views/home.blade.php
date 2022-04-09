@@ -12,7 +12,7 @@
         <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
             {{-- Kepuasan Pengguna Layanan --}}
             <div class="col-sm-4" style="padding-right:5px; max-height: 100%; height: 100%">
-                <div style="background-color: #A998B3; border-radius: 10px; height:100%; font-size:1vw; color: #ffffff; font-family:'TW CENT MT'">
+                <div style="background-color: #FBF8F1; border-radius: 10px; height:100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
                     <div style="height: 10%; text-align: center">
                         <h6><b>KEPUASAN PENGGUNA LAYANAN</b></h6>
                     </div>
@@ -23,19 +23,19 @@
                     </div>
                     <div class="row" style="width: 100%; margin:0; height:10%; padding:0 5px">
                         <select id="kepuasanTusi" class="form-control"
-                            style=";color: #ffffff; background-color: #A998B3;height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0; border:solid 1px #ffffff">
-                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                            style=";color: #7A7A7A; background-color: #FBF8F1;height: 90%; font-size:0.8vw; padding-top:0; padding-bottom:0; border:solid 1px #ffffff">
+                            <option style="background-color: #FBF8F1;text-align: center; padding:0"
                                 value="ALL"> <b>Kantor Pelayanan Kekayaan Negara
                                     dan Lelang Ternate</b> </option>
                             <option style="text-align: center; padding:0" value="PKN"> <b>Pengelolaan Kekayaan Negara</b> 
                             </option>
-                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                            <option style="background-color: #FBF8F1;text-align: center; padding:0"
                                 value="PEN"> <b>Pelayanan Penilaian</b> </option>
-                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                            <option style="background-color: #FBF8F1;text-align: center; padding:0"
                                 value="LLG"> <b>Pelayanan Lelang</b> </option>
-                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                            <option style="background-color: #FBF8F1;text-align: center; padding:0"
                                 value="PPN"> <b>Pengurusan Piutang Negara</b> </option>
-                            <option style="background-color: #A998B3;text-align: center; padding:0"
+                            <option style="background-color: #FBF8F1;text-align: center; padding:0"
                                 value="LLN"> <b>Lain-lain</b> </option>
                         </select>
                     </div>
@@ -45,17 +45,17 @@
             {{-- Capaian Kinerja Organisasi --}}
             <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
                 <div
-                    style="background-color: #ffffff; border-radius: 10px; height: 100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
+                    style="background-color: #FBF8F1; border-radius: 10px; height: 100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
                     <div style="height: 10%; text-align: center">
                         <h6><b>CAPAIAN KINERJA KPKNL TERNATE TAHUN {{ session()->get('tahun') }}</b></h6>
                     </div>
                     <div style="height: 10%; text-align: center">
                         <select id="CKO" class="form-select"
-                            style="background-color: #ffffff;color: #7A7A7A; border:solid 1px #7A7A7A">
-                            <option style="background-color: #ffffff;" value="Q1">Q1</option>
-                            <option style="background-color: #ffffff;" value="Q2">Q2</option>
-                            <option style="background-color: #ffffff;" value="Q3">Q3</option>
-                            <option style="background-color: #ffffff;" value="Q4" selected>Q4</option>
+                            style="background-color: #FBF8F1;color: #7A7A7A; border:solid 1px #7A7A7A">
+                            <option style="background-color: #FBF8F1;" value="Q1">Q1</option>
+                            <option style="background-color: #FBF8F1;" value="Q2">Q2</option>
+                            <option style="background-color: #FBF8F1;" value="Q3">Q3</option>
+                            <option style="background-color: #FBF8F1;" value="Q4" selected>Q4</option>
                         </select>
                     </div>
                     <div class="scrollable"
@@ -257,24 +257,24 @@
                 <div style="height: 100%;  border-radius: 10px">
                     <div style="height: 15%;margin: 0px" class="row position-relative">
                         <div class="col-sm-12 position-absolute top-0 start-0"
-                            style="text-align: center;border-radius: 10px 10px 0 0; background-color: #A998B3; height:100%; border: 1px solid #ffffff">
-                            <h2 class="NKO" style="color: #ffffff;; font-family:'TW CENT MT'"> <b>POTENSI LELANG</b> </h2>
+                            style="text-align: center;border-radius: 10px 10px 0 0; background-color: #FFF89A; height:100%; border: 1px solid #7A7A7A">
+                            <h2 class="NKO" style="color: #7A7A7A; font-family:'TW CENT MT'"> <b>POTENSI LELANG</b> </h2>
                         </div>
                     </div>
                     <div style="height: 85%;margin: 0px;" class="row position-relative">
                         <div class="col-sm-12 position-absolute top-0 start-0"
-                            style="text-align: center;border-radius: 0 0 10px 10px ; background-color: #A998B3; height:100%; border: 1px solid #ffffff">
+                            style="text-align: center;border-radius: 0 0 10px 10px ; background-color: #FFF89A; height:100%; border: 1px solid #7A7A7A">
                             <div style="height: 25%">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #ffffff;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
-                                        Surat Persetujuan
+                                    <p style="color: #7A7A7A;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
+                                        Surat Persetujuan 
                                     </p>
                                 </div>
                             </div>
                             <hr style="margin:0">
                             <div style="height: 45%; ">
                                 <div style="width:100%; text-align: center">
-                                    <p style="color: #ffffff;font-size: 5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
+                                    <p style="color: #7A7A7A;font-size: 5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         {{ count($persetujuan) }}
                                     </p>
                                 </div>
@@ -282,7 +282,7 @@
                             <hr style="margin:0">
                             <div style="height: 15%">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #ffffff;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
+                                    <p style="color: #7A7A7A;font-size:1.5vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         Nilai Limit
                                     </p>
                                 </div>
@@ -290,7 +290,7 @@
                             <hr style="margin:0">
                             <div style="height: 15%; ">
                                 <div style="margin:auto; text-align: center">
-                                    <p style="color: #ffffff;font-size: 1vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
+                                    <p style="color: #7A7A7A;font-size: 1vw; margin:0;line-height: normal; font-family:'TW CENT MT'">
                                         Rp{{ number_format(array_sum($limit), 2, ',', '.') }}
                                         {{-- {{ $potensiLelang['limit'] }} --}}
                                     </p>

@@ -17,7 +17,7 @@ $(document).ready(function(){
           if (req.user_id === response['user']) {
             var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
             var methods = '<input type="hidden" name="_method" value="DELETE">'
-            var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #ff6961; background-color:#ff6961; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
+            var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
           }else{
             var hapus = ''
           }
@@ -31,17 +31,17 @@ $(document).ready(function(){
             var meetingRoom = ''
           }
           if (req.linkRapat) {
-            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
+            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
           }else{
             var linkRapat = ''
           }
           if (req.linkAbsensi) {
-            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
+            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
           }else{
             var linkAbsensi = ''
           }
           ''
-          $('#agenda').append('<div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
+          $('#agenda').append('<div style="background-color:#9AD0EC; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
         });
 			},
 		});
@@ -63,7 +63,7 @@ $(document).ready(function(){
             if (req.user_id === response['user']) {
               var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
               var methods = '<input type="hidden" name="_method" value="DELETE">'
-              var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #ff6961; background-color:#ff6961; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
+              var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
             }else{
               var hapus = ''
             }
@@ -77,17 +77,17 @@ $(document).ready(function(){
             var meetingRoom = ''
           }
           if (req.linkRapat) {
-            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
+            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
           }else{
             var linkRapat = ''
           }
           if (req.linkAbsensi) {
-            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#BCBFAC; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
+            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
           }else{
             var linkAbsensi = ''
           }
           ''
-          $('#agenda').append('<div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
+          $('#agenda').append('<div style="background-color:#9AD0EC; color: #ffffff; border-radius:10px;margin-top:10px"><div class="row"><div class="d-flex">'+waktu+'<div class="vr"></div>'+Agenda+'</div></div>'+tempat+meetingRoom+'<div class="row"><div class="d-flex">'+linkRapat+linkAbsensi+'</div></div>'+hapus+'</div>');
           });
           },
         });
