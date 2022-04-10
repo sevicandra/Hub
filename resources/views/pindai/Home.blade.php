@@ -28,59 +28,59 @@
                     <div class="row">
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($permohonan as $item)
-                                <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                     <p style="color: aliceblue; margin:auto">
                                         {{$item->tiket}}
                                     </p>
-                                </div>    
+                                </a>    
                             @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($penilaian as $item)
-                                <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                     <p style="color: aliceblue; margin:auto">
                                         {{$item->tiket}}
                                     </p>
-                                </div>    
+                                </a>    
                             @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($persetujuan as $item)
-                                <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                     <p style="color: aliceblue; margin:auto">
                                         {{$item->tiket}}
                                     </p>
-                                </div>    
+                                </a>    
                             @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($lelang as $item)
-                                <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                     <p style="color: aliceblue; margin:auto">
                                         {{$item->tiket}}
                                     </p>
-                                </div>    
+                                </a>    
                             @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($selesaiLelang as $item)
                                 @if ($item->permohonans->barang->avg('status')<2)
-                                    <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                    <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                         <p style="color: aliceblue; margin:auto">
                                             {{$item->tiket}}
                                         </p>
-                                    </div>
+                                    </a>
                                 @endif
                             @endforeach
                         </div>
                         <div class="col-sm-2 border rounded-bottom" style="height: 78vh; padding:5px">
                             @foreach ($selesaiLelang as $item)
                                 @if ($item->permohonans->barang->avg('status') === 2)
-                                    <div class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
+                                    <a href="/pindai/{{ $item->id }}" class="text-center btn" style="background-color: blue; width:100%; margin-top:2px">
                                         <p style="color: aliceblue; margin:auto">
                                             {{$item->tiket}}
                                         </p>
-                                    </div>
+                                    </a>
                                 @endif
                             @endforeach
                         </div>

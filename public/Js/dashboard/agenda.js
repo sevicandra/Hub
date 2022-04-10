@@ -31,12 +31,12 @@ $(document).ready(function(){
             var meetingRoom = ''
           }
           if (req.linkRapat) {
-            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
+            var linkRapat = '<div style="width: 50%"><a target="_blank" href="'+req.linkRapat+'"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></a></div>'
           }else{
             var linkRapat = ''
           }
           if (req.linkAbsensi) {
-            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
+            var linkAbsensi = '<div style="width: 50%"><a target="_blank" href="'+req.linkAbsensi+'"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></a></div>'
           }else{
             var linkAbsensi = ''
           }
@@ -77,12 +77,12 @@ $(document).ready(function(){
             var meetingRoom = ''
           }
           if (req.linkRapat) {
-            var linkRapat = '<div style="width: 50%"><form target="_blank" action="'+req.linkRapat+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></form></div>'
+            var linkRapat = '<div style="width: 50%"><a target="_blank" href="'+req.linkRapat+'"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Masuk Room Zoom</button></a></div>'
           }else{
             var linkRapat = ''
           }
           if (req.linkAbsensi) {
-            var linkAbsensi = '<div style="width: 50%"><form target="_blank" action="'+req.linkAbsensi+'" style="width:100%; height:100%"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></form></div>'
+            var linkAbsensi = '<div style="width: 50%"><a target="_blank" href="'+req.linkAbsensi+'"><button class="btn" style="color:#FAFFE5; border:solid 1px #FAFFE5; background-color:#1572A1; height:100%;width:100%; border-radius: 10px">Presensi</button></a></div>'
           }else{
             var linkAbsensi = ''
           }

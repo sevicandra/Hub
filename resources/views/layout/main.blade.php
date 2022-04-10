@@ -10,15 +10,51 @@
     <link href='https://fonts.googleapis.com/css?family=Overpass' rel='stylesheet'>
     <link rel="stylesheet" href="/css/praktis/styles.css">
     <style>
-        .loader {
+        .loader1 {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
-            border-top: 16px solid blue;
-            border-right: 16px solid green;
-            border-bottom: 16px solid red;
-            border-left: 16px solid pink;
-            width: 120px;
-            height: 120px;
+            border-top: 5px solid blue;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+            height: 130px;
+            width: 130px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        .loader2 {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: none;
+            border-right: 5px solid green;
+            border-bottom: none;
+            border-left: none;
+            height: 140px;
+            width: 140px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        .loader3 {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: none;
+            border-right: none;
+            border-bottom: 5px solid red;
+            border-left: none;
+            height: 150px;
+            width: 150px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        .loader4 {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            border-left: 5px solid pink;
+            height: 160px;
+            width: 160px;
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
@@ -94,9 +130,33 @@
     {{-- Content --}}
     <div id="loadingScreen" class="container-fluid" style="margin: 0.5vh 0 0.5vh 0; height: 89vh;display:block">
         <div class="container-fluid" style="padding: 0px 37px 0px 37px; height:100%">
-            <div class="container-fluid" style="border-radius: 10px; background-color:aliceblue; height:100%">
-                <div class="loader position-absolute top-50 start-50 translate-middle">
-
+            <div class="container-fluid position-relative" style="border-radius: 10px; height:100%; padding:0">
+                <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
+                    <div class="position-relative" style="height: fit-content; width:fit-content">
+                        <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
+                            <div class="loader1" style="padding: 0; margin:0">
+    
+                            </div>
+                        </div>
+                        <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
+                            <div class="loader2" style="padding: 0; margin:0">
+    
+                            </div>
+                        </div>
+                        <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
+                            <div class="loader3" style="padding: 0; margin:0">
+    
+                            </div>
+                        </div>
+                        <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
+                            <div class="loader4" style="padding: 0; margin:0">
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="position-absolute top-50 start-50 translate-middle" style="padding: 0; margin:0">
+                    <img src="/img/ico/ternate hub.png" height="120px">
                 </div>
             </div>
         </div>

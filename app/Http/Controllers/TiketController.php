@@ -58,9 +58,11 @@ class TiketController extends Controller
      * @param  \App\Models\tiket  $tiket
      * @return \Illuminate\Http\Response
      */
-    public function show(tiket $tiket)
+    public function show(tiket $pindai)
     {
-        //
+        return view('pindai.tracking',[
+            'data'=> $pindai,
+        ]);
     }
 
     /**
