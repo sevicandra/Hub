@@ -1,3 +1,6 @@
+@if(auth()->user()->email_verified_at != null)
+    <script>window.location = "/home";</script>
+@endif
 <!DOCTYPE html>
 <html lang="en">
     <head>
