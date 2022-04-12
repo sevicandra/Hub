@@ -568,6 +568,7 @@
                 @if ($data->permohonans->permohonanPenilaian)
                 @if ($data->permohonans->permohonanPenilaian->pemberitahuanPenilaian)
                 @if ($data->permohonans->permohonanPenilaian->pemberitahuanPenilaian->penyampaianLaporan)
+                @if ($data->permohonans->permohonanPenilaian->pemberitahuanPenilaian->penyampaianLaporan->suratPersetujuan)
                 @if ($data->permohonans->permohonanPenilaian->pemberitahuanPenilaian->penyampaianLaporan->suratPersetujuan->permohonanLelang)
                 @foreach($data->permohonans->permohonanPenilaian->pemberitahuanPenilaian->penyampaianLaporan->suratPersetujuan->permohonanLelang
                 as $item)
@@ -656,7 +657,7 @@
                     @endif
                 </div>
                 @endforeach
-    
+                @endif
                 @endif
                 @endif
                 @endif
