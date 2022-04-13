@@ -278,7 +278,7 @@
                 </div>
                 <div class="col-sm-4">
                     <a class="text-decoration-none"
-                        href="http://10.122.1.46/Sipirang"
+                        href="http://10.122.1.85/Sipirang"
                         target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
