@@ -287,7 +287,19 @@
                             Manajemen Peminjaman Ruangan
                         </div>
                     </a>
-                </div>   
+                </div>
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/spreadsheets/d/10R0c8ifREKfGHQvc_KzEOulgL-XrVW203aNdt7Vmb5Y/edit#gid=748373855"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/simona.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            SIMONA
+                        </div>
+                    </a>
+                </div>  
                 <div class="col-sm-4">
                     <a class="text-decoration-none"
                         href="https://docs.google.com/spreadsheets/d/1xW1bwVzUVCGYaGiFLViDLo--tF_AHkYy-WpcMdZLMeg/edit#gid=1907929457"
