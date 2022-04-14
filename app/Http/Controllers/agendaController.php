@@ -45,7 +45,7 @@ class agendaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'agenda'=>'required|min:0|max:50',
+            'agenda'=>'required|min:0|max:255',
             'tanggal'=>'required',
             'tempat'=>'required',
             'waktu'=>'required',

@@ -393,25 +393,45 @@
                         <div class="row">
                             <label for="agenda" class="col-sm-4 col-form-label">Nama Agenda</label>
                             <div class="col-sm-8">
-                                <input name="agenda" class="form-control" type="text" required>
+                                <input name="agenda" class="form-control" type="text" value="{{ old('agenda') }}" required>
+                                @error('agenda')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
                             <div class="col-sm-8">
-                                <input name="tanggal" type="date" class="form-control" required>
+                                <input name="tanggal" type="date" class="form-control" value="{{ old('tanggal') }}" required>
+                                @error('tanggal')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="waktu" class="col-sm-4 col-form-label">Jam</label>
                             <div class="col-sm-8">
-                                <input name="waktu" type="time" class="form-control" required>
+                                <input name="waktu" type="time" class="form-control" value="{{ old('waktu') }}" required>
+                                @error('tanggal')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="tempat" class="col-sm-4 col-form-label">Tempat</label>
                             <div class="col-sm-8">
-                                <input name="tempat" class="form-control" type="text" required>
+                                <input name="tempat" class="form-control" type="text" value="{{ old('tempat') }}" required>
+                                @error('tempat')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -424,6 +444,7 @@
                             <label for="meetingPassword" class="col-sm-4 col-form-label">Password</label>
                             <div class="col-sm-8">
                                 <input name="meetingPassword" class="form-control" type="text">
+
                             </div>
                         </div>
                         <div class="row">
@@ -1058,4 +1079,13 @@
             
         })
 </script>
+@error('agenda')
+<script>
+    var inputAgenda = new bootstrap.Modal(document.getElementById('inputAgenda'), {
+        keyboard: false
+    });
+    inputAgenda.show()
+</script>
+
+@enderror
 @endsection
