@@ -29,21 +29,34 @@
                                             </tr>
                                         <?php $i=1; ?>
                                         @foreach ($data->Risalah as $item)
-                                            <tr onclick="barangLelang('{{$item->id}}')">
+                                            <tr @if ($data->permohonanLelang->jenis === 'App\Models\suratPersetujuan') onclick="barangLelang('{{$item->id}}')" @elseif($data->permohonanLelang->jenis === 'App\Models\tiket') onclick="lotLelang('{{$item->id}}')" @endif>
                                                 <td>{{$i}}</td>
                                                 <td>{{$item->nomor}}</td>
                                                 <td>{{$item->tanggal}}</td>
                                                 <td>{{$item->nilaiPokok}}</td>
                                                 <td style="max-width: 50px">
-                                                    @if (count($data->permohonanLelang->barang) != count($data->barangLelang))
-                                                        <button class="btn" onclick="inputBarangLelang('{{$item->id}}')" data-bs-toggle="modal" data-bs-target="#inputBarang"><i class="bi bi-plus-square-dotted"></i></button>
-                                                    @endif
-                                                    @if (!$item->barangLelang->first())
-                                                        <form action="/risalah/{{$item->id}}" method="post">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="btn" style="color: red"><i class="bi bi-trash3"></i></button>
-                                                        </form>
+                                                    @if ($data->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
+                                                        @if (count($data->permohonanLelang->barang) != count($data->barangLelang))
+                                                            <button class="btn" onclick="inputBarangLelang('{{$item->id}}')" data-bs-toggle="modal" data-bs-target="#inputBarang"><i class="bi bi-plus-square-dotted"></i></button>
+                                                        @endif
+                                                        @if (!$item->barangLelang->first())
+                                                            <form action="/risalah/{{$item->id}}" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn" style="color: red"><i class="bi bi-trash3"></i></button>
+                                                            </form>
+                                                        @endif
+                                                    @elseif($data->permohonanLelang->jenis === 'App\Models\tiket')
+                                                        @if (count($data->permohonanLelang->lotLelang) != count($data->risalahLotLelang))
+                                                            <button class="btn" onclick="inputBarangLelang('{{$item->id}}')" data-bs-toggle="modal" data-bs-target="#inputBarang"><i class="bi bi-plus-square-dotted"></i></button>
+                                                        @endif
+                                                        @if (!$item->risalahLotLelang->first())
+                                                            <form action="/risalah/{{$item->id}}" method="post">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn" style="color: red"><i class="bi bi-trash3"></i></button>
+                                                            </form>
+                                                        @endif
                                                     @endif
                                                 </td>
                                                 <?php $i++; ?>
@@ -52,8 +65,14 @@
                                     </table>
                                 </div>
                                 <div>
-                                    @if (count($data->permohonanLelang->barang) != count($data->barangLelang))
-                                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#risalah">Tambah Risalah</button>
+                                    @if ($data->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
+                                        @if (count($data->permohonanLelang->barang) != count($data->barangLelang))
+                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#risalah">Tambah Risalah</button>
+                                        @endif
+                                    @elseif($data->permohonanLelang->jenis === 'App\Models\tiket')
+                                        @if (count($data->permohonanLelang->lotLelang) != count($data->risalahLotLelang))
+                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#risalah">Tambah Risalah</button>
+                                        @endif
                                     @endif
                                 </div> 
                             </div>
@@ -71,11 +90,18 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Kode Barang</th>
-                                                <th scope="col">NUP</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Aksi</th>
+                                                @if ($data->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Kode Barang</th>
+                                                    <th scope="col">NUP</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Aksi</th>
+                                                @elseif($data->permohonanLelang->jenis === 'App\Models\tiket')
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama Lot</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Aksi</th>
+                                                @endif
                                             </tr>                        
                                         </thead>
                                         <tbody id="listBarang">
@@ -133,6 +159,7 @@
         </div>
     {{-- Akhir Modals Risalah  --}}
     {{--  Modals Input Barang  --}}
+    @if ($data->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
         <div class="modal fade bd-example-modal-xl" id="inputBarang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -183,6 +210,54 @@
                 </div>
             </div>
         </div>
+    @elseif($data->permohonanLelang->jenis === 'App\Models\tiket')
+        <div class="modal fade bd-example-modal-xl" id="inputBarang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" >
+                        <form action="/lot_lelang" method="POST">
+                            @csrf
+                            <div>
+                                <table class="table table-hover" style="max-height: 95%">       
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nama Lot</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                    <?php $i=1 ?>
+                                    @foreach ($data->permohonanLelang->lotLelang as $item)
+                                        @if ($item->status != 1)
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td><input name="barang[]" type="checkbox" value="{{$item->id}}"></td>
+                                                <td>{{$item->namaLot}}</td>
+                                                <td>
+                                                    <select name="status[]" class="{{$item->id}}" name="" id="" disabled="disabled">
+                                                        <option hidden></option>
+                                                        <option value="1">Laku</option>
+                                                        <option value="2">TAP</option>
+                                                        <option value="3">Wanprestasi</option>
+                                                    </select>
+                                                </td>
+                                            </tr> 
+                                            <?php $i++ ?>  
+                                        @endif
+                                    @endforeach
+                                </table>
+                            </div>
+                            <div>
+                                <button name="risalah_id" id="risalah_id" type="submit" value="">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     {{-- Akhir Modals Input Barang  --}}
 @endsection
 

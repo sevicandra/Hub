@@ -57,20 +57,29 @@ class PenetapanLelangController extends Controller
                     'permohonan_lelang_id'=>'required'
                 ]);
                 $penetapanLelang=penetapanLelang::create($validatedData);
-    
-                $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). " \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-    
                 
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
+                if ($data->jenis === 'App\Models\suratPersetujuan') {
+                    $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
+                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                    $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
+                    $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+        
                     
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
+                    return nl2br(
+                        "Nomor Tujuan: ". $toOperator. "\n". 
+                        "Pesan: ".$messageOperator. "\n". 
+                        
+                        "Nomor Tujuan: ". $toKaSatker. "\n". 
+                        "Pesan: ".$messageKaSatker
+                    );
+                }elseif($data->jenis === 'App\Models\tiket'){
+                    $toOperator=$data->pemohonLelang->kontakPemohon;
+                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu PIC ". $data->pemohonLelang->PIC. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                    return nl2br(
+                        "Nomor Tujuan: ". $toOperator. "\n". 
+                        "Pesan: ".$messageOperator. "\n"
+                    );
+                }
     
                 // Send_SMS($to,$message);
                 return redirect::back();
@@ -123,21 +132,30 @@ class PenetapanLelangController extends Controller
     {   
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             if ($penetapanLelang->status != 1) {
-                foreach ($penetapanLelang->barangLelang as $item) {
-        
-                    switch ($item->status) {
-                        case 1:
-                            $item->barang->update(['status'=> 2]);
-                            break;
-                        
-                        default:
-                        $item->barang->update(['status'=> 0]);
-                            break;
-                    }
-                };
-                $penetapanLelang->update(['status'=> 1]);
-                $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
+                if ($penetapanLelang->permohonanLelang->jenis === 'App\Models\suratPersetujuan') {
+                    foreach ($penetapanLelang->barangLelang as $item) {
+            
+                        switch ($item->status) {
+                            case 1:
+                                $item->barang->update(['status'=> 2]);
+                                break;
+                            
+                            default:
+                            $item->barang->update(['status'=> 0]);
+                                break;
+                        }
+                    };
+                    $penetapanLelang->update(['status'=> 1]);
+                    $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->update(['lelang'=>0]);
+                }elseif($penetapanLelang->permohonanLelang->jenis === 'App\Models\tiket'){
+                    $penetapanLelang->update(['status'=> 1]);
+                    $penetapanLelang->permohonanLelang->suratPersetujuan->update(['lelang'=>0]);
+                }else{
+                    abort(404);
+                }
+
                 return Redirect::back();
+
             }else{
                 abort(403);
             }

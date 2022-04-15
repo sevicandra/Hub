@@ -22,7 +22,9 @@ class penetapanLelang extends Model
         return $this->hasManyThrough(barangLelang::class, risalah::class);
     }
 
-
+    public function risalahLotLelang(){
+        return $this->hasManyThrough(risalahLotLelang::class, risalah::class);
+    }
 
     protected $fillable = [
         'nomorSurat',

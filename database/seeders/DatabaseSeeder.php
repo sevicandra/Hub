@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\role;
+use App\Models\jabatan;
 use App\Models\kementerian;
 use App\Models\satuanKerja;
 use Illuminate\Database\Seeder;
@@ -474,19 +475,31 @@ class DatabaseSeeder extends Seeder
         // satuanKerja::create(['kementerian_id'=>	'29baf55a-f7e2-4ed1-b5fb-3e52ad243049','kodeSatker'=>'970111','namaSatker'=>'SATUAN BRIMOB POLDA MALUKU UTARA','kodeSatkerFull'=>'060012800970111000KD']);
         // satuanKerja::create(['kementerian_id'=>	'29baf55a-f7e2-4ed1-b5fb-3e52ad243049','kodeSatker'=>'970127','namaSatker'=>'DITPOLAIRUD POLDA MALUKU UTARA','kodeSatkerFull'=>'060012800970127000KD']);
 
-        role::create(['kode'=>1, 'role'=> 'plt. Kepala Kantor']);
-        role::create(['kode'=>2, 'role'=> 'plt. Kepala Subbagian Umum']);
-        role::create(['kode'=>3, 'role'=> 'plt. Kepala Seksi Pengelolaan Kekayaan Negara']);
-        role::create(['kode'=>4, 'role'=> 'plt. Kepala Seksi Piutang Negara']);
-        role::create(['kode'=>5, 'role'=> 'plt. Kepala Seksi Hukum dan Informasi']);
-        role::create(['kode'=>6, 'role'=> 'plt. Kepala Seksi Kepatuhan Internal']);
-        role::create(['kode'=>7, 'role'=> 'Kepegawaian']);
-        role::create(['kode'=>8, 'role'=> 'Keuangan']);
-        role::create(['kode'=>9, 'role'=> 'Penilaian']);
-        role::create(['kode'=>10, 'role'=> 'Lelang']); 
+        // role::create(['kode'=>1, 'role'=> 'plt. Kepala Kantor']);
+        // role::create(['kode'=>2, 'role'=> 'plt. Kepala Subbagian Umum']);
+        // role::create(['kode'=>3, 'role'=> 'plt. Kepala Seksi Pengelolaan Kekayaan Negara']);
+        // role::create(['kode'=>4, 'role'=> 'plt. Kepala Seksi Piutang Negara']);
+        // role::create(['kode'=>5, 'role'=> 'plt. Kepala Seksi Hukum dan Informasi']);
+        // role::create(['kode'=>6, 'role'=> 'plt. Kepala Seksi Kepatuhan Internal']);
+        // role::create(['kode'=>7, 'role'=> 'Kepegawaian']);
+        // role::create(['kode'=>8, 'role'=> 'Keuangan']);
+        // role::create(['kode'=>9, 'role'=> 'Penilaian']);
+        // role::create(['kode'=>10, 'role'=> 'Lelang']); 
         
-
-
-
+        jabatan::create(['kodeJabatan'=>'01', 'namaJabatan' =>'Kepala Kantor']);
+        jabatan::create(['kodeJabatan'=>'02', 'namaJabatan' =>'Kepala Subbagian Umum']);
+        jabatan::create(['kodeJabatan'=>'03', 'namaJabatan' =>'Kepala Seksi Pengelolaan Kekayaan Negara']);
+        jabatan::create(['kodeJabatan'=>'04', 'namaJabatan' =>'Kepala Seksi Piutang Negara']);
+        jabatan::create(['kodeJabatan'=>'05', 'namaJabatan' =>'Kepala Seksi Hukum dan Informasi']);
+        jabatan::create(['kodeJabatan'=>'06', 'namaJabatan' =>'Kepala Seksi Kepatuhan Internal']);
+        jabatan::create(['kodeJabatan'=>'07', 'namaJabatan' =>'Fungsional Pelelang Ahli Muda']);
+        jabatan::create(['kodeJabatan'=>'08', 'namaJabatan' =>'Fungsional Pelelang Ahli Pertama']);
+        jabatan::create(['kodeJabatan'=>'09', 'namaJabatan' =>'Fungsional Penilai Pemerintah Ahli Muda']);
+        jabatan::create(['kodeJabatan'=>'10', 'namaJabatan' =>'Fungsional Penilai Pemerintah Ahli Pertama']);
+        jabatan::create(['kodeJabatan'=>'11', 'namaJabatan' =>'Pelaksana Subbagian Umum']);
+        jabatan::create(['kodeJabatan'=>'12', 'namaJabatan' =>'Pelaksana Seksi Pengelolaan Kekayaan Negara']);
+        jabatan::create(['kodeJabatan'=>'13', 'namaJabatan' =>'Pelaksana Seksi Piutang Negara']);
+        jabatan::create(['kodeJabatan'=>'14', 'namaJabatan' =>'Pelaksana Seksi Hukum dan Informasi']);
+        jabatan::create(['kodeJabatan'=>'15', 'namaJabatan' =>'Pelaksana Seksi Kepatuhan Internal']);
     }
 }

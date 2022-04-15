@@ -16,10 +16,11 @@ class CreateTiketsTable extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('tiket');
-            $table->enum('permohonan',['0', '1'])->default(0);
-            $table->enum('penilaian',['0', '1'])->default(0);
-            $table->enum('persetujuan',['0', '1'])->default(0);
-            $table->enum('lelang',['0', '1'])->default(0);
+            $table->tinyInteger('permohonan')->default(0);
+            $table->tinyInteger('penilaian')->default(0);
+            $table->tinyInteger('persetujuan')->default(0);
+            $table->tinyInteger('lelang')->default(0);
+            $table->enum('jenis',['PKN', 'LLG'])->required();
             $table->timestamps();
         });
     }

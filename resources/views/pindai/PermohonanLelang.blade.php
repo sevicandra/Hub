@@ -1,6 +1,7 @@
 
 @extends('layout.main')
 @section('content')
+
     <div class="container-fluid" style="padding: 30px 37px 9px 37px; height:100%">
         <div class="container-fluid" style="border-radius: 10px; background-color:darkgrey; height:100% ">
             <div class="row" style="padding-bottom: 10px">

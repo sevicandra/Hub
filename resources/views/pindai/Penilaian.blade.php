@@ -128,6 +128,7 @@
     </div>
 </div>
 {{-- Modals Kirim Pemberitahuan Penilaian --}}
+
 {{-- Modals Download Usulan SK & ST --}}
 <div class="modal fade" id="dowloadusulanSKST" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -188,8 +189,8 @@
         </div>
     </div>
 </div>
-
 {{-- Akhir Modals Download Usulan SK & ST --}}
+
 {{-- Modals Kirim Laporan Penilaian --}}
 <div class="modal fade" id="kirimLaporan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -239,6 +240,6 @@
 {{-- Akhir Modals Kirim Laporan Penilaian --}}
 
 @endsection
-@section('foot')
+@section('footpindai')
 <script src="/js/pindai/permohonanPenilaian.js"></script>
 @endsection

@@ -13,11 +13,18 @@ class tiket extends Model
     public function permohonans(){
         return $this->hasOne(permohonan::class);
     }
+
+    public function permohonanLelang(){
+        return $this->morphOne(permohonanLelang::class, 'surat_persetujuan', 'jenis');
+        
+    }
+
     protected $fillable = [
         'tiket',
         'permohonan',
         'penilaian',
         'persetujuan',
         'lelang',
+        'jenis'
     ];
 }

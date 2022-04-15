@@ -14,18 +14,26 @@ class PivotTable extends Migration
     public function up()
     {
         
-        Schema::create('permohonan_penilaian_user', function (Blueprint $table) {
-            $table->uuid('user_id');
-            $table->uuid('permohonan_penilaian_id');
+        // Schema::create('permohonan_penilaian_user', function (Blueprint $table) {
+        //     $table->uuid('user_id');
+        //     $table->uuid('permohonan_penilaian_id');
+        //     $table->timestamps();
+        //     // $table->primary(['permohonan_penilaian_id', 'user_id']);
+        // });
+        // Schema::create('barang_permohonan_lelang', function (Blueprint $table) {
+        //     $table->uuid('barang_id');
+        //     $table->uuid('permohonan_lelang_id');
+        //     $table->timestamps();
+        //     $table->primary(['barang_id', 'permohonan_lelang_id']);
+        // });
+
+        Schema::create('lot_lelang_risalah', function (Blueprint $table){
+            $table->uuid('lot_lelang_id');
+            $table->uuid('risalah_id');
             $table->timestamps();
-            // $table->primary(['permohonan_penilaian_id', 'user_id']);
+            $table->primary(['lot_lelang_id', 'risalah_id']);
         });
-        Schema::create('barang_permohonan_lelang', function (Blueprint $table) {
-            $table->uuid('barang_id');
-            $table->uuid('permohonan_lelang_id');
-            $table->timestamps();
-            $table->primary(['barang_id', 'permohonan_lelang_id']);
-        });
+
     }
 
     /**
@@ -35,8 +43,8 @@ class PivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permohonan_penilaian_user');
-        Schema::dropIfExists('barang_permohonan_lelang');
-        
+        // Schema::dropIfExists('permohonan_penilaian_user');
+        // Schema::dropIfExists('barang_permohonan_lelang');
+        Schema::dropIfExists('lot_lelang_risalah');
     }
 }

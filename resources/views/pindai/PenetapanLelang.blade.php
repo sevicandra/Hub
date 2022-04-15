@@ -22,7 +22,11 @@
                                     <td>{{$item->nomorSurat}}</td>
                                     <td>{{$item->tanggalSurat}}</td>
                                     <td>{{$item->tanggalLelang}}</td>
+                                    @if ($item->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
                                     <td>{{$item->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker}}</td>
+                                    @elseif($item->permohonanLelang->jenis === 'App\Models\tiket')
+                                    <td>{{ $item->permohonanLelang->pemohonLelang->pemohon }}</td>
+                                    @endif
                                     <td style="max-width: 100px">
                                         <form action="/cetak" method="POST" class="d-inline">
                                             @csrf
@@ -32,10 +36,18 @@
                                         <form action="/penetapan_lelang/{{$item->id}}" method="GET">
                                             <button type="submit" class="btn" style="color:green"><i class="bi bi-eye-fill"></i></button>
                                         </form>
-                                        @if (count($item->permohonanLelang->barang) === count($item->barangLelang))
-                                            @if ($item->status != 1)
-                                            <button onclick="kirimRisalah('{{$item->id}}')" class="btn" style="color:blue" data-bs-toggle="modal" data-bs-target="#kirimRisalah"><i class="bi bi-send-fill"></i></button>
-                                            @endif   
+                                        @if ($item->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
+                                            @if (count($item->permohonanLelang->barang) === count($item->barangLelang))
+                                                @if ($item->status != 1)
+                                                <button onclick="kirimRisalah('{{$item->id}}')" class="btn" style="color:blue" data-bs-toggle="modal" data-bs-target="#kirimRisalah"><i class="bi bi-send-fill"></i></button>
+                                                @endif   
+                                            @endif
+                                        @elseif($item->permohonanLelang->jenis === 'App\Models\tiket')
+                                            @if (count($item->permohonanLelang->lotLelang) === count($item->risalahLotLelang))
+                                                @if ($item->status != 1)
+                                                    <button onclick="kirimRisalah('{{$item->id}}')" class="btn" style="color:blue" data-bs-toggle="modal" data-bs-target="#kirimRisalah"><i class="bi bi-send-fill"></i></button>
+                                                @endif   
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>
@@ -82,7 +94,7 @@
     
 @endsection
 
-@section('foot')
+@section('footpindai')
     <script src="/js/pindai/lelang.js"></script>
 
 @endsection

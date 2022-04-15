@@ -22,6 +22,14 @@ class risalah extends Model
     public function barangLelang(){
         return $this->hasMany(barangLelang::class);
     }
+
+    public function lotLelang(){
+        return $this->belongsToMany(lotLelang::class, 'risalah_lot_lelangs', 'risalah_id', 'lot_lelang_id');
+    }
+
+    public function risalahLotLelang(){
+        return $this->hasMany(risalahLotLelang::class);
+    }
     
     protected $fillable = [
         'nomor',

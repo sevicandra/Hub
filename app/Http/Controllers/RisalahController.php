@@ -66,10 +66,17 @@ class RisalahController extends Controller
     public function show(risalah $risalah)
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            $barang = $risalah->barang;
-            $status = $risalah->barangLelang;
-    
-            return json_encode(['barang'=>$barang, 'status'=>$status]);
+            if ($risalah->penetapanLelang->permohonanLelang->jenis === 'App\Models\suratPersetujuan') {
+                $barang = $risalah->barang;
+                $status = $risalah->barangLelang;
+        
+                return json_encode(['barang'=>$barang, 'status'=>$status]);
+            }elseif($risalah->penetapanLelang->permohonanLelang->jenis === 'App\Models\tiket'){
+                $barang = $risalah->lotLelang;
+                $status = $risalah->risalahLotLelang;
+                return json_encode(['barang'=>$barang, 'status'=>$status]);
+            }
+        
         }else{
             abort(403);
         }

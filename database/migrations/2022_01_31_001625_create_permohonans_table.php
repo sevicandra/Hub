@@ -17,6 +17,7 @@ class CreatePermohonansTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('tiket_id');
             $table->string('nomorSurat');
+            $table->string('hal');
             $table->date('tanggalSurat');
             $table->string('pemohon');
             $table->date('tanggalDiTerima');

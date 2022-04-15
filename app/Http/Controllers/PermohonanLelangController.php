@@ -45,6 +45,7 @@ class PermohonanLelangController extends Controller
                 'tanggalDiTerima'=>'required',
                 'surat_persetujuan_id'=>'required',
             ]);
+            $validatedData['jenis']='App\Models\suratPersetujuan';
             permohonanLelang::create($validatedData);
             return redirect::back();
         }else{
@@ -61,7 +62,11 @@ class PermohonanLelangController extends Controller
     public function show(permohonanLelang $permohonanLelang)
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
-            return json_encode($permohonanLelang->barang) ;
+            if ($permohonanLelang->jenis === 'App\Models\suratPersetujuan') {
+                return json_encode($permohonanLelang->barang) ;
+            }elseif($permohonanLelang->jenis === 'App\Models\tiket'){
+                return json_encode($permohonanLelang->lotLelang) ;
+            }
         }else{
             abort(403);
         }

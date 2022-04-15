@@ -14,9 +14,10 @@ class permohonanLelang extends Model
     
     public function suratPersetujuan()
     {
-        return $this->belongsTo(suratPersetujuan::class);
+        return $this->morphTo(__FUNCTION__, 'jenis', 'surat_persetujuan_id');
     }
 
+    
     public function penetapanLelang(){
         return $this->hasOne(penetapanLelang::class);
     }
@@ -25,6 +26,13 @@ class permohonanLelang extends Model
         return $this->belongsToMany(barang::class);
     }
 
+    public function pemohonLelang(){
+        return $this->hasOne(pemohonLelang::class);
+    }
+    
+    public function lotLelang(){
+        return $this->hasMany(lotLelang::class);
+    }
 
     protected $fillable = [
         'nomorSurat',
@@ -32,5 +40,6 @@ class permohonanLelang extends Model
         'tanggalSurat',
         'tanggalDiTerima',
         'surat_persetujuan_id',
+        'jenis',
     ];
 }

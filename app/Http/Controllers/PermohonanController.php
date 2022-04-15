@@ -77,6 +77,7 @@ class PermohonanController extends Controller
                     $tiketbaru = tiket::create([
                         'tiket'=>$tiket,
                         'permohonan'=>1,
+                        'jenis'=>'PKN'
                     ]);
                         
                     permohonan::create([
@@ -86,6 +87,7 @@ class PermohonanController extends Controller
                         'pemohon'=> $ValidatedData['pemohon'],
                         'tanggalDiTerima'=> $ValidatedData['tanggalDiTerima'],
                         'tiket_id'=> $tiketbaru->id,
+                        'jenis'=> 'PKN',
                     ]);
                     return redirect('/permohonan');
                 }else{

@@ -18,8 +18,11 @@ use App\Http\Controllers\barangController;
 use App\Http\Controllers\RisalahController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\permohonanController;
+use App\Http\Controllers\permohonanLelangLain;
 use App\Http\Controllers\CapaianPnbpController;
+use App\Http\Controllers\RencanaAksiController;
 use App\Http\Controllers\BarangLelangController;
+use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PenetapanLelangController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\PermohonanLelangController;
@@ -34,8 +37,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemilihanBestEmployeeController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
-use App\Http\Controllers\RencanaAksiController;
-use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\RisalahLotLelangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -170,11 +172,11 @@ Route::get('/email/re-verify', function () {
 // Verifikasi Email
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     if(auth()->user()->email_verified_at === null){
+        $request->fulfill();
         return redirect('/home');
     }else{
         return redirect('/home');
     }
-    $request->fulfill();
  
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
@@ -255,3 +257,13 @@ Route::resource('/user_management', UserManagementController::class)->middleware
 Route::resource('rencana_aksi', RencanaAksiController::class)->middleware('verified');
 
 Route::get('monitoring_rencana_aksi/{rencana_aksi}', [RencanaAksiController::class, 'monitoringRencanaAksi'])->middleware('verified');
+
+Route::controller(permohonanLelangLain::class)->group(function(){
+    Route::get('/permohonanlelang', 'index')->middleware('verified');
+    Route::post('/permohonanlelang', 'store')->middleware('verified');
+    Route::delete('/permohonanlelang/{permohonanlelang}', 'destroy')->middleware('verified');
+    Route::post('/inputLot', 'storeLot')->middleware('verified');
+    Route::delete('/lotLelang/{lotLelang}', 'destroyLot')->middleware('verified');
+});
+
+Route::resource('/lot_lelang', RisalahLotLelangController::class)->middleware('verified');

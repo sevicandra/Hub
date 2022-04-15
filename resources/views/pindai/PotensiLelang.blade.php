@@ -54,7 +54,7 @@
 
 @endsection
 
-@section('foot')
+@section('footpindai')
 
     <script src="/js/pindai/nomorTiket.js"></script>
 

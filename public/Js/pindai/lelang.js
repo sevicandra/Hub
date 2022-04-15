@@ -52,7 +52,6 @@ function barangLelang(val){
             beforeSend: function() { $('#loading').removeAttr('hidden')},
             complete: function() { $('#loading').attr('hidden',''); },
             success: function(response){
-                console.log(response.barang);
                 $('#listBarang').empty();
                 var i = 0;
                 var num = 1;
@@ -73,6 +72,43 @@ function barangLelang(val){
                     }
                     var aksi = '<form class="d-inline" action="/barang_lelang/'+response.status[i].id+'/edit"method="PATCH"> <button type="submit" class="btn" style="color: red"><i class="bi bi-trash-fill"></i></button></form>';
                     $("#listBarang").append('<tr><td>'+num+'</td><td>'+response.barang[i].kodeBarang+'</td><td>'+response.barang[i].NUP+'</td><td>'+status+'</td><td>'+aksi+'</td></tr>');
+                    num++;
+                    i++;
+                }
+            }
+        });
+    }
+}
+
+function lotLelang(val){
+    if (val) {
+        $.ajax({
+            type: "GET", 
+			url: "/risalah/"+val,
+			dataType: "json",
+            beforeSend: function() { $('#loading').removeAttr('hidden')},
+            complete: function() { $('#loading').attr('hidden',''); },
+            success: function(response){
+                $('#listBarang').empty();
+                var i = 0;
+                var num = 1;
+                while (i < response.barang.length) {
+                    switch (response.status[i].status) {
+                        case 1:
+                            var status = "Laku"
+                            break;
+                        case 2:
+                            var status = "TAP"
+                            break;
+                        case 3:
+                            var status = "Wanprestasi"
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                    var aksi = '<form class="d-inline" action="/lot_lelang/'+response.status[i].id+'/edit"method="PATCH"> <button type="submit" class="btn" style="color: red"><i class="bi bi-trash-fill"></i></button></form>';
+                    $("#listBarang").append('<tr><td>'+num+'</td><td>'+response.barang[i].namaLot+'</td><td>'+status+'</td><td>'+aksi+'</td></tr>');
                     num++;
                     i++;
                 }
@@ -104,7 +140,7 @@ $('#jenisLelang').change(function () {
             var waktuAwalPenawaran = '<div class="row"><label for="waktuAwalPenawaran" class="col-sm-6 col-form-label">Waktu Awal Penawaran</label><div class="col-sm-6"><select name="jamAwalPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAwalPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
             var waktuAkhirPenawaran = '<div class="row"><label for="waktuAkhirPenawaran" class="col-sm-6 col-form-label">Waktu Akhir Penawaran</label><div class="col-sm-6"><select name="jamAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
             var lokasi = '<div class="row"><label for="lokasi" class="col-sm-6 col-form-label">Lokasi Lelang</label><div class="col-sm-6"><textarea name="lokasi" type="text" rows="4" cols="50" class="form-control" required>Kantor Pelayanan Kekayaan Negara dan Lelang Ternate Jalan Yos Sudarso No. 333, Kota Ternate</textarea></div></div>'
-            var button = '<div><button value="penetapanLelangOpen" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button></div>'
+            var button = '<div style="margin-top:10px"><button value="penetapanLelangOpen" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button> <button value="HPKB" type="submit" class="btn btn-primary" name="action">Cetak HPKB</button></div>'
             $('#downloadPenetapanContainer').append(tanggalLelang+tanggalPengumuman+waktuAwalPenawaran+waktuAkhirPenawaran+lokasi+button)
             break;
         case 'CB':
@@ -122,7 +158,7 @@ $('#jenisLelang').change(function () {
             var tanggalPengumuman = '<div class="row"><label for="tanggalPengumuman" class="col-sm-6 col-form-label">Tanggal Pengumuman</label><div class="col-sm-6"><input name="tanggalPengumuman" class="form-control" type="date" required></div></div>'
             var waktuAkhirPenawaran = '<div class="row"><label for="waktuAkhirPenawaran" class="col-sm-6 col-form-label">Waktu Akhir Penawaran</label><div class="col-sm-6"><select name="jamAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+jam+'</select><select name="menitAkhirPenawaran" class="form-control d-inline" style="width: 50px">'+elementmenit+'</select><label for="waktuAwalPenawaran" class="col col-form-label">WIT</label></div></div>'
             var lokasi = '<div class="row"><label for="lokasi" class="col-sm-6 col-form-label">Lokasi Lelang</label><div class="col-sm-6"><textarea name="lokasi" type="text" rows="4" cols="50" class="form-control" required>Kantor Pelayanan Kekayaan Negara dan Lelang Ternate Jalan Yos Sudarso No. 333, Kota Ternate</textarea></div></div>'
-            var button = '<div><button value="penetapanLelangClosed" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button></div>'
+            var button = '<div style="margin-top:10px"><button value="penetapanLelangClosed" type="submit" class="btn btn-primary" name="action">Cetak Penetapan</button> <button value="HPKB" type="submit" class="btn btn-primary" name="action">Cetak HPKB</button></div>'
             $('#downloadPenetapanContainer').append(tanggalLelang+tanggalPengumuman+waktuAkhirPenawaran+lokasi+button)
             break;
     }

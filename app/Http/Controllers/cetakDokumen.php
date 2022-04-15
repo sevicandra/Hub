@@ -542,46 +542,97 @@ class cetakDokumen extends Controller
                 break;
             case 'penetapanLelangOpen':
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
-
-                $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
-                $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
-                $templateProcessor->setValue('hal', $permohonanLelang->hal);
-                $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
-                $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
-                $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
-                $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                $templateProcessor->setValue('lokasi', $request->lokasi);
-                $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
-                $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
-                $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
-                $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran-2);
-                $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
-
-                $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
-                return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
-
-                
+                switch ($permohonanLelang->jenis) {
+                    case 'App\Models\suratPersetujuan':
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
+                        $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
+                        $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
+                        $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
+                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran-2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+        
+                        $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+                        
+                    case 'App\Models\tiket':
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
+                        $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
+                        $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
+                        $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
+                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran-2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+        
+                        $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+                    
+                    default:
+                        abort(404);
+                        break;
+                }
                 break;
             case 'penetapanLelangClosed':
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
+                switch ($permohonanLelang->jenis) {
+                    case 'App\Models\suratPersetujuan':
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
+                        $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+        
+                        $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
 
-                $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
-                $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
-                $templateProcessor->setValue('hal', $permohonanLelang->hal);
-                $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
-                $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
-                $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
-                $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                $templateProcessor->setValue('lokasi', $request->lokasi);
-                $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
-                $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
-
-                $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
-                return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                    case 'App\Models\tiket':
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
+                        $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+        
+                        $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+                    
+                    default:
+                        abort(404);
+                        break;
+                }
                 break;
             case 'salinanRisalah':
                 $penetapanLelang = penetapanLelang::find($request->penetapan_lelang_id);
@@ -630,6 +681,49 @@ class cetakDokumen extends Controller
 
                 $templateProcessor->saveAs('DocxTemplate/Penyampaian Salinan RL - ' . $request->penetapan_lelang_id . '.docx');
                 return response()->download(file: 'DocxTemplate/Penyampaian Salinan RL - ' . $request->penetapan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                break;
+            case 'HPKB':
+                // return 'test';
+                $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
+                switch ($permohonanLelang->jenis) {
+                    case 'App\Models\suratPersetujuan':
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('pemohon', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('pelelang', auth()->user()->nama);
+                        $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
+                        $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
+        
+                        $templateProcessor->saveAs('DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+
+                    case 'App\Models\tiket':
+                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
+                            $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                            $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                            $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                            $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
+                            $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                            $templateProcessor->setValue('pemohon', $permohonanLelang->pemohonLelang->pemohon);
+                            $templateProcessor->setValue('lokasi', $request->lokasi);
+                            $templateProcessor->setValue('pelelang', auth()->user()->nama);
+                            $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
+                            $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
+            
+                            $templateProcessor->saveAs('DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx');
+                            return response()->download(file: 'DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                            break;
+                    
+                    default:
+                        abort(404);
+                        break;
+                }
                 break;
             default:
                 abort(404);

@@ -16,7 +16,10 @@ class suratPersetujuan extends Model
     }
     
     public function permohonanLelang(){
-        return $this->hasMany(permohonanLelang::class);
+        return $this->morphMany(permohonanLelang::class, 'surat_persetujuan', 'jenis');
+        
+        
+        // return $this->hasMany(permohonanLelang::class);
     }
 
     protected $fillable = [
