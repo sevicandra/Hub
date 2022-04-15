@@ -4,7 +4,7 @@
 
             <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
                 <div class="container-fluid" style="height:100%">
-                    <div class="row" style="height: 100%; border-radius:10px;">
+                    <div class="row scrollable" style="height: 100%; border-radius:10px; min-height:fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                         <div class="table table-light" style="padding: 0; height: 100%; background-color:aliceblue">
                             <table class="table table-hover table-responsive">
                                 <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
@@ -26,7 +26,7 @@
                                         @endif>
                                         <td>{{$i}}</td>
                                         <td>{{$item->nomorSurat}}</td>
-                                        <td>{{$item->tanggalSurat}}</td>
+                                        <td>{{indonesiaDate($item->tanggalSurat)}}</td>
                                         <td>{{$item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker}}</td>
                                         <td>
                                             Rp{{number_format($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->sum('nilaiLimit'), 2, ',', '.')}}  

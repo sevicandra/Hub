@@ -16,8 +16,8 @@
         <div class="row" style="height:85%; padding: 0 40px 0px 40px">
             <div class="container-fluid" style="height: 100%;">
                 <div class="row" style="height: 100%; background-color:aliceblue; border-radius:10px;">
-                    <div>
-                        <table class="table table-hover">
+                    <div class="scrollable" style="max-height: 100%; min-height:fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+                        <table class="table table-hover" style="max-height: 100%; min-height:fit-content">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>

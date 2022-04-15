@@ -20,8 +20,8 @@
                                 <tr @if ($item->status === 1) style="background-color:green; color:white" @endif>
                                     <td>{{$i}}</td>
                                     <td>{{$item->nomorSurat}}</td>
-                                    <td>{{$item->tanggalSurat}}</td>
-                                    <td>{{$item->tanggalLelang}}</td>
+                                    <td>{{indonesiaDate($item->tanggalSurat)}}</td>
+                                    <td>{{indonesiaDate($item->tanggalLelang)}}</td>
                                     @if ($item->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
                                     <td>{{$item->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker}}</td>
                                     @elseif($item->permohonanLelang->jenis === 'App\Models\tiket')

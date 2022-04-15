@@ -19,7 +19,7 @@
                     <div class="row" style="height: 100%;">
                         <div class="col-sm-8" style="height: 100%;">
                             <div style="height: 100%; background-color:aliceblue; border-radius:10px;">
-                                <div style="height: 95%">
+                                <div class="scrollable" style="height: 95%; min-height:fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                                     <table class="table table-hover" style="max-height: 95%">
                                             <tr>
                                                 <th scope="col">No</th>
@@ -33,7 +33,7 @@
                                             <tr onClick="detailpermohonan('{{$item->id}}')">
                                                 <td>{{$i}}</td>
                                                 <td>{{$item->nomorSurat}}</td>
-                                                <td>{{$item->tanggalSurat}}</td>
+                                                <td>{{indonesiaDate($item->tanggalSurat)}}</td>
                                                 <td>{{$item->tanggalDiTerima}}</td>
                                                 <td style="max-width: 200px">
                                                     @if (!$item->penetapanLelang)

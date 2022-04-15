@@ -9,7 +9,7 @@
 <div class="row" style="height:85%; padding: 0; background-color:aliceblue">
     <div class="container-fluid" style="height:100%">
         <div class="row" style="height: 100%; border-radius:10px;">
-            <div class="table table-light" style="padding: 0; height: 100%; background-color:aliceblue">
+            <div class="table table-light scrollable" style="padding: 0; height: 100%; background-color:aliceblue; min-height:fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
                 <table class="table table-hover" style="max-height: 95%">
                     <tr style="box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.37); border: 1px solid rgba(77, 89, 202, 0.76); height: 50px">
                         <th scope="col">No</th>
@@ -32,8 +32,8 @@
                         </td>
 
                         <td>{{$item->nomorSurat}}</td>
-                        <td>{{$item->tanggalSurat}}</td>
-                        <td>{{$item->tanggalDiTerima}}</td>
+                        <td>{{indonesiaDate($item->tanggalSurat)}}</td>
+                        <td>{{indonesiaDate($item->tanggalDiTerima)}}</td>
                         <td style="max-width: 200px">
                             @if ($item->jenis === 'App\Models\tiket')
                                 @if (!$item->penetapanLelang)
