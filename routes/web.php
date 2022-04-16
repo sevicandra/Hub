@@ -17,15 +17,18 @@ use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
 use App\Http\Controllers\RisalahController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\KeputusanController;
 use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\permohonanLelangLain;
 use App\Http\Controllers\CapaianPnbpController;
+use App\Http\Controllers\FileStorageController;
 use App\Http\Controllers\RencanaAksiController;
 use App\Http\Controllers\BarangLelangController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\PenetapanLelangController;
 use App\Http\Controllers\LaporanPenilaianController;
 use App\Http\Controllers\PermohonanLelangController;
+use App\Http\Controllers\RisalahLotLelangController;
 use App\Http\Controllers\SuratPersetujuanController;
 use App\Http\Controllers\KepuasanPelangganController;
 use App\Http\Controllers\KinerjaOrganisasiController;
@@ -37,7 +40,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemilihanBestEmployeeController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
-use App\Http\Controllers\RisalahLotLelangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -267,3 +269,7 @@ Route::controller(permohonanLelangLain::class)->group(function(){
 });
 
 Route::resource('/lot_lelang', RisalahLotLelangController::class)->middleware('verified');
+
+Route::resource('/filestorage', FileStorageController::class)->except('show')->middleware('verified');
+
+Route::resource('/filestorage/keputusan', KeputusanController::class)->middleware('verified');

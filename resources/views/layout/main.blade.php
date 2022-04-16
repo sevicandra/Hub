@@ -166,6 +166,12 @@
         @yield('content')
     </div>
     {{-- Akhir Content --}}
+
+    @section('modals')
+        
+    @show
+
+
     {{-- Sidebar --}}
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
         aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0;background-color:rgb(255, 255, 255);">
@@ -311,7 +317,19 @@
                             capaian Kinerja Lelang
                         </div>
                     </a>
-                </div>   
+                </div>
+                <div class="col-sm-4">
+                    <a class="text-decoration-none"
+                        href="filestorage"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/file storage.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            File Storage
+                        </div>
+                    </a>
+                </div> 
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
                 <div class="col-sm-4">
                     <a class="text-decoration-none"
