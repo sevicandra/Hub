@@ -74,7 +74,7 @@ class PenetapanLelangController extends Controller
                     );
                 }elseif($data->jenis === 'App\Models\tiket'){
                     $toOperator=$data->pemohonLelang->kontakPemohon;
-                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu PIC ". $data->pemohonLelang->PIC. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu PIC ". $data->pemohonLelang->pemohon. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
                     return nl2br(
                         "Nomor Tujuan: ". $toOperator. "\n". 
                         "Pesan: ".$messageOperator. "\n"

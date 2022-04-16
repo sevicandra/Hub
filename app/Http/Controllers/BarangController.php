@@ -42,7 +42,7 @@ class BarangController extends Controller
             if ($key === 1) {
                 $ValidatedData=$request->validate(
                     [
-                        'kodeBarang'=>'required',
+                        'kodeBarang'=>'required|exists:App\Models\barang,kodeBarang',
                         'NUP'=>'required',
                         'merkType'=>'required',
                         'tahunPerolehan'=>'required',

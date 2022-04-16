@@ -80,7 +80,7 @@
 
     </div>
 </div>
-
+{{-- Modals Input Barang --}}
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -95,18 +95,33 @@
                             <label for="kodeBarang" class="col-sm-4 col-form-label">Kode Barang</label>
                             <div class="col-sm-8">
                                 <input name="kodeBarang" class="form-control" type="number" required>
+                                @error('kodeBarang')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="NUP" class="col-sm-4 col-form-label">NUP</label>
                             <div class="col-sm-8">
                                 <input name="NUP" type="number" class="form-control" required>
+                                @error('NUP')
+                                <div class="text-danger mt-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="pemohon" class="col-sm-4 col-form-label">Merk/Type</label>
                             <div class="col-sm-8">
                                 <input name="merkType" type="text" class="form-control" required>
+                                @error('merkType')
+                                <div class="text-danger mt-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -131,12 +146,22 @@
                             <label for="tahunPerolehan" class="col-sm-4 col-form-label">Tahun Perolehan</label>
                             <div class="col-sm-8">
                                 <input name="tahunPerolehan" type="number" class="form-control" required>
+                                @error('tahunPerolehan')
+                                <div class="text-danger mt-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="nilaiPerolehan" class="col-sm-4 col-form-label">Nilai Perolehan</label>
                             <div class="col-sm-8">
                                 <input name="nilaiPerolehan" type="number" class="form-control" required>
+                                @error('nilaiPerolehan')
+                                <div class="text-danger mt-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
                             </div>
                         </div>
                         <div class="row">
@@ -156,4 +181,16 @@
         </div>
     </div>
 </div>
+{{-- Modals Input Barang --}}
+@endsection
+
+@section('foot')
+    @error('kodeBarang')
+        <script>
+            var inputBarang = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+                keyboard: false
+            });
+            inputBarang.show()  
+        </script>
+    @enderror
 @endsection
