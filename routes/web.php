@@ -20,6 +20,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\KeputusanController;
 use App\Http\Controllers\permohonanController;
 use App\Http\Controllers\permohonanLelangLain;
+use App\Http\Controllers\PresentasiController;
 use App\Http\Controllers\CapaianPnbpController;
 use App\Http\Controllers\FileStorageController;
 use App\Http\Controllers\RencanaAksiController;
@@ -273,3 +274,5 @@ Route::resource('/lot_lelang', RisalahLotLelangController::class)->middleware('v
 Route::resource('/filestorage', FileStorageController::class)->except('show')->middleware('verified');
 
 Route::resource('/filestorage/keputusan', KeputusanController::class)->middleware('verified');
+
+Route::resource('/filestorage/presentasi', PresentasiController::class)->middleware('verified');
