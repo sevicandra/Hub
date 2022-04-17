@@ -18,7 +18,7 @@
                                 $i=1;
                             @endphp
                             @foreach ($data as $item)
-                            <div style="width: 100%; text-align:center; margin:0; @if ($i % 2 === 0) background-color:#74A885 @else background-color:#96A89C @endif ; padding:0; color:white; " class="row" >
+                            <div style="width: 100%; text-align:center; margin:0; @if ($i % 2 === 0) background-color:#74A885 ; color:white @else background-color:#A8977D ; color:white @endif ; padding:0; " class="row" >
                                 <div class="col position-relative" style="width: 40%; min-height:fit-content">
                                     <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->kodeUnit }}</p> 
                                 </div>
