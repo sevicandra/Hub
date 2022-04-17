@@ -24,6 +24,11 @@ function updatePresentasi(params) {
             type:'GET',
             dataType:'JSON',
             success: function(result){
+                $('#updatePresentasiHeader').empty()
+                $('#updatePresentasiHeader').append(`
+                    <h5 class="modal-title" id="staticBackdropLabel">`+result.judul+`</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                `)
                 $('#updatePresentasicontent').empty()
                 $('#updatePresentasicontent').append(`
                     <form action="/filestorage/presentasi/`+result.id+`" method="POST" enctype="multipart/form-data">
