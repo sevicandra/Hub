@@ -15,8 +15,8 @@
                     <div class="position-relative" style="height: 100%; width:100%">
                         <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 100%; height:25px; border-bottom:solid 1px">
                             <div style="width: 100%; text-align:center; margin:0;" class="row" >
-                                <div class="col" style="width: 30%; height:fit-content">tanggal</div>
-                                <div class="col" style="width: 65%; height:fit-content">hal</div>
+                                <div class="col" style="width: 30%; height:fit-content">Tanggal</div>
+                                <div class="col" style="width: 65%; height:fit-content">Judul</div>
                                 <div class="col" style="width: 5%; height:fit-content">Action</div>
                             </div>
                         </div>
