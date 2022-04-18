@@ -200,6 +200,8 @@
         </div>
         <hr style="margin-top:0">
         {{-- Akhir Header --}}
+
+        {{-- Content --}}
         <div class="container-fluid scrollable"
             style="padding:0; max-height:100%; height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             {{-- Modules Apps --}}
@@ -208,27 +210,34 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col-sm-4">
+                {{-- Pindai --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/pindai" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/pindai.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Pindai
+                            PINDAI
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
+                {{-- Akhir Pindai --}}
+
+                {{-- Praktis --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/praktis" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/praktis.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Praktis
+                            PRAKTIS
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
+                {{-- Akhir Praktis --}}
+
+                {{-- Profil Satker --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/satker" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/profile satker.png" alt="" width="64px" height="64px">
@@ -238,7 +247,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
+                {{-- Akhir Profil Satker --}}
+
+                {{-- Best Employee --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/best_employee" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/bestemployee.png" alt="" width="64px" height="64px">
@@ -248,7 +260,25 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4" style="margin-bottom: 10px">
+                {{-- Akhir Best Employee --}}
+
+                {{-- Digital Knoledge Management --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="filestorage"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/Digital Knoledge Management.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Digital Knoledge Management
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Digital Knoledge Management --}}
+
+                {{-- MAP --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="http://10.122.1.46/MAP" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/map.png" alt="" width="64px" height="64px">
@@ -258,31 +288,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
-                    <a class="text-decoration-none"
-                        href="https://drive.google.com/drive/folders/1dwWvD9mBVYTQizBgMZKA-CbXDJ_HpJpz?usp=sharing"
-                        target="_blank">
-                        <div class="d-flex justify-content-evenly">
-                            <img src="/img/ico/keputusan.png" alt="" width="64px" height="64px">
-                        </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Keputusan Kepala Kantor
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing"
-                        target="_blank">
-                        <div class="d-flex justify-content-evenly">
-                            <img src="/img/ico/sewaBMN.png" alt="" width="64px" height="64px">
-                        </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center">
-                            SIMONES
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
+                {{-- Akhir MAP --}}
+
+                {{-- MPR --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="http://10.122.1.85/Sipirang"
                         target="_blank">
@@ -294,7 +303,38 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
+                {{-- Akhir MPR --}}
+
+                {{-- Apliaksi Arsip --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none" href="http://10.122.1.46:81/login" target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/aplikasi arsip.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Aplikasi Arsip
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Apliaksi Arsip --}}
+
+                {{-- Simones --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/sewaBMN.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            SIMONES
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Simones --}}
+
+                {{-- SIMONA --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="https://docs.google.com/spreadsheets/d/10R0c8ifREKfGHQvc_KzEOulgL-XrVW203aNdt7Vmb5Y/edit#gid=748373855"
                         target="_blank">
@@ -306,7 +346,10 @@
                         </div>
                     </a>
                 </div>  
-                <div class="col-sm-4">
+                {{-- Akhir Simona --}}
+
+                {{-- Capaian Kinerja Lelang --}}
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="https://docs.google.com/spreadsheets/d/1xW1bwVzUVCGYaGiFLViDLo--tF_AHkYy-WpcMdZLMeg/edit#gid=1907929457"
                         target="_blank">
@@ -314,24 +357,15 @@
                             <img src="/img/ico/cakalang.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            capaian Kinerja Lelang
+                            Capaian Kinerja Lelang
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-4">
-                    <a class="text-decoration-none"
-                        href="filestorage"
-                        target="_blank">
-                        <div class="d-flex justify-content-evenly">
-                            <img src="/img/ico/file storage.png" alt="" width="64px" height="64px">
-                        </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center">
-                            File Storage
-                        </div>
-                    </a>
-                </div> 
+                {{-- Akhir Capaian Kinerja Lelang --}}
+
+                {{-- User Management --}}
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
-                <div class="col-sm-4">
+                <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="/user_management"
                         target="_blank">
@@ -344,10 +378,11 @@
                     </a>
                 </div>            
                 @endif
-                
+                {{-- Akhir User Management --}}
             </div>
             <hr>
             {{-- Akhir Modules Apps --}}
+
             {{-- DJKN Apps --}}
             <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
                 <h6 style="padding:0">APLIKASI DJKN</h6>
@@ -355,7 +390,7 @@
             <hr>
             <div class="container-fluid" style="margin-bottom: 10px;">
                 <div class="row">
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -366,18 +401,18 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://dianas.djkn.kemenkeu.go.id/"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/Dianas.png" alt="" width="64px" height="64px">
                             </div>
                             <div class="d-flex justify-content-evenly" style="text-align: center">
-                                Dianas
+                                DIANAS
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="http://10.242.77.20/diklat" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/diklat.png" alt="" width="64px" height="64px">
@@ -387,7 +422,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://pndjkn.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/Focus PN.png" alt="" width="64px" height="64px">
@@ -397,7 +432,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -408,13 +443,13 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/alika.png" alt="" width="64px" height="64px">
                             </div>
                             <div class="d-flex justify-content-evenly" style="text-align: center">
-                                Alika
+                                ALIKA
                             </div>
                         </a>
                     </div>
@@ -422,6 +457,7 @@
             </div>
             <hr>
             {{-- Akhir DJKN Apps --}}
+            
             {{-- Kementerian Keuangan Apps --}}
             <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
                 <h6 style="padding:0">APLIKASI KEMENTERIAN KEUANGAN</h6>
@@ -429,7 +465,7 @@
             <hr>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://klc2.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/klc.png" alt="" width="64px" height="64px">
@@ -439,7 +475,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://oa.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/oa.svg" alt="" width="64px" height="64px">
@@ -449,7 +485,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://hris.e-prime.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img class="d-block" src="/img/ico/hris.png" alt="" width="64px" height="64px">
@@ -459,7 +495,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://e-performance.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/eperf.png" alt="" width="64px" height="64px">
@@ -469,7 +505,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://jdih.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/JDIH.png" alt="" width="64px" height="64px">
@@ -479,7 +515,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4" style="margin-bottom: 10px">
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://forms.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/formskemenkeu.png" alt="" width="64px" height="64px">
@@ -493,6 +529,7 @@
             </div>
             {{-- Akhir Kementerian Keuangan Apps --}}
         </div>
+        {{-- Akhir Content --}}
     </div>
     {{-- Akhir Sidebar --}}
     {{-- Footer --}}

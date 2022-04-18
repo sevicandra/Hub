@@ -13,7 +13,7 @@ class FileStorageController extends Controller
      */
     public function index()
     {
-        return view('filestorage.index',[
+        return view('digitalKnowledgeManagement.index',[
             'title'=> 'TERNATE-HUB || FILE STORAGE',
             'favicon'=>'/img/ico/file storage.png',
             'fileStorage'=>''

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\keputusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
@@ -17,7 +18,7 @@ class KeputusanController extends Controller
     public function index()
     {
         $data=keputusan::orderby('tanggal', 'desc')->orderby('nomor', 'desc');
-        return view('filestorage.keputusan',[
+        return view('digitalKnowledgeManagement.keputusan',[
             'data'=>$data->Search()->paginate(20)->withQueryString(),
             'search'=>'',
             'title'=> 'TERNATE-HUB || FILE STORAGE',
@@ -104,40 +105,79 @@ class KeputusanController extends Controller
      */
     public function update(Request $request, keputusan $keputusan)
     {
-        if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            $request->validate([
-                'nomor'=>'required',
-                'kodeUnit'=>'required',
-                'tanggal'=>'required',
-                'hal'=>'required',
-            ]);
-            if ($request->fileUpload) {
+        
+        if ($keputusan->created_at->diff(Carbon::now()->subDay())->days > 0) {
+            if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
-                    'fileUpload'=>'required|mimes:pdf'
+                    'nomor'=>'required',
+                    'kodeUnit'=>'required',
+                    'tanggal'=>'required',
+                    'hal'=>'required',
                 ]);
-                Storage::delete($keputusan->file);
-                $path = $request->file('fileUpload')->store('keputusan');
-            }
-    
-            if (isset($path)) {
-                $keputusan->update([
-                    'nomor'=>$request->nomor,
-                    'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
-                    'tanggal'=>$request->tanggal,
-                    'hal'=>$request->hal,
-                    'file'=>$path,
-                ]);
+                if ($request->fileUpload) {
+                    $request->validate([
+                        'fileUpload'=>'required|mimes:pdf'
+                    ]);
+                    Storage::delete($keputusan->file);
+                    $path = $request->file('fileUpload')->store('keputusan');
+                }
+        
+                if (isset($path)) {
+                    $keputusan->update([
+                        'nomor'=>$request->nomor,
+                        'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
+                        'tanggal'=>$request->tanggal,
+                        'hal'=>$request->hal,
+                        'file'=>$path,
+                    ]);
+                }else{
+                    $keputusan->update([
+                        'nomor'=>$request->nomor,
+                        'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
+                        'tanggal'=>$request->tanggal,
+                        'hal'=>$request->hal,
+                    ]);
+                }
+                return  Redirect::back();
             }else{
-                $keputusan->update([
-                    'nomor'=>$request->nomor,
-                    'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
-                    'tanggal'=>$request->tanggal,
-                    'hal'=>$request->hal,
-                ]);
+                abort(403);
             }
-            return  Redirect::back();
         }else{
-            abort(403);
+            if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                $request->validate([
+                    'nomor'=>'required',
+                    'kodeUnit'=>'required',
+                    'tanggal'=>'required',
+                    'hal'=>'required',
+                ]);
+                if ($request->fileUpload) {
+                    $request->validate([
+                        'fileUpload'=>'required|mimes:pdf'
+                    ]);
+                    Storage::delete($keputusan->file);
+                    $path = $request->file('fileUpload')->store('keputusan');
+                }
+        
+                if (isset($path)) {
+                    $keputusan->update([
+                        'nomor'=>$request->nomor,
+                        'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
+                        'tanggal'=>$request->tanggal,
+                        'hal'=>$request->hal,
+                        'file'=>$path,
+                    ]);
+                }else{
+                    $keputusan->update([
+                        'nomor'=>$request->nomor,
+                        'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
+                        'tanggal'=>$request->tanggal,
+                        'hal'=>$request->hal,
+                    ]);
+                }
+                return  Redirect::back();
+            }else{
+                abort(403);
+            }
         }
     }
 
@@ -149,12 +189,22 @@ class KeputusanController extends Controller
      */
     public function destroy(keputusan $keputusan)
     {
-        if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            Storage::delete($keputusan->file);
-            $keputusan->delete();
-            return Redirect::back();
+        if ($keputusan->created_at->diff(Carbon::now()->subDay())->days > 0) {
+            if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                Storage::delete($keputusan->file);
+                $keputusan->delete();
+                return Redirect::back();
+            }else{
+                abort(403);
+            }
         }else{
-            abort(403);
+            if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                Storage::delete($keputusan->file);
+                $keputusan->delete();
+                return Redirect::back();
+            }else{
+                abort(403);
+            }
         }
     }
 }

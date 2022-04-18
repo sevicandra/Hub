@@ -73,7 +73,7 @@ function hapusKeputusan(params) {
             success: function(result){
                 $('#hapusKeputusancontent').empty()
                 $('#hapusKeputusancontent').append(`
-                    <h5>Anda Yakin Ingin Menghapus Keputusan Nomor`+result.nomor+`</h5>
+                    <h5>Anda Yakin Ingin Menghapus Keputusan Nomor `+result.kodeUnit+`</h5>
                     <form action="/filestorage/keputusan/`+result.id+`" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="`+$(`meta[name="csrf-token"]`).attr(`content`)+`"></input>
                         <input type="hidden" name="_method" value="DELETE">

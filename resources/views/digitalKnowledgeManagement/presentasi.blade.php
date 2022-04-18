@@ -28,9 +28,16 @@
                                 <div class="col position-relative" style="width: 5%; min-height:fit-content">
                                     <div style="height: fit-content" class="position-relative top-50 start-50 translate-middle">
                                         <button style="color:green" class="btn" data-bs-toggle="modal" data-bs-target="#preview" onclick="preview('{{ $item->id }}')"><i class="bi bi-eye-fill"></i></button>
+                                        @if ($item->created_at->diff(Illuminate\Support\Carbon::now()->subDay())->days > 0)
+                                        @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
+                                        <button style="color:blue" class="btn" data-bs-toggle="modal" data-bs-target="#updatePresentasi" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" data-bs-toggle="modal" data-bs-target="#hapusPresentasi" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        @endif
+                                        @else
                                         @if ($item->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
                                         <button style="color:blue" class="btn" data-bs-toggle="modal" data-bs-target="#updatePresentasi" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
                                         <button style="color:red" class="btn" data-bs-toggle="modal" data-bs-target="#hapusPresentasi" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        @endif
                                         @endif
                                     </div>
                                 </div>

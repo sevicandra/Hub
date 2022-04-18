@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\presentasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StorepresentasiRequest;
@@ -19,7 +20,7 @@ class PresentasiController extends Controller
     public function index()
     {
         $data=presentasi::orderby('tanggal', 'desc');
-        return view('filestorage.presentasi',[
+        return view('digitalKnowledgeManagement.presentasi',[
             'data'=>$data->Search()->paginate(20)->withQueryString(),
             'search'=>'',
             'title'=> 'TERNATE-HUB || FILE STORAGE',
@@ -102,34 +103,66 @@ class PresentasiController extends Controller
      */
     public function update(Request $request, presentasi $presentasi)
     {
-        if ($presentasi->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            $request->validate([
-                'tanggal'=>'required',
-                'judul'=>'required',
-            ]);
-            if ($request->fileUpload) {
+        if ($presentasi->created_at->diff(Carbon::now()->subDay())->days > 0) {
+            if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
-                    'fileUpload'=>'required|mimes:pdf,ppt,pptx'
+                    'tanggal'=>'required',
+                    'judul'=>'required',
                 ]);
-                Storage::delete($presentasi->file);
-                $path = $request->file('fileUpload')->store('presentasi');
-            }
-    
-            if (isset($path)) {
-                $presentasi->update([
-                    'tanggal'=>$request->tanggal,
-                    'judul'=>$request->judul,
-                    'file'=>$path,
-                ]);
+                if ($request->fileUpload) {
+                    $request->validate([
+                        'fileUpload'=>'required|mimes:pdf,ppt,pptx'
+                    ]);
+                    Storage::delete($presentasi->file);
+                    $path = $request->file('fileUpload')->store('presentasi');
+                }
+        
+                if (isset($path)) {
+                    $presentasi->update([
+                        'tanggal'=>$request->tanggal,
+                        'judul'=>$request->judul,
+                        'file'=>$path,
+                    ]);
+                }else{
+                    $presentasi->update([
+                        'tanggal'=>$request->tanggal,
+                        'judul'=>$request->judul,
+                    ]);
+                }
+                return  Redirect::back();
             }else{
-                $presentasi->update([
-                    'tanggal'=>$request->tanggal,
-                    'judul'=>$request->judul,
-                ]);
+                abort(403);
             }
-            return  Redirect::back();
         }else{
-            abort(403);
+            if ($presentasi->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                $request->validate([
+                    'tanggal'=>'required',
+                    'judul'=>'required',
+                ]);
+                if ($request->fileUpload) {
+                    $request->validate([
+                        'fileUpload'=>'required|mimes:pdf,ppt,pptx'
+                    ]);
+                    Storage::delete($presentasi->file);
+                    $path = $request->file('fileUpload')->store('presentasi');
+                }
+        
+                if (isset($path)) {
+                    $presentasi->update([
+                        'tanggal'=>$request->tanggal,
+                        'judul'=>$request->judul,
+                        'file'=>$path,
+                    ]);
+                }else{
+                    $presentasi->update([
+                        'tanggal'=>$request->tanggal,
+                        'judul'=>$request->judul,
+                    ]);
+                }
+                return  Redirect::back();
+            }else{
+                abort(403);
+            }
         }
     }
 
@@ -141,12 +174,22 @@ class PresentasiController extends Controller
      */
     public function destroy(presentasi $presentasi)
     {
-        if ($presentasi->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            Storage::delete($presentasi->file);
-            $presentasi->delete();
-            return Redirect::back();
+        if ($presentasi->created_at->diff(Carbon::now()->subDay())->days > 0) {
+            if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                Storage::delete($presentasi->file);
+                $presentasi->delete();
+                return Redirect::back();
+            }else{
+                abort(403);
+            }
         }else{
-            abort(403);
+            if ($presentasi->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                Storage::delete($presentasi->file);
+                $presentasi->delete();
+                return Redirect::back();
+            }else{
+                abort(403);
+            }
         }
     }
 }
