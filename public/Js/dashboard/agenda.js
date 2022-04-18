@@ -17,7 +17,18 @@ $(document).ready(function(){
           if (req.user_id === response['user']) {
             var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
             var methods = '<input type="hidden" name="_method" value="DELETE">'
-            var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
+            var hapus = `
+              <div class="row">
+                <div class="col-sm-6" style="padding-right:0">
+                  <form class="d-inline" method="POST" action="/agenda/${req.id}">
+                    ${csrf}${methods}
+                    <button type="submit" class="btn" style="color:red; height:100%; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</button>
+                  </form>
+                </div>
+                <div class="col-sm-6 d-inline" style="padding-left:0; height:100%">
+                  <div style="border:solid 1px #E3E0A8;background-color:#E3E0A8; color:#ffffff; height:100%; width:100%;border-radius: 10px" class="btn" onclick="updateAgenda('${req.id}')">Update Agenda</div>
+                </div>
+              </div>`
           }else{
             var hapus = ''
           }
@@ -63,7 +74,18 @@ $(document).ready(function(){
             if (req.user_id === response['user']) {
               var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
               var methods = '<input type="hidden" name="_method" value="DELETE">'
-              var hapus = `<div class="row"><div><form method="POST" action="/agenda/${req.id}">${csrf}${methods}<button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</i></button></form></div></div>`
+              var hapus = `
+                <div class="row">
+                  <div class="col-sm-6">
+                    <form class="d-inline" method="POST" action="/agenda/${req.id}">
+                      ${csrf}${methods}
+                      <button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</button>
+                    </form>
+                  </div>
+                  <div class="col-sm-6 d-inline">
+                    <div style="background-color:#E3E0A8" class="btn" onclick="updateAgenda('${req.id}')>Update</div>
+                  </div>
+                </div>`
             }else{
               var hapus = ''
             }
@@ -93,5 +115,32 @@ $(document).ready(function(){
         });
       }
     })
+  
 })
+
+function updateAgenda(params) {
+  if (params) {
+    $.ajax({
+      type: "GET", 
+      url: "/agenda/"+params,
+      dataType: "json",
+      success:function (params) {
+        console.log(params);
+        $("#formUpdateAgenda").attr('action', '/agenda/'+params.id)
+        $("#updateAgenda").val(params.agenda)
+        $("#updateTanggal").val(params.tanggal)
+        $("#updateWaktu").val(params.waktu)
+        $("#updateTempat").val(params.tempat)
+        $("#updateMeetingId").val(params.meetingId)
+        $("#updateMeetingPassword").val(params.meetingPassword)
+        $("#updateLinkRapat").val(params.linkRapat)
+        $("#updateLinkAbsensi").val(params.linkAbsensi)
+        var updateAgenda = new bootstrap.Modal(document.getElementById('updateAgendaModals'), {
+          keyboard: false
+        })
+        updateAgenda.show()
+      }
+    })
+  }
+}
 

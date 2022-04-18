@@ -391,7 +391,7 @@
                     <form action="/agenda" method="POST">
                         @csrf
                         <div class="row">
-                            <label for="agenda" class="col-sm-4 col-form-label">Nama Agenda</label>
+                            <label for="agenda" class="col-sm-4 col-form-label">Nama Agenda <p class="d-inline" style="color: red">*</p></label>
                             <div class="col-sm-8">
                                 <input name="agenda" class="form-control" type="text" value="{{ old('agenda') }}" required>
                                 @error('agenda')
@@ -402,7 +402,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
+                            <label for="tanggal" class="col-sm-4 col-form-label">Tanggal <p class="d-inline" style="color: red">*</p></label>
                             <div class="col-sm-8">
                                 <input name="tanggal" type="date" class="form-control" value="{{ old('tanggal') }}" required>
                                 @error('tanggal')
@@ -413,7 +413,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="waktu" class="col-sm-4 col-form-label">Jam</label>
+                            <label for="waktu" class="col-sm-4 col-form-label">Jam <p class="d-inline" style="color: red">*</p></label>
                             <div class="col-sm-8">
                                 <input name="waktu" type="time" class="form-control" value="{{ old('waktu') }}" required>
                                 @error('tanggal')
@@ -424,7 +424,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="tempat" class="col-sm-4 col-form-label">Tempat</label>
+                            <label for="tempat" class="col-sm-4 col-form-label">Tempat <p class="d-inline" style="color: red">*</p></label>
                             <div class="col-sm-8">
                                 <input name="tempat" class="form-control" type="text" value="{{ old('tempat') }}" required>
                                 @error('tempat')
@@ -1058,6 +1058,107 @@
     </div>
 </div>
 {{-- Akhir Modals Input PNBP PPN --}}
+
+{{-- Modals Update Agenda --}}
+<div class="modal fade" id="updateAgendaModals" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 30px 30px 20px 20px; border:none">
+            <div class="modal-header"
+                style="background: linear-gradient(270.44deg, #4D59CA 0%, #696486 66.03%, #585881 100%); border-radius: 20px 20px 0 0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form id="formUpdateAgenda" action="/agenda/" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <div class="row">
+                            <label for="agenda" class="col-sm-4 col-form-label">Nama Agenda <p class="d-inline" style="color: red">*</p></label>
+                            <div class="col-sm-8">
+                                <input id="updateAgenda" name="agenda" class="form-control" type="text" value="{{ old('agenda') }}" required>
+                                @error('agenda')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="tanggal" class="col-sm-4 col-form-label">Tanggal <p class="d-inline" style="color: red">*</p></label>
+                            <div class="col-sm-8">
+                                <input id="updateTanggal" name="tanggal" type="date" class="form-control" value="{{ old('tanggal') }}" required>
+                                @error('tanggal')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="waktu" class="col-sm-4 col-form-label">Jam <p class="d-inline" style="color: red">*</p></label>
+                            <div class="col-sm-8">
+                                <input id="updateWaktu" name="waktu" type="time" class="form-control" value="{{ old('waktu') }}" required>
+                                @error('tanggal')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="tempat" class="col-sm-4 col-form-label">Tempat <p class="d-inline" style="color: red">*</p></label>
+                            <div class="col-sm-8">
+                                <input id="updateTempat" name="tempat" class="form-control" type="text" value="{{ old('tempat') }}" required>
+                                @error('tempat')
+                                    <div class="text-danger mt-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="meetingId" class="col-sm-4 col-form-label">Meeting Id</label>
+                            <div class="col-sm-8">
+                                <input id="updateMeetingId" name="meetingId" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="meetingPassword" class="col-sm-4 col-form-label">Password</label>
+                            <div class="col-sm-8">
+                                <input id="updateMeetingPassword" name="meetingPassword" class="form-control" type="text">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="linkRapat" class="col-sm-4 col-form-label">Link Rapat</label>
+                            <div class="col-sm-8">
+                                <input id="updateLinkRapat" name="linkRapat" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="linkAbsensi" class="col-sm-4 col-form-label">Link Absensi</label>
+                            <div class="col-sm-8">
+                                <input id="updateLinkAbsensi" name="linkAbsensi" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div style="margin-top:10px">
+                            <div style="width: fit-content;margin: auto">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Akhir Modals Update Agenda --}}
+
+
+
+
+
 
 @endsection
 

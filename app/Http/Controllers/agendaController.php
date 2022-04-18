@@ -73,7 +73,7 @@ class agendaController extends Controller
      */
     public function show(agenda $agenda)
     {
-        //
+        return json_encode($agenda);
     }
 
     /**
@@ -96,7 +96,23 @@ class agendaController extends Controller
      */
     public function update(Request $request, agenda $agenda)
     {
-        //
+        $request->validate([
+            'agenda'=>'required|min:0|max:255',
+            'tanggal'=>'required',
+            'tempat'=>'required',
+            'waktu'=>'required',
+        ]);
+        $agenda->update([
+            'agenda'=>$request->agenda,
+            'tempat'=>$request->tempat,
+            'tanggal'=>$request->tanggal,
+            'waktu'=>$request->waktu,
+            'meetingId'=>$request->meetingId,
+            'meetingPassword'=>$request->meetingPassword,
+            'linkRapat'=>$request->linkRapat,
+            'linkAbsensi'=>$request->linkAbsensi,
+        ]);
+        return Redirect::back();
     }
 
     /**
