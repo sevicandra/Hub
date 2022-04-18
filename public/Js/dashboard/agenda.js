@@ -15,9 +15,14 @@ $(document).ready(function(){
 			success: function(response){ 
 				$.each(response[0], function(res, req){
           if (req.user_id === response['user']) {
+            var tanggal = new Date(req.tanggal).toLocaleDateString('en-US')
+            var now = new Date().toLocaleDateString('en-US')
             var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
             var methods = '<input type="hidden" name="_method" value="DELETE">'
-            var hapus = `
+            if (now > tanggal) {
+              var hapus = ''
+            }else{                
+              var hapus = `
               <div class="row">
                 <div class="col-sm-6" style="padding-right:0">
                   <form class="d-inline" method="POST" action="/agenda/${req.id}">
@@ -29,10 +34,10 @@ $(document).ready(function(){
                   <div style="border:solid 1px #E3E0A8;background-color:#E3E0A8; color:#ffffff; height:100%; width:100%;border-radius: 10px" class="btn" onclick="updateAgenda('${req.id}')">Update Agenda</div>
                 </div>
               </div>`
+            } 
           }else{
             var hapus = ''
           }
-
           var waktu = '<div class="p-2">'+req.waktu+'</div>'
           var Agenda = '<div class="p-2">'+req.agenda+'</div>'
           var tempat = '<div class="row"><div class="d-flex"><div class="p-2">Lokasi :</div><div class="p-2">'+req.tempat+'</div></div></div>'
@@ -72,25 +77,30 @@ $(document).ready(function(){
           $('#agenda').empty();
           $.each(response[0], function(res, req){
             if (req.user_id === response['user']) {
+              var tanggal = new Date(req.tanggal).toLocaleDateString('en-US')
+              var now = new Date().toLocaleDateString('en-US')
               var csrf = '<input type="hidden" name="_token" value="'+$('meta[name="csrf-token"]').attr('content')+'"></input>'
               var methods = '<input type="hidden" name="_method" value="DELETE">'
-              var hapus = `
+              if (now > tanggal) {
+                var hapus = ''
+              }else{                
+                var hapus = `
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-6" style="padding-right:0">
                     <form class="d-inline" method="POST" action="/agenda/${req.id}">
                       ${csrf}${methods}
-                      <button type="submit" class="btn" style="color:red; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</button>
+                      <button type="submit" class="btn" style="color:red; height:100%; width:100%; border:solid 1px #E3BEC6; background-color:#E3BEC6; color:#ffffff; border-radius: 10px">Hapus Agenda</button>
                     </form>
                   </div>
-                  <div class="col-sm-6 d-inline">
-                    <div style="background-color:#E3E0A8" class="btn" onclick="updateAgenda('${req.id}')>Update</div>
+                  <div class="col-sm-6 d-inline" style="padding-left:0; height:100%">
+                    <div style="border:solid 1px #E3E0A8;background-color:#E3E0A8; color:#ffffff; height:100%; width:100%;border-radius: 10px" class="btn" onclick="updateAgenda('${req.id}')">Update Agenda</div>
                   </div>
                 </div>`
+              } 
             }else{
               var hapus = ''
             }
-            
-            var waktu = '<div class="p-2">'+req.waktu+'</div>'
+          var waktu = '<div class="p-2">'+req.waktu+'</div>'
           var Agenda = '<div class="p-2">'+req.agenda+'</div>'
           var tempat = '<div class="row"><div class="d-flex"><div class="p-2">Lokasi :</div><div class="p-2">'+req.tempat+'</div></div></div>'
           if (req.meetingId && req.meetingPassword) {
