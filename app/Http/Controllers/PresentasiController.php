@@ -103,7 +103,7 @@ class PresentasiController extends Controller
      */
     public function update(Request $request, presentasi $presentasi)
     {
-        if ($presentasi->created_at->diff(Carbon::now()->subDay())->days > 0) {
+        if ($presentasi->created_at->diff(Carbon::now())->days > 0) {
             if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
                     'tanggal'=>'required',
@@ -174,7 +174,7 @@ class PresentasiController extends Controller
      */
     public function destroy(presentasi $presentasi)
     {
-        if ($presentasi->created_at->diff(Carbon::now()->subDay())->days > 0) {
+        if ($presentasi->created_at->diff(Carbon::now())->days > 0) {
             if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 Storage::delete($presentasi->file);
                 $presentasi->delete();

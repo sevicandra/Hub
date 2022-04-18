@@ -13,10 +13,10 @@
 <div class="row " style="height: 90%; padding: 0 10px 1% 10px">
     <div class="col-sm-3" style="height: 100%; padding:0">
         <div class="scrollable"
-            style="border-radius: 11px 11px 0 0;height: 90%; max-height:100%; padding: 0; margin:0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background: linear-gradient(90deg, #92929286 99%, #ffffff 99%)">
+            style="border-radius: 11px 0 0 0;height: 90%; max-height:100%; padding: 0; margin:0; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; background: linear-gradient(90deg, #92929286 99%, #ffffff 99%)">
             @foreach ($data as $item)
             <div class="periodePemilihan" onclick="detailPemilihan('{{ $item->id }}')" id="{{ $item->id }}"
-                style="color:#ffffff;background-color: #142542; border-radius:11px; min-height:10%;max-height:fit-content; width:99%; margin-bottom:0.5%; font-size:5vh; padding:0 10px">
+                style="color:#ffffff;background-color: #142542; border-radius:11px 0 0 11px; min-height:10%;max-height:fit-content; width:99%; margin-bottom:0.5%; font-size:5vh; padding:0 10px">
                 @switch($item->bulan)
                     @case('01')
                         Januari
@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-9" style="height: 100%; background-color:#4A81E0; border-radius:10px; padding: 0">
+    <div class="col-sm-9" style="height: 100%; background-color:#4A81E0; border-radius:0 10px 10px 0; padding: 0">
         <div class="scrollable" style="height: 90%; padding: 0 10px ; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             <table style="min-height: fit-content;max-height:100%; width: 100%; color:white; text-align:center; margin: 10px 0">
                 <thead style="min-height: fit-content">
