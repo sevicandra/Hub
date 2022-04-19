@@ -132,7 +132,7 @@
             $("#nav-head").css('width', newWidth)
         });
     });
-    </script>
+</script>
     @section('footpindai')
         
     @show

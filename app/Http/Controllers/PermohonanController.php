@@ -19,10 +19,11 @@ class PermohonanController extends Controller
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
             return view('pindai.Permohonan',[
-                'data'=>permohonan::orderBy('created_at', 'desc')->get(),
+                'data'=>permohonan::orderBy('tanggalSurat', 'desc')->Search()->paginate(20)->withQueryString(),
                 'permohonanview'=>'',
                 'title'=> 'TERNATE-HUB || PINDAI',
-                'favicon'=>'/img/ico/pindai.png'
+                'favicon'=>'/img/ico/pindai.png',
+                'search'=>''
             ]);
         }else{
             abort(403);

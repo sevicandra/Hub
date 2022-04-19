@@ -19,6 +19,23 @@ class penyampaianLaporan extends Model
         return $this->belongsTo(pemberitahuanPenilaian::class);
     }
 
+    public function scopeSearch($data){
+        if (request('key')) {
+            return $data->where('nomorSurat', 'like', '%'.request('key').'%')->orwherehas('pemberitahuanPenilaian', function($pemberitahuanPenilaian){
+                    $pemberitahuanPenilaian->wherehas('permohonanPenilaian', function($permohonanPenilaian){
+                        $permohonanPenilaian->wherehas('permohonan', function($permohonan){
+                            $permohonan->where('pemohon', 'like', '%'.request('key').'%')->orwherehas('tiket', function($tiket){
+                                $tiket->where('tiket', 'like', '%'.request('key').'%');
+                            })->orwherehas('satuanKerja', function($satuanKerja){
+                                $satuanKerja->where('namaSatker', 'like', '%'.request('key').'%');
+                            });
+                        });
+                    });
+                });
+            ;
+        }
+    }
+
     protected $fillable = [
         'nomorSurat',
         'tanggalSurat',

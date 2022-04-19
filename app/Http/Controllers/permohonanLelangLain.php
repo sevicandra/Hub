@@ -13,10 +13,11 @@ class permohonanLelangLain extends Controller
 {
     public function index(){
         return view('pindai.PermohonanLelangLain',[
-            'data'=>permohonanLelang::all(),
+            'data'=>permohonanLelang::orderBy('tanggalSurat', 'desc')->search()->paginate(20)->withQueryString(),
             'permohonanLelangview'=>'',
             'title'=> 'TERNATE-HUB || PINDAI',
-            'favicon'=>'/img/ico/pindai.png'
+            'favicon'=>'/img/ico/pindai.png',
+            'search'=>''
         ]);
 
     }

@@ -19,10 +19,11 @@ class PenetapanLelangController extends Controller
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '07' || auth()->user()->jabatan === '08' || auth()->user()->jabatan === '11') {
             return view('pindai.PenetapanLelang',[
-                'data'=>penetapanLelang::orderBy('created_at', 'desc')->get(),
+                'data'=>penetapanLelang::orderBy('tanggalSurat', 'desc')->Search()->paginate(1)->withQueryString(),
                 'penetapanLelangview'=>'',
                 'title'=> 'TERNATE-HUB || PINDAI',
-                'favicon'=>'/img/ico/pindai.png'
+                'favicon'=>'/img/ico/pindai.png',
+                'search'=>''
             ]);
         }else{
             abort(403);

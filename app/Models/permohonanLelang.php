@@ -34,6 +34,15 @@ class permohonanLelang extends Model
         return $this->hasMany(lotLelang::class);
     }
 
+
+    public function scopeSearch($data){
+        if (request('key')) {
+            $data->where('nomorSurat', 'like', '%'.request('key').'%' )->orwherehas('suratPersetujuan', function($suratPersetujuan){
+                $suratPersetujuan->Search2(request('key'));
+            });
+        }
+    }
+
     protected $fillable = [
         'nomorSurat',
         'hal',

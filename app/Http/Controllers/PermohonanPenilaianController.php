@@ -18,10 +18,11 @@ class PermohonanPenilaianController extends Controller
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' || auth()->user()->jabatan === '11') {
             return view('pindai.Penilaian',[
-                'data'=>permohonanPenilaian::orderBy('created_at', 'desc')->get(),
+                'data'=>permohonanPenilaian::orderBy('tanggalSurat', 'desc')->Search()->paginate(20)->withQueryString(),
                 'penilaianview'=>'',
                 'title'=> 'TERNATE-HUB || PINDAI',
-                'favicon'=>'/img/ico/pindai.png'
+                'favicon'=>'/img/ico/pindai.png',
+                'search'=>''
             ]);
         }else{
             abort(403);

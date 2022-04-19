@@ -19,6 +19,14 @@ class tiket extends Model
         
     }
 
+    public function scopeSearch2($data, $key){
+        return $data->where('tiket', 'like', '%'.request('key').'%')->orwherehas('permohonanLelang', function($permohonanLelang){
+            $permohonanLelang->wherehas('pemohonLelang', function($pemohonLelang){
+                $pemohonLelang->where('pemohon', 'like', '%'.request('key').'%');
+            });
+        });
+    }
+
     protected $fillable = [
         'tiket',
         'permohonan',

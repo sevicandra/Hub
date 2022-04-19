@@ -26,6 +26,16 @@ class penetapanLelang extends Model
         return $this->hasManyThrough(risalahLotLelang::class, risalah::class);
     }
 
+    public function scopeSearch($data){
+        if (request('key')) {
+            $data->where('nomorSurat', 'like', '%'.request('key').'%' )->orwherehas('permohonanLelang', function($permohonanLelang){
+                $permohonanLelang->where('nomorSurat', 'like', '%'.request('key').'%' )->orwherehas('suratPersetujuan', function($suratPersetujuan){
+                    $suratPersetujuan->Search2(request('key'));
+                });
+            });
+        }
+    }
+
     protected $fillable = [
         'nomorSurat',
         'tanggalSurat',
