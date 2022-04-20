@@ -1,7 +1,7 @@
 function preview(params) {
     if (params) {
         $.ajax({
-            url:'/filestorage/presentasi/'+params,
+            url:'/digital-knowledge-management/presentasi/'+params,
             type:'GET',
             dataType:'JSON',
             success: function(result){
@@ -12,6 +12,10 @@ function preview(params) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>`
                 )
                 $('#previewFrame').append(`<iframe src="`+window.location.protocol + '//' + location.host+`/storage/`+result.file+`" frameBorder="0" scrolling="auto" height="100%" width="100%"></iframe>`)
+                var preview = new bootstrap.Modal(document.getElementById('preview'), {
+                    keyboard: false
+                })
+                preview.show()
             }
         })
     }
@@ -20,7 +24,7 @@ function preview(params) {
 function updatePresentasi(params) {
     if (params) {
         $.ajax({
-            url:'/filestorage/presentasi/'+params+'/edit',
+            url:'/digital-knowledge-management/presentasi/'+params+'/edit',
             type:'GET',
             dataType:'JSON',
             success: function(result){
@@ -31,7 +35,7 @@ function updatePresentasi(params) {
                 `)
                 $('#updatePresentasicontent').empty()
                 $('#updatePresentasicontent').append(`
-                    <form action="/filestorage/presentasi/`+result.id+`" method="POST" enctype="multipart/form-data">
+                    <form action="/digital-knowledge-management/presentasi/`+result.id+`" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="`+$(`meta[name="csrf-token"]`).attr(`content`)+`"></input>
                         <input type="hidden" name="_method" value="PATCH">
                         <div class="form-floating mb-3">
@@ -48,6 +52,10 @@ function updatePresentasi(params) {
                         </div>
                     </form>
                 `)
+                var update = new bootstrap.Modal(document.getElementById('updatePresentasi'), {
+                    keyboard: false
+                })
+                update.show()
             }
         })
     }
@@ -56,14 +64,14 @@ function updatePresentasi(params) {
 function hapusPresentasi(params) {
     if (params) {
         $.ajax({
-            url:'/filestorage/presentasi/'+params+'/edit',
+            url:'/digital-knowledge-management/presentasi/'+params+'/edit',
             type:'GET',
             dataType:'JSON',
             success: function(result){
                 $('#hapusPresentasicontent').empty()
                 $('#hapusPresentasicontent').append(`
                     <h5>Anda Yakin Ingin Menghapus presentasi `+result.judul+`</h5>
-                    <form action="/filestorage/presentasi/`+result.id+`" method="post" enctype="multipart/form-data">
+                    <form action="/digital-knowledge-management/presentasi/`+result.id+`" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="`+$(`meta[name="csrf-token"]`).attr(`content`)+`"></input>
                         <input type="hidden" name="_method" value="DELETE">
                         <div class="row mt-2">
@@ -71,6 +79,10 @@ function hapusPresentasi(params) {
                         </div>
                     </form>
                 `)
+                var hapus = new bootstrap.Modal(document.getElementById('hapusPresentasi'), {
+                    keyboard: false
+                })
+                hapus.show()
             }
         })
     }

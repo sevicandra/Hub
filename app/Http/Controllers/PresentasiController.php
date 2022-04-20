@@ -24,7 +24,7 @@ class PresentasiController extends Controller
             'data'=>$data->Search()->paginate(20)->withQueryString(),
             'search'=>'',
             'title'=> 'TERNATE-HUB || FILE STORAGE',
-            'favicon'=>'/img/ico/file storage.png',
+            'favicon'=>'/img/ico/Digital Knoledge Management.png',
             'presentasi'=>''
         ]);
     }

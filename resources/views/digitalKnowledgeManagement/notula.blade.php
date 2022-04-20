@@ -18,45 +18,43 @@
                                 $i=1;
                             @endphp
                             @foreach ($data as $item)
-                            <div style="width: 100%; text-align:center; margin:0; @if ($i % 2 === 0) background-color:#74A885 ; color:white @else background-color:#A8977D ; color:white @endif ; padding:0; " class="row" >
-                                <div class="col position-relative" style="width: 40%; min-height:fit-content">
-                                    <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->kodeUnit }}</p> 
+                            <div style="width: 100%; text-align:center; margin:0; @if ($i % 2 === 0) background-color:#74A885 ; color:white @else background-color:#A8977D ; color:white @endif ; padding:0; color:white" class="row" >
+                                <div class="col position-relative" style="width: 10%; min-height:fit-content">
+                                    <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ indonesiaDate($item->tanggalNotula) }}</p>
                                 </div>
                                 <div class="col position-relative" style="width: 10%; min-height:fit-content">
-                                    <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ indonesiaDate($item->tanggal) }}</p>
+                                    <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ indonesiaDate($item->tanggalRapat) }}</p>
                                 </div>
-                                <div class="col position-relative" style="width: 45%; min-height:fit-content">
-                                    <p class="position-relative top-50 start-50 translate-middle" style="width: 100%; min-height:fit-content">{{ Str::limit($item->hal, 100) }}</p>
+                                <div class="col position-relative" style="width: 85%; min-height:fit-content">
+                                    <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ Str::limit($item->agendaRapat, 100) }}</p>
                                 </div>
                                 <div class="col position-relative" style="width: 5%; min-height:fit-content">
-                                    <div class="position-relative top-50 start-50 translate-middle" style="height: fit-content">
+                                    <div style="height: fit-content" class="position-relative top-50 start-50 translate-middle">
                                         <button style="color:green" class="btn" onclick="preview('{{ $item->id }}')"><i class="bi bi-eye-fill"></i></button>
-                                        
                                         @if ($item->created_at->diff(Illuminate\Support\Carbon::now())->days > 0)
                                         @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" onclick="updateKeputusan('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" onclick="hapusKeputusan('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updateNotula('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusNotula('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @else
                                         @if ($item->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" onclick="updateKeputusan('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" onclick="hapusKeputusan('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updateNotula('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusNotula('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @endif
-                                        
                                     </div>
                                 </div>
                             </div>
                             @php
-                                $i++;
+                                $i++
                             @endphp
                             @endforeach
                         </div>
                         <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 100%; height:25px; border-bottom:solid 1px; background-color:#495C4F; color:white">
                             <div style="width: 100%; text-align:center; margin:0;" class="row" >
-                                <div class="col" style="width: 40%; height:fit-content">Nomor</div>
-                                <div class="col" style="width: 10%; height:fit-content">Tanggal</div>
-                                <div class="col" style="width: 45%; height:fit-content">Hal</div>
+                                <div class="col" style="width: 10%; height:fit-content">Tanggal Notula</div>
+                                <div class="col" style="width: 10%; height:fit-content">Tanggal Rapat</div>
+                                <div class="col" style="width: 85%; height:fit-content">Agenda Rapat</div>
                                 <div class="col" style="width: 5%; height:fit-content">Action</div>
                             </div>
                         </div>
@@ -66,8 +64,8 @@
                                     {{ $data->links() }}
                                 </div>
                                 <div class="position-absolute top-50 end-0 translate-middle-y" style="margin: 0 10px; width:fit-content">
-                                    <button style="background-color: #4CC2B4; color:white" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inputKeputusan">
-                                        Input Keputusan
+                                    <button style="background-color: #4CC2B4; color:white" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inputNotula">
+                                        Input Notula
                                     </button>
                                 </div>
                             </div>
@@ -79,8 +77,8 @@
 @endsection
 
 @section('modalsdigital-knowledge-management')
-{{-- Modals Input Keputusan --}}
-<div class="modal fade" id="inputKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Input Notula --}}
+<div class="modal fade" id="inputNotula" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -88,37 +86,30 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+            <form action="/digital-knowledge-management/notula" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Keputusan" required value="{{ old('nomor') }}">
-                    <label for="nomor">Nomor Keputusan</label>
-                    @error('nomor')
-                        <div class="text-danger mt-1">
-                            {{$message}}
-                        </div>
-                    @enderror
-                </div>
-                <div class="form-floating mb-3">
-                    <select class="form-select" name="kodeUnit" id="kodeUnit" required placeholder="Kode Unit">
-                        <option value="/KNL.1604/">/KNL.1604/</option>
-                        <option value="/WKN.16/KNL.04/">/WKN.16/KNL.04/</option>
-                    </select>
-                    <label for="kodeUnit">Kode Unit</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Keputusan" required value="{{ old('tanggal') }}">
-                    <label for="tanggal">Tanggal Keputusan</label>
-                    @error('tanggal')
+                    <input type="date" class="form-control" id="tanggalNotula" name="tanggalNotula" placeholder="tanggal Notula" required value="{{ old('tanggalNotula') }}">
+                    <label for="tanggalNotula">Tanggal Notula</label>
+                    @error('tanggalNotula')
                     <div class="text-danger mt-1">
                         {{$message}}
                     </div>
                 @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Keputusan" required value="{{ old('hal') }}">
-                    <label for="hal">Hal Keputusan</label>
-                    @error('hal')
+                    <input type="date" class="form-control" id="tanggalRapat" name="tanggalRapat" placeholder="tanggal Rapat" required value="{{ old('tanggalRapat') }}">
+                    <label for="tanggalRapat">Tanggal Rapat</label>
+                    @error('tanggalRapat')
+                    <div class="text-danger mt-1">
+                        {{$message}}
+                    </div>
+                @enderror
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="agendaRapat" name="agendaRapat" placeholder="Agenda Rapat" required value="{{ old('agendaRapat') }}">
+                    <label for="agendaRapat">Agenda Rapat</label>
+                    @error('agendaRapat')
                     <div class="text-danger mt-1">
                         {{$message}}
                     </div>
@@ -138,47 +129,47 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Input Keputusan --}}
+{{-- Akhir Modals Input Notula --}}
 
 {{-- Modals Preview --}}
 <div class="modal fade" id="preview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header" id="previewHeader">
-          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <h5 class="modal-title" id="staticBackdropLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" style="height: 80vh" id="previewFrame">
             {{-- <iframe
-                src="{{ asset('storage/keputusan/eWrsmdQCDnxcLyKQQWLGn5O0znL2DUeBpXKn69Mu.pdf') }}"
+                src="{{ asset('storage/Presentasi/eWrsmdQCDnxcLyKQQWLGn5O0znL2DUeBpXKn69Mu.pdf') }}"
                 frameBorder="0"
                 scrolling="auto"
                 height="100%"
                 width="100%"
             >
             </iframe> --}}
+            <embed src="" >
         </div>
       </div>
     </div>
 </div>
 {{-- Akhir Modals Preview --}}
 
-{{-- Modals Edit Keputusan --}}
-<div class="modal fade" id="updateKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Edit Notula --}}
+<div class="modal fade" id="updateNotula" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header" id="editKeputusanHeader">
+        <div class="modal-header" id="updateNotulaHeader">
           <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="updateKeputusancontent">
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+        <div class="modal-body" id="updateNotulacontent">
+            <form action="/digital-knowledge-management/notula" method="post" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
-                <input type="text" hidden value="" name="oldfile">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Keputusan" required value="{{ old('nomor') }}">
-                    <label for="nomor">Nomor Keputusan</label>
+                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Notula" required value="{{ old('nomor') }}">
+                    <label for="nomor">Nomor Notula</label>
                     @error('nomor')
                         <div class="text-danger mt-1">
                             {{$message}}
@@ -186,8 +177,8 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Keputusan" required value="{{ old('tanggal') }}">
-                    <label for="tanggal">Tanggal Keputusan</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Notula" required value="{{ old('tanggal') }}">
+                    <label for="tanggal">Tanggal Notula</label>
                     @error('tanggal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -195,8 +186,8 @@
                 @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Keputusan" required value="{{ old('hal') }}">
-                    <label for="hal">Hal Keputusan</label>
+                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Notula" required value="{{ old('hal') }}">
+                    <label for="hal">Judul Notula</label>
                     @error('hal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -217,19 +208,19 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Keputusan --}}
+{{-- Akhir Modals Notula --}}
 
-{{-- Modals Hapus Keputusan --}}
-<div class="modal fade" id="hapusKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Hapus Notula --}}
+<div class="modal fade" id="hapusNotula" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="hapusKeputusancontent" style="text-align: center">
-            <h5>Anda Yakin Ingin Menghapus Keputusan Nomor</h5>
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+        <div class="modal-body" id="hapusNotulacontent" style="text-align: center">
+            <h5>Anda Yakin Ingin Menghapus Notula Nomor</h5>
+            <form action="/digital-knowledge-management/Notula" method="post" enctype="multipart/form-data">
                 @method('DELETE')
                 @csrf
                 <div class="row mt-2">
@@ -240,22 +231,18 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Hapus Keputusan --}}
+{{-- Akhir Modals Hapus Notula --}}
 
 @endsection
-
-
-
-
 
 @section('footdigital-knowledge-management')
     @if($errors->any())
         <script>
-            var myModal = new bootstrap.Modal(document.getElementById('inputKeputusan'), {
+            var myModal = new bootstrap.Modal(document.getElementById('inputPresentasi'), {
                 keyboard: false
             })
             myModal.show()
         </script>
     @endif
-    <script src="/js/digital-knowledge-management/keputusan.js"></script>
+    <script src="/js/digital-knowledge-management/notula.js"></script>
 @endsection

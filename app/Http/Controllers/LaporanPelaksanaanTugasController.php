@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\keputusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\laporanPelaksanaanTugas;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\StorelaporanPelaksanaanTugasRequest;
+use App\Http\Requests\UpdatelaporanPelaksanaanTugasRequest;
 
-class KeputusanController extends Controller
+class LaporanPelaksanaanTugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +19,13 @@ class KeputusanController extends Controller
      */
     public function index()
     {
-        $data=keputusan::orderby('tanggal', 'desc')->orderby('nomor', 'desc');
-        return view('digitalKnowledgeManagement.keputusan',[
+        $data=laporanPelaksanaanTugas::orderby('tanggal', 'desc')->orderby('nomor', 'desc');
+        return view('digitalKnowledgeManagement.laporan-pelaksanaan-tugas',[
             'data'=>$data->Search()->paginate(20)->withQueryString(),
             'search'=>'',
             'title'=> 'TERNATE-HUB || FILE STORAGE',
             'favicon'=>'/img/ico/Digital Knoledge Management.png',
-            'keputusan'=>''
+            'laporanpelaksanaantugas'=>''
         ]);
     }
 
@@ -53,11 +55,11 @@ class KeputusanController extends Controller
             'fileUpload'=>'required|mimes:pdf'
         ]);
 
-        $path = $request->file('fileUpload')->store('keputusan');
+        $path = $request->file('fileUpload')->store('laporan-pelaksanaan-tugas');
         
-        keputusan::create([
+        laporanPelaksanaanTugas::create([
             'nomor'=>$request->nomor,
-            'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
+            'kodeUnit'=>'LPT-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
             'tanggal'=>$request->tanggal,
             'hal'=>$request->hal,
             'file'=>$path,
@@ -69,13 +71,13 @@ class KeputusanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\keputusan  $keputusan
+     * @param  \App\Models\laporanPelaksanaanTugas  $laporanPelaksanaanTugas
      * @return \Illuminate\Http\Response
      */
-    public function show(keputusan $keputusan)
+    public function show(laporanPelaksanaanTugas $laporan_pelaksanaan_tuga)
     {
-        if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            return json_encode($keputusan);
+        if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+            return json_encode($laporan_pelaksanaan_tuga);
         }else{
             abort(403);
         }
@@ -84,13 +86,13 @@ class KeputusanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\keputusan  $keputusan
+     * @param  \App\Models\laporanPelaksanaanTugas  $laporanPelaksanaanTugas
      * @return \Illuminate\Http\Response
      */
-    public function edit(keputusan $keputusan)
+    public function edit(laporanPelaksanaanTugas $laporan_pelaksanaan_tuga)
     {
-        if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            return json_encode($keputusan);
+        if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+            return json_encode($laporan_pelaksanaan_tuga);
         }else{
             abort(403);
         }
@@ -100,13 +102,12 @@ class KeputusanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\Request  $request
-     * @param  \App\Models\keputusan  $keputusan
+     * @param  \App\Models\laporanPelaksanaanTugas  $laporanPelaksanaanTugas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, keputusan $keputusan)
+    public function update(Request $request, laporanPelaksanaanTugas $laporan_pelaksanaan_tuga)
     {
-        
-        if ($keputusan->created_at->diff(Carbon::now())->days > 0) {
+        if ($laporan_pelaksanaan_tuga->created_at->diff(Carbon::now())->days > 0) {
             if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
                     'nomor'=>'required',
@@ -118,12 +119,12 @@ class KeputusanController extends Controller
                     $request->validate([
                         'fileUpload'=>'required|mimes:pdf'
                     ]);
-                    Storage::delete($keputusan->file);
-                    $path = $request->file('fileUpload')->store('keputusan');
+                    Storage::delete($laporan_pelaksanaan_tuga->file);
+                    $path = $request->file('fileUpload')->store('laporan-pelaksanaan-tugas');
                 }
         
                 if (isset($path)) {
-                    $keputusan->update([
+                    $laporan_pelaksanaan_tuga->update([
                         'nomor'=>$request->nomor,
                         'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
                         'tanggal'=>$request->tanggal,
@@ -131,7 +132,7 @@ class KeputusanController extends Controller
                         'file'=>$path,
                     ]);
                 }else{
-                    $keputusan->update([
+                    $laporan_pelaksanaan_tuga->update([
                         'nomor'=>$request->nomor,
                         'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
                         'tanggal'=>$request->tanggal,
@@ -143,7 +144,7 @@ class KeputusanController extends Controller
                 abort(403);
             }
         }else{
-            if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+            if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
                     'nomor'=>'required',
                     'kodeUnit'=>'required',
@@ -154,12 +155,12 @@ class KeputusanController extends Controller
                     $request->validate([
                         'fileUpload'=>'required|mimes:pdf'
                     ]);
-                    Storage::delete($keputusan->file);
-                    $path = $request->file('fileUpload')->store('keputusan');
+                    Storage::delete($laporan_pelaksanaan_tuga->file);
+                    $path = $request->file('fileUpload')->store('laporan-pelaksanaan-tugas');
                 }
         
                 if (isset($path)) {
-                    $keputusan->update([
+                    $laporan_pelaksanaan_tuga->update([
                         'nomor'=>$request->nomor,
                         'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
                         'tanggal'=>$request->tanggal,
@@ -167,7 +168,7 @@ class KeputusanController extends Controller
                         'file'=>$path,
                     ]);
                 }else{
-                    $keputusan->update([
+                    $laporan_pelaksanaan_tuga->update([
                         'nomor'=>$request->nomor,
                         'kodeUnit'=>'KEP-'.$request->nomor. $request->kodeUnit. date('Y', strtotime($request->tanggal)),
                         'tanggal'=>$request->tanggal,
@@ -184,23 +185,23 @@ class KeputusanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\keputusan  $keputusan
+     * @param  \App\Models\laporanPelaksanaanTugas  $laporanPelaksanaanTugas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(keputusan $keputusan)
+    public function destroy(laporanPelaksanaanTugas $laporan_pelaksanaan_tuga)
     {
-        if ($keputusan->created_at->diff(Carbon::now())->days > 0) {
+        if ($laporan_pelaksanaan_tuga->created_at->diff(Carbon::now())->days > 0) {
             if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-                Storage::delete($keputusan->file);
-                $keputusan->delete();
+                Storage::delete($laporan_pelaksanaan_tuga->file);
+                $laporan_pelaksanaan_tuga->delete();
                 return Redirect::back();
             }else{
                 abort(403);
             }
         }else{
-            if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-                Storage::delete($keputusan->file);
-                $keputusan->delete();
+            if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                Storage::delete($laporan_pelaksanaan_tuga->file);
+                $laporan_pelaksanaan_tuga->delete();
                 return Redirect::back();
             }else{
                 abort(403);

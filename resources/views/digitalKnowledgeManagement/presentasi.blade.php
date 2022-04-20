@@ -1,6 +1,6 @@
-@extends('layout.filestorage')
+@extends('layout.digital-knowledge-management')
 
-@section('headfilestorage')
+@section('headdigital-knowledge-management')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <style>
         dl, ol, ul{
@@ -9,7 +9,7 @@
     </style>
 @endsection
 
-@section('contentfilestorage')
+@section('contentdigital-knowledge-management')
             <div class="container-fluid" style="height: 100%;">
                 <div class="row" style="height: 100%; background-color:rgb(255, 255, 255); border-radius:0 0 10px 10px">
                     <div class="position-relative" style="height: 100%; width:100%; padding:0">
@@ -27,16 +27,16 @@
                                 </div>
                                 <div class="col position-relative" style="width: 5%; min-height:fit-content">
                                     <div style="height: fit-content" class="position-relative top-50 start-50 translate-middle">
-                                        <button style="color:green" class="btn" data-bs-toggle="modal" data-bs-target="#preview" onclick="preview('{{ $item->id }}')"><i class="bi bi-eye-fill"></i></button>
+                                        <button style="color:green" class="btn" onclick="preview('{{ $item->id }}')"><i class="bi bi-eye-fill"></i></button>
                                         @if ($item->created_at->diff(Illuminate\Support\Carbon::now())->days > 0)
                                         @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" data-bs-toggle="modal" data-bs-target="#updatePresentasi" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" data-bs-toggle="modal" data-bs-target="#hapusPresentasi" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @else
                                         @if ($item->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" data-bs-toggle="modal" data-bs-target="#updatePresentasi" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" data-bs-toggle="modal" data-bs-target="#hapusPresentasi" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updatePresentasi('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusPresentasi('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @endif
                                     </div>
@@ -72,7 +72,7 @@
 
 @endsection
 
-@section('modalsfilestorage')
+@section('modalsdigital-knowledge-management')
 {{-- Modals Input Presentasi --}}
 <div class="modal fade" id="inputPresentasi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -82,7 +82,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/filestorage/presentasi" method="post" enctype="multipart/form-data">
+            <form action="/digital-knowledge-management/presentasi" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating mb-3">
                     <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Presentasi" required value="{{ old('tanggal') }}">
@@ -151,7 +151,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="updatePresentasicontent">
-            <form action="/filestorage/presentasi" method="post" enctype="multipart/form-data">
+            <form action="/digital-knowledge-management/presentasi" method="post" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <input type="text" hidden value="" name="oldfile">
@@ -208,7 +208,7 @@
         </div>
         <div class="modal-body" id="hapusPresentasicontent" style="text-align: center">
             <h5>Anda Yakin Ingin Menghapus Presentasi Nomor</h5>
-            <form action="/filestorage/presentasi" method="post" enctype="multipart/form-data">
+            <form action="/digital-knowledge-management/presentasi" method="post" enctype="multipart/form-data">
                 @method('DELETE')
                 @csrf
                 <div class="row mt-2">
@@ -223,7 +223,7 @@
 
 @endsection
 
-@section('footfilestorage')
+@section('footdigital-knowledge-management')
     @if($errors->any())
         <script>
             var myModal = new bootstrap.Modal(document.getElementById('inputPresentasi'), {
@@ -232,5 +232,5 @@
             myModal.show()
         </script>
     @endif
-    <script src="/js/fileStorage/presentasi.js"></script>
+    <script src="/js/digital-knowledge-management/presentasi.js"></script>
 @endsection

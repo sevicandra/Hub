@@ -34,13 +34,13 @@
                                         
                                         @if ($item->created_at->diff(Illuminate\Support\Carbon::now())->days > 0)
                                         @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" onclick="updateKeputusan('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" onclick="hapusKeputusan('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updateLPT('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusLPT('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @else
                                         @if ($item->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
-                                        <button style="color:blue" class="btn" onclick="updateKeputusan('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
-                                        <button style="color:red" class="btn" onclick="hapusKeputusan('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
+                                        <button style="color:blue" class="btn" onclick="updateLPT('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
+                                        <button style="color:red" class="btn" onclick="hapusLPT('{{ $item->id }}')"><i class="bi bi-file-earmark-x-fill"></i></button>
                                         @endif
                                         @endif
                                         
@@ -66,8 +66,8 @@
                                     {{ $data->links() }}
                                 </div>
                                 <div class="position-absolute top-50 end-0 translate-middle-y" style="margin: 0 10px; width:fit-content">
-                                    <button style="background-color: #4CC2B4; color:white" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inputKeputusan">
-                                        Input Keputusan
+                                    <button style="background-color: #4CC2B4; color:white" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#inputlaporan-pelaksanaan-tugas">
+                                        Input Laporan Pelaksanaan Tugas
                                     </button>
                                 </div>
                             </div>
@@ -75,12 +75,11 @@
                     </div>
                 </div>
             </div>
-
 @endsection
 
 @section('modalsdigital-knowledge-management')
-{{-- Modals Input Keputusan --}}
-<div class="modal fade" id="inputKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Input laporan-pelaksanaan-tugas --}}
+<div class="modal fade" id="inputlaporan-pelaksanaan-tugas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -88,11 +87,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+            <form action="/digital-knowledge-management/laporan_pelaksanaan_tugas" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Keputusan" required value="{{ old('nomor') }}">
-                    <label for="nomor">Nomor Keputusan</label>
+                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Laporan Pelaksanaan Tugas" required value="{{ old('nomor') }}">
+                    <label for="nomor">Nomor Laporan Pelaksanaan Tugas</label>
                     @error('nomor')
                         <div class="text-danger mt-1">
                             {{$message}}
@@ -107,8 +106,8 @@
                     <label for="kodeUnit">Kode Unit</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Keputusan" required value="{{ old('tanggal') }}">
-                    <label for="tanggal">Tanggal Keputusan</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Laporan Pelaksanaan Tugas" required value="{{ old('tanggal') }}">
+                    <label for="tanggal">Tanggal Laporan Pelaksanaan Tugas</label>
                     @error('tanggal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -116,8 +115,8 @@
                 @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Keputusan" required value="{{ old('hal') }}">
-                    <label for="hal">Hal Keputusan</label>
+                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Laporan Pelaksanaan Tugas" required value="{{ old('hal') }}">
+                    <label for="hal">Hal Laporan Pelaksanaan Tugas</label>
                     @error('hal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -138,7 +137,7 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Input Keputusan --}}
+{{-- Akhir Modals Input laporan-pelaksanaan-tugas --}}
 
 {{-- Modals Preview --}}
 <div class="modal fade" id="preview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -150,7 +149,7 @@
         </div>
         <div class="modal-body" style="height: 80vh" id="previewFrame">
             {{-- <iframe
-                src="{{ asset('storage/keputusan/eWrsmdQCDnxcLyKQQWLGn5O0znL2DUeBpXKn69Mu.pdf') }}"
+                src="{{ asset('storage/laporan-pelaksanaan-tugas/eWrsmdQCDnxcLyKQQWLGn5O0znL2DUeBpXKn69Mu.pdf') }}"
                 frameBorder="0"
                 scrolling="auto"
                 height="100%"
@@ -163,22 +162,22 @@
 </div>
 {{-- Akhir Modals Preview --}}
 
-{{-- Modals Edit Keputusan --}}
-<div class="modal fade" id="updateKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Edit laporan-pelaksanaan-tugas --}}
+<div class="modal fade" id="updatelaporan-pelaksanaan-tugas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header" id="editKeputusanHeader">
+        <div class="modal-header" id="editlaporan-pelaksanaan-tugasHeader">
           <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="updateKeputusancontent">
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+        <div class="modal-body" id="updatelaporan-pelaksanaan-tugascontent">
+            <form action="/digital-knowledge-management/laporan_pelaksanaan_tugas" method="post" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <input type="text" hidden value="" name="oldfile">
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Keputusan" required value="{{ old('nomor') }}">
-                    <label for="nomor">Nomor Keputusan</label>
+                    <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Laporan Pelaksanaan Tugas" required value="{{ old('nomor') }}">
+                    <label for="nomor">Nomor Laporan Pelaksanaan Tugas</label>
                     @error('nomor')
                         <div class="text-danger mt-1">
                             {{$message}}
@@ -186,8 +185,8 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Keputusan" required value="{{ old('tanggal') }}">
-                    <label for="tanggal">Tanggal Keputusan</label>
+                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="tanggal Laporan Pelaksanaan Tugas" required value="{{ old('tanggal') }}">
+                    <label for="tanggal">Tanggal Laporan Pelaksanaan Tugas</label>
                     @error('tanggal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -195,8 +194,8 @@
                 @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Keputusan" required value="{{ old('hal') }}">
-                    <label for="hal">Hal Keputusan</label>
+                    <input type="text" class="form-control" id="hal" name="hal" placeholder="hal Laporan Pelaksanaan Tugas" required value="{{ old('hal') }}">
+                    <label for="hal">Hal Laporan Pelaksanaan Tugas</label>
                     @error('hal')
                     <div class="text-danger mt-1">
                         {{$message}}
@@ -217,19 +216,19 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Keputusan --}}
+{{-- Akhir Modals laporan-pelaksanaan-tugas --}}
 
-{{-- Modals Hapus Keputusan --}}
-<div class="modal fade" id="hapusKeputusan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modals Hapus laporan-pelaksanaan-tugas --}}
+<div class="modal fade" id="hapuslaporan-pelaksanaan-tugas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="hapusKeputusancontent" style="text-align: center">
-            <h5>Anda Yakin Ingin Menghapus Keputusan Nomor</h5>
-            <form action="/digital-knowledge-management/keputusan" method="post" enctype="multipart/form-data">
+        <div class="modal-body" id="hapuslaporan-pelaksanaan-tugascontent" style="text-align: center">
+            <h5>Anda Yakin Ingin Menghapus Laporan Pelaksanaan Tugas Nomor</h5>
+            <form action="/digital-knowledge-management/laporan_pelaksanaan_tugas" method="post" enctype="multipart/form-data">
                 @method('DELETE')
                 @csrf
                 <div class="row mt-2">
@@ -240,22 +239,19 @@
       </div>
     </div>
 </div>
-{{-- Akhir Modals Hapus Keputusan --}}
+{{-- Akhir Modals Hapus laporan-pelaksanaan-tugas --}}
 
 @endsection
-
-
-
 
 
 @section('footdigital-knowledge-management')
     @if($errors->any())
         <script>
-            var myModal = new bootstrap.Modal(document.getElementById('inputKeputusan'), {
+            var myModal = new bootstrap.Modal(document.getElementById('inputlaporan-pelaksanaan-tugas'), {
                 keyboard: false
             })
             myModal.show()
         </script>
     @endif
-    <script src="/js/digital-knowledge-management/keputusan.js"></script>
+    <script src="/js/digital-knowledge-management/laporan-pelaksanaan-tugas.js"></script>
 @endsection

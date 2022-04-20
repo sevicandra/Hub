@@ -265,7 +265,7 @@
                 {{-- Digital Knoledge Management --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
-                        href="filestorage"
+                        href="digital-knowledge-management"
                         target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/Digital Knoledge Management.png" alt="" width="64px" height="64px">

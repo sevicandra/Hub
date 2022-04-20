@@ -15,6 +15,7 @@ use App\Http\Controllers\tiketController;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\agendaController;
 use App\Http\Controllers\barangController;
+use App\Http\Controllers\NotulaController;
 use App\Http\Controllers\RisalahController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\KeputusanController;
@@ -40,6 +41,7 @@ use App\Http\Controllers\NominasiBestEmployeeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemilihanBestEmployeeController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
+use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
 
 /*
@@ -271,8 +273,12 @@ Route::controller(permohonanLelangLain::class)->group(function(){
 
 Route::resource('/lot_lelang', RisalahLotLelangController::class)->middleware('verified');
 
-Route::resource('/filestorage', FileStorageController::class)->except('show')->middleware('verified');
+Route::resource('/digital-knowledge-management', FileStorageController::class)->except('show')->middleware('verified');
 
-Route::resource('/filestorage/keputusan', KeputusanController::class)->middleware('verified');
+Route::resource('/digital-knowledge-management/keputusan', KeputusanController::class)->middleware('verified');
 
-Route::resource('/filestorage/presentasi', PresentasiController::class)->middleware('verified');
+Route::resource('/digital-knowledge-management/presentasi', PresentasiController::class)->middleware('verified');
+
+Route::resource('/digital-knowledge-management/laporan-pelaksanaan-tugas', LaporanPelaksanaanTugasController::class)->middleware('verified');
+
+Route::resource('/digital-knowledge-management/notula', NotulaController::class)->middleware('verified');

@@ -1,2 +1,2 @@
-@extends('layout.filestorage')
+@extends('layout.digital-knowledge-management')
 

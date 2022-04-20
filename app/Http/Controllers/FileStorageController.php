@@ -15,7 +15,7 @@ class FileStorageController extends Controller
     {
         return view('digitalKnowledgeManagement.index',[
             'title'=> 'TERNATE-HUB || FILE STORAGE',
-            'favicon'=>'/img/ico/file storage.png',
+            'favicon'=>'/img/ico/Digital Knoledge Management.png',
             'fileStorage'=>''
         ]);
     }
