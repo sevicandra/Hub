@@ -61,8 +61,8 @@
                             <option value="05">Kepala Seksi Hukum dan Informasi</option>
                             <option value="06">Kepala Seksi Kepatuhan Internal</option>
                             <option value="07">Fungsional Pelelang Ahli Muda</option>
-                            <option value="08">Fungsional Penilai Pemerintah Ahli Muda</option>
-                            <option value="09">Fungsional Pelelang Ahli Pertama</option>
+                            <option value="09">Fungsional Penilai Pemerintah Ahli Muda</option>
+                            <option value="08">Fungsional Pelelang Ahli Pertama</option>
                             <option value="10">Fungsional Penilai Pemerintah Ahli Pertama</option>
                             <option value="11">Pelaksana Subbagian Umum</option>
                             <option value="12">Pelaksana Seksi Pengelolaan Kekayaan Negara</option>
