@@ -19,7 +19,7 @@ class SuratPersetujuanController extends Controller
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12') {
             return view('pindai.Persetujuan',[
-                'data'=>penyampaianLaporan::orderBy('tanggalSurat', 'desc')->Search()->paginate(1)->withQueryString(),
+                'data'=>penyampaianLaporan::orderBy('tanggalSurat', 'desc')->Search()->paginate(20)->withQueryString(),
                 'persetujuanview'=>'',
                 'title'=> 'TERNATE-HUB || PINDAI',
                 'favicon'=>'/img/ico/pindai.png',

@@ -1,7 +1,7 @@
 @extends('layout.pindai')
 @section('contentpindai')
 
-<div class="row" style="height:85%; padding: 0; background-color:aliceblue">
+<div id="contentTable" class="row" style="padding: 0; background-color:aliceblue">
     <div class="container-fluid" style="height:100%">
         <div class="row" style="height: 100%; border-radius:10px;">
             <div class="table table-light scrollable" style="padding: 0; height: 100%; background-color:aliceblue; min-height:fit-content; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
@@ -62,7 +62,10 @@
         </div>
     </div>
 </div>
-<div class="row " style="margin: 10px 0 0 0;">
+<div class="row position-relative" style="margin: 10px 0 0 0; height: 40px; width: 100%">
+    <div class="position-absolute top-50 start-0 translate-middle-y" style="; width:fit-content">
+        {{ $data->links() }}
+    </div>
 </div>
 
 
@@ -156,5 +159,16 @@
 
 <script src="/js/pindai/permohonanPenilaian.js"></script>
 <script src="/js/pindai/nomorTiket.js"></script>
-
+<script>
+    $(window).on('load', function(){
+        var newHeight = window.innerHeight-(150+(window.innerHeight*0.1)); 
+        $("#contentTable").css('height', newHeight)
+    });
+    window.addEventListener('resize', function(event){
+        var newHeight = window.innerHeight-(150+(window.innerHeight*0.1));
+        $(window).resize(function() {
+            $("#contentTable").css('height', newHeight)
+        });
+    });
+</script>
 @endsection
