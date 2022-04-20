@@ -262,7 +262,7 @@
                 </div>
                 {{-- Akhir Best Employee --}}
 
-                {{-- Digital Knoledge Management --}}
+                {{-- Digital Knowledge Management --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="digital-knowledge-management"
@@ -271,11 +271,11 @@
                             <img src="/img/ico/Digital Knoledge Management.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Digital Knoledge Management
+                            Digital Knowledge Management
                         </div>
                     </a>
                 </div>
-                {{-- Akhir Digital Knoledge Management --}}
+                {{-- Akhir Digital Knowledge Management --}}
 
                 {{-- MAP --}}
                 <div class="col-sm-4 mb-1">
