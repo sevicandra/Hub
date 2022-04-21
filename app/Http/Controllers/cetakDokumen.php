@@ -542,6 +542,12 @@ class cetakDokumen extends Controller
                 break;
             case 'penetapanLelangOpen':
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
+                if (isset($request->tanggalPengumumanKedua)) {
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang pertama dan tanggal '. indonesiaDate($request->tanggalPengumumanKedua).' sebagai pengumuman lelang kedua';
+                }else{
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang';
+                }
+
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
@@ -550,7 +556,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
@@ -571,7 +577,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
@@ -592,6 +598,12 @@ class cetakDokumen extends Controller
                 break;
             case 'penetapanLelangClosed':
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
+                $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
+                if (isset($request->tanggalPengumumanKedua)) {
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang pertama dan tanggal '. indonesiaDate($request->tanggalPengumumanKedua).' sebagai pengumuman lelang kedua';
+                }else{
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang';
+                }
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
@@ -600,7 +612,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
@@ -618,7 +630,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                        $templateProcessor->setValue('tanggalPengumuman', indonesiaDate($request->tanggalPengumuman));
+                        $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);

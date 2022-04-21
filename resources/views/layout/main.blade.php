@@ -363,6 +363,21 @@
                 </div>
                 {{-- Akhir Capaian Kinerja Lelang --}}
 
+                {{-- Capaian Kinerja Lelang --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/presentation/d/1g5gG0UXjlPZIwMmdbDI28BIVQ5xvtcZZGpJgra2BARI/edit?usp=sharing"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Manajemen Risiko
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Capaian Kinerja Lelang --}}
+
                 {{-- User Management --}}
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
                 <div class="col-sm-4 mb-1">
