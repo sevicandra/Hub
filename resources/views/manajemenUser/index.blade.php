@@ -4,7 +4,7 @@
 <div class="container-fluid" style="padding: 0px 37px 0px 37px; height:100%">
     <div class="container-fluid" style="border-radius: 10px; height:100%">
     <div class="row" style="height: 100%">
-        <div class="col-sm-8" style="height: 100%; background-color:#6EE4FA; border: solid #ffffff;border-radius:10px">
+        <div class="col-sm-8 scrollable" style="height: 100%; background-color:#6EE4FA; border: solid #ffffff;border-radius:10px; overflow:auto">
             <div class="row" style="background-color: #3DA4B8; min-height: fit-content; max-height:fit-content; font-size:1vw; text-align:center; color:white; border-radius:10px 10px 0 0; border-bottom: solid #ffffff 2px">
                 <h1>Daftar Pengguna Aplikasi</h1>
             </div>

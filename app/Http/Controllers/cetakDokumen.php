@@ -728,8 +728,8 @@ class cetakDokumen extends Controller
                             $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
                             $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
             
-                            $templateProcessor->saveAs('DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx');
-                            return response()->download(file: 'DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                            $templateProcessor->saveAs('DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx');
+                            return response()->download(file: 'DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                             break;
                     
                     default:
