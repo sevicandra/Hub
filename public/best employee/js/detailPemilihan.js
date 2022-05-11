@@ -36,7 +36,7 @@ function detailPemilihan(params) {
                     }else{
                         var action =""
                     }
-                    $('#daftarNominasi').append('<tr><td>'+i+'</td><td style="text-align:left">'+req.nama+'</td><td>'+req.produktifitasKerja+'</td><td>'+req.kedisiplinan+'</td><td>'+req.sikapKerja+'</td><td>'+req.total+'</td>'+action+'</tr>')
+                    $('#daftarNominasi').append('<tr><td>'+i+'</td><td style="text-align:left">'+req.nama+'</td><td>'+req.responden+'</td><td>'+req.produktifitasKerja+'</td><td>'+req.kedisiplinan+'</td><td>'+req.sikapKerja+'</td><td>'+req.total+'</td>'+action+'</tr>')
                     i++
                 })
             }
