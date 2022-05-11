@@ -84,9 +84,9 @@ class PemilihanBestEmployeeController extends Controller
             $responden = $key->hasilPemilihan->count();
             $respondens = $responden;
             if ($responden === 0) {
-                $responden = 1;
+                $respondens = 1;
             }
-            array_push($nominasi, ['nominasi_id' => $key->id, 'nama' => $nama, 'produktifitasKerja' => $produktifitasKerja, 'sikapKerja' => $sikapKerja, 'kedisiplinan' => $kedisiplinan,'responden'=> $respondens, 'total' => number_format(($produktifitasKerja + $sikapKerja + $kedisiplinan) / $responden, 2, ',', '.')]);
+            array_push($nominasi, ['nominasi_id' => $key->id, 'nama' => $nama, 'produktifitasKerja' => $produktifitasKerja, 'sikapKerja' => $sikapKerja, 'kedisiplinan' => $kedisiplinan,'responden'=> $responden, 'total' => number_format(($produktifitasKerja + $sikapKerja + $kedisiplinan) / $respondens, 2, ',', '.')]);
         }
 
 
