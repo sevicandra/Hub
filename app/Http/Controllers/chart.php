@@ -69,13 +69,13 @@ class chart extends Controller
                     switch ($request->triwulan) {
                         case 'Q1':
                             if ($data->konsolidasi === 'TLK') {
-                                if ($data->capaian->where('bulan', '<=', 3)) {
+                                if ($data->capaian->where('bulan', '<=', 3)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 3)->max()->capaian;
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
-                                if ($data->capaian->where('bulan', '<=', 3)) {
+                                if ($data->capaian->where('bulan', '<=', 3)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 3)->avg('capaian');
                                 }else{
                                     $capaian[]=0;
@@ -84,13 +84,13 @@ class chart extends Controller
                             break;
                         case 'Q2':
                             if ($data->konsolidasi === 'TLK') {
-                                if ($data->capaian->where('bulan', '<=', 6)) {
+                                if ($data->capaian->where('bulan', '<=', 6)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 6)->max()->capaian;
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
-                                if ($data->capaian->where('bulan', '<=', 6)) {
+                                if ($data->capaian->where('bulan', '<=', 6)->first()) {
                                     
                                 }else{
                                     $capaian[]=0;
@@ -100,13 +100,13 @@ class chart extends Controller
                             break;
                         case 'Q3':
                             if ($data->konsolidasi === 'TLK') {
-                                if ($data->capaian->where('bulan', '<=', 9)) {
+                                if ($data->capaian->where('bulan', '<=', 9)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 9)->max()->capaian;
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
-                                if ($data->capaian->where('bulan', '<=', 9)) {
+                                if ($data->capaian->where('bulan', '<=', 9)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 9)->avg('capaian');
                                 }else{
                                     $capaian[]=0;
@@ -115,13 +115,13 @@ class chart extends Controller
                             break;
                         case 'Q4':
                             if ($data->konsolidasi === 'TLK') {
-                                if ($data->capaian->where('bulan', '<=', 12)) {
+                                if ($data->capaian->where('bulan', '<=', 12)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 12)->max()->capaian;
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
-                                if ($data->capaian->where('bulan', '<=', 12)) {
+                                if ($data->capaian->where('bulan', '<=', 12)->first()) {
                                     $capaian[]= $data->capaian->where('bulan', '<=', 12)->avg('capaian');
                                 }else{
                                     $capaian[]=0;

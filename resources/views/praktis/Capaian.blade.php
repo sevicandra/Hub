@@ -157,7 +157,13 @@
                                                         @endswitch
                                                     </td>
                                                     <td>{{$item->capaian}}</td>
-                                                    <td>{{number_format($item->raw, 0, ',', '.')}}</td>
+                                                    <td>
+                                                        @if ($item->raw)
+                                                        {{number_format($item->raw, 0, ',', '.')}}
+                                                        @else
+                                                        N/A
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
