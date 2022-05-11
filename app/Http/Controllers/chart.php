@@ -69,30 +69,63 @@ class chart extends Controller
                     switch ($request->triwulan) {
                         case 'Q1':
                             if ($data->konsolidasi === 'TLK') {
-                                $capaian[]= $data->capaian->where('bulan', '<=', 3)->max()->capaian;
+                                if ($data->capaian->where('bulan', '<=', 3)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 3)->max()->capaian;
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }elseif($data->konsolidasi === 'AVG'){
-                                $capaian[]= $data->capaian->where('bulan', '<=', 3)->avg('capaian');
+                                if ($data->capaian->where('bulan', '<=', 3)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 3)->avg('capaian');
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }
                             break;
                         case 'Q2':
                             if ($data->konsolidasi === 'TLK') {
-                                $capaian[]= $data->capaian->where('bulan', '<=', 6)->max()->capaian;
+                                if ($data->capaian->where('bulan', '<=', 6)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 6)->max()->capaian;
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }elseif($data->konsolidasi === 'AVG'){
+                                if ($data->capaian->where('bulan', '<=', 6)) {
+                                    
+                                }else{
+                                    $capaian[]=0;
+                                }
                                 $capaian[]= $data->capaian->where('bulan', '<=', 6)->avg('capaian');
                             }
                             break;
                         case 'Q3':
                             if ($data->konsolidasi === 'TLK') {
-                                $capaian[]= $data->capaian->where('bulan', '<=', 9)->max()->capaian;
+                                if ($data->capaian->where('bulan', '<=', 9)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 9)->max()->capaian;
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }elseif($data->konsolidasi === 'AVG'){
-                                $capaian[]= $data->capaian->where('bulan', '<=', 9)->avg('capaian');
+                                if ($data->capaian->where('bulan', '<=', 9)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 9)->avg('capaian');
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }
                             break;
                         case 'Q4':
                             if ($data->konsolidasi === 'TLK') {
-                                $capaian[]= $data->capaian->where('bulan', '<=', 12)->max()->capaian;
+                                if ($data->capaian->where('bulan', '<=', 12)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 12)->max()->capaian;
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }elseif($data->konsolidasi === 'AVG'){
-                                $capaian[]= $data->capaian->where('bulan', '<=', 12)->avg('capaian');
+                                if ($data->capaian->where('bulan', '<=', 12)) {
+                                    $capaian[]= $data->capaian->where('bulan', '<=', 12)->avg('capaian');
+                                }else{
+                                    $capaian[]=0;
+                                }
                             }
                             break;
                     }
