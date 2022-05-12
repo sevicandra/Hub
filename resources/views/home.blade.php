@@ -58,11 +58,21 @@
                             <option style="background-color: #FBF8F1;" value="Q4" selected>Q4</option>
                         </select>
                     </div>
+                    <div class="row" style="height: 5%;padding: 0 5px">
+                        <div style="width: 55%">Nama IKU</div>
+                        <div style="width: 15%; text-align:center">Target</div>
+                        <div style="width: 15%; text-align:center">Capaian</div>
+                        <div style="width: 15%; text-align:center">Realisasi</div>
+                        <hr style="margin: 0; padding:0">
+                    </div>
                     <div class="scrollable"
-                        style="height: 80%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
-                        <div class="chart-container" style="max-height: 400%;">
-                            <canvas id="capaianKinerja"></canvas>
+                        style="height: 75%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none; padding: 10px 5px 0 5px">
+                        <div id="capaianKinerja" style="width: 100%; height:fit-content">
                         </div>
+
+                        {{-- <div class="chart-container" style="max-height: 400%;">
+                            <canvas id="capaianKinerja"></canvas>
+                        </div> --}}
                     </div>
                 </div>
             </div>

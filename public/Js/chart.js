@@ -572,98 +572,112 @@ function praktis(tahun) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response){
-            var labels=[];
-            var capaian=[];
-            $.each(response.namaIKU, function(res, req){
-                labels.push(req);
-            })
-            $.each(response.capaian, function(res, req){
-                capaian.push(req);
-            })
-            const capaianKinerja = document.getElementById('capaianKinerja');
-            capaianKinerja.height = response.namaIKU.length*50;
-            const myChart = new Chart(capaianKinerja, {
-                type: 'bar',    
-                data : {
-                    labels: labels,
-                    datasets: [{
-                        data: capaian,
-                        fill: false,
-                        backgroundColor: [
-                            '#1A3B3A33',
-                            '#94C6C533',
-                            '#54BAB933',
-                            '#2C3B3A33',
-                            '#3D878633',
-                            '#9FD4D333',
-                            '#26545333',
-                            '#749B9A33',
-                            '#68E8E433',
-                            '#4E696833',
-                            '#50B5B233',
-                            '#28363533',
-                            '#39827D33',
-                            '#99CFCB33',
-                            '#234F4C33',
-                            '#739C9933',
-                            '#66E8DF33',
-                            '#4D696733',
-                            '#4EB5AE33',
-                            '#27363533',
-                            '#37827D33',
-                            '#95CFCB33'
-                          ],
-                          minBarThickness: 50,
-                          maxBarThickness: 50
-                    }],
-                },
-                options:{
-                    indexAxis: 'y',
-                    layout: {
-                        padding:{
-                            right:20,
-                        },
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false,            
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                    scales: {
-                        yAxes:{
-                            grid:{
-                                display:false,
-                                borderColor:'#ffffff00',
-                            },
-                            ticks: {
-                                mirror: true,
-                                color: '#7A7A7A',
-                                font: {
-                                    size: 20,
-                                    family:'Tw Cen MT'
-                                }
-                            },
-                        },
-                        xAxes:{
-                            grid:{
-                                display:false,
-                                borderColor:'#ffffff00',
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 120,
-                            ticks: {
-                                display:false,
-                            }
-                        },
+            $('#capaianKinerja').empty()
+            for (let index = 0; index < response.namaIKU.length; index++) {
+                
+                $('#capaianKinerja').append(`
+                <div class="row">
+                <div style="width: 55%">`+response.namaIKU[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.capaian[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
+                </div>
+                `)
+            }
+
+
+            // var labels=[];
+            // var capaian=[];
+            // $.each(response.namaIKU, function(res, req){
+            //     labels.push(req);
+            // })
+            // $.each(response.capaian, function(res, req){
+            //     capaian.push(req);
+            // })
+            // const capaianKinerja = document.getElementById('capaianKinerja');
+            // capaianKinerja.height = response.namaIKU.length*50;
+            // const myChart = new Chart(capaianKinerja, {
+            //     type: 'bar',    
+            //     data : {
+            //         labels: labels,
+            //         datasets: [{
+            //             data: capaian,
+            //             fill: false,
+            //             backgroundColor: [
+            //                 '#1A3B3A33',
+            //                 '#94C6C533',
+            //                 '#54BAB933',
+            //                 '#2C3B3A33',
+            //                 '#3D878633',
+            //                 '#9FD4D333',
+            //                 '#26545333',
+            //                 '#749B9A33',
+            //                 '#68E8E433',
+            //                 '#4E696833',
+            //                 '#50B5B233',
+            //                 '#28363533',
+            //                 '#39827D33',
+            //                 '#99CFCB33',
+            //                 '#234F4C33',
+            //                 '#739C9933',
+            //                 '#66E8DF33',
+            //                 '#4D696733',
+            //                 '#4EB5AE33',
+            //                 '#27363533',
+            //                 '#37827D33',
+            //                 '#95CFCB33'
+            //               ],
+            //               minBarThickness: 50,
+            //               maxBarThickness: 50
+            //         }],
+            //     },
+            //     options:{
+            //         indexAxis: 'y',
+            //         layout: {
+            //             padding:{
+            //                 right:20,
+            //             },
+            //         },
+            //         responsive: true,
+            //         maintainAspectRatio: false,            
+            //         plugins: {
+            //             legend: {
+            //                 display: false,
+            //             },
+            //         },
+            //         scales: {
+            //             yAxes:{
+            //                 grid:{
+            //                     display:false,
+            //                     borderColor:'#ffffff00',
+            //                 },
+            //                 ticks: {
+            //                     mirror: true,
+            //                     color: '#7A7A7A',
+            //                     font: {
+            //                         size: 20,
+            //                         family:'Tw Cen MT'
+            //                     }
+            //                 },
+            //             },
+            //             xAxes:{
+            //                 grid:{
+            //                     display:false,
+            //                     borderColor:'#ffffff00',
+            //                 },
+            //                 suggestedMin: 0,
+            //                 suggestedMax: 120,
+            //                 ticks: {
+            //                     display:false,
+            //                 }
+            //             },
                         
-                    } 
-                },
-            });
-            $('#CKO').change(function(){
-                myChart.destroy();
-            })
+            //         } 
+            //     },
+            // });
+            // $('#CKO').change(function(){
+            //     myChart.destroy();
+            // })
         }  
     })    
 };
@@ -681,99 +695,111 @@ function praktisTW(params) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success:function (response) {
-            var labels=[];
-            var capaian=[];
-            $.each(response.namaIKU, function(res, req){
-                labels.push(req);
-            })
-            $.each(response.capaian, function(res, req){
-                capaian.push(req);
-            })
-            const capaianKinerja = document.getElementById('capaianKinerja');
-            capaianKinerja.height = response.namaIKU.length*50;
-            const myChart = new Chart(capaianKinerja, {
-                type: 'bar',    
-                data : {
-                    labels: labels,
-                    datasets: [{
-                        data: capaian,
-                        fill: false,
-                        backgroundColor: [
-                            '#1A3B3A33',
-                            '#94C6C533',
-                            '#54BAB933',
-                            '#2C3B3A33',
-                            '#3D878633',
-                            '#9FD4D333',
-                            '#26545333',
-                            '#749B9A33',
-                            '#68E8E433',
-                            '#4E696833',
-                            '#50B5B233',
-                            '#28363533',
-                            '#39827D33',
-                            '#99CFCB33',
-                            '#234F4C33',
-                            '#739C9933',
-                            '#66E8DF33',
-                            '#4D696733',
-                            '#4EB5AE33',
-                            '#27363533',
-                            '#37827D33',
-                            '#95CFCB33'
-                          ],
-                          minBarThickness: 50,
-                          maxBarThickness: 50
-                    }],
-                },
-                options:{
-                    indexAxis: 'y',
-                    layout: {
-                        padding:{
-                            right:20,
-                        },
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false,            
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                    scales: {
-                        yAxes:{
-                            grid:{
-                                display:false,
-                                borderColor:'#ffffff00',
-                            },
-                            ticks: {
-                                mirror: true,
-                                color: '#7A7A7A',
-                                font: {
-                                    size: 20,
-                                    family:'Tw Cen MT'
-                                }
-                              },
+            $('#capaianKinerja').empty()
+            for (let index = 0; index < response.namaIKU.length; index++) {
+                
+                $('#capaianKinerja').append(`
+                <div class="row">
+                <div style="width: 55%">`+response.namaIKU[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.capaian[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
+                </div>
+                `)
+            }
+            // var labels=[];
+            // var capaian=[];
+            // $.each(response.namaIKU, function(res, req){
+            //     labels.push(req);
+            // })
+            // $.each(response.capaian, function(res, req){
+            //     capaian.push(req);
+            // })
+            // const capaianKinerja = document.getElementById('capaianKinerja');
+            // capaianKinerja.height = response.namaIKU.length*50;
+            // const myChart = new Chart(capaianKinerja, {
+            //     type: 'bar',    
+            //     data : {
+            //         labels: labels,
+            //         datasets: [{
+            //             data: capaian,
+            //             fill: false,
+            //             backgroundColor: [
+            //                 '#1A3B3A33',
+            //                 '#94C6C533',
+            //                 '#54BAB933',
+            //                 '#2C3B3A33',
+            //                 '#3D878633',
+            //                 '#9FD4D333',
+            //                 '#26545333',
+            //                 '#749B9A33',
+            //                 '#68E8E433',
+            //                 '#4E696833',
+            //                 '#50B5B233',
+            //                 '#28363533',
+            //                 '#39827D33',
+            //                 '#99CFCB33',
+            //                 '#234F4C33',
+            //                 '#739C9933',
+            //                 '#66E8DF33',
+            //                 '#4D696733',
+            //                 '#4EB5AE33',
+            //                 '#27363533',
+            //                 '#37827D33',
+            //                 '#95CFCB33'
+            //               ],
+            //               minBarThickness: 50,
+            //               maxBarThickness: 50
+            //         }],
+            //     },
+            //     options:{
+            //         indexAxis: 'y',
+            //         layout: {
+            //             padding:{
+            //                 right:20,
+            //             },
+            //         },
+            //         responsive: true,
+            //         maintainAspectRatio: false,            
+            //         plugins: {
+            //             legend: {
+            //                 display: false,
+            //             },
+            //         },
+            //         scales: {
+            //             yAxes:{
+            //                 grid:{
+            //                     display:false,
+            //                     borderColor:'#ffffff00',
+            //                 },
+            //                 ticks: {
+            //                     mirror: true,
+            //                     color: '#7A7A7A',
+            //                     font: {
+            //                         size: 20,
+            //                         family:'Tw Cen MT'
+            //                     }
+            //                   },
                               
-                        },
-                        xAxes:{
-                            grid:{
-                                display:false,
-                                borderColor:'#ffffff00',
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 120,
-                            ticks: {
-                                display:false,
-                            }
-                        },
-                    } 
-                },
-            });
-            $('#CKO').change(function(){
-                myChart.destroy();
-            })
-            myChart.update()
+            //             },
+            //             xAxes:{
+            //                 grid:{
+            //                     display:false,
+            //                     borderColor:'#ffffff00',
+            //                 },
+            //                 suggestedMin: 0,
+            //                 suggestedMax: 120,
+            //                 ticks: {
+            //                     display:false,
+            //                 }
+            //             },
+            //         } 
+            //     },
+            // });
+            // $('#CKO').change(function(){
+            //     myChart.destroy();
+            // })
+            // myChart.update()
         }
     })
 }

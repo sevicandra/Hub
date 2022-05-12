@@ -76,7 +76,7 @@
                     <tr>
                         <th style="width: 10%">No</th>
                         <th style="width: 30%">Nama</th>
-                        <th style="width: 10%">responden</th>
+                        <th style="width: 10%">Responden</th>
                         <th style="width: 10%">Produktifitas Kerja</th>
                         <th style="width: 10%">Kedisiplinan</th>
                         <th style="width: 10%">Sikap Kerja</th>

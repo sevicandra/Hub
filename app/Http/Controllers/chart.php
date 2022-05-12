@@ -48,11 +48,15 @@ class chart extends Controller
                 $i++;
             }
             $response['namaIKU']=$namaIKU;
-            $response['capaian']=$realisasi;
+            $response['capaian']=$capaian;
+            $response['target']=$target;
+            $response['realisasi']=$realisasi;
             return json_encode($response);
         }else{
             $response['namaIKU']=[];
             $response['capaian']=[];
+            $response['target']=[];
+            $response['realisasi']=[];
             return json_encode($response);
         }
         
@@ -204,11 +208,15 @@ class chart extends Controller
             }
             
             $response['namaIKU']=$namaIKU;
-            $response['capaian']=$realisasi;
+            $response['capaian']=$capaian;
+            $response['target']=$target;
+            $response['realisasi']=$realisasi;
             return json_encode($response);
         }else{
             $response['namaIKU']=[];
             $response['capaian']=[];
+            $response['target']=[];
+            $response['realisasi']=[];
             return json_encode($response);
         }
         
