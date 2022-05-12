@@ -101,7 +101,6 @@ class chart extends Controller
                                 }else{
                                     $capaian[]=0;
                                 }
-                                $capaian[]= $data->capaian->where('bulan', '<=', 6)->avg('capaian');
                             }
                             break;
                         case 'Q3':
