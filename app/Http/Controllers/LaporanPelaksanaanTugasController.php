@@ -87,10 +87,14 @@ class LaporanPelaksanaanTugasController extends Controller
      */
     public function edit(laporanPelaksanaanTugas $laporan_pelaksanaan_tuga)
     {
-        if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+        if ($laporan_pelaksanaan_tuga->created_at->diff(Carbon::now())->days > 0) {
             return json_encode($laporan_pelaksanaan_tuga);
         }else{
-            abort(403);
+            if ($laporan_pelaksanaan_tuga->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                return json_encode($laporan_pelaksanaan_tuga);
+            }else{
+                abort(403);
+            }
         }
     }
 

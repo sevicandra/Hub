@@ -85,10 +85,14 @@ class NotulaController extends Controller
      */
     public function edit(notula $notula)
     {
-        if ($notula->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+        if ($notula->created_at->diff(Carbon::now())->days > 0) {
             return json_encode($notula);
         }else{
-            abort(403);
+            if ($notula->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
+                return json_encode($notula);
+            }else{
+                abort(403);
+            }
         }
     }
 
