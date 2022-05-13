@@ -72,11 +72,7 @@ class PresentasiController extends Controller
      */
     public function show(presentasi $presentasi)
     {
-        if ($presentasi->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            return json_encode($presentasi);
-        }else{
-            abort(403);
-        }
+        return json_encode($presentasi);
     }
 
     /**

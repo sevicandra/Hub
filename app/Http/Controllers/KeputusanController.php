@@ -74,11 +74,9 @@ class KeputusanController extends Controller
      */
     public function show(keputusan $keputusan)
     {
-        if ($keputusan->user_id === auth()->user()->id || auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
-            return json_encode($keputusan);
-        }else{
-            abort(403);
-        }
+
+        return json_encode($keputusan);
+
     }
 
     /**
