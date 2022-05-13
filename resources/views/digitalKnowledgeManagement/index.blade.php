@@ -12,19 +12,19 @@
                 </div>
                 <hr style="margin: 2px">
                 <div class="row" style="height: fit-content; padding: 5px 5px">
-                    @if ($suratKeputusan->count() === 0)
+                    @if ($suratKeputusanData->count() === 0)
                         -
                     @else
-                        @if ($suratKeputusan->count() >=5)
+                        @if ($suratKeputusanData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $suratKeputusan[$i]->kodeUnit }}
+                                {{ $suratKeputusanData[$i]->kodeUnit }}
                             </h6>
                             @endfor
-                        @elseif($suratKeputusan->count() < 5)
-                            @for ($i = 0; $i < $suratKeputusan->count(); $i++)
+                        @elseif($suratKeputusanData->count() < 5)
+                            @for ($i = 0; $i < $suratKeputusanData->count(); $i++)
                             <h6>
-                                {{ $suratKeputusan[$i]->kodeUnit }}
+                                {{ $suratKeputusanData[$i]->kodeUnit }}
                             </h6>
                             @endfor
                         @endif
@@ -36,7 +36,7 @@
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen</h5>
                 </div>
                 <hr style="margin: 2px">
-                    <h1 style="text-align:center; height:fit-content">{{ $suratKeputusan->count() }}</h1>
+                    <h1 style="text-align:center; height:fit-content">{{ $suratKeputusanData->count() }}</h1>
                 <hr style="margin: 2px">
                 <div class="row">
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen Ditambahkan Bulan ini</h5>
@@ -63,19 +63,19 @@
                 </div>
                 <hr style="margin: 2px">
                 <div class="row" style="height: fit-content; padding: 5px 5px">
-                    @if ($presentasi->count() === 0)
+                    @if ($presentasiData->count() === 0)
                         -
                     @else
-                        @if ($presentasi->count() >=5)
+                        @if ($presentasiData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $presentasi[$i]->kodeUnit }}
+                                {{ $presentasiData[$i]->kodeUnit }}
                             </h6>
                             @endfor
-                        @elseif($presentasi->count() < 5)
-                            @for ($i = 0; $i < $presentasi->count(); $i++)
+                        @elseif($presentasiData->count() < 5)
+                            @for ($i = 0; $i < $presentasiData->count(); $i++)
                             <h6>
-                                {{ $presentasi[$i]->kodeUnit }}
+                                {{ $presentasiData[$i]->kodeUnit }}
                             </h6>
                             @endfor
                         @endif
@@ -87,7 +87,7 @@
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen</h5>
                 </div>
                 <hr style="margin: 2px">
-                    <h1 style="text-align:center; height:fit-content">{{ $presentasi->count() }}</h1>
+                    <h1 style="text-align:center; height:fit-content">{{ $presentasiData->count() }}</h1>
                 <hr style="margin: 2px">
                 <div class="row">
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen Ditambahkan Bulan ini</h5>
@@ -114,19 +114,19 @@
                 </div>
                 <hr style="margin: 2px">
                 <div class="row" style="height: fit-content; padding: 5px 5px">
-                    @if ($laporanPelaksanaanTugas->count() === 0)
+                    @if ($laporanPelaksanaanTugasData->count() === 0)
                         -
                     @else
-                        @if ($laporanPelaksanaanTugas->count() >=5)
+                        @if ($laporanPelaksanaanTugasData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $laporanPelaksanaanTugas[$i]->kodeUnit }}
+                                {{ $laporanPelaksanaanTugasData[$i]->kodeUnit }}
                             </h6>
                             @endfor
-                        @elseif($laporanPelaksanaanTugas->count() < 5)
-                            @for ($i = 0; $i < $laporanPelaksanaanTugas->count(); $i++)
+                        @elseif($laporanPelaksanaanTugasData->count() < 5)
+                            @for ($i = 0; $i < $laporanPelaksanaanTugasData->count(); $i++)
                             <h6>
-                                {{ $laporanPelaksanaanTugas[$i]->kodeUnit }}
+                                {{ $laporanPelaksanaanTugasData[$i]->kodeUnit }}
                             </h6>
                             @endfor
                         @endif
@@ -138,7 +138,7 @@
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen</h5>
                 </div>
                 <hr style="margin: 2px">
-                    <h1 style="text-align:center; height:fit-content">{{ $laporanPelaksanaanTugas->count() }}</h1>
+                    <h1 style="text-align:center; height:fit-content">{{ $laporanPelaksanaanTugasData->count() }}</h1>
                 <hr style="margin: 2px">
                 <div class="row">
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen Ditambahkan Bulan ini</h5>
@@ -165,19 +165,19 @@
                 </div>
                 <hr style="margin: 2px">
                 <div class="row" style="height: fit-content; padding: 5px 5px">
-                    @if ($notula->count() === 0)
+                    @if ($notulaData->count() === 0)
                         -
                     @else
-                        @if ($notula->count() >=5)
+                        @if ($notulaData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $notula[$i]->kodeUnit }}
+                                {{ $notulaData[$i]->kodeUnit }}
                             </h6>
                             @endfor
-                        @elseif($notula->count() < 5)
-                            @for ($i = 0; $i < $notula->count(); $i++)
+                        @elseif($notulaData->count() < 5)
+                            @for ($i = 0; $i < $notulaData->count(); $i++)
                             <h6>
-                                {{ $notula[$i]->kodeUnit }}
+                                {{ $notulaData[$i]->kodeUnit }}
                             </h6>
                             @endfor
                         @endif          
@@ -188,7 +188,7 @@
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen</h5>
                 </div>
                 <hr style="margin: 2px">
-                    <h1 style="text-align:center; height:fit-content">{{ $notula->count() }}</h1>
+                    <h1 style="text-align:center; height:fit-content">{{ $notulaData->count() }}</h1>
                 <hr style="margin: 2px">
                 <div class="row">
                     <h5 style="text-align:center; height:fit-content">Jumlah Dokumen Ditambahkan Bulan ini</h5>
