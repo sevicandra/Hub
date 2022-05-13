@@ -69,17 +69,16 @@
                         @if ($presentasiData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $presentasiData[$i]->kodeUnit }}
+                                {{ $presentasiData[$i]->judul }}
                             </h6>
                             @endfor
                         @elseif($presentasiData->count() < 5)
                             @for ($i = 0; $i < $presentasiData->count(); $i++)
                             <h6>
-                                {{ $presentasiData[$i]->kodeUnit }}
+                                {{ $presentasiData[$i]->judul }}
                             </h6>
                             @endfor
                         @endif
-                    
                     @endif
                 </div>
                 <hr style="margin: 2px">
@@ -171,13 +170,13 @@
                         @if ($notulaData->count() >=5)
                             @for ($i = 0; $i < 5; $i++)
                             <h6>
-                                {{ $notulaData[$i]->kodeUnit }}
+                                {{ $notulaData[$i]->agendaRapat }}
                             </h6>
                             @endfor
                         @elseif($notulaData->count() < 5)
                             @for ($i = 0; $i < $notulaData->count(); $i++)
                             <h6>
-                                {{ $notulaData[$i]->kodeUnit }}
+                                {{ $notulaData[$i]->agendaRapat }}
                             </h6>
                             @endfor
                         @endif          
