@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\notula;
+use App\Models\keputusan;
+use App\Models\presentasi;
 use Illuminate\Http\Request;
+use App\Models\laporanPelaksanaanTugas;
 
 class FileStorageController extends Controller
 {
@@ -16,7 +20,19 @@ class FileStorageController extends Controller
         return view('digitalKnowledgeManagement.index',[
             'title'=> 'TERNATE-HUB || FILE STORAGE',
             'favicon'=>'/img/ico/Digital Knoledge Management.png',
-            'fileStorage'=>''
+            'fileStorage'=>'',
+            'suratKeputusan'=>keputusan::all(),
+            'suratKeputusanThisMonth'=>keputusan::whereMonth('created_at', date('m')),
+            'suratKeputusanLastMonth'=>keputusan::whereMonth('created_at', date('m')-1),
+            'presentasi'=>presentasi::all(),
+            'presentasiThisMonth'=>presentasi::whereMonth('created_at', date('m')),
+            'presentasiLastMonth'=>presentasi::whereMonth('created_at', date('m')-1),
+            'laporanPelaksanaanTugas'=>laporanPelaksanaanTugas::all(),
+            'laporanPelaksanaanTugasThisMonth'=>laporanPelaksanaanTugas::whereMonth('created_at', date('m')),
+            'laporanPelaksanaanTugasLastMonth'=>laporanPelaksanaanTugas::whereMonth('created_at', date('m')-1),
+            'notula'=>notula::all(),
+            'notulaThisMonth'=>notula::whereMonth('created_at', date('m')),
+            'notulaLastMonth'=>notula::whereMonth('created_at', date('m')-1),
         ]);
     }
 

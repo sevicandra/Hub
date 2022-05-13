@@ -44,7 +44,7 @@
         </div>
         <div id="contentBox" class="row" style="padding: 0; border-radius:0 0 10px 10px; overflow:hidden">
             <div class="container-fluid" style="height: 100%;">
-                <div class="row" style="height: 100%; background-color:aliceblue; border-radius:10px">
+                <div class="row" style="height: 100%; background-color:#f0f8ff; border-radius:10px">
                    @yield('contentdigital-knowledge-management') 
                 </div>
             </div>
