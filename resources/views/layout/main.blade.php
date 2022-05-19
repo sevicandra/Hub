@@ -394,6 +394,23 @@
                 </div>            
                 @endif
                 {{-- Akhir User Management --}}
+
+                {{-- Ring Wise --}}
+                @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/presentation/d/1mV6ske7UJGJUuIrkiN4U_Pr0iwfy_QjHBSPK0urxBJA/edit#slide=id.p5"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/Ring Wise.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Ring Wise
+                        </div>
+                    </a>
+                </div>
+                @endif
+                {{-- Akhir Ring Wise --}}
             </div>
             <hr>
             {{-- Akhir Modules Apps --}}
@@ -537,6 +554,16 @@
                             </div>
                             <div class="d-flex justify-content-evenly" style="text-align: center">
                                 Forms Kemenkeu
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://www.wise.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/wise.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Wise Kemenkeu
                             </div>
                         </a>
                     </div>
