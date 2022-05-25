@@ -30,7 +30,8 @@
         "files":[
             "app/function/numbertowords.php",
             "app/function/smsviro.php",
-            "app/function/indonesianDate.php"
+            "app/function/indonesianDate.php",
+            "app/function/notifikasiAgenda.php"
         ]
     },
     "autoload-dev": {
