@@ -46,6 +46,15 @@
                                 {{$message}}
                             </div>
                         @enderror
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1" style="margin-top: 12px">+62</span>
+                            <input type="text" value="{{old('nomorHP')}}" placeholder="812xxxxxxx" class="form-control" style="margin-top: 12px" required name="nomorHP">
+                        </div>
+                        @error('nomorHP')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <input type="text" value="{{old('NIP')}}" placeholder="NIP" class="form-control" style="margin-top: 12px" required name="NIP">
                         @error('NIP')
                             <div class="text-danger mt-1">

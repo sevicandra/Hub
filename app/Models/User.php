@@ -25,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'NIP',
         'pangkatGolongan',
         'jabatan',
-        'email_verified_at'
+        'email_verified_at',
+        'nomorHP'
     ];
 
     /**
