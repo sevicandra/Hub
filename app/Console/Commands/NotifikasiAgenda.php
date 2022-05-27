@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
-use App\Models\User;
 use App\Models\agenda;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Config;
 
 class NotifikasiAgenda extends Command
 {

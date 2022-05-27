@@ -6,12 +6,12 @@ function notifikasiAgenda($agenda,$waktu,$tempat,$meetingId,$meetingPassword,$li
         $text = array("name" => "notifikasiagenda", "language"=>array("code"=>"id"),"components"=>[array("type"=>"body","parameters"=>[array("type"=>"text", "text"=>$agenda),array("type"=>"text", "text"=>$waktu),array("type"=>"text", "text"=>$tempat),array("type"=>"text", "text"=>$meetingId),array("type"=>"text", "text"=>$meetingPassword),array("type"=>"text", "text"=>$linkRapat),array("type"=>"text", "text"=>$linkAbsensi)])]);
         $postData = array("messaging_product" => "whatsapp", "to"=>$key->nomorHP, "type"=>"template", "template"=>$text);
         $postDataJson = json_encode($postData);
-        curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/v13.0/108001318590564/messages');
+        curl_setopt($ch, CURLOPT_URL, 'https://graph.facebook.com/v13.0/113309384721694/messages');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postDataJson);
         $headers = array();
-        $headers[] = 'Authorization: Bearer EAAkWD2DHGSoBAEZAxf2tSnOhZBXfl39KMeYGjYWDKhl0NlUaBNdtgkuGchwAZCLADO4YKDvg5JjLgE2nBcSjofm2s8ZB0MB4dCIrPZCDlfw443rL89ZAVzKI3DdnpHXnUTgUmltlI2rBQv9GSzzPxKJeI9loZBTUjrZAtJmfcZBlP2ZBkec9k8m3FtiP5GwmOVKgMW21Dgl9SRkQZDZD';
+        $headers[] = 'Authorization: Bearer EAAKS6jFlEfkBALvQPosB0VG7WdJKX5nuMJXrhc9GTp5OBPVHI9Jujf0A62BWLCgXZABcOnrGXbB0k8ZAvV7fMOZAFEDQBnWolvPg1iNRPTJUZCMSyDgp9F9KLDMjZBx6Aa4GNfhRbgwgTuZBWZA1ubJj0TXyHc8KOswRdHnCZBaqyu2kwj8GsBkxD9R7OQsNeA5SZBi85YvTdYwZDZD';
         $headers[] = 'Content-Type: application/json';
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         
