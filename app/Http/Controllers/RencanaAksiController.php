@@ -70,13 +70,15 @@ class RencanaAksiController extends Controller
 
     public function monitoringRencanaAksi(idikatorKinerjaUtama $rencana_aksi)
     {
-        if ($rencana_aksi->user_id === auth()->user()->id || auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+        if ($rencana_aksi->user_id === auth()->user()->id || auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15'|| $rencana_aksi->user->jabatans->kodeAtasan === auth()->user()->jabatan) {
             return view('praktis.RancanaAksi',[
                 'back'=> '/monitoring/'.$rencana_aksi->user_id,
                 'data'=>$rencana_aksi,
                 'title'=> 'TERNATE-HUB || PRAKTIS',
                 'favicon'=>'/img/ico/praktis.png'
             ]);
+        }else{
+            abort(403);
         }
     }
 
