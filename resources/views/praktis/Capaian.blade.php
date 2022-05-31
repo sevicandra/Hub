@@ -9,7 +9,7 @@
         <div class="container-fluid" style="border-radius: 10px; background-color:rgba(240, 248, 255, 0.281); height:100%">
             <div class="row" style="padding: 0 10px; height:60px">
                 <div class="col-sm-1">
-                    <a href="/{{$back}}">
+                    <a href="{{$back}}">
                         <button class="btn btn-primary translate-middle-y"><i class="bi bi-caret-left-fill"></i></button>
                     </a>
                 </div>

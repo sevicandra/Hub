@@ -133,7 +133,7 @@ Route::controller(kinerja::class)->group(function(){
     Route::get('/monitoring', 'monitoring')->middleware('verified');
     Route::get('/monitoring/{monitoring}', 'monitoringindividu')->middleware('verified');
     Route::post('/capkin/{capkin}', 'hapusCapkin')->middleware('verified');
-    
+    Route::get('/monitoring-bawahan', 'monitoringBawahan')->middleware('verified');
 });
 
 Route::controller(chart::class)->group(function(){

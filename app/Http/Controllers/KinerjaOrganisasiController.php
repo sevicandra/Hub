@@ -22,7 +22,9 @@ class KinerjaOrganisasiController extends Controller
             return view('praktis.KinerjaOrganisasi',[
                 'data' => kinerjaOrganisasi::orderBy('kodeIKU')->where('tahun', session()->get('tahun'))->get(),
                 'title'=> 'TERNATE-HUB || PRAKTIS',
-                'favicon'=>'/img/ico/praktis.png'
+                'back'=>'/home',
+                'favicon'=>'/img/ico/praktis.png',
+                'kinerjaOrganisasi'=>''
             ]);
         }else{
             abort(403);
@@ -76,7 +78,7 @@ class KinerjaOrganisasiController extends Controller
                 'data' => $kinerjaorganisasi,
                 'capaian'=>capaian::where('idikator_kinerja_utama_id', $kinerjaorganisasi->id)->orderby('bulan', 'asc')->get(),
                 'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
-                'back'=>'kinerjaorganisasi',
+                'back'=>url()->previous(),
                 'title'=> 'TERNATE-HUB || PINDAI',
                 'favicon'=>'/img/ico/praktis.png'
             ]);

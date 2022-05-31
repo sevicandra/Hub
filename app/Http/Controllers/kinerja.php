@@ -75,22 +75,26 @@ class kinerja extends Controller
             return view('praktis.Monitoring', [
                 'data'=> User::where('email_verified_at', '!=', null)->orderBy('jabatan')->get(),
                 'title'=> 'TERNATE-HUB || PRAKTIS',
-                'favicon'=>'/img/ico/praktis.png'
+                'back'=>'home',
+                'favicon'=>'/img/ico/praktis.png',
+                'monitoringMKO'=>''
             ]);
+        }elseif(auth()->user()->jabatan === '01'||auth()->user()->jabatan === '02'||auth()->user()->jabatan === '03'||auth()->user()->jabatan === '04'||auth()->user()->jabatan === '05'||auth()->user()->jabatan === '06'){
+            return redirect('monitoring-bawahan');;
         }else{
             abort(403);
         }
     }
 
     public function monitoringindividu(User $monitoring){
-        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15') {
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15'|| auth()->user()->jabatan === $monitoring->jabatans->kodeAtasan) {
             return view('praktis.Home',[
                 'data'=>$monitoring->IKU->where('tahun', session()->get('tahun')),
-                'user'=>$monitoring->id,
-                'back'=>'monitoring',
+                'user'=>$monitoring,
+                'back'=>'/monitoring',
                 'monitoring'=>true,
                 'title'=> 'TERNATE-HUB || PRAKTIS',
-                'favicon'=>'/img/ico/praktis.png'
+                'favicon'=>'/img/ico/praktis.png',
             ]);
         }else{
             abort(403);
@@ -114,6 +118,22 @@ class kinerja extends Controller
             }
         }else{
             abort(404);
+        }
+    }
+
+    public function monitoringBawahan(){
+        if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '02'||auth()->user()->jabatan === '03'||auth()->user()->jabatan === '04'||auth()->user()->jabatan === '05'||auth()->user()->jabatan === '06') {
+            return view('praktis.Monitoring', [
+                'data'=> User::where('email_verified_at', '!=', null)->wherehas('jabatans', function($val){
+                    $val->where('kodeAtasan', auth()->user()->jabatan);
+                })->orderBy('jabatan')->get(),
+                'title'=> 'TERNATE-HUB || PRAKTIS',
+                'back'=>'home',
+                'favicon'=>'/img/ico/praktis.png',
+                'monitoringBawahan'=>''
+            ]);
+        }else{
+            abort(403);
         }
     }
 }

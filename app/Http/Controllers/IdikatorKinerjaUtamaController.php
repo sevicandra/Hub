@@ -20,9 +20,10 @@ class IdikatorKinerjaUtamaController extends Controller
         
         return view('praktis.Home',[
             'data' => idikatorKinerjaUtama::orderBy('kodeIKU')->where('user_id', auth()->user()->id)->where('tahun', session()->get('tahun'))->get(),
-            'back'=>'home',
+            'back'=>'/home',
             'title'=> 'TERNATE-HUB || PRAKTIS',
-            'favicon'=>'/img/ico/praktis.png'
+            'favicon'=>'/img/ico/praktis.png',
+            'home'=>''
         ]);
     }
 
@@ -71,7 +72,7 @@ class IdikatorKinerjaUtamaController extends Controller
             'data' => $prakti,
             'capaian'=>capaian::where('idikator_kinerja_utama_id', $prakti->id)->orderby('bulan', 'asc')->get(),
             'jenisKinerja'=>'App\Models\idikatorKinerjaUtama',
-            'back'=>'praktis',
+            'back'=>url()->previous(),
             'title'=> 'TERNATE-HUB || PRAKTIS',
             'favicon'=>'/img/ico/praktis.png'
         ]);
