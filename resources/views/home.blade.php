@@ -633,7 +633,7 @@
                                     @endswitch
                                 </label>
                                 <div class="col-sm-6">
-                                    <div class="form-control" style="background-color: #4d4c52; text-align: right">
+                                    <div class="form-control" style="background-color: #4d4c52; text-align: right; color:white">
                                         {{ number_format($item->capaian, 2, ',', '.') }}
                                     </div>
                                 </div>
@@ -828,7 +828,7 @@
                                     @endswitch
                                 </label>
                                 <div class="col-sm-6">
-                                    <div class="form-control" style="background-color: #4d4c52; text-align: right">
+                                    <div class="form-control" style="background-color: #4d4c52; text-align: right; color:white">
                                         {{ number_format($item->capaian, 2, ',', '.') }}
                                     </div>
                                 </div>
@@ -1024,7 +1024,7 @@
                                     @endswitch
                                 </label>
                                 <div class="col-sm-6">
-                                    <div class="form-control" style="background-color: #4d4c52; text-align: right">
+                                    <div class="form-control" style="background-color: #4d4c52; text-align: right; color:white">
                                         {{ number_format($item->capaian, 2, ',', '.') }}
                                     </div>
                                 </div>
