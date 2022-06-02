@@ -538,7 +538,7 @@ class cetakDokumen extends Controller
                 $templateProcessor->setValue('hal', $suratPersetujuan->hal);
                 $templateProcessor->setValue('kementerian', $suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->kementerian->namaKL);
                 $templateProcessor->setValue('satker', $suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                $templateProcessor->setValue('jabatanPimpinan', $suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan);
+                $templateProcessor->setValue('jabatanPimpinan', Str::of($suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan)->title());
                 $templateProcessor->saveAs('DocxTemplate/penggalian Potensi Lelang - ' . $request->surat_persetujuan_id . '.docx');
                 return response()->download(file: 'DocxTemplate/penggalian Potensi Lelang - ' . $request->surat_persetujuan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
@@ -560,7 +560,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                        $templateProcessor->setValue('jabatanPimpinan', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan);
+                        $templateProcessor->setValue('jabatanPimpinan', Str::of($permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan)->title());
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
                         $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
@@ -618,7 +618,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                        $templateProcessor->setValue('jabatanPimpinan', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan);
+                        $templateProcessor->setValue('jabatanPimpinan', Str::of($permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->jabatanPimpinan)->title());
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
