@@ -33,5 +33,6 @@ class satuanKerja extends Model
         'namaSatker',
         'kodeSatker',
         'kodeSatkerFull',
+        'jabatanPimpinan',
     ];
 }

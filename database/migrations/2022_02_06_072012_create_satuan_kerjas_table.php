@@ -17,6 +17,7 @@ class CreateSatuanKerjasTable extends Migration
         //     $table->uuid('id')->primary();
         //     $table->uuid('kementerian_id');
         //     $table->decimal('kodeSatker', 6,0)->zerofill();
+        //     $table->string('jabatanPimpinan');
         //     $table->string('namaSatker');
         //     $table->string('kodeSatkerFull');
         //     $table->timestamps();

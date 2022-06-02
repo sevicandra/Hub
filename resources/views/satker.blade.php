@@ -69,6 +69,8 @@
                                     </select>
                                     <label for="namaSatker" class="col-form-label">Nama Satuan Kerja</label>
                                     <input class="form-control" id="namaSatker" name="namaSatker" type="text" value="">
+                                    <label for="jabatanPimpinan" class="col-form-label">Jabatan Pimpinan Satuan Kerja</label>
+                                    <input class="form-control" id="jabatanPimpinan" name="jabatanPimpinan" type="text" value="">
                                     <label for="alamat" class="col-form-label">Alamat Satuan Kerja</label>
                                     <textarea class="form-control" id="alamat" name="alamat"></textarea>
                                     <label for="namaKepalaSatker" class="col-form-label">Nama Kepala Satuan Kerja</label>
@@ -119,7 +121,8 @@
                             <option value="{{ $item->id }}">{{ $item->namaKementerian }}</option>
                             @endforeach
                         </select>
-                        <input name="namaSatker" type="text" class="form-control" placeholder="nama Satuan Kerja">
+                        <input name="namaSatker" type="text" class="form-control" placeholder="Nama Satuan Kerja">
+                        <input name="jabatanPimpinan" type="text" class="form-control" placeholder="Nama Jabatan Pimpinan Satker">
                         <input name="kodeSatker" type="text" class="form-control" placeholder="6 Digit Kode Satker">
                         <input name="kodeSatkerFull" type="text" class="form-control" placeholder="Kode Satker">
                         <div>

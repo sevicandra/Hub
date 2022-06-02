@@ -10,6 +10,7 @@ function profil(val){
                 $("#kementerian"+response.satker.kementerian_id).attr('selected','');
                 $('#updateProfilSatker').attr('action', 'satker/'+response.satker.id);
                 $("#namaSatker").val(response.satker.namaSatker);
+                $("#jabatanPimpinan").val(response.satker.jabatanPimpinan);
                 if (response.profil) {
                     $("#alamat").val(response.profil.alamat);
                     $("#namaKepalaSatker").val(response.profil.namaKepalaSatker);

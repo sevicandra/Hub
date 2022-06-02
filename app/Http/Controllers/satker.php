@@ -101,6 +101,7 @@ class satker extends Controller
             "alamat"=>'required',
             "namaKepalaSatker"=>'required',
             "noTeleponKepalaSatker"=>'required',
+            "jabatanPimpinan"=>'required',
             "namaOperatorSatker"=>'required',
             "noTeleponOperatorSatker"=>'required'
         ]);
@@ -114,6 +115,7 @@ class satker extends Controller
                     'alamat'=>$validatedData['alamat'],
                     'namaKepalaSatker'=>$validatedData['namaKepalaSatker'],
                     'noTeleponKepalaSatker'=>$validatedData['noTeleponKepalaSatker'],
+                    'jabatanPimpinan'=>$validatedData['jabatanPimpinan'],
                     'namaOperator'=>$validatedData['namaOperatorSatker'],
                     'noTeleponOperator'=>$validatedData['noTeleponOperatorSatker'],
                 ]);
@@ -124,6 +126,7 @@ class satker extends Controller
                     'namaKepalaSatker'=>$validatedData['namaKepalaSatker'],
                     'noTeleponKepalaSatker'=>$validatedData['noTeleponKepalaSatker'],
                     'namaOperator'=>$validatedData['namaOperatorSatker'],
+                    'jabatanPimpinan'=>$validatedData['jabatanPimpinan'],
                     'noTeleponOperator'=>$validatedData['noTeleponOperatorSatker'],
                 ]);
             }
