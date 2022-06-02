@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\risalah;
 use App\Models\permohonan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\penetapanLelang;
 use App\Models\permohonanLelang;
@@ -606,11 +607,12 @@ class cetakDokumen extends Controller
                 }
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
+                        var_dump($permohonanLelang) ;
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('hal', $permohonanLelang->hal);
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
-                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
@@ -628,7 +630,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('hal', $permohonanLelang->hal);
                         $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
-                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($permohonanLelang->tanggalLelang));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
                         $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
@@ -699,6 +701,7 @@ class cetakDokumen extends Controller
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
+                        $jafung=Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('hal', $permohonanLelang->hal);
@@ -707,7 +710,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('pemohon', $permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
-                        $templateProcessor->setValue('pelelang', auth()->user()->nama);
+                        $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
                         $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
         
@@ -716,6 +719,7 @@ class cetakDokumen extends Controller
                         break;
 
                     case 'App\Models\tiket':
+                        $jafung=Str::ucfirst(auth()->user()->nama);
                             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
                             $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                             $templateProcessor->setValue('hal', $permohonanLelang->hal);
@@ -724,7 +728,7 @@ class cetakDokumen extends Controller
                             $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                             $templateProcessor->setValue('pemohon', $permohonanLelang->pemohonLelang->pemohon);
                             $templateProcessor->setValue('lokasi', $request->lokasi);
-                            $templateProcessor->setValue('pelelang', auth()->user()->nama);
+                            $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                             $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
                             $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
             
