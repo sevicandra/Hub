@@ -581,7 +581,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
-                        $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
+                        $templateProcessor->setValue('jabatanPimpinan', $permohonanLelang->pemohonLelang->pemohon);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAwalPenawaran', $request->jamAwalPenawaran);
                         $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
@@ -636,7 +636,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
                         $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
                         $templateProcessor->setValue('tanggalPengumuman', $pengumuman);
-                        $templateProcessor->setValue('satker', $permohonanLelang->pemohonLelang->pemohon);
+                        $templateProcessor->setValue('jabatanPimpinan', $permohonanLelang->pemohonLelang->pemohon);
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
