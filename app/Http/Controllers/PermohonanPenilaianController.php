@@ -62,23 +62,22 @@ class PermohonanPenilaianController extends Controller
                 $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
                 tiket::where('id', $data)->update(['permohonan'=>0,'penilaian'=>1]);
                 
-                $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-    
+                // $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;
+                // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
                 
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
-                    
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
-    
-    
-    
-                // Send_SMS($to,$message);
+                if ($request->kirimNotifikasi) {
+                    $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
+                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                    return nl2br(
+                        "Nomor Tujuan: ". $toOperator. "\n". 
+                        "Pesan: ".$messageOperator. "\n"
+                        
+                        // "Nomor Tujuan: ". $toKaSatker. "\n". 
+                        // "Pesan: ".$messageKaSatker
+                    );
+                    // Send_SMS($to,$message);
+                }
+                
                 return redirect('/permohonan');     
             }else{
                 abort(403);

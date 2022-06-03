@@ -120,6 +120,12 @@
                                 <input name="tanggalSelesaiSurvei" class="form-control" type="date" required>
                             </div>
                         </div>
+                        <div class="input-group mb-3">
+                            <label class="col-sm-4" aria-label="Text with checkbox">Kirim Notifikasi?</label>
+                            <div class="input-group-text" style="background: none; border:none">
+                                <input name="kirimNotifikasi" class="form-check-input mt-0" type="checkbox">
+                            </div>
+                        </div>
                         <div class="row">
                             <div>
                                 <button id="permohonan_penilaian_id" name="permohonan_penilaian_id" type="submit"

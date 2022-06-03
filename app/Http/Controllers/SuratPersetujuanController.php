@@ -79,25 +79,22 @@ class SuratPersetujuanController extends Controller
                     'lelang' => 1,
                 ]);
     
-                
-                $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;//masukkan nomor tujuan
-                $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;//masukkan nomor tujuan
-                $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                
+                if ($request->kirimNotifikasi) {
+                    $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;//masukkan nomor tujuan
+                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
+                    // $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;//masukkan nomor tujuan
+                    // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
+                        
+                    return nl2br(
+                        "Nomor Tujuan: ". $toOperator. "\n". 
+                        "Pesan: ".$messageOperator. "\n"
+                        
+                        // "Nomor Tujuan: ". $toKaSatker. "\n". 
+                        // "Pesan: ".$messageKaSatker
+                    );
     
-    
-    
-                return nl2br(
-                    "Nomor Tujuan: ". $toOperator. "\n". 
-                    "Pesan: ".$messageOperator. "\n". 
-                    
-                    "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    "Pesan: ".$messageKaSatker
-                );
-    
-    
-                // Send_SMS($to,$message);
+                    // Send_SMS($to,$message);
+                }
                 return redirect('/persetujuan');
             }else{
                 abort(403);

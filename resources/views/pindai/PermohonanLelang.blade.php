@@ -212,6 +212,12 @@
                                         <input name="tanggalLelang" type="date" class="form-control" required>
                                     </div>
                                 </div>
+                                <div class="input-group mb-3">
+                                    <label class="col-sm-4" aria-label="Text with checkbox">Kirim Notifikasi?</label>
+                                    <div class="input-group-text" style="background: none; border:none">
+                                        <input name="kirimNotifikasi" class="form-check-input mt-0" type="checkbox">
+                                    </div>
+                                </div>
                                 <div>
                                     <button value="{{$data->id}}" type="submit" class="btn btn-primary" id="penetapanButton" name="permohonan_lelang_id">Simpan</button>
                                 </div>
