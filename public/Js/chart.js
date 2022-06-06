@@ -579,7 +579,7 @@ function praktis(tahun) {
                 <div class="row">
                 <div style="width: 55%">`+response.namaIKU[index]+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.capaian[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.capaian[index].toFixed(2)+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)
@@ -702,7 +702,7 @@ function praktisTW(params) {
                 <div class="row">
                 <div style="width: 55%">`+response.namaIKU[index]+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.capaian[index]+`</div>
+                <div style="width: 15%; text-align:center  ">`+response.capaian[index].toFixed(2)+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)
