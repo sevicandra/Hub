@@ -78,7 +78,7 @@ class KinerjaOrganisasiController extends Controller
                 'data' => $kinerjaorganisasi,
                 'capaian'=>capaian::where('idikator_kinerja_utama_id', $kinerjaorganisasi->id)->orderby('bulan', 'asc')->get(),
                 'jenisKinerja'=>'App\Models\kinerjaOrganisasi',
-                'back'=>url()->previous(),
+                'back'=>"/kinerjaorganisasi",
                 'title'=> 'TERNATE-HUB || PINDAI',
                 'favicon'=>'/img/ico/praktis.png'
             ]);

@@ -23,7 +23,5 @@ function notifikasiAgenda($agenda,$waktu,$tempat,$meetingId,$meetingPassword,$li
     }
     
     curl_close($ch);
-    return var_dump($postDataJson);
-    var_dump($result) ;
 }
 ?>

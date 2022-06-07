@@ -72,7 +72,7 @@ class IdikatorKinerjaUtamaController extends Controller
             'data' => $prakti,
             'capaian'=>capaian::where('idikator_kinerja_utama_id', $prakti->id)->orderby('bulan', 'asc')->get(),
             'jenisKinerja'=>'App\Models\idikatorKinerjaUtama',
-            'back'=>url()->previous(),
+            'back'=>"/praktis",
             'title'=> 'TERNATE-HUB || PRAKTIS',
             'favicon'=>'/img/ico/praktis.png'
         ]);
