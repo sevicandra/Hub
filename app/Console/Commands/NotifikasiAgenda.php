@@ -59,7 +59,7 @@ class NotifikasiAgenda extends Command
             notifikasiAgenda($key->agenda,$key->waktu,$key->tempat,$meetingId,$meetingPassword,$linkRapat,$linkAbsensi);
 
             
-            agenda::find($key->id)->update(['notifikasi'=>false]);
+            agenda::where('id', $key->id)->update(['notifikasi'=>false]);
         }
         
     }
