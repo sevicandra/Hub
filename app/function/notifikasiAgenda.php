@@ -11,7 +11,7 @@ function notifikasiAgenda($agenda,$waktu,$tempat,$meetingId,$meetingPassword,$li
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postDataJson);
         $headers = array();
-        $headers[] = 'Authorization: Bearer EAAKS6jFlEfkBALvQPosB0VG7WdJKX5nuMJXrhc9GTp5OBPVHI9Jujf0A62BWLCgXZABcOnrGXbB0k8ZAvV7fMOZAFEDQBnWolvPg1iNRPTJUZCMSyDgp9F9KLDMjZBx6Aa4GNfhRbgwgTuZBWZA1ubJj0TXyHc8KOswRdHnCZBaqyu2kwj8GsBkxD9R7OQsNeA5SZBi85YvTdYwZDZD';
+        $headers[] = 'Authorization: Bearer EAAKS6jFlEfkBAGUDqGhQRTzVBfaW5ZAX67ZB3RQOzOF2iOLf0OSNJCFaSN2u2Ro827kZBEJP6gWcmpGjAXEAjNTHAXNKo9zcUCJ9nwBsX4OWblB8AsqfCnMtKUr2pGSmJ5lfhJdTgamW6j9qndje2PJpVXGjEpVVSsTA47VKL6QISOghvf8';
         $headers[] = 'Content-Type: application/json';
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         

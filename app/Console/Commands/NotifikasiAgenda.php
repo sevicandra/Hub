@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use Carbon\Carbon;
 use App\Models\agenda;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
 
 class NotifikasiAgenda extends Command
 {
@@ -30,7 +29,7 @@ class NotifikasiAgenda extends Command
      */
     public function handle()
     {
-        $notif = agenda::where('notification', true)->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->Notification()->get();
+        $notif = agenda::where('notifikasi', true)->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->Notification()->get();
         foreach ($notif as $key) {
             if ($key->meetingId) {
                 $meetingId=$key->meetingId;
@@ -60,7 +59,7 @@ class NotifikasiAgenda extends Command
             notifikasiAgenda($key->agenda,$key->waktu,$key->tempat,$meetingId,$meetingPassword,$linkRapat,$linkAbsensi);
 
             
-            agenda::find($key->id)->update(['notification'=>false]);
+            agenda::find($key->id)->update(['notifikasi'=>false]);
         }
         
     }

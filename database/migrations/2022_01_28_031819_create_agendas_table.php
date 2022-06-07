@@ -24,7 +24,7 @@ class CreateAgendasTable extends Migration
             $table->string('meetingPassword')->nullable();
             $table->string('linkRapat')->nullable();
             $table->string('linkAbsensi')->nullable();
-            $table->boolean('notification')->default(true);
+            $table->boolean('notifikasi')->default(true);
             $table->timestamps();
         });
     }
