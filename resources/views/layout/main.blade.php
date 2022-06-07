@@ -378,6 +378,21 @@
                 </div>
                 {{-- Akhir Capaian Manajemen Risiko --}}
 
+                {{-- Capaian Manajemen Risiko --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://linktr.ee/ternate.responsif"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            TERNATE RESPONSIF
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Capaian Manajemen Risiko --}}
+
                 {{-- User Management --}}
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
                 <div class="col-sm-4 mb-1">
@@ -482,6 +497,16 @@
                             </div>
                             <div class="d-flex justify-content-evenly" style="text-align: center">
                                 ALIKA
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://sibankumdjkn.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/SIBANKUM.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                SIBANKUM
                             </div>
                         </a>
                     </div>
