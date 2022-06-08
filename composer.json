@@ -31,7 +31,8 @@
             "app/function/numbertowords.php",
             "app/function/smsviro.php",
             "app/function/indonesianDate.php",
-            "app/function/notifikasiAgenda.php"
+            "app/function/notifikasiAgenda.php",
+            "app/function/notifikasiLayanan.php"
         ]
     },
     "autoload-dev": {

@@ -62,15 +62,17 @@ class PenetapanLelangController extends Controller
                     if ($data->jenis === 'App\Models\suratPersetujuan') {
                         $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
                         $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                        $message="Permohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang);
                         // $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
                         // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan   
-                        return nl2br(
-                            "Nomor Tujuan: ". $toOperator. "\n". 
-                            "Pesan: ".$messageOperator. "\n"
+                        // return nl2br(
+                        //     "Nomor Tujuan: ". $toOperator. "\n". 
+                        //     "Pesan: ".$messageOperator. "\n"
                             
-                            // "Nomor Tujuan: ". $toKaSatker. "\n". 
-                            // "Pesan: ".$messageKaSatker
-                        );
+                        //     // "Nomor Tujuan: ". $toKaSatker. "\n". 
+                        //     // "Pesan: ".$messageKaSatker
+                        // );
+                        notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator);
                     }elseif($data->jenis === 'App\Models\tiket'){
                         $toOperator=$data->pemohonLelang->kontakPemohon;
                         $messageOperator=nl2br("Yang terhormat Bapak/Ibu PIC ". $data->pemohonLelang->pemohon. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
@@ -78,6 +80,8 @@ class PenetapanLelangController extends Controller
                             "Nomor Tujuan: ". $toOperator. "\n". 
                             "Pesan: ".$messageOperator. "\n"
                         );
+                        $message="Permohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang);
+                        notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator);
                     }
                     // Send_SMS($to,$message);
                 }

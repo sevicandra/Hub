@@ -67,15 +67,18 @@ class PermohonanPenilaianController extends Controller
                 
                 if ($request->kirimNotifikasi) {
                     $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
-                    $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                    return nl2br(
-                        "Nomor Tujuan: ". $toOperator. "\n". 
-                        "Pesan: ".$messageOperator. "\n"
+                    $message="Permohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian";
+                    // $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
+                    // return nl2br(
+                    //     "Nomor Tujuan: ". $toOperator. "\n". 
+                    //     "Pesan: ".$messageOperator. "\n"
                         
-                        // "Nomor Tujuan: ". $toKaSatker. "\n". 
-                        // "Pesan: ".$messageKaSatker
-                    );
+                    //     // "Nomor Tujuan: ". $toKaSatker. "\n". 
+                    //     // "Pesan: ".$messageKaSatker
+                    // );
                     // Send_SMS($to,$message);
+                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator);
+                    return nl2br($tiket->permohonans->satuanKerja->namaSatker. "/n". $message. "/n". $toOperator);
                 }
                 
                 return redirect('/permohonan');     

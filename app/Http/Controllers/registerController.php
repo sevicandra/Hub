@@ -9,9 +9,12 @@ use Illuminate\Auth\Events\Registered;
 class registerController extends Controller
 {
     public function store(Request $request){
+        $request['nomorHP']= "62". $request['nomorHP'];
         $messages = [
             'NIP.unique' => 'NIP Sudah Didaftarkan',
             'email.unique' => 'Email Sudah Didaftarkan',
+            'nomorHP.unique' => 'Nomor HP Sudah Didaftarkan',
+            'nomorHP.numeric' => 'Nomor HP Hanya Boleh Berupa Nomor',
         ];
         $ValidatedData=$request->validate(
             [
@@ -23,8 +26,17 @@ class registerController extends Controller
                 'pangkatGolongan'=>'required',
                 'jabatan'=>'required'
             ], $messages);
+
             $ValidatedData['password'] = Hash::make($ValidatedData['password']);
-            $user = user::create($ValidatedData);
+            $user = user::create([
+                'Nama'=>$ValidatedData['Nama'],
+                'NIP'=>$ValidatedData['NIP'],
+                'email'=>$ValidatedData['email'],
+                'nomorHP'=> $ValidatedData['nomorHP'],
+                'password'=>$ValidatedData['password'],
+                'pangkatGolongan'=>$ValidatedData['pangkatGolongan'],
+                'jabatan'=>$ValidatedData['jabatan']
+            ]);
             return redirect('/login');
     }
 }
