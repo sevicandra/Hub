@@ -18,4 +18,8 @@ class rekapitulasiBestEmployee extends Model
         'kedisiplinan',
         'sikapKerja',
     ];
+
+    public function user(){
+        return $this->belongsTo(user::class, "user_id", "id");
+    }
 }

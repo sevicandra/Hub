@@ -27,6 +27,33 @@ class PemilihanBestEmployeeController extends Controller
         ]);
     }
 
+    public function responden()
+    {
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11' ) {
+            return view('bestemployee.responden', [
+                'data' => pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
+                'responden' => '',
+                'title' => 'Ternate-Hub || Best Employee',
+                'favicon' => '/img/ico/bestemployee.png'
+            ]);
+        }else{
+            abort(403);
+        }
+    }
+
+    public function detailResponden(pemilihanBestEmployee $best_employee_responden)
+    {   
+        if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11' ) {
+            $responden=[];
+            foreach ($best_employee_responden->hasilPemilihan as $key) {
+                array_push($responden, $key->user->nama);
+            }
+            return json_encode($responden);
+        }else{
+            abort(403);
+        }
+    }
+
     public function pemilihan()
     {
         return view('bestemployee.survei', [

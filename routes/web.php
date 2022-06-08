@@ -250,7 +250,8 @@ Route::resource('/best_employee', PemilihanBestEmployeeController::class)->middl
 
 Route::controller(PemilihanBestEmployeeController::class)->group(function(){
     Route::get('/pemilihan_best_employee', 'pemilihan')->middleware('verified');
-
+    Route::get('/best_employee_responden', 'responden')->middleware('verified');
+    Route::get('/best_employee_responden/{best_employee_responden}', 'detailResponden')->middleware('verified');
 });
 
 Route::resource('/pilih_best_employee', RekapitulasiBestEmployeeController::class)->middleware('verified');

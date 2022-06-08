@@ -40,6 +40,21 @@
                     </div>
                 </div>           
                 @endif
+                @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02' || auth()->user()->jabatan === '11' )
+                @if (isset($responden))
+                <div style="background-color: #ffffff; min-height:7.5%; max-height:fit-content ;font-size: 100%">
+                    <div style="width: fit-content; min-height:100%; max-height:fit-content; margin:auto" onclick="location.href='/best_employee_responden';">
+                        <h6 style="font-size: 1vw">RESPONDEN BEST EMPLOYEE</h6> 
+                    </div>
+                </div>
+                @else
+                <div style="color:white;background-color: #929292; height:7.5%; box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset;font-size: 100%;" >
+                    <div style="width: fit-content; min-height:100%; max-height:fit-content; margin:auto" onclick="location.href='/best_employee_responden';">
+                        <h6 style="font-size: 1vw">RESPONDEN BEST EMPLOYEE</h6>
+                    </div>
+                </div>           
+                @endif
+                @endif
             </div>
             <div class="col-sm-10" style="border-radius: 0 10px 10px 0;height: 100%; background-color:#ffffff; ">
                 @yield('contentbestemployee')
