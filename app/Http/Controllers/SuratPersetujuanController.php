@@ -95,7 +95,7 @@ class SuratPersetujuanController extends Controller
                     //     // "Pesan: ".$messageKaSatker
                     // );
                     // Send_SMS($to,$message);
-                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator);
+                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 }
                 return redirect('/persetujuan');
             }else{

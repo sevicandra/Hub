@@ -169,7 +169,7 @@ class PemberitahuanPenilaianController extends Controller
                     //     // "Pesan: ".$messageKaSatker
                     // );
                     // Send_SMS($to,$message);
-                    notifikasiLayanan($pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator);
+                    notifikasiLayanan($pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 }
     
                 return redirect('/penilaian');

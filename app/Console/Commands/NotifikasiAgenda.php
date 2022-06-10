@@ -56,7 +56,7 @@ class NotifikasiAgenda extends Command
 
             // $body = "Reminder \nAgenda  : $key->agenda \nWaktu   : $key->waktu \nTempat : $key->tempat".$meetingId.$meetingPassword.$linkRapat.$linkAbsensi;
             // $body = '"components"=>[array("type"=>"body","parameters"=>[array("type"=>"text", "text"=>"'.$key->agenda.'"),array("type"=>"text", "text"=>"'.$key->waktu.'"),array("type"=>"text", "text"=>"'.$key->tempat.'"),array("type"=>"text", "text"=>"'.$meetingId.'"),array("type"=>"text", "text"=>"'.$meetingPassword.'"),array("type"=>"text", "text"=>"'.$linkRapat.'"),array("type"=>"text", "text"=>"'.$linkAbsensi.'")])]';
-            notifikasiAgenda($key->agenda,$key->waktu,$key->tempat,$meetingId,$meetingPassword,$linkRapat,$linkAbsensi);
+            notifikasiAgenda($key->agenda,$key->waktu,$key->tempat,$meetingId,$meetingPassword,$linkRapat,$linkAbsensi,config('whatsapp.key'),config('whatsapp.phoneNumber'));
 
             
             agenda::where('id', $key->id)->update(['notifikasi'=>false]);

@@ -77,7 +77,7 @@ class PermohonanPenilaianController extends Controller
                     //     // "Pesan: ".$messageKaSatker
                     // );
                     // Send_SMS($to,$message);
-                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator);
+                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
                     return nl2br($tiket->permohonans->satuanKerja->namaSatker. "/n". $message. "/n". $toOperator);
                 }
                 
