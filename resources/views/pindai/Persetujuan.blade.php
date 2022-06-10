@@ -18,7 +18,7 @@
                     </tr>
                     <?php $i=1 ?>
                     @foreach ($data as $item)
-                    <tr @if ($item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)
+                    <tr onclick="nomorTiket('{{$item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->tiket}}','{{$item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->id}}')" @if ($item->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)
                         style="background-color:green; color:white" @endif>
                         <td>{{$i}}</td>
                         <td>{{$item->nomorSurat}}</td>
@@ -164,7 +164,7 @@
 @section('footpindai')
 
 <script src="/js/pindai/permohonanPenilaian.js"></script>
-<script src="/js/pindai/nomorTiket.js"></script>
+
 <script>
     $(window).on('load', function(){
         var newHeight = window.innerHeight-(150+(window.innerHeight*0.1)); 

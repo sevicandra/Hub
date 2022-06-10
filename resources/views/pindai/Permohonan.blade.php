@@ -16,7 +16,7 @@
                     </tr>
                     <?php $i=1 ?>
                     @foreach ($data as $item)
-                    <tr onmouseover="bigImg('{{$item->tiket->tiket}}')" @if ($item->tiket->permohonan === 0)
+                    <tr onclick="nomorTiket('{{$item->tiket->tiket}}','{{$item->tiket->id}}')" @if ($item->tiket->permohonan === 0)
                         style="background-color:green; color:white" @endif>
                         <td>{{$i}}</td>
                         <td>{{$item->nomorSurat}}</td>
@@ -212,6 +212,6 @@
 </script>
 
 <script src="/js/pindai/permohonanPenilaian.js"></script>
-<script src="/js/pindai/nomorTiket.js"></script>
+
 
 @endsection

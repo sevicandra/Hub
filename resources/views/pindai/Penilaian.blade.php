@@ -19,7 +19,7 @@
                     </tr>
                     <?php $i = 1; ?>
                     @foreach ($data as $item)
-                    <tr @if ($item->permohonan->tiket->penilaian === 0) style="background-color:green; color:white"
+                    <tr onclick="nomorTiket('{{$item->permohonan->tiket->tiket}}','{{$item->permohonan->tiket->id}}')" @if  ($item->permohonan->tiket->penilaian === 0) style="background-color:green; color:white"
                         @endif>
                         <td>{{ $i }}</td>
                         <td>{{ $item->nomorSurat }}</td>

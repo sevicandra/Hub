@@ -21,8 +21,14 @@
                     </tr>
                     <?php $i=1; ?>
                     @foreach ($data as $item)
-                    <tr onClick="detailpermohonan('{{$item->id}}')">
-                        <td>{{$i}}</td>
+                    <tr
+                    @if ($item->jenis === 'App\Models\tiket')
+                    onclick="nomorTiket('{{$item->suratPersetujuan->tiket}}','{{$item->suratPersetujuan->id}}')"
+                    @elseif($item->jenis === 'App\Models\suratPersetujuan')
+                    onclick="nomorTiket('{{$item->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->Permohonan->tiket->tiket}}','{{$item->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->Permohonan->tiket->id}}')" 
+                    @endif
+                    onClick="detailpermohonan('{{$item->id}}')">
+                    <td>{{$i}}</td>
                         <td>
                             @if ($item->jenis === 'App\Models\tiket')
                             {{$item->pemohonLelang->pemohon}}

@@ -17,7 +17,13 @@
                             </tr>
                             <?php $i=1 ?>
                             @foreach ($data as $item)
-                                <tr @if ($item->status === 1) style="background-color:green; color:white" @endif>
+                                <tr
+                                @if ($item->permohonanLelang->jenis === 'App\Models\suratPersetujuan')
+                                onclick="nomorTiket('{{$item->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->Permohonan->tiket->tiket}}','{{$item->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->Permohonan->tiket->id}}')" 
+                                @elseif($item->permohonanLelang->jenis === 'App\Models\tiket')
+                                onclick="nomorTiket('{{$item->permohonanLelang->suratPersetujuan->tiket}}','{{$item->permohonanLelang->suratPersetujuan->id}}')"
+                                @endif
+                                @if ($item->status === 1) style="background-color:green; color:white" @endif>
                                     <td>{{$i}}</td>
                                     <td>{{$item->nomorSurat}}</td>
                                     <td>{{indonesiaDate($item->tanggalSurat)}}</td>

@@ -17,7 +17,7 @@
                                 </tr>
                                 <?php $i=1 ?>
                                 @foreach ($data as $item)
-                                    <tr @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)  
+                                    <tr onclick="nomorTiket('{{$item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->tiket}}','{{$item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->id}}')" @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)  
                                             @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2)
                                                 style="background-color:yellow"
                                             @elseif($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')===2)

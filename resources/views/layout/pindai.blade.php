@@ -110,6 +110,9 @@
                     @endif
                 </div>
             </div>
+                <div class="btn translate-middle-y" id="nomorTiket" style="width: 200px; background-color:  #4d59ca; color:#ffffff">
+                   <a href="" style="text-decoration: none; color:#ffffff"></a> 
+                </div>
         </div>
         @yield('contentpindai')
     </div>
@@ -123,16 +126,17 @@
 @section('foot')
 <script>
     $(window).on('load', function(){
-        var newWidth = window.innerWidth-222; 
+        var newWidth = window.innerWidth-422; 
         $("#nav-head").css('width', newWidth)
     });
     window.addEventListener('resize', function(event){
-        var newWidth = window.innerWidth-222; 
+        var newWidth = window.innerWidth-422; 
         $(window).resize(function() {
             $("#nav-head").css('width', newWidth)
         });
     });
 </script>
+<script src="/js/pindai/nomorTiket.js"></script>
     @section('footpindai')
         
     @show
