@@ -81,7 +81,7 @@ class chart extends Controller
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 3)->first()) {
-                                    $capaian[]= $data->capaian->where('bulan', '<=', 3)->avg('capaian');
+                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 3)->avg('capaian'));
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -97,7 +97,7 @@ class chart extends Controller
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 6)->first()) {
-                                    $capaian[]= $data->capaian->where('bulan', '<=', 6)->avg('capaian');
+                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 6)->avg('capaian'));
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -107,7 +107,7 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 9)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 9)->max('bulan');
-                                    $capaian[]= $data->capaian->where('bulan', $bulan)->max()->capaian;
+                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -123,7 +123,7 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 12)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 12)->max('bulan');
-                                    $capaian[]= $data->capaian->where('bulan', $bulan)->max()->capaian;
+                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
                                 }else{
                                     $capaian[]=0;
                                 }

@@ -695,6 +695,7 @@ function praktisTW(params) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success:function (response) {
+            
             $('#capaianKinerja').empty()
             for (let index = 0; index < response.namaIKU.length; index++) {
                 
