@@ -40,9 +40,11 @@ use App\Http\Controllers\IdikatorKinerjaUtamaController;
 use App\Http\Controllers\NominasiBestEmployeeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\PemilihanBestEmployeeController;
+use App\Http\Controllers\AgendaLaporanPenilaianController;
 use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
+use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,7 +120,9 @@ Route::controller(backController::class)->group(function(){
     Route::get('/listTim', 'listTim')->middleware('verified');
     Route::post('/hapusanggota', 'hapusanggota')->middleware('verified');
     Route::post('/nilailimit', 'nilaiLimit')->middleware('verified');
-    Route::post('/penetapanLimit', 'penetapanLimit')->middleware('verified');      
+    Route::post('/penetapanLimit', 'penetapanLimit')->middleware('verified'); 
+    Route::PATCH('/hapusanggotaJFPP/{hapusanggotaJFPP}', 'hapusanggotaJFPP')->middleware('verified');
+    Route::PATCH('/hapusbaslJFPP/{hapusbaslJFPP}', 'hapusbaslJFPP')->middleware('verified');   
 });
 
 // Permohonan Verifikasi Email Ulang
@@ -283,3 +287,15 @@ Route::resource('/digital-knowledge-management/presentasi', PresentasiController
 Route::resource('/digital-knowledge-management/laporan-pelaksanaan-tugas', LaporanPelaksanaanTugasController::class)->middleware('verified');
 
 Route::resource('/digital-knowledge-management/notula', NotulaController::class)->middleware('verified');
+
+Route::resource('/JFPP/LaporanPenilaian', AgendaLaporanPenilaianController::class)->middleware('verified');
+
+Route::resource('/JFPP/BASL', BeritaAcaraSurveiLapanganPenilaianController::class)->middleware('verified');
+
+Route::get('/JFPP', function(){
+    return view('JFPP.index',[
+        'JFPP'=>'',
+        'favicon'=>'/img/ico/JFPP.png',
+    ]);
+});
+

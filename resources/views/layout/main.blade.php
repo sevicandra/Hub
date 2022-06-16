@@ -277,6 +277,21 @@
                 </div>
                 {{-- Akhir Digital Knowledge Management --}}
 
+                {{-- JFPP --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="JFPP"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/JFPP.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            JFPP
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir JFPP --}}
+
                 {{-- MAP --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="http://10.122.1.46/MAP" target="_blank">

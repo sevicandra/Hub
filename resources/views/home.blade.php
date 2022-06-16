@@ -325,7 +325,7 @@
                     </div>
                 </nav>
             </div>
-            <div class="scrollable  container-fluid" style="height: 100%;padding: 55px 10px 55px 10px ; font-family:'TW CENT MT'; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;" id='agenda'>
+            <div class="scrollable container-fluid" style="height: 100%;padding: 55px 10px 55px 10px ; font-family:'TW CENT MT'; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;" id='agenda'>
                 @if (1)
                 @else
                 <div style="background-color:#A6B36B; color: #ffffff; border-radius:10px;margin-top:10px">

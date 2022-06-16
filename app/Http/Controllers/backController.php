@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\agendaLaporanPenilaian;
 use App\Models\User;
 use App\Models\barang;
+use App\Models\beritaAcaraSurveiLapanganPenilaian;
 use Illuminate\Http\Request;
 use App\Models\penyampaianLaporan;
 use App\Models\permohonanPenilaian;
@@ -15,7 +17,7 @@ class backController extends Controller
     }
 
     public function listTim(){
-        $a = User::orderBy('NIP', 'asc')->get();
+        $a = User::where('email_verified_at', '!=' ,null)->orderBy('NIP', 'asc')->get();
         return json_encode($a); 
     }
 
@@ -42,5 +44,17 @@ class backController extends Controller
             $i++;
         }
         return redirect('/persetujuan');
+    }
+    
+    public function hapusanggotaJFPP(Request $request, beritaAcaraSurveiLapanganPenilaian $hapusanggotaJFPP)
+    {
+        $detach = $hapusanggotaJFPP->user()->detach($request->user_id);
+        return json_encode($detach);
+    }
+    
+    public function hapusbaslJFPP(Request $request, agendaLaporanPenilaian $hapusbaslJFPP)
+    {
+        $detach = $hapusbaslJFPP->basl()->detach($request->basl_id);
+        return json_encode($detach);
     }
 }

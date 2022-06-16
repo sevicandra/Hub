@@ -60,4 +60,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(role::class);
     }
 
+    public function basl(){
+        return $this->belongsToMany(beritaAcaraSurveiLapanganPenilaian::class, 'basl_users', 'user_id', 'basl_id');
+    }
+
 }

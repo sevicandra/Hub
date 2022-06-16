@@ -108,7 +108,6 @@ class KeputusanController extends Controller
      */
     public function update(Request $request, keputusan $keputusan)
     {
-        
         if ($keputusan->created_at->diff(Carbon::now())->days > 0) {
             if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') {
                 $request->validate([
