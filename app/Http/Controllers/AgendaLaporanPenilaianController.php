@@ -191,6 +191,9 @@ class AgendaLaporanPenilaianController extends Controller
     public function destroy(agendaLaporanPenilaian $LaporanPenilaian)
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' ) {
+            if ($LaporanPenilaian->file) {
+                Storage::delete($LaporanPenilaian->file);
+            }
             $LaporanPenilaian->basl()->detach();
             $LaporanPenilaian->delete();
         }else{
