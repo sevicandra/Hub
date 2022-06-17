@@ -140,8 +140,9 @@ function tambahTim() {
         url: '/listTim',
         dataType: "json",
         success: function(response){
+            tim=''
             $.each(response, function(res, req) {
-                tim='<option value="'+req.id+'">'+req.nama+'</option>';
+                tim=tim+'<option value="'+req.id+'">'+req.nama+'</option>';
             });
             $('#anggota').append(
                 `<div class="input-group mb-3" id="anggota`+x+`">
@@ -171,8 +172,9 @@ function tambahTimUpdate() {
         url: '/listTim',
         dataType: "json",
         success: function(response){
+            tim=''
             $.each(response, function(res, req) {
-                tim='<option value="'+req.id+'">'+req.nama+'</option>';
+                tim=tim+'<option value="'+req.id+'">'+req.nama+'</option>';
             });
             $('#anggotaUpdate').append(
                 `<div class="input-group mb-3" id="anggota`+x+`">
@@ -208,4 +210,12 @@ function hapusAnggota(userid, baslid) {
             $('#anggota-'+userid).remove()
         }
     })
+}
+
+function cetakBASL(params) {
+    $('#cetak_id').attr('value', params)
+    var update = new bootstrap.Modal(document.getElementById('cetakBASL'), {
+        keyboard: false
+    })
+    update.show()
 }

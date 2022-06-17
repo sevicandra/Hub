@@ -60,6 +60,7 @@
                                     </p> 
                                 </div>
                                 <div class="position-relative" style="width: 5%; min-height:fit-content">
+                                    <button class="btn btn-primary" onclick="cetakBASL('{{ $item->id }}')"><i class="bi bi-cloud-download-fill"></i></button>
                                     @if (!$item->laporan->first())
                                     <button class="btn btn-primary" onclick="updateBASL('{{ $item->id }}')"><i class="bi bi-pencil-square"></i></button>
                                     <button class="btn btn-danger" onclick="hapusBASL('{{ $item->id }}')"><i class="bi bi-trash"></i></button>
@@ -127,7 +128,7 @@
                       </div>
                 </div>
                 <div class="form-floating mb-3"> 
-                        
+                    <button onclick="tambahTim()" class="btn btn-success" type="button"><i class="bi bi-plus-square"></i></button>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control" id="nomor" name="nomor" placeholder="Nomor Keputusan" required value="{{ old('nomor') }}">
@@ -237,6 +238,45 @@
     </div>
 </div>
 {{-- Akhir Modals Hapus BASL --}}
+
+{{-- Modals Cetak BASL --}}
+<div class="modal fade" id="cetakBASL" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="hapusBASLcontent" style="text-align: center">
+              <h5>Anda Yakin Ingin Menghapus BASL</h5>
+              <form action="/cetak" method="post">
+                    @csrf
+                    <input id="cetak_id" name="basl_id" type="text" hidden value="">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="nomorSuratTugas" name="nomorSuratTugas" placeholder="Nomor Surat Tugas" required>
+                        <label for="nomorSuratTugas">Nomor</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="tanggalSuratTugas" name="tanggalSuratTugas" placeholder="Tanggal Surat Tugas" required>
+                        <label for="tanggalSuratTugas">Tanggal Surat Tugas</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" name="jenisObjek" id="jenisObjek" required placeholder="Jenis Objek">
+                            <option value="kendaraan">Kendaraan</option>
+                            <option value="nonKendaraan">Selain Kendaraan</option>
+                        </select>
+                        <label for="Jenis Objek">Objek Penilaian</label>
+                    </div>
+                    <div class="row mt-2">
+                        <button name="action" value="BASL" class="btn btn-primary" type="submit">Cetak</button>
+                    </div>
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
+{{-- AKhir Modals Cetak BASL --}}
+
 
 @endsection
 

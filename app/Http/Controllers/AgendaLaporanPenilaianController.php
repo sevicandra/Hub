@@ -196,5 +196,6 @@ class AgendaLaporanPenilaianController extends Controller
         }else{
             abort(403);
         }
+        return Redirect::back();
     }
 }

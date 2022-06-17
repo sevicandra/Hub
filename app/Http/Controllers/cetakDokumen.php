@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\beritaAcaraSurveiLapanganPenilaian;
 use App\Models\risalah;
 use App\Models\permohonan;
 use Illuminate\Support\Str;
@@ -700,7 +701,6 @@ class cetakDokumen extends Controller
                 return response()->download(file: 'DocxTemplate/Penyampaian Salinan RL - ' . $request->penetapan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
             case 'HPKB':
-                // return 'test';
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
@@ -744,7 +744,85 @@ class cetakDokumen extends Controller
                         break;
                 }
                 break;
-            default:
+            case 'BASL':
+                $BASL = beritaAcaraSurveiLapanganPenilaian::find($request->basl_id);
+                switch ($request->jenisObjek) {
+                    case 'kendaraan':
+                        if ($BASL->user()->count() > 1) {
+                            $i=1;
+                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Kendaraan - tim.docx');
+                            foreach ($BASL->user as $anggotaTim) {
+                                $templateProcessor->setValue('nama'.$i, $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP'.$i, $anggotaTim->NIP);
+                                $i++;
+                            }
+                        }else{
+                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Kendaraan.docx');
+                            foreach ($BASL->user as $anggotaTim) {
+                                $templateProcessor->setValue('nama', $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP', $anggotaTim->NIP);
+                            }
+                        }
+                        
+                        $templateProcessor->setValue('nomor', $BASL->nomor);
+                        $templateProcessor->setValue('kode', $BASL->kode);
+                        $templateProcessor->setValue('tahun', $BASL->tahun);
+                        $templateProcessor->setValue('pemilik', $BASL->pemilik);
+                        $templateProcessor->setValue('tanggal', indonesiaDate($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('hari', indonesiaDay($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('tanggalWord', indonesiaDateWords($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('bulan', indonesiaMonth($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('tahunSurvei', indonesiaYear($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('nomorST', $request->nomorSuratTugas);
+                        $templateProcessor->setValue('tanggalST', indonesiaDate($request->tanggalSuratTugas));
+
+                        $templateProcessor->saveAs('DocxTemplate/BASL - ' . $request->basl_id . '.docx');
+                            return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+
+                    case 'nonKendaraan':
+                        if ($BASL->user()->count() > 1) {
+                            $i=1;
+                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Non Kendaraan - tim.docx');
+                            foreach ($BASL->user as $anggotaTim) {
+                                $templateProcessor->setValue('nama'.$i, $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP'.$i, $anggotaTim->NIP);
+                                $i++;
+                            }
+                        }else{
+                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Non Kendaraan.docx');
+                            foreach ($BASL->user as $anggotaTim) {
+                                $templateProcessor->setValue('nama', $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP', $anggotaTim->NIP);
+                            }
+                        }
+                        
+                        $templateProcessor->setValue('nomor', $BASL->nomor);
+                        $templateProcessor->setValue('kode', $BASL->kode);
+                        $templateProcessor->setValue('tahun', $BASL->tahun);
+                        $templateProcessor->setValue('pemilik', $BASL->pemilik);
+                        $templateProcessor->setValue('tanggal', indonesiaDate($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('hari', indonesiaDay($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('tanggalWord', indonesiaDateWords($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('bulan', indonesiaMonth($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('tahunSurvei', indonesiaYear($BASL->tanggalSelesaiSurvei));
+                        $templateProcessor->setValue('nomorST', $request->nomorSuratTugas);
+                        $templateProcessor->setValue('tanggalST', indonesiaDate($request->tanggalSuratTugas));
+
+                        $templateProcessor->saveAs('DocxTemplate/BASL - ' . $request->basl_id . '.docx');
+                            return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+         
+                        break;
+                    
+                    default:
+         
+                        break;
+                }
+
+
+                break;
+                default:
                 abort(404);
                 break;
         }

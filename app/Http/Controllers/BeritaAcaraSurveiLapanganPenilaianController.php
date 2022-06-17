@@ -116,7 +116,7 @@ class BeritaAcaraSurveiLapanganPenilaianController extends Controller
     public function update(Request $request, beritaAcaraSurveiLapanganPenilaian $BASL)
     {
         if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '09' || auth()->user()->jabatan === '10' ) {
-            if ($BASL->laporan) {
+            if ($BASL->laporan->first()) {
                 abort(403);
             }else{
                 $request->validate([
@@ -166,5 +166,6 @@ class BeritaAcaraSurveiLapanganPenilaianController extends Controller
         }else{
             abort(403);
         }
+        return Redirect::back();
     }
 }
