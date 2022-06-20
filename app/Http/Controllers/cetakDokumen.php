@@ -657,11 +657,11 @@ class cetakDokumen extends Controller
 
                 $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/PenyampaianSalinanRL.docx');
                 switch ($penetapanLelang->permohonanLelang->jenis) {
-                    case 'App\Models\Tiket':
-                        $templateProcessor->setValue('satker', $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
-                        break;
-                    case 'App\Models\Persetujuan':
+                    case 'App\Models\tiket':
                         $templateProcessor->setValue('satker', $penetapanLelang->permohonanLelang->pemohonLelang->pemohon);
+                        break;
+                        case 'App\Models\suratPersetujuan':
+                        $templateProcessor->setValue('satker', $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
                         break;
                 }
                 $templateProcessor->setValue('tanggalLelang', indonesiaDate($penetapanLelang->tanggalLelang));
