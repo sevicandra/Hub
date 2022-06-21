@@ -262,6 +262,19 @@
                 </div>
                 {{-- Akhir Best Employee --}}
 
+                {{-- Best Employee --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none" href="/reminder/upcoming" target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/reminder.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center"> 
+                            Reminder
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Best Employee --}}
+
                 {{-- Digital Knowledge Management --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"

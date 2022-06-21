@@ -32,7 +32,8 @@
             "app/function/smsviro.php",
             "app/function/indonesianDate.php",
             "app/function/notifikasiAgenda.php",
-            "app/function/notifikasiLayanan.php"
+            "app/function/notifikasiLayanan.php",
+            "app/function/notifikasiPersonal.php"
         ]
     },
     "autoload-dev": {

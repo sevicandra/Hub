@@ -45,6 +45,8 @@ use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
 use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
+use App\Http\Controllers\ReminderController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -299,3 +301,10 @@ Route::get('/JFPP', function(){
     ]);
 });
 
+Route::controller(ReminderController::class)->group(function(){
+    Route::get('reminder/upcoming', 'upcoming')->middleware('verified');
+    Route::get('reminder/recent', 'recent')->middleware('verified');
+    Route::post('reminder/{reminder}/view', 'view')->middleware('verified');
+    Route::post('reminder', 'create')->middleware('verified');
+    Route::delete('reminder/{reminder}', 'delete')->middleware('verified');
+});
