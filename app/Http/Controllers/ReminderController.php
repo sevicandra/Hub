@@ -13,7 +13,7 @@ class ReminderController extends Controller
     public function upcoming()
     {
         return view('reminder.index',[
-            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Upcoming(),
+            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Upcoming()->paginate(20),
             'tujuan'=>User::where('email_verified_at', '!=', null)->get(),
             'upcoming'=>'',
             'favicon'=>'/img/ico/reminder.png'
@@ -43,7 +43,7 @@ class ReminderController extends Controller
     public function recent()
     {
         return view('reminder.index',[
-            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Recent(),
+            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Recent()->paginate(20),
             'tujuan'=>User::where('email_verified_at', '!=', null)->get(),
             'recent'=>'',
             'favicon'=>'/img/ico/reminder.png'
@@ -74,5 +74,15 @@ class ReminderController extends Controller
         $reminder->pengirim;
         $reminder->tujuan;
         return json_encode($reminder);
+    }
+
+    public function reminder()
+    {
+        return view('reminder.home',[
+            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Reminder()->paginate(20),
+            'tujuan'=>User::where('email_verified_at', '!=', null)->get(),
+            'home'=>'',
+            'favicon'=>'/img/ico/reminder.png'
+        ]);
     }
 }

@@ -304,6 +304,7 @@ Route::get('/JFPP', function(){
 Route::controller(ReminderController::class)->group(function(){
     Route::get('reminder/upcoming', 'upcoming')->middleware('verified');
     Route::get('reminder/recent', 'recent')->middleware('verified');
+    Route::get('reminder', 'reminder')->middleware('verified');
     Route::post('reminder/{reminder}/view', 'view')->middleware('verified');
     Route::post('reminder', 'create')->middleware('verified');
     Route::delete('reminder/{reminder}', 'delete')->middleware('verified');

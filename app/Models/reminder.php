@@ -36,7 +36,7 @@ class reminder extends Model
             $val->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>' ,Carbon::now()->isoFormat('HH:mm:ss'));
         })->orwhere(function($val){
             $val->where('tanggal', '>', Carbon::now()->isoFormat('YYYY-MM-DD'));
-        })->get();
+        });
     }
 
     public function scopeRecent($data)
@@ -45,11 +45,22 @@ class reminder extends Model
             $val->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '<' ,Carbon::now()->isoFormat('HH:mm:ss'));
         })->orwhere(function($val){
             $val->where('tanggal', '<', Carbon::now()->isoFormat('YYYY-MM-DD'));
-        })->orderby('tanggal')->get();
+        })->orderby('tanggal');
     }
     
     public function scopeNotification($data)
     {
         return $data->where('notifikasi', true)->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>', Carbon::now()->isoFormat('H:mm:ss'))->where('waktu', '<', Carbon::now()->addMinutes(2)->isoFormat('H:mm:ss'))->get();
+    }
+
+    public function scopeReminder($data)
+    {
+        return $data->where(function($val){
+            $val->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>' ,Carbon::now()->isoFormat('HH:mm:ss'));
+        })->orwhere(function($val){
+            $val->where('tanggal', '>', Carbon::now()->isoFormat('YYYY-MM-DD'));
+        })->wherehas('tujuan', function($val){
+            $val->where('user_id', auth()->user()->id);
+        });
     }
 }

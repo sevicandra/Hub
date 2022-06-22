@@ -23,25 +23,16 @@
                         <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $i }}</p> 
                     </div>
                     <div class="position-relative" style="width: 15%; min-height:fit-content">
+                        <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->pengirim->nama }}</p> 
+                    </div>
+                    <div class="position-relative" style="width: 15%; min-height:fit-content">
                         <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ indonesiaDate($item->tanggal) }}</p> 
                     </div>
                     <div class="position-relative" style="width: 15%; min-height:fit-content">
                         <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->waktu }}</p> 
                     </div>
-                    <div class="position-relative" style="width: 55%; min-height:fit-content">
+                    <div class="position-relative" style="width: 50%; min-height:fit-content">
                         <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->pesan }}</p> 
-                    </div>
-                    <div class="position-relative" style="width: 10%; min-height:fit-content">
-                        <button onclick="view('{{ $item->id }}')" class="btn" style="color: blue" data-bs-toggle="modal" data-bs-target="#viewReminder">
-                            <i class="bi bi-eye-fill"></i>
-                        </button>
-                        @if (isset($upcoming))
-                        <form action="/reminder/{{ $item->id }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn" style="color: red"><i class="bi bi-trash"></i></button>
-                        </form>
-                        @endif
                     </div>
                 </div>
                 @php
@@ -52,10 +43,10 @@
             <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 100%; height:25px; border-bottom:solid 1px; background-color:#495C4F; color:white">
                 <div style="width: 100%; text-align:center; margin:0;" class="row" >
                     <div style="width: 5%; height:fit-content">No</div>
+                    <div style="width: 15%; height:fit-content">Pengirim</div>
                     <div style="width: 15%; height:fit-content">Tanggal</div>
                     <div style="width: 15%; height:fit-content">Waktu</div>
-                    <div style="width: 55%; height:fit-content">Pesan</div>
-                    <div style="width: 10%; height:fit-content">Action</div>
+                    <div style="width: 50%; height:fit-content">Pesan</div>
                 </div>
             </div>
             <div class="position-absolute bottom-0 start-50 translate-middle-x" style="width: 100%; height:50px; background-color:#495C4F">

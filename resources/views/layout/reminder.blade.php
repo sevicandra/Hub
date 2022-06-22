@@ -11,6 +11,11 @@
 <div class="container-fluid" style="padding: 30px 37px 9px 37px; height:100%">
     <div class="container-fluid" style="border-radius: 10px; background-color:darkgrey; height:100%">
         <div class="row" style="padding-bottom: 10px; height:38px">
+            <div class="col-sm-1">
+                <a href="/reminder">
+                    <button class="btn translate-middle-y" style="@if (isset($home)) background-color: rgb(13, 110, 253); color:white @else background-color: white @endif"><i class="bi bi-house-fill"></i></button>
+                </a>
+            </div>
             <div class="col-sm-11 translate-middle-y"style="overflow-x:auto ">
                 <div class="row" style="width: 1000px">
                     <div style="min-width: 195px; max-width:fit-content" >
