@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\tiket;
 use Illuminate\Http\Request;
 use App\Models\penyampaianLaporan;
@@ -49,8 +50,11 @@ class PenyampaianLaporanController extends Controller
                         'pemberitahuan_penilaian_id'=>'required'
                     ]);
                 $tiket_id = pemberitahuanPenilaian::find($request->pemberitahuan_penilaian_id)->permohonanPenilaian->permohonan->tiket;
-                tiket::find($tiket_id->id)->update(['persetujuan'=>1,'penilaian'=>0]);
+                $tiket=tiket::find($tiket_id->id);
+                $tiket->update(['persetujuan'=>1,'penilaian'=>0]);
                 penyampaianLaporan::create($ValidatedData);
+                $to=User::where('jabatan', '03')->orwhere('jabatan', '12')->get();
+                notifikasiPermohonanInternal($to, auth()->user()->nama, "Laporan Penilaian BMN pada Satuan Kerja ".$tiket->permohonans->satuanKerja->namaSatker." telah dikirim melalui KPKNL TERNATE-HUB",config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 return redirect('/penilaian');
             }else{
                 abort(403);

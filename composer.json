@@ -33,7 +33,8 @@
             "app/function/indonesianDate.php",
             "app/function/notifikasiAgenda.php",
             "app/function/notifikasiLayanan.php",
-            "app/function/notifikasiPersonal.php"
+            "app/function/notifikasiPersonal.php",
+            "app/function/notifikasiPermohonanInternal.php"
         ]
     },
     "autoload-dev": {

@@ -6,6 +6,7 @@ use App\Models\tiket;
 use App\Models\permohonan;
 use Illuminate\Http\Request;
 use App\Models\permohonanPenilaian;
+use App\Models\User;
 
 class PermohonanPenilaianController extends Controller
 {
@@ -78,9 +79,10 @@ class PermohonanPenilaianController extends Controller
                     // );
                     // Send_SMS($to,$message);
                     notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
-                    return nl2br($tiket->permohonans->satuanKerja->namaSatker. "/n". $message. "/n". $toOperator);
+                    // return nl2br($tiket->permohonans->satuanKerja->namaSatker. "/n". $message. "/n". $toOperator);
                 }
-                
+                $to=User::where('jabatan', '09')->orwhere('jabatan', '10')->get();
+                notifikasiPermohonanInternal($to, auth()->user()->nama, "Permohonan Penilaian BMN pada Satuan Kerja ".$tiket->permohonans->satuanKerja->namaSatker." telah dikirim melalui KPKNL TERNATE-HUB",config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 return redirect('/permohonan');     
             }else{
                 abort(403);
