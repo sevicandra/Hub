@@ -34,7 +34,8 @@
             "app/function/notifikasiAgenda.php",
             "app/function/notifikasiLayanan.php",
             "app/function/notifikasiPersonal.php",
-            "app/function/notifikasiPermohonanInternal.php"
+            "app/function/notifikasiPermohonanInternal.php",
+            "app/function/sendDocument.php"
         ]
     },
     "autoload-dev": {

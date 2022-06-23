@@ -45,6 +45,7 @@ use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
 use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
+use App\Http\Controllers\MediaSuratPersetujuanController;
 use App\Http\Controllers\ReminderController;
 use App\Models\User;
 

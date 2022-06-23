@@ -120,7 +120,7 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <form action="/persetujuan" method="POST">
+                    <form action="/persetujuan" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <label for="nomorSurat" class="col-sm-4 col-form-label">Nomor Surat</label>
@@ -140,6 +140,12 @@
                                 <input name="tanggalSurat" type="date" class="form-control" required>
                             </div>
                         </div>
+                        <div class="row">
+                            <label for="fileUpload" class="col-sm-4 col-form-label">file</label>
+                            <div class="col-sm-8">
+                                <input name="fileUpload" type="file" class="form-control" required>
+                            </div>
+                        </div>
                         <div class="input-group mb-3">
                             <label class="col-sm-4" aria-label="Text with checkbox">Kirim Notifikasi?</label>
                             <div class="input-group-text" style="background: none; border:none">
@@ -150,8 +156,8 @@
                             <button type="submit" class="btn btn-primary" id='penyampaian_laporan_id'
                                 name='penyampaian_laporan_id' value=''>Simpan</button>
                         </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>

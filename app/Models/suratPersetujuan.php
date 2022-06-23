@@ -60,4 +60,9 @@ class suratPersetujuan extends Model
         'penyampaian_laporan_id',
         'hal'
     ];
+
+    public function media()
+    {
+        return $this->hasOne(mediaSuratPersetujuan::class);
+    }
 }

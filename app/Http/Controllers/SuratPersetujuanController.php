@@ -6,6 +6,7 @@ use App\Models\tiket;
 use Illuminate\Http\Request;
 use App\Models\suratPersetujuan;
 use App\Models\penyampaianLaporan;
+use App\Models\mediaSuratPersetujuan;
 use App\Http\Requests\UpdatesuratPersetujuanRequest;
 
 class SuratPersetujuanController extends Controller
@@ -73,29 +74,47 @@ class SuratPersetujuanController extends Controller
                     'hal'=>'required',
                     'tanggalSurat'=>'required',
                     'penyampaian_laporan_id'=>'required',
+                    'fileUpload'=>'required|mimes:pdf'
                 ]);
-                suratPersetujuan::create($ValidatedData);
+
+                $suratPersetujuan=suratPersetujuan::create($ValidatedData);
                 tiket::find($tiket->id)->update([
                     'persetujuan' =>0,
                     'lelang' => 1,
                 ]);
+
+                $path = $request->file('fileUpload')->store('suratPersetujuan');
+
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                  CURLOPT_URL => 'https://graph.facebook.com/v13.0/'.config('whatsapp.phoneNumber').'/media',
+                  CURLOPT_RETURNTRANSFER => true,
+                  CURLOPT_ENCODING => '',
+                  CURLOPT_MAXREDIRS => 10,
+                  CURLOPT_TIMEOUT => 0,
+                  CURLOPT_FOLLOWLOCATION => true,
+                  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                  CURLOPT_CUSTOMREQUEST => 'POST',
+                  CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE($request->file('fileUpload'),'application/pdf', 'test.pdf'),'messaging_product' => 'whatsapp'),
+                  CURLOPT_HTTPHEADER => array(
+                    'Authorization: Bearer '.config('whatsapp.key')
+                  ),
+                ));
+                
+                $response = curl_exec($curl);
+                curl_close($curl);
+                $wa_id=json_decode($response);
+                
+                $media=mediaSuratPersetujuan::create([
+                    'surat_persetujuan_id'=>$suratPersetujuan->id,
+                    'file'=>$path,
+                    'Wa_id'=>$wa_id->id
+                ]);
                 
                 if ($request->kirimNotifikasi) {
-                    $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;//masukkan nomor tujuan
-                    $message="Persetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman";
-                    // $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                    // $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;//masukkan nomor tujuan
-                    // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. ",\nPersetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat. " telah Terbit silakan berkoordinasi dengan PIC Satuan Kerja Anda untuk dilakukan Penggambilan/Pengiriman. \nTerima Kasih. \nApabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut <a>https://linktr.ee/ternate.responsif</a> ");//masukkan isi pesan
-                        
-                    // return nl2br(
-                    //     "Nomor Tujuan: ". $toOperator. "\n". 
-                    //     "Pesan: ".$messageOperator. "\n"
-                        
-                    //     // "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    //     // "Pesan: ".$messageKaSatker
-                    // );
-                    // Send_SMS($to,$message);
-                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
+                    sendDocument($toOperator, "Surat Persetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat, $media->Wa_id, config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 }
                 return redirect('/persetujuan');
             }else{
