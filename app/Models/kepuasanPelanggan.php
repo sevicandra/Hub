@@ -19,4 +19,15 @@ class kepuasanPelanggan extends Model
         'assurance',
         'empathy',
     ];
+
+    public function scopeFilter($data)
+    {
+        if (request('start') && request('end')) {
+            if (request('start')) {
+                return $data->where('created_at', '>=', date_create(request('start')))->where('created_at', '<=', date('Y-m-d', strtotime(request('end'). ' + 1 days')));
+            }else{
+                return $data->where('created_at', '>=', date_create(request('start')))->where('created_at', '<=', date_create(request('end')));
+            }
+        }
+    }
 }

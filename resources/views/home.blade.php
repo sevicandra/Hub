@@ -12,9 +12,9 @@
         <div class="row" style="max-height: 55%;height: 55%; margin-bottom:0.5vh">
             {{-- Kepuasan Pengguna Layanan --}}
             <div class="col-sm-4" style="padding-right:5px; max-height: 100%; height: 100%">
-                <div style="background-color: #FBF8F1; border-radius: 10px; height:100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
+                <div style="background-color: #FBF8F1; border-radius: 10px; height:100%">
                     <div style="height: 10%; text-align: center">
-                        <h6><b>KEPUASAN PENGGUNA LAYANAN</b></h6>
+                        <h6><b><a style="text-decoration: none; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'" href="/survei/monitoring">KEPUASAN PENGGUNA LAYANAN</a></b></h6>
                     </div>
                     <div style="height:80%">
                         <div class="chart-container" style="height: 100%">

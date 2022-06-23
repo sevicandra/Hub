@@ -45,9 +45,9 @@ use App\Http\Controllers\PemberitahuanPenilaianController;
 use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
 use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
-use App\Http\Controllers\MediaSuratPersetujuanController;
 use App\Http\Controllers\ReminderController;
-use App\Models\User;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -161,7 +161,7 @@ Route::resource('/permohonan_lelang', PermohonanLelangController::class)->middle
 
 Route::resource('/satker', satker::class)->middleware('verified');
 
-Route::resource('/survey', KepuasanPelangganController::class);
+Route::resource('/survey', KepuasanPelangganController::class)->except(['create']);;
 
 // Permohonan Verifikasi Email
 Route::get('/email/verify', function () {
@@ -310,3 +310,5 @@ Route::controller(ReminderController::class)->group(function(){
     Route::post('reminder', 'create')->middleware('verified');
     Route::delete('reminder/{reminder}', 'delete')->middleware('verified');
 });
+
+Route::get('survei/monitoring', [KepuasanPelangganController::class, 'create'])->middleware('verified');

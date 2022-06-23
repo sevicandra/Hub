@@ -29,7 +29,6 @@
                                     @foreach ($item->user as $team)
                                         <li>{{ $team->nama }}</li>
                                     @endforeach
-                                    {{-- <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->nomor }}{{ $item->kode }}</p>  --}}
                                 </div>
                                 <div class="position-relative" style="width: 15%; min-height:fit-content">
                                     <p style="width: 100%" class="position-relative top-50 start-50 translate-middle">{{ $item->pemilik }}</p> 

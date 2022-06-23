@@ -29,7 +29,9 @@ class KepuasanPelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('survei.index',[
+            'data'=>kepuasanPelanggan::orderBy('created_at', 'desc')->Filter()->paginate(20)->withQueryString(),
+        ]);
     }
 
     /**
