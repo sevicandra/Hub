@@ -413,7 +413,7 @@
                         href="https://linktr.ee/ternate.responsif"
                         target="_blank">
                         <div class="d-flex justify-content-evenly">
-                            <img src="" alt="" width="64px" height="64px">
+                            <img src="/img/ico/ternate reponsif.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
                             TERNATE RESPONSIF
