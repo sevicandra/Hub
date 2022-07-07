@@ -55,12 +55,12 @@ class reminder extends Model
 
     public function scopeReminder($data)
     {
-        return $data->where(function($val){
+        return $data->wherehas('tujuan', function($val){
+            $val->where('user_id', auth()->user()->id);
+        })->where(function($val){
             $val->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>' ,Carbon::now()->isoFormat('HH:mm:ss'));
         })->orwhere(function($val){
             $val->where('tanggal', '>', Carbon::now()->isoFormat('YYYY-MM-DD'));
-        })->wherehas('tujuan', function($val){
-            $val->where('user_id', auth()->user()->id);
         });
     }
 }
