@@ -28,6 +28,7 @@
                         <i onclick="preview('{{ $data->id }}')" class="bi bi-eye-fill" style="cursor: pointer"></i>
                     </div>
                     <div style=" margin: 0 5px; ">
+                        @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12')
                         <form action="/status-penggunaan/{{ $data->id }}" method="post">
                             @csrf
                             @method('DELETE')
@@ -35,6 +36,7 @@
                                 <i class="bi bi-trash3"></i>
                             </button>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -47,7 +49,9 @@
                 {{ $datas->links() }}
             </div>
             <div>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#input">Input PSP</button>
+                @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12')
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#input">Input PSP</button>
+                @endif
             </div>
         </div>
     </div>
@@ -55,7 +59,7 @@
 @endsection
 
 @section('modals')
-
+@if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '03' || auth()->user()->jabatan === '12')
 <div class="modal fade" id="input" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -115,6 +119,7 @@
         </div>
     </div>
 </div>
+@endif
 
 
 <div class="modal fade" id="preview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
