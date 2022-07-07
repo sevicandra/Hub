@@ -79,7 +79,7 @@ class ReminderController extends Controller
     public function reminder()
     {
         return view('reminder.home',[
-            'reminder'=>reminder::where('user_id', auth()->user()->id)->orderby('tanggal')->orderby('waktu')->Reminder()->paginate(20),
+            'reminder'=>reminder::orderby('tanggal')->orderby('waktu')->Reminder()->paginate(20),
             'tujuan'=>User::where('email_verified_at', '!=', null)->get(),
             'home'=>'',
             'favicon'=>'/img/ico/reminder.png'
