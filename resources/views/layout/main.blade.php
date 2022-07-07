@@ -224,6 +224,19 @@
                 </div>
                 {{-- Akhir Pindai --}}
 
+                {{-- PSP --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none" href="/status-penggunaan" target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/PSP.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            PSP
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir PSP --}}
+
                 {{-- Praktis --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/praktis" target="_blank">

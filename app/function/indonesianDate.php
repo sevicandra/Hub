@@ -128,4 +128,10 @@ function indonesiaDateWords($val){
     $tgl = date_format($date, "d");
     return numberTowords($tgl);
 }
+
+function year($val){
+    $date = date_create($val);
+    $tahun = date_format($date, "Y");
+    return $tahun;
+}
 ?>

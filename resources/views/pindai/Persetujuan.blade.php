@@ -162,7 +162,6 @@
         </div>
     </div>
 </div>
-</div>
 {{-- Akhir Surat Persetujuan --}}
 @endsection
 

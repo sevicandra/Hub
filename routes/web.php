@@ -46,8 +46,7 @@ use App\Http\Controllers\LaporanPelaksanaanTugasController;
 use App\Http\Controllers\RekapitulasiBestEmployeeController;
 use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
 use App\Http\Controllers\ReminderController;
-
-
+use App\Http\Controllers\StatusPenggunaanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -312,3 +311,5 @@ Route::controller(ReminderController::class)->group(function(){
 });
 
 Route::get('survei/monitoring', [KepuasanPelangganController::class, 'create'])->middleware('verified');
+
+Route::resource('/status-penggunaan', StatusPenggunaanController::class)->middleware('verified');
