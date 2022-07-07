@@ -74,8 +74,13 @@
                         <div class="row">
                             <label for="nomor" class="col-sm-4 col-form-label">Nomor </label>
                             <div class="col-sm-8">
-                                <input name="nomor" class="form-control" type="number" required>
+                                <input name="nomor" class="form-control" type="number" required value="{{ old('nomor') }}">
                             </div>
+                            @error('nomor')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                         <div class="row">
                             <label for="hal" class="col-sm-4 col-form-label">Kode Surat</label>
@@ -85,24 +90,44 @@
                                     <option value="/MK.6//WKN.16/KNL.04/">/MK.6/WKN.16/KNL.04/</option>
                                 </select>
                             </div>
+                            @error('kodeSurat')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                         <div class="row">
                             <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
                             <div class="col-sm-8">
-                                <input name="tanggal" type="date" class="form-control" required>
+                                <input name="tanggal" type="date" class="form-control" required value="{{ old('tanggal') }}">
                             </div>
+                            @error('tanggal')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                         <div class="row">
                             <label for="tanggal" class="col-sm-4 col-form-label">Kode Satker</label>
                             <div class="col-sm-8">
-                                <input name="kodeSatker" type="text" class="form-control" required>
+                                <input name="kodeSatker" type="text" class="form-control" required value="{{ old('kodeSatker') }}">
                             </div>
+                            @error('kodeSatker')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                         <div class="row">
                             <label for="fileUpload" class="col-sm-4 col-form-label">file</label>
                             <div class="col-sm-8">
-                                <input name="fileUpload" type="file" class="form-control" required>
+                                <input name="fileUpload" type="file" class="form-control" required value="{{ old('fileUpload') }}">
                             </div>
+                            @error('fileUpload')
+                            <div class="text-danger mt-1">
+                                {{$message}}
+                            </div>
+                            @enderror
                         </div>
                         <div class="input-group mb-3">
                             <label class="col-sm-4" aria-label="Text with checkbox">Kirim Notifikasi?</label>
@@ -140,5 +165,14 @@
 
 @section('foot')
 <script src="js/status-penggunaan/index.js"></script>
+
+@if ($errors->any())
+    <script>
+        var myModal = new bootstrap.Modal(document.getElementById('input'), {
+            keyboard: false
+        })
+        myModal.show()
+    </script>
+@endif
 
 @endsection
