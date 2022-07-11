@@ -41,7 +41,7 @@ function sendDocument($to, $namaDokumen, $idDokumen, $APIKey, $phoneNumber){
         )
     );
     
-    $postData = array("messaging_product" => "whatsapp", "to"=>6281299084970, "type"=>"template", "template"=>$text);
+    $postData = array("messaging_product" => "whatsapp", "to"=>$to, "type"=>"template", "template"=>$text);
     $postDataJson = json_encode($postData);
     
     $ch = curl_init();
