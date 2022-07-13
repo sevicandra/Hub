@@ -313,3 +313,5 @@ Route::controller(ReminderController::class)->group(function(){
 Route::get('survei/monitoring', [KepuasanPelangganController::class, 'create'])->middleware('verified');
 
 Route::resource('/status-penggunaan', StatusPenggunaanController::class)->middleware('verified');
+
+Route::get('surat-persetujuan/preview/{preview}',[SuratPersetujuanController::class, 'preview'])->middleware('verified');

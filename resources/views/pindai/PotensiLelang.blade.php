@@ -40,6 +40,9 @@
                                             <form class="d-inline" action="potensi_lelang/{{$item->id}}" method="get">
                                                 <button type="submit" class="btn " style="color: green"><i class="bi bi-plus-square"></i></button>
                                             </form>
+                                            @if (isset($item->media))
+                                                <button class="btn" onclick="preview('{{ $item->id }}')"><i class="bi bi-eye-fill"></i></button>
+                                            @endif
                                         </td>
                                     </tr>
                                 <?php $i++ ?>
@@ -54,8 +57,29 @@
 
 @endsection
 
+
+@section('modalpindai')
+{{-- Modals Preview --}}
+<div class="modal fade" id="preview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" id="previewHeader">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="height: 80vh" id="previewFrame">
+
+        </div>
+      </div>
+    </div>
+</div>
+{{-- Akhir Modals Preview --}}
+@endsection
+
+
+
 @section('footpindai')
 
     <script src="/js/pindai/nomorTiket.js"></script>
-
+    <script src="/js/pindai/potensiLelang.js"></script>
 @endsection

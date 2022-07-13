@@ -144,6 +144,12 @@ class SuratPersetujuanController extends Controller
         }
     }
 
+
+    public function preview(suratPersetujuan $preview)
+    {
+        return json_encode($preview->media);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
