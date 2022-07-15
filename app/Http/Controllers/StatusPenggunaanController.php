@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\satuanKerja;
 use Illuminate\Http\Request;
 use App\Models\statusPenggunaan;
+use App\Models\whatsappReport;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
@@ -91,7 +92,12 @@ class StatusPenggunaanController extends Controller
                 
             if ($request->kirimNotifikasi) {
                 $toOperator=$statusPenggunaan->satuanKerja->profil->noTeleponOperator;
-                sendDocument($toOperator, "Penetapan Status Penggunaan BMN pada Satuan Kerja ".$statusPenggunaan->satuanKerja->namaSatker, $statusPenggunaan->Wa_id, config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                $waReport=sendDocument($toOperator, "Penetapan Status Penggunaan BMN pada Satuan Kerja ".$statusPenggunaan->satuanKerja->namaSatker, $statusPenggunaan->Wa_id, config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                whatsappReport::create([
+                    'parent_id'=>$statusPenggunaan->id,
+                    'report'=>$waReport,
+                    'parent_type'=>'App\Models\statusPenggunaan'
+                ]);
             }
             return Redirect::back();
         }else{

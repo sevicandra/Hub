@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\tiket;
 use App\Models\permohonan;
 use Illuminate\Http\Request;
+use App\Models\whatsappReport;
 use App\Models\permohonanPenilaian;
-use App\Models\User;
 
 class PermohonanPenilaianController extends Controller
 {
@@ -59,28 +60,21 @@ class PermohonanPenilaianController extends Controller
                         'permohonan_id'=>'required',
                         'hal'=>'required'
                     ]);
-                permohonanPenilaian::create($ValidatedData);
+                $permohonanPenilaian=permohonanPenilaian::create($ValidatedData);
                 $data = permohonan::all()->find($request->permohonan_id)->tiket_id;
                 tiket::where('id', $data)->update(['permohonan'=>0,'penilaian'=>1]);
-                
-                // $toKaSatker=$tiket->permohonans->satuanKerja->profil->noTeleponKepalaSatker;
-                // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                
+                                
                 if ($request->kirimNotifikasi) {
                     $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
                     $message="Permohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian";
-                    // $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $tiket->permohonans->satuanKerja->namaSatker. "\nPermohonan Persetujuan Penjualan Anda Nomor ". $tiket->permohonans->nomorSurat. " telah dinyatakan Lengkap mohon menunggu untuk penetapan jadwal penilaian \n Terima Kasih \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
-                    // return nl2br(
-                    //     "Nomor Tujuan: ". $toOperator. "\n". 
-                    //     "Pesan: ".$messageOperator. "\n"
-                        
-                    //     // "Nomor Tujuan: ". $toKaSatker. "\n". 
-                    //     // "Pesan: ".$messageKaSatker
-                    // );
-                    // Send_SMS($to,$message);
-                    notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
-                    // return nl2br($tiket->permohonans->satuanKerja->namaSatker. "/n". $message. "/n". $toOperator);
+                    $waReport=notifikasiLayanan($tiket->permohonans->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    whatsappReport::create([
+                        'parent_id'=>$permohonanPenilaian->id,
+                        'report'=>$waReport,
+                        'parent_type'=>'App\Models\permohonanPenilaian'
+                    ]);
                 }
+
                 $to=User::where('jabatan', '09')->orwhere('jabatan', '10')->get();
                 notifikasiPermohonanInternal($to, auth()->user()->nama, "Permohonan Penilaian BMN pada Satuan Kerja ".$tiket->permohonans->satuanKerja->namaSatker." telah dikirim melalui KPKNL TERNATE-HUB",config('whatsapp.key'),config('whatsapp.phoneNumber'));
                 return redirect('/permohonan');     

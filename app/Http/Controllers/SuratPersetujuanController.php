@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tiket;
 use Illuminate\Http\Request;
+use App\Models\whatsappReport;
 use App\Models\suratPersetujuan;
 use App\Models\penyampaianLaporan;
 use App\Models\mediaSuratPersetujuan;
@@ -114,7 +115,12 @@ class SuratPersetujuanController extends Controller
                 
                 if ($request->kirimNotifikasi) {
                     $toOperator=$tiket->permohonans->satuanKerja->profil->noTeleponOperator;
-                    sendDocument($toOperator, "Surat Persetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat, $media->Wa_id, config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    $waReport=sendDocument($toOperator, "Surat Persetujuan Penghapusan BMN atas permohonan Anda Nomor: ". $tiket->permohonans->nomorSurat, $media->Wa_id, config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    whatsappReport::create([
+                        'parent_id'=>$suratPersetujuan->id,
+                        'report'=>$waReport,
+                        'parent_type'=>'App\Models\suratPersetujuan'
+                    ]);
                 }
                 return redirect('/persetujuan');
             }else{

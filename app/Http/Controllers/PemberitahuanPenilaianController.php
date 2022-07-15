@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\permohonanPenilaian;
 use Illuminate\Http\Request;
+use App\Models\whatsappReport;
+use App\Models\permohonanPenilaian;
 use App\Models\pemberitahuanPenilaian;
 
 
@@ -158,7 +159,12 @@ class PemberitahuanPenilaianController extends Controller
                 if ($request->kirimNotifikasi) {
                     $toOperator = $pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator; //masukkan nomor tujuan
                     $message="Kami telah menjadwalkan survei lapangan penilaian atas permohonan penghapusan BMN nomor " . $pemberitahuanPenilaian->permohonanPenilaian->permohonan->nomorSurat . "  pada tanggal " . $tanggalsurvei;
-                    notifikasiLayanan($pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    $waReport=notifikasiLayanan($pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                    whatsappReport::create([
+                        'parent_id'=>$pemberitahuanPenilaian->id,
+                        'report'=>$waReport,
+                        'parent_type'=>'App\Models\pemberitahuanPenilaian'
+                    ]);
                 }
     
                 return redirect('/penilaian');

@@ -47,6 +47,7 @@ use App\Http\Controllers\RekapitulasiBestEmployeeController;
 use App\Http\Controllers\BeritaAcaraSurveiLapanganPenilaianController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\StatusPenggunaanController;
+use App\Http\Controllers\WhatsappReportController;
 
 /*
 |--------------------------------------------------------------------------

@@ -28,9 +28,10 @@ function notifikasiLayanan($agenda,$Pesan,$to,$APIKey,$phoneNumber){
         
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            echo 'Error:' . curl_error($ch);
+            'Error:' . curl_error($ch);
         }
     
     curl_close($ch);
+    return $result;
 }
 ?>

@@ -60,4 +60,5 @@ function sendDocument($to, $namaDokumen, $idDokumen, $APIKey, $phoneNumber){
         }
         
     curl_close($ch);
+    return $result;
 }

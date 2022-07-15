@@ -93,6 +93,8 @@
                             <option value="Penata Muda / III.a">Penata Muda / III.a</option>
                             <option value="Pengatur Tk.I / II.d">Pengatur Tk.I / II.d</option>
                             <option value="Pengatur / II.c">Pengatur / II.c</option>
+                            <option value="Pengatur Muda Tk. I/ II.b">Pengatur Muda Tk. I/ II.b</option>
+                            <option value="Pengatur Muda/ II.a">Pengatur Muda/ II.a</option>
                         </select>
                         @error('pangkatGolongan')
                             <div class="text-danger mt-1">

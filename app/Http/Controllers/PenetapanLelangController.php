@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\whatsappReport;
 use App\Models\penetapanLelang;
 use App\Models\permohonanLelang;
 use Illuminate\Support\Facades\Redirect;
@@ -63,16 +64,13 @@ class PenetapanLelangController extends Controller
                         $toOperator=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->profil->noTeleponOperator;
                         $messageOperator=nl2br("Yang terhormat Bapak/Ibu Operator Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
                         $message="Permohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang);
-                        // $toKaSatker=$penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->noTeleponKepalaSatker;
-                        // $messageKaSatker=nl2br("Yang terhormat Bapak/Ibu Kepala Satuan Kerja ". $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan   
-                        // return nl2br(
-                        //     "Nomor Tujuan: ". $toOperator. "\n". 
-                        //     "Pesan: ".$messageOperator. "\n"
-                            
-                        //     // "Nomor Tujuan: ". $toKaSatker. "\n". 
-                        //     // "Pesan: ".$messageKaSatker
-                        // );
-                        notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                        $waReport=notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                        whatsappReport::create([
+                            'parent_id'=>$penetapanLelang->id,
+                            'report'=>$waReport,
+                            'parent_type'=>'App\Models\penetapanLelang'
+                        ]);
+                    
                     }elseif($data->jenis === 'App\Models\tiket'){
                         $toOperator=$data->pemohonLelang->kontakPemohon;
                         $messageOperator=nl2br("Yang terhormat Bapak/Ibu PIC ". $data->pemohonLelang->pemohon. "\nPermohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang). "  \n Apabila Bapak/Ibu ingin berkonsultasi silahkan klik tautan berikut https://linktr.ee/ternate.responsif");//masukkan isi pesan
@@ -81,9 +79,13 @@ class PenetapanLelangController extends Controller
                             "Pesan: ".$messageOperator. "\n"
                         );
                         $message="Permohonan Lelang Anda Nomor ". $data->nomorSurat. " telah ditetapkan pada tanggal ". indonesiaDate($penetapanLelang->tanggalLelang);
-                        notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                        $waReport=notifikasiLayanan($penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker, $message, $toOperator,config('whatsapp.key'),config('whatsapp.phoneNumber'));
+                        whatsappReport::create([
+                            'parent_id'=>$penetapanLelang->id,
+                            'report'=>$waReport,
+                            'parent_type'=>'App\Models\penetapanLelang'
+                        ]);
                     }
-                    // Send_SMS($to,$message);
                 }
     
                 return redirect::back();
