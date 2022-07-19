@@ -52,7 +52,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row " style="margin: 10px 0 0 0;">
+            <div class="row position-relative" style="margin: 10px 0 0 0; height: 40px; width: 100%">
+                <div class="position-absolute top-50 start-0 translate-middle-y" style="; width:fit-content">
+                    {{ $data->links() }}
+                </div>
             </div>
 
 @endsection
