@@ -561,6 +561,13 @@ $('#kepuasanTusi').change(function(){
     })
 })
 
+Number.prototype.format = function(n, x, s, c) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+        num = this.toFixed(Math.max(0, ~~n));
+
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+};
+  
 // Table NKO
 function praktis(tahun) {
     $.ajax({
@@ -577,9 +584,9 @@ function praktis(tahun) {
                 
                 $('#capaianKinerja').append(`
                 <div class="row">
-                <div style="width: 55%">`+response.namaIKU[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.capaian[index].toFixed(2)+`</div>
+                <div style="width: 45%">`+response.namaIKU[index]+`</div>
+                <div style="width: 20%; text-align:center  ">`+response.target[index].format(2, 3, '.', ',')+`</div>
+                <div style="width: 20%; text-align:center  ">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)
@@ -701,9 +708,9 @@ function praktisTW(params) {
                 
                 $('#capaianKinerja').append(`
                 <div class="row">
-                <div style="width: 55%">`+response.namaIKU[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.target[index]+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.capaian[index].toFixed(2)+`</div>
+                <div style="width: 45%">`+response.namaIKU[index]+`</div>
+                <div style="width: 20%; text-align:center  ">`+response.target[index].format(2, 3, '.', ',')+`</div>
+                <div style="width: 20%; text-align:center  ">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
                 <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)

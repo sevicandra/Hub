@@ -59,9 +59,9 @@
                         </select>
                     </div>
                     <div class="row" style="height: 5%;padding: 0 5px">
-                        <div style="width: 55%">Nama IKU</div>
-                        <div style="width: 15%; text-align:center">Target</div>
-                        <div style="width: 15%; text-align:center">Capaian</div>
+                        <div style="width: 45%">Nama IKU</div>
+                        <div style="width: 20%; text-align:center">Target</div>
+                        <div style="width: 20%; text-align:center">Capaian</div>
                         <div style="width: 15%; text-align:center">Realisasi</div>
                         <hr style="margin: 0; padding:0">
                     </div>

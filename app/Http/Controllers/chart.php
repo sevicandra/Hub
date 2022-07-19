@@ -17,16 +17,28 @@ class chart extends Controller
                 $namaIKU[]=$data->namaIKU;
                 if ($data->capaianlast) {
                     if($data->konsolidasi === 'TLK'){
-                        $capaian[]=floatval($data->capaianlast->capaian);
+                        if ($data->capaianlast->raw != null) {
+                            $capaian[]=floatval($data->capaianlast->raw);
+                        }else{
+                            $capaian[]=floatval($data->capaianlast->capaian);
+                        }
                     }elseif($data->konsolidasi === 'AVG'){
-                        $capaian[]=$data->capaian->avg('capaian');
+                        if ($data->capaianlast->raw != null) {
+                            $capaian[]=floatval($data->capaian->avg('raw'));
+                        }else{
+                            $capaian[]=floatval($data->capaian->avg('capaian'));
+                        }
                     }
                 }else{
                     $capaian[]=0;
                 }
     
                 if ($data->targetlast) {
-                    $target[]=$data->targetlast->target;
+                    if ($data->targetlast->raw != null) {
+                        $target[]=floatval($data->targetlast->raw);
+                    }else{
+                        $target[]=floatval($data->targetlast->target);
+                    }
                     if ($data->polarisasi === 'MAX') {
                         if (($capaian[$i]/$target[$i]) > 1.2) {
                             $realisasi[]=120;
@@ -75,13 +87,21 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 3)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 3)->max('bulan');
-                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    if ($data->capaian->where('bulan', $bulan)->max()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->raw);
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 3)->first()) {
-                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 3)->avg('capaian'));
+                                    if ($data->capaian->where('bulan', '<=', 3)->first()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 3)->avg('raw'));
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 3)->avg('capaian'));    
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -91,13 +111,21 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 6)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 6)->max('bulan');
-                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    if ($data->capaian->where('bulan', $bulan)->max()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->raw);
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 6)->first()) {
-                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 6)->avg('capaian'));
+                                    if ($data->capaian->where('bulan', '<=', 6)->first()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 6)->avg('raw'));
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 6)->avg('capaian'));    
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -107,13 +135,21 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 9)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 9)->max('bulan');
-                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    if ($data->capaian->where('bulan', $bulan)->max()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->raw);
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 9)->first()) {
-                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 9)->avg('capaian'));
+                                    if ($data->capaian->where('bulan', '<=', 9)->first()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 9)->avg('raw'));
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 9)->avg('capaian'));    
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -123,13 +159,21 @@ class chart extends Controller
                             if ($data->konsolidasi === 'TLK') {
                                 if ($data->capaian->where('bulan', '<=', 12)->first()) {
                                     $bulan=$data->capaian->where('bulan', '<=', 12)->max('bulan');
-                                    $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    if ($data->capaian->where('bulan', $bulan)->max()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->raw);
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', $bulan)->max()->capaian);
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
                             }elseif($data->konsolidasi === 'AVG'){
                                 if ($data->capaian->where('bulan', '<=', 12)->first()) {
-                                    $capaian[]= floatval($data->capaian->where('bulan', '<=', 12)->avg('capaian'));
+                                    if ($data->capaian->where('bulan', '<=', 12)->first()->raw != null) {
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 12)->avg('raw'));
+                                    }else{
+                                        $capaian[]= floatval($data->capaian->where('bulan', '<=', 12)->avg('capaian'));    
+                                    }
                                 }else{
                                     $capaian[]=0;
                                 }
@@ -145,46 +189,110 @@ class chart extends Controller
                     switch ($request->triwulan) {
                         case 'Q1':
                             if ($data->target->where('periode','Q1')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                if ($data->target->where('periode','Q1')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q2')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                if ($data->target->where('periode','Q2')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q3')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                if ($data->target->where('periode','Q3')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q4')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                if ($data->target->where('periode','Q4')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                }
                             }
                             break;
                         case 'Q2':
                             if($data->target->where('periode','Q2')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                if ($data->target->where('periode','Q2')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q3')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                if ($data->target->where('periode','Q3')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q4')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                if ($data->target->where('periode','Q4')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q1')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                if ($data->target->where('periode','Q1')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                }
                             }
                             break;
                         case 'Q3':
                             if($data->target->where('periode','Q3')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                if ($data->target->where('periode','Q3')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q4')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                if ($data->target->where('periode','Q4')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q2')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                if ($data->target->where('periode','Q2')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q1')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                if ($data->target->where('periode','Q1')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                }
                             }
                             break;
                         case 'Q4':
                             if($data->target->where('periode','Q4')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                if ($data->target->where('periode','Q4')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q4')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q3')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                if ($data->target->where('periode','Q3')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q3')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q2')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                if ($data->target->where('periode','Q2')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q2')->first()->target);
+                                }
                             }elseif($data->target->where('periode','Q1')->first()) {
-                                $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                if ($data->target->where('periode','Q1')->first()->raw !=null) {
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->raw);
+                                }else{
+                                    $target[]= floatval($data->target->where('periode','Q1')->first()->target);
+                                }
                             }
                             break;
                     }
