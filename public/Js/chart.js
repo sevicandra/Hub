@@ -582,12 +582,20 @@ function praktis(tahun) {
             $('#capaianKinerja').empty()
             for (let index = 0; index < response.namaIKU.length; index++) {
                 
+                if (response.realisasi[index] < 80) {
+                    var background = "#FF9E9E"
+                }else if(response.realisasi[index] < 100) {
+                    var background = "#FFF48B"
+                }else{
+                    var background = "#90FF96"
+                }
+
                 $('#capaianKinerja').append(`
-                <div class="row">
-                <div style="width: 45%">`+response.namaIKU[index]+`</div>
-                <div style="width: 20%; text-align:center  ">`+response.target[index].format(2, 3, '.', ',')+`</div>
-                <div style="width: 20%; text-align:center  ">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
+                <div class="row" style="background-color:`+background+`; margin-bottom:2px; color:#7A7A7A">
+                    <div style="width: 45%; align-self: center">`+response.namaIKU[index]+`</div>
+                    <div style="width: 20%; text-align:center; align-self: center">`+response.target[index].format(2, 3, '.', ',')+`</div>
+                    <div style="width: 20%; text-align:center; align-self: center">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
+                    <div style="width: 15%; text-align:center; align-self: center">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)
             }
@@ -705,13 +713,20 @@ function praktisTW(params) {
             
             $('#capaianKinerja').empty()
             for (let index = 0; index < response.namaIKU.length; index++) {
+                if (response.realisasi[index] < 80) {
+                    var background = "#FF9E9E"
+                }else if(response.realisasi[index] < 100) {
+                    var background = "#FFF48B"
+                }else{
+                    var background = "#90FF96"
+                }
                 
                 $('#capaianKinerja').append(`
-                <div class="row">
-                <div style="width: 45%">`+response.namaIKU[index]+`</div>
-                <div style="width: 20%; text-align:center  ">`+response.target[index].format(2, 3, '.', ',')+`</div>
-                <div style="width: 20%; text-align:center  ">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
-                <div style="width: 15%; text-align:center  ">`+response.realisasi[index].toFixed(2)+`%</div>
+                <div class="row" style="background-color:`+background+`; margin-bottom:2px; color:#7A7A7A">
+                    <div style="width: 45%; align-self: center">`+response.namaIKU[index]+`</div>
+                    <div style="width: 20%; text-align:center; align-self: center">`+response.target[index].format(2, 3, '.', ',')+`</div>
+                    <div style="width: 20%; text-align:center; align-self: center">`+response.capaian[index].format(2, 3, '.', ',')+`</div>
+                    <div style="width: 15%; text-align:center; align-self: center">`+response.realisasi[index].toFixed(2)+`%</div>
                 </div>
                 `)
             }

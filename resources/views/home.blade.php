@@ -44,8 +44,7 @@
             {{-- Akhir Kepuasan Pengguna Layanan --}}
             {{-- Capaian Kinerja Organisasi --}}
             <div class="col-sm-8" style="padding-left:5px; max-height: 100%; height: 100%">
-                <div
-                    style="background-color: #FBF8F1; border-radius: 10px; height: 100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'">
+                <div style="background-color: #FBF8F1; border-radius: 10px; height: 100%; font-size:1vw; color: #7A7A7A; font-family:'TW CENT MT'; overflow:hidden">
                     <div style="height: 10%; text-align: center">
                         <h6><b>CAPAIAN KINERJA KPKNL TERNATE TAHUN {{ session()->get('tahun') }}</b></h6>
                     </div>
@@ -58,7 +57,7 @@
                             <option style="background-color: #FBF8F1;" value="Q4" selected>Q4</option>
                         </select>
                     </div>
-                    <div class="row" style="height: 5%;padding: 0 5px">
+                    <div style="height: 5%;padding: 0 5px; display:flex">
                         <div style="width: 45%">Nama IKU</div>
                         <div style="width: 20%; text-align:center">Target</div>
                         <div style="width: 20%; text-align:center">Capaian</div>
