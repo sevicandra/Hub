@@ -1179,8 +1179,9 @@
             <div class="modal-body" style="height: 90%">
                 <div style="height: 100%; display:flex; flex-direction: column; overflow-x:hidden; font-family:'TW CENT MT'">
                     <div class="row sticky-top" style="border: 1px solid; background-color:white">
-                        <div style="width: 40%; align-self: center">Nomor Surat Persetujuan</div>
-                        <div style="width: 60%; display:flex; flex-direction: column; align-self: center">
+                        <div style="width: 30%; align-self: center">Nomor Surat Persetujuan</div>
+                        <div style="width: 30%; align-self: center">Satuan Kerja</div>
+                        <div style="width: 40%; display:flex; flex-direction: column; align-self: center">
                             <div style="display: flex">
                                 <div style="margin:1px; width:35%">Nama Barang</div>
                                 <div style="margin:1px; width:35%">Merk/Type</div>
@@ -1190,14 +1191,17 @@
                     </div>
                     @foreach ($persetujuan as $item)
                     <div class="row" style="border-bottom: 1px solid ;margin-bottom: 5px">
-                        <div style="width: 40%; align-self: center">{{ $item->nomorSurat }}</div>
-                        <div style="width: 60%; display:flex; flex-direction: column; align-self: center">
+                        <div style="width: 30%; align-self: center">{{ $item->nomorSurat }}</div>
+                        <div style="width: 30%; align-self: center">{{ $item->penyampaianLaporan->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker }}</div>
+                        <div style="width: 40%; display:flex; flex-direction: column; align-self: center">
                             @foreach ($item->penyampaianLaporan->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang as $barang)
+                                @if ($barang->status != 2)
                                 <div style="display: flex; border-bottom: 1px solid; margin-bottom:2px">
                                     <div style="margin:1px; width:35%; align-self: center">{{ $barang->kodeBarangs->namaBarang }}</div>
                                     <div style="margin:1px; width:35%; align-self: center">{{ $barang->merkType }}</div>
                                     <div style="margin:1px; width:30%; align-self: center"> Rp{{ number_format($barang->nilaiLimit, 2, ',', '.') }} </div>
                                 </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
