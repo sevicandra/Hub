@@ -18,10 +18,10 @@
                                 <?php $i=1 ?>
                                 @foreach ($data as $item)
                                     <tr onclick="nomorTiket('{{$item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->tiket}}','{{$item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->id}}')" @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->tiket->persetujuan === 0)  
-                                            @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2)
-                                                style="background-color:yellow"
-                                            @elseif($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')===2)
+                                            @if ($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')===2 || date('Y-m-d', strtotime($item->tanggalSurat. ' + 6     months')) <  date('Y-m-d'))
                                                 style="background-color:green; color:white"
+                                            @elseif($item->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2)
+                                                style="background-color:yellow"
                                             @endif
                                         @endif>
                                         <td>{{$i}}</td>

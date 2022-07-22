@@ -63,8 +63,10 @@ class loginController extends Controller
         $limit=[];
         foreach (suratPersetujuan::all() as $key ) {
             if ($key->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->avg('status')<2){
-                $persetujuan[]=$key;
-                $limit[]=$key->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->where('status', '<', 2)->sum('nilaiLimit');
+                if (date('Y-m-d', strtotime($key->tanggalSurat. ' + 6     months')) >  date('Y-m-d')) {
+                    $persetujuan[]=$key;
+                    $limit[]=$key->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang->where('status', '<', 2)->sum('nilaiLimit');
+                }
             }
         }
         // return $limit;
