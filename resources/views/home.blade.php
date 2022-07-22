@@ -262,7 +262,7 @@
             </div>
             {{-- Akhir PNBP --}}
             {{-- Potensi Lelang BMN --}}
-            <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%">
+            <div class="col-sm-4" style="; padding-left: 5px; max-height: 100%; height:100%; cursor:pointer" data-bs-toggle="modal" data-bs-target="#potensiLelang">
                 <div style="height: 100%;  border-radius: 10px">
                     <div style="height: 15%;margin: 0px" class="row position-relative">
                         <div class="col-sm-12 position-absolute top-0 start-0"
@@ -1163,6 +1163,55 @@
     </div>
 </div>
 {{-- Akhir Modals Update Agenda --}}
+
+{{-- Modals Potensi Lelang --}}
+<div style="height: 100vh" class="modal fade bd-example-modal-xl" id="potensiLelang" data-bs-backdrop="static"
+    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div style="height: 90%" class="modal-dialog modal-xl">
+        <div class="modal-content " style="border-radius: 30px 30px 30px 30px; border:none; height:100%">
+            <div class="modal-header"
+                style="background: linear-gradient(270.44deg, #4D59CA 0%, #696486 66.03%, #585881 100%); border-radius: 20px 20px 0 0; height:5%">
+                <p style="color:#ffff;font-size:1.5vw; margin:0;line-height: normal">
+                    Potensi Lelang
+                </p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: 90%">
+                <div style="height: 100%; display:flex; flex-direction: column; overflow-x:hidden; font-family:'TW CENT MT'">
+                    <div class="row sticky-top" style="border: 1px solid; background-color:white">
+                        <div style="width: 40%; align-self: center">Nomor Surat Persetujuan</div>
+                        <div style="width: 60%; display:flex; flex-direction: column; align-self: center">
+                            <div style="display: flex">
+                                <div style="margin:1px; width:35%">Nama Barang</div>
+                                <div style="margin:1px; width:35%">Merk/Type</div>
+                                <div style="margin:1px; width:30%">Nilai Limit</div>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach ($persetujuan as $item)
+                    <div class="row" style="border-bottom: 1px solid ;margin-bottom: 5px">
+                        <div style="width: 40%; align-self: center">{{ $item->nomorSurat }}</div>
+                        <div style="width: 60%; display:flex; flex-direction: column; align-self: center">
+                            @foreach ($item->penyampaianLaporan->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->barang as $barang)
+                                <div style="display: flex; border-bottom: 1px solid; margin-bottom:2px">
+                                    <div style="margin:1px; width:35%; align-self: center">{{ $barang->kodeBarangs->namaBarang }}</div>
+                                    <div style="margin:1px; width:35%; align-self: center">{{ $barang->merkType }}</div>
+                                    <div style="margin:1px; width:30%; align-self: center"> Rp{{ number_format($barang->nilaiLimit, 2, ',', '.') }} </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="modal-header"
+                style="background: linear-gradient(270.44deg, #4D59CA 0%, #696486 66.03%, #585881 100%); border-radius: 0 0 20px 20px; height:5%; border:none">
+
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Akhir Modals Potensi Lelang --}}
 
 
 
