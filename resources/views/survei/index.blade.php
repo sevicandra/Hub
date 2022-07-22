@@ -45,6 +45,9 @@
                                 @case('PEN')
                                     Penilaian
                                     @break
+                                @case('PPN')
+                                    Piutang Negara
+                                    @break
                                 @case('LLN')
                                     Lain-Lain
                                     @break
