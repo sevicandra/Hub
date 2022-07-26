@@ -552,6 +552,16 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://www.djkn.kemenkeu.go.id/cms" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/cms djkn.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                CMS DJKN
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
             <hr>
