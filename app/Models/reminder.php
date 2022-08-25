@@ -50,7 +50,7 @@ class reminder extends Model
     
     public function scopeNotification($data)
     {
-        return $data->where('notifikasi', true)->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>', Carbon::now()->isoFormat('H:mm:ss'))->where('waktu', '<', Carbon::now()->addMinutes(2)->isoFormat('H:mm:ss'))->get();
+        return $data->where('notifikasi', true)->where('tanggal', Carbon::now()->isoFormat('YYYY-MM-DD'))->where('waktu', '>', Carbon::now()->isoFormat('H:mm:ss'))->where('waktu', '<', Carbon::now()->addMinutes(5)->isoFormat('H:mm:ss'))->get();
     }
 
     public function scopeReminder($data)
