@@ -16,7 +16,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:notifikasiAgenda')->everyMinute();
-        $schedule->command('command:notifikasiPersonal')->everyMinute();   
+        $schedule->command('command:notifikasiPersonal')->everyMinute();
+        $schedule->command('command:notifikasiAbsenPagi')->weekdays()->dailyAt('07:00');
+        $schedule->command('command:notifikasiAbsenSore')->weekdays()->dailyAt('17:30');
     }
 
     /**
@@ -26,7 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
