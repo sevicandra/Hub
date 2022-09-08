@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('command:notifikasiAgenda')->everyMinute();
         $schedule->command('command:notifikasiPersonal')->everyMinute();
         $schedule->command('command:notifikasiAbsenPagi')->weekdays()->dailyAt('07:00');
-        $schedule->command('command:notifikasiAbsenSore')->weekdays()->dailyAt('17:30');
+        $schedule->command('command:notifikasiAbsenSore')->weekdays()->dailyAt('18:30');
     }
 
     /**
