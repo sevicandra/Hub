@@ -3,8 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Biryani' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Istok Web' rel='stylesheet'>
@@ -23,6 +22,7 @@
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
+
         .loader2 {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
@@ -35,6 +35,7 @@
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
+
         .loader3 {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
@@ -47,6 +48,7 @@
             -webkit-animation: spin 2s linear infinite;
             animation: spin 2s linear infinite;
         }
+
         .loader4 {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
@@ -86,37 +88,34 @@
     @show
     <title>
         @if (isset($title))
-            {{ $title }}
+        {{ $title }}
         @else
         TERNATE HUB
         @endif
     </title>
     @if (isset($favicon))
-        <link rel="icon" type="image/x-icon" href="{{ $favicon }}">
+    <link rel="icon" type="image/x-icon" href="{{ $favicon }}">
     @else
     <link rel="icon" type="image/x-icon" href="/img/ico/ternate hub.png">
     @endif
 </head>
 
-<body
-    style="background: linear-gradient(298.55deg, #30629b 0%, #4b7296 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
+<body style="background: linear-gradient(298.55deg, #30629b 0%, #4b7296 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
 
     {{-- NAVBAR --}}
     <div class="container-fluid sticky-top" style="height: 5vh">
         <div class="row" style="padding: 0px 49px 0px 49px; height:100%">
-            <div class="col-sm-12"
-                style="border-radius: 0 0 10px 10px; height:100%; background-color:rgba(255, 255, 255, 0.74)">
+            <div class="col-sm-12" style="border-radius: 0 0 10px 10px; height:100%; background-color:rgba(255, 255, 255, 0.74)">
                 <div class="row" style="height:100%">
                     <div class="col-sm-8" style="height:100%">
-                        <button style="max-height: 100%; color:white;" class="d-inline btn border-light bg-primary" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">
+                        <button style="max-height: 100%; color:white;" class="d-inline btn border-light bg-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">
                             <i class="bi bi-list fa-sm"></i>
                         </button>
                     </div>
                     @if(isset($search))
                     <div style="height:100%" class="col-sm-4">
                         <form action="" style="height:100%" method="GET">
-                            <div class="input-group" style="height:100%"> 
+                            <div class="input-group" style="height:100%">
                                 <input style="height:100%" type="text" name="key" class="form-control" id="autoSizingInputGroup" placeholder="Search">
                                 <div style="height:100%" class="input-group-text"><button class="btn" type="submit">Search</button></div>
                             </div>
@@ -136,22 +135,22 @@
                     <div class="position-relative" style="height: fit-content; width:fit-content">
                         <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
                             <div class="loader1" style="padding: 0; margin:0">
-    
+
                             </div>
                         </div>
                         <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
                             <div class="loader2" style="padding: 0; margin:0">
-    
+
                             </div>
                         </div>
                         <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
                             <div class="loader3" style="padding: 0; margin:0">
-    
+
                             </div>
                         </div>
                         <div class="position-absolute top-50 start-50 translate-middle" style="height: fit-content; width:fit-content">
                             <div class="loader4" style="padding: 0; margin:0">
-    
+
                             </div>
                         </div>
                     </div>
@@ -169,19 +168,20 @@
     {{-- Akhir Content --}}
 
     @section('modals')
-        
+
     @show
 
 
     {{-- Sidebar --}}
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop"
-        aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0;background-color:rgb(255, 255, 255);">
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel" style="border-radius: 0 10px 10px 0;background-color:rgb(255, 255, 255);">
         {{-- Header --}}
         <div class="offcanvas-header" style="padding-top:0; padding-bottom:0">
             <a class="text-decoration-none" href="/home">
                 <div class="input-group" style="background: none; border:none">
                     <span class="input-group-text" id="basic-addon1" style="background: none; border:none; width:50px; padding-left:0; padding-right:0"><img src="/img/ico/ternate hub.png" style="max-width: 50px;height: auto;"></span>
-                    <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; margin-bottom:0"><h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">KPKNL TERNATE HUB</h5></span>
+                    <span class="input-group-text" id="basic-addon2" style="background: none; border:none; text-align:center; margin-bottom:0">
+                        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">KPKNL TERNATE HUB</h5>
+                    </span>
                 </div>
             </a>
             <Span>
@@ -194,17 +194,18 @@
                 <div class="p-2 w-100 bd-highlight">
                     <h5>{{ auth()->user()->nama }}</h5>
                 </div>
-                <div class="p-2 flex-shrink-1 bd-highlight" style="padding: 0"><form action="logout" method="POST">@csrf<button class="btn" style="color:red; height:fit-content;width:fit-content; padding:0">
-                    <h4 style="margin: 0"><i class="bi bi-box-arrow-right"></i></h4>
-                    </button></form></div>
+                <div class="p-2 flex-shrink-1 bd-highlight" style="padding: 0">
+                    <form action="logout" method="POST">@csrf<button class="btn" style="color:red; height:fit-content;width:fit-content; padding:0">
+                            <h4 style="margin: 0"><i class="bi bi-box-arrow-right"></i></h4>
+                        </button></form>
+                </div>
             </div>
         </div>
         <hr style="margin-top:0">
         {{-- Akhir Header --}}
 
         {{-- Content --}}
-        <div class="container-fluid scrollable"
-            style="padding:0; max-height:100%; height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
+        <div class="container-fluid scrollable" style="padding:0; max-height:100%; height:100%; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;">
             {{-- Modules Apps --}}
             <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
                 <h6 style="padding:0">MODULES</h6>
@@ -269,7 +270,7 @@
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/bestemployee.png" alt="" width="64px" height="64px">
                         </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center"> 
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
                             Best Employee
                         </div>
                     </a>
@@ -282,7 +283,7 @@
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/reminder.png" alt="" width="64px" height="64px">
                         </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center"> 
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
                             Reminder
                         </div>
                     </a>
@@ -291,9 +292,7 @@
 
                 {{-- Digital Knowledge Management --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="digital-knowledge-management"
-                        target="_blank">
+                    <a class="text-decoration-none" href="digital-knowledge-management" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/Digital Knoledge Management.png" alt="" width="64px" height="64px">
                         </div>
@@ -306,9 +305,7 @@
 
                 {{-- JFPP --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="JFPP"
-                        target="_blank">
+                    <a class="text-decoration-none" href="JFPP" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/JFPP.png" alt="" width="64px" height="64px">
                         </div>
@@ -334,9 +331,7 @@
 
                 {{-- MPR --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="http://10.122.1.85/Sipirang"
-                        target="_blank">
+                    <a class="text-decoration-none" href="http://10.122.1.85/Sipirang" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
                         </div>
@@ -362,9 +357,7 @@
 
                 {{-- Simones --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/sewaBMN.png" alt="" width="64px" height="64px">
                         </div>
@@ -377,9 +370,7 @@
 
                 {{-- SIMONA --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/spreadsheets/d/10R0c8ifREKfGHQvc_KzEOulgL-XrVW203aNdt7Vmb5Y/edit#gid=748373855"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://docs.google.com/spreadsheets/d/10R0c8ifREKfGHQvc_KzEOulgL-XrVW203aNdt7Vmb5Y/edit#gid=748373855" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/simona.png" alt="" width="64px" height="64px">
                         </div>
@@ -387,14 +378,12 @@
                             SIMONA
                         </div>
                     </a>
-                </div>  
+                </div>
                 {{-- Akhir Simona --}}
 
                 {{-- Capaian Kinerja Lelang --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/spreadsheets/d/1xW1bwVzUVCGYaGiFLViDLo--tF_AHkYy-WpcMdZLMeg/edit#gid=1907929457"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://docs.google.com/spreadsheets/d/1xW1bwVzUVCGYaGiFLViDLo--tF_AHkYy-WpcMdZLMeg/edit#gid=1907929457" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/cakalang.png" alt="" width="64px" height="64px">
                         </div>
@@ -407,9 +396,7 @@
 
                 {{-- Capaian Manajemen Risiko --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/presentation/d/1g5gG0UXjlPZIwMmdbDI28BIVQ5xvtcZZGpJgra2BARI/edit?usp=sharing"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://docs.google.com/presentation/d/1g5gG0UXjlPZIwMmdbDI28BIVQ5xvtcZZGpJgra2BARI/edit?usp=sharing" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/Manajemen Risiko.png" alt="" width="64px" height="64px">
                         </div>
@@ -420,11 +407,9 @@
                 </div>
                 {{-- Akhir Capaian Manajemen Risiko --}}
 
-                {{-- Capaian Manajemen Risiko --}}
+                {{-- Ternate Responsif --}}
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://linktr.ee/ternate.responsif"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://linktr.ee/ternate.responsif" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/ternate reponsif.png" alt="" width="64px" height="64px">
                         </div>
@@ -433,14 +418,25 @@
                         </div>
                     </a>
                 </div>
-                {{-- Akhir Capaian Manajemen Risiko --}}
+                {{-- Akhir Ternate Responsif --}}
+
+                {{-- Database Arsip --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none" href="https://bit.ly/ArsipKpknlTernate" target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/dbarsip.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Database Arsip
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Database Arsip --}}
 
                 {{-- User Management --}}
-                @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
+                @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02')
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="/user_management"
-                        target="_blank">
+                    <a class="text-decoration-none" href="/user_management" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/usermanagement.png" alt="" width="64px" height="64px">
                         </div>
@@ -448,16 +444,14 @@
                             Manajemen User
                         </div>
                     </a>
-                </div>            
+                </div>
                 @endif
                 {{-- Akhir User Management --}}
 
                 {{-- Ring Wise --}}
                 @if (auth()->user()->jabatan === '01'||auth()->user()->jabatan === '06'||auth()->user()->jabatan === '15')
                 <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none"
-                        href="https://docs.google.com/presentation/d/1mV6ske7UJGJUuIrkiN4U_Pr0iwfy_QjHBSPK0urxBJA/edit#slide=id.p5"
-                        target="_blank">
+                    <a class="text-decoration-none" href="https://docs.google.com/presentation/d/1mV6ske7UJGJUuIrkiN4U_Pr0iwfy_QjHBSPK0urxBJA/edit#slide=id.p5" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/Ring Wise.png" alt="" width="64px" height="64px">
                         </div>
@@ -480,8 +474,7 @@
             <div class="container-fluid" style="margin-bottom: 10px;">
                 <div class="row">
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/"
-                            target="_blank">
+                        <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/aladin.png" alt="" width="64px" height="64px">
                             </div>
@@ -491,8 +484,7 @@
                         </a>
                     </div>
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="https://dianas.djkn.kemenkeu.go.id/"
-                            target="_blank">
+                        <a class="text-decoration-none" href="https://dianas.djkn.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/Dianas.png" alt="" width="64px" height="64px">
                             </div>
@@ -522,12 +514,11 @@
                         </a>
                     </div>
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn"
-                            target="_blank">
+                        <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/kep-96.png" alt="" width="64px" height="64px">
                             </div>
-                            <div class="d-flex justify-content-evenly" style="text-align: center"> 
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
                                 KEP-96
                             </div>
                         </a>
@@ -566,7 +557,7 @@
             </div>
             <hr>
             {{-- Akhir DJKN Apps --}}
-            
+
             {{-- Kementerian Keuangan Apps --}}
             <div class="row" style="padding: 0px;text-align:center; width:100%; margin:0">
                 <h6 style="padding:0">APLIKASI KEMENTERIAN KEUANGAN</h6>
@@ -668,19 +659,17 @@
         </div>
     </div>
     {{-- Akhir Footer --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
     @section('foot')
 
     @show
     <script type="text/javascript">
-        $( window ).on('load', function() {
-                $('#loadingScreen').css('display', 'none');
-                $('#content').css('display', 'block')
-            });
+        $(window).on('load', function() {
+            $('#loadingScreen').css('display', 'none');
+            $('#content').css('display', 'block')
+        });
     </script>
 </body>
 
