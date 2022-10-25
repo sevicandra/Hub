@@ -347,19 +347,6 @@
                 </div>
                 {{-- Akhir MPR --}}
 
-                {{-- Apliaksi Arsip --}}
-                <div class="col-sm-4 mb-1">
-                    <a class="text-decoration-none" href="http://10.122.1.46:81/login" target="_blank">
-                        <div class="d-flex justify-content-evenly">
-                            <img src="/img/ico/aplikasi arsip.png" alt="" width="64px" height="64px">
-                        </div>
-                        <div class="d-flex justify-content-evenly" style="text-align: center">
-                            Aplikasi Arsip
-                        </div>
-                    </a>
-                </div>
-                {{-- Akhir Apliaksi Arsip --}}
-
                 {{-- Simones --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
@@ -420,7 +407,7 @@
                 </div>
                 {{-- Akhir Capaian Manajemen Risiko --}}
 
-                {{-- Capaian Manajemen Risiko --}}
+                {{-- Ternate Responsif --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="https://linktr.ee/ternate.responsif"
@@ -429,11 +416,26 @@
                             <img src="/img/ico/ternate reponsif.png" alt="" width="64px" height="64px">
                         </div>
                         <div class="d-flex justify-content-evenly" style="text-align: center">
-                            TERNATE RESPONSIF
+                            Ternate Responsif
                         </div>
                     </a>
                 </div>
-                {{-- Akhir Capaian Manajemen Risiko --}}
+                {{-- Akhir Ternate Responsif --}}
+
+                {{-- E-Arsip Ternate --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://bit.ly/ArsipKpknlTernate"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/e arsip.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            E-Arsip Ternate
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir E-Arsip Ternate --}}
 
                 {{-- User Management --}}
                 @if (auth()->user()->jabatan === '01' || auth()->user()->jabatan === '02') 
