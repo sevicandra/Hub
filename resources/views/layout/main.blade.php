@@ -482,6 +482,28 @@
             <div class="container-fluid" style="margin-bottom: 10px;">
                 <div class="row">
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://lelang.go.id/"
+                            target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/lelang.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Lelang Indonesia
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://www.dropbox.com/home/dropbox%20kpknl%20ternate%202021"
+                            target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/dropbox.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                Dropbox Lelang
+                            </div>
+                        </a>
+                    </div>                    
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://aladin-vertikal-djkn.kemenkeu.go.id/"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -616,6 +638,26 @@
                             </div>
                         </a>
                     </div>
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://sakti.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/sakti.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                SAKTI
+                            </div>
+                        </a>
+                    </div>    
+                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                        <a class="text-decoration-none" href="https://spanint.kemenkeu.go.id/" target="_blank">
+                            <div class="d-flex justify-content-evenly">
+                                <img src="/img/ico/omspan.png" alt="" width="64px" height="64px">
+                            </div>
+                            <div class="d-flex justify-content-evenly" style="text-align: center">
+                                OM-SPAN
+                            </div>
+                        </a>
+                    </div>                                      
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://jdih.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
