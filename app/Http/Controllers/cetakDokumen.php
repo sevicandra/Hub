@@ -528,7 +528,7 @@ class cetakDokumen extends Controller
                 $templateProcessor->setValue('kementerian', $permohonan->satuanKerja->kementerian->namaKL);
                 $templateProcessor->setValue('satker', $permohonan->satuanKerja->namaSatker);
                 $templateProcessor->saveAs('DocxTemplate/Permohonan Penilaian - ' . $request->permohonan_id . '.docx');
-                return response()->download(file: 'DocxTemplate/Permohonan Penilaian - ' . $request->permohonan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);                
+                return response()->download(file: 'DocxTemplate/Permohonan Penilaian - ' . $request->permohonan_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                 break;
             case 'potensiLelang':
                 $suratPersetujuan = suratPersetujuan::find($request->surat_persetujuan_id);
@@ -546,14 +546,14 @@ class cetakDokumen extends Controller
             case 'penetapanLelangOpen':
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 if (isset($request->tanggalPengumumanKedua)) {
-                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang pertama dan tanggal '. indonesiaDate($request->tanggalPengumumanKedua).' sebagai pengumuman lelang kedua';
-                }else{
-                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang';
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama) . ' sebagai pengumuman lelang pertama dan tanggal ' . indonesiaDate($request->tanggalPengumumanKedua) . ' sebagai pengumuman lelang kedua';
+                } else {
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama) . ' sebagai pengumuman lelang';
                 }
 
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
+                        $jafung = Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('alamat', $request->alamat);
@@ -568,15 +568,15 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran-2);
-                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran - 2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran - 2);
                         $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
                         return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
-                        
+
                     case 'App\Models\tiket':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
+                        $jafung = Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangOB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('alamat', $request->alamat);
@@ -590,13 +590,13 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('menitAwalPenawaran', $request->menitAwalPenawaran);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran-2);
-                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+                        $templateProcessor->setValue('jamAwalPenawaranWIB', $request->jamAwalPenawaran - 2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran - 2);
                         $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
                         return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
-                    
+
                     default:
                         abort(404);
                         break;
@@ -606,13 +606,13 @@ class cetakDokumen extends Controller
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 if (isset($request->tanggalPengumumanKedua)) {
-                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang pertama dan tanggal '. indonesiaDate($request->tanggalPengumumanKedua).' sebagai pengumuman lelang kedua';
-                }else{
-                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama). ' sebagai pengumuman lelang';
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama) . ' sebagai pengumuman lelang pertama dan tanggal ' . indonesiaDate($request->tanggalPengumumanKedua) . ' sebagai pengumuman lelang kedua';
+                } else {
+                    $pengumuman = indonesiaDate($request->tanggalPengumumanPertama) . ' sebagai pengumuman lelang';
                 }
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
+                        $jafung = Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('alamat', $request->alamat);
@@ -625,7 +625,7 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran - 2);
                         $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
                         $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
@@ -633,7 +633,7 @@ class cetakDokumen extends Controller
                         break;
 
                     case 'App\Models\tiket':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
+                        $jafung = Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/penetapanJadwalLelangCB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('alamat', $request->alamat);
@@ -645,13 +645,13 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('lokasi', $request->lokasi);
                         $templateProcessor->setValue('jamAkhirPenawaran', $request->jamAkhirPenawaran);
                         $templateProcessor->setValue('menitAkhirPenawaran', $request->menitAkhirPenawaran);
-                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran-2);
+                        $templateProcessor->setValue('jamAkhirPenawaranWIB', $request->jamAkhirPenawaran - 2);
                         $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
                         $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->saveAs('DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx');
                         return response()->download(file: 'DocxTemplate/penetapan Jadwal Lelang - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
-                    
+
                     default:
                         abort(404);
                         break;
@@ -665,7 +665,7 @@ class cetakDokumen extends Controller
                     case 'App\Models\tiket':
                         $templateProcessor->setValue('satker', $penetapanLelang->permohonanLelang->pemohonLelang->pemohon);
                         break;
-                        case 'App\Models\suratPersetujuan':
+                    case 'App\Models\suratPersetujuan':
                         $templateProcessor->setValue('satker', $penetapanLelang->permohonanLelang->suratPersetujuan->penyampaianLaporan->pemberitahuanPenilaian->permohonanPenilaian->permohonan->satuanKerja->namaSatker);
                         break;
                 }
@@ -678,33 +678,33 @@ class cetakDokumen extends Controller
                     'borderColor' => '000000',
                     'layout'      => \PhpOffice\PhpWord\Style\Table::LAYOUT_FIXED,
                 ];
-                $font=[
-                    'name'=>'Arial', 
-                    'size'=>11
+                $font = [
+                    'name' => 'Arial',
+                    'size' => 11
                 ];
                 $table = new Table($fancyTableStyle);
                 $table->addRow();
-                $table->addCell(561.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER, ))->addText('No.',$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(3685.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Nomor Risalah',$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(2721.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('tanggal Risalah',$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(2590.86612541187, array( 'valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan',$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $i=1;
+                $table->addCell(561.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('No.', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(3685.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Nomor Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(2721.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('tanggal Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(2590.86612541187, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $i = 1;
                 foreach (risalah::orderBy('nomor')->get()->where('penetapan_lelang_id', $request->penetapan_lelang_id) as $key) {
 
                     if ($i === 1) {
-                        $vCell=[
+                        $vCell = [
                             'vMerge' => 'restart', 'valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER
                         ];
-                    }else{
-                        $vCell=[
+                    } else {
+                        $vCell = [
                             'vMerge' => 'continue', 'valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER
                         ];
                     }
                     $table->addRow();
-                    $table->addCell(561.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($i,$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(561.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($i, $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                     $table->addCell(3685.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($key->nomor, $font);
-                    $table->addCell(2721.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText(indonesiaDate($key->tanggal), $font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                    $table->addCell(2590.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya',$font, array('alignment'=>\PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(2721.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText(indonesiaDate($key->tanggal), $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(2590.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                     $i++;
                 }
                 $templateProcessor->setComplexBlock('table', $table);
@@ -716,7 +716,7 @@ class cetakDokumen extends Controller
                 $permohonanLelang = permohonanLelang::find($request->permohonan_lelang_id);
                 switch ($permohonanLelang->jenis) {
                     case 'App\Models\suratPersetujuan':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
+                        $jafung = Str::ucfirst(auth()->user()->nama);
                         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
                         $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
                         $templateProcessor->setValue('hal', $permohonanLelang->hal);
@@ -728,29 +728,29 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
                         $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
                         $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
-        
+
                         $templateProcessor->saveAs('DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx');
                         return response()->download(file: 'DocxTemplate/HPKB - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
 
                     case 'App\Models\tiket':
-                        $jafung=Str::ucfirst(auth()->user()->nama);
-                            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
-                            $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
-                            $templateProcessor->setValue('hal', $permohonanLelang->hal);
-                            $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
-                            $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
-                            $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
-                            $templateProcessor->setValue('pemohon', $permohonanLelang->pemohonLelang->pemohon);
-                            $templateProcessor->setValue('lokasi', $request->lokasi);
-                            $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
-                            $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
-                            $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
-            
-                            $templateProcessor->saveAs('DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx');
-                            return response()->download(file: 'DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
-                            break;
-                    
+                        $jafung = Str::ucfirst(auth()->user()->nama);
+                        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/HPKB.docx');
+                        $templateProcessor->setValue('nomorSurat', $permohonanLelang->nomorSurat);
+                        $templateProcessor->setValue('hal', $permohonanLelang->hal);
+                        $templateProcessor->setValue('tanggalSurat', indonesiaDate($permohonanLelang->tanggalSurat));
+                        $templateProcessor->setValue('tanggalLelang', indonesiaDate($request->tanggalLelang));
+                        $templateProcessor->setValue('hariLelang', indonesiaDay($request->tanggalLelang));
+                        $templateProcessor->setValue('pemohon', $permohonanLelang->pemohonLelang->pemohon);
+                        $templateProcessor->setValue('lokasi', $request->lokasi);
+                        $templateProcessor->setValue('pelelang', Str::of($jafung)->title());
+                        $templateProcessor->setValue('NIPPelelang', auth()->user()->NIP);
+                        $templateProcessor->setValue('jabatan', auth()->user()->jabatans->namaJabatan);
+
+                        $templateProcessor->saveAs('DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx');
+                        return response()->download(file: 'DocxTemplate/ND Penyampaian - ' . $request->permohonan_lelang_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        break;
+
                     default:
                         abort(404);
                         break;
@@ -761,21 +761,21 @@ class cetakDokumen extends Controller
                 switch ($request->jenisObjek) {
                     case 'kendaraan':
                         if ($BASL->user()->count() > 1) {
-                            $i=1;
+                            $i = 1;
                             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Kendaraan - tim.docx');
                             foreach ($BASL->user as $anggotaTim) {
-                                $templateProcessor->setValue('nama'.$i, $anggotaTim->nama);
-                                $templateProcessor->setValue('NIP'.$i, $anggotaTim->NIP);
+                                $templateProcessor->setValue('nama' . $i, $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP' . $i, $anggotaTim->NIP);
                                 $i++;
                             }
-                        }else{
+                        } else {
                             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Kendaraan.docx');
                             foreach ($BASL->user as $anggotaTim) {
                                 $templateProcessor->setValue('nama', $anggotaTim->nama);
                                 $templateProcessor->setValue('NIP', $anggotaTim->NIP);
                             }
                         }
-                        
+
                         $templateProcessor->setValue('nomor', $BASL->nomor);
                         $templateProcessor->setValue('kode', $BASL->kode);
                         $templateProcessor->setValue('tahun', $BASL->tahun);
@@ -789,26 +789,26 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalST', indonesiaDate($request->tanggalSuratTugas));
 
                         $templateProcessor->saveAs('DocxTemplate/BASL - ' . $request->basl_id . '.docx');
-                            return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
 
                     case 'nonKendaraan':
                         if ($BASL->user()->count() > 1) {
-                            $i=1;
+                            $i = 1;
                             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Non Kendaraan - tim.docx');
                             foreach ($BASL->user as $anggotaTim) {
-                                $templateProcessor->setValue('nama'.$i, $anggotaTim->nama);
-                                $templateProcessor->setValue('NIP'.$i, $anggotaTim->NIP);
+                                $templateProcessor->setValue('nama' . $i, $anggotaTim->nama);
+                                $templateProcessor->setValue('NIP' . $i, $anggotaTim->NIP);
                                 $i++;
                             }
-                        }else{
+                        } else {
                             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('docxTemplate/BASL Non Kendaraan.docx');
                             foreach ($BASL->user as $anggotaTim) {
                                 $templateProcessor->setValue('nama', $anggotaTim->nama);
                                 $templateProcessor->setValue('NIP', $anggotaTim->NIP);
                             }
                         }
-                        
+
                         $templateProcessor->setValue('nomor', $BASL->nomor);
                         $templateProcessor->setValue('kode', $BASL->kode);
                         $templateProcessor->setValue('tahun', $BASL->tahun);
@@ -822,22 +822,21 @@ class cetakDokumen extends Controller
                         $templateProcessor->setValue('tanggalST', indonesiaDate($request->tanggalSuratTugas));
 
                         $templateProcessor->saveAs('DocxTemplate/BASL - ' . $request->basl_id . '.docx');
-                            return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
+                        return response()->download(file: 'DocxTemplate/BASL - ' . $request->basl_id . '.docx')->deleteFileAfterSend(shouldDelete: true);
                         break;
-         
+
                         break;
-                    
+
                     default:
-         
+
                         break;
                 }
 
 
                 break;
-                default:
+            default:
                 abort(404);
                 break;
         }
     }
-
 }
