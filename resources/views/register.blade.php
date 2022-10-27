@@ -282,7 +282,7 @@
                             <img src="/img/ico/kpknlternate.png" alt="" height="100%">
                         </div>
                         <div class="position-absolute top-50 start-50 translate-middle" style="; width:fit-content; ">
-                            <p style="margin:0">Version : <a class="text-decoration-none" href="">1.0.0</a> </p>
+                            <p style="margin:0">Version : <a class="text-decoration-none" href="">1.2.0</a> </p>
                         </div>
                     </div>
                 </div>
