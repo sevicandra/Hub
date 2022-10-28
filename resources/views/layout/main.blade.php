@@ -305,7 +305,7 @@
                 {{-- Akhir Digital Knowledge Management --}}
 
                 {{-- JFPP --}}
-                <div class="col-sm-4 mb-1">
+                {{-- <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="JFPP"
                         target="_blank">
@@ -316,7 +316,7 @@
                             JFPP
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 {{-- Akhir JFPP --}}
 
                 {{-- MAP --}}
