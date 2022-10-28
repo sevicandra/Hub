@@ -348,7 +348,7 @@
                 {{-- Akhir MPR --}}
 
                 {{-- Simones --}}
-                <div class="col-sm-4 mb-1">
+                {{-- <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="https://docs.google.com/spreadsheets/d/1h4BwAteerJJ1HT2DFMcMGHb2GVH8hM2AgULTbI_wgno/edit?usp=sharing"
                         target="_blank">
@@ -359,7 +359,7 @@
                             SIMONES
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 {{-- Akhir Simones --}}
 
                 {{-- SIMONA --}}
