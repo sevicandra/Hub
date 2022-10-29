@@ -335,7 +335,7 @@
                 {{-- MPR --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
-                        href="http://10.122.1.32/Sipirang">
+                        href="http://10.122.1.32/Sipirang" target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/mpr.png" alt="" width="64px" height="64px">
                         </div>
