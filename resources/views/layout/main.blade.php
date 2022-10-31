@@ -263,6 +263,19 @@
                 </div>
                 {{-- Akhir Profil Satker --}}
 
+                {{-- Buku Tamu Digital --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none" href="https://www.formlets.com/forms/2M31g7qfovbaM4qU/" target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/buku tamu digital.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Buku Tamu Digital
+                        </div>
+                    </a>
+                </div>
+                {{-- Akhir Buku Tamu Digital --}}
+
                 {{-- Best Employee --}}
                 <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none" href="/best_employee" target="_blank">
