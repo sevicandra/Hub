@@ -12,7 +12,7 @@ class agenda extends Model
     use Uuids;
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'agenda',
         'tempat',
         'tanggal',
@@ -25,8 +25,8 @@ class agenda extends Model
         'notification'
     ];
 
-    public function scopeNotification($data){
-        return $data->where('waktu', '>', Carbon::now()->isoFormat('H:mm:ss'))->where('waktu', '<', Carbon::now()->addMinutes(30)->isoFormat('H:mm:ss'));
+    public function scopeNotification($data)
+    {
+        return $data->where('waktu', '>', Carbon::now()->isoFormat('H:mm:ss'))->where('waktu', '<', Carbon::now()->addMinutes(10)->isoFormat('H:mm:ss'));
     }
-    
 }
