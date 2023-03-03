@@ -101,7 +101,7 @@
 <body
     style="background: linear-gradient(298.55deg, #30629b 0%, #4b7296 41.63%, rgba(77, 115, 190, 0.88) 69.99%, rgba(82, 140, 194, 0.9) 96.89%); max-height:100vh; height:100vh">
 
-    {{-- NAVBAR --}}
+    {{-- NAVB   AR --}}
     <div class="container-fluid sticky-top" style="height: 5vh">
         <div class="row" style="padding: 0px 49px 0px 49px; height:100%">
             <div class="col-sm-12"
