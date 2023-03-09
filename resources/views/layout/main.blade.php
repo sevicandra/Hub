@@ -527,7 +527,7 @@
                         </a>
                     </div>
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="https://dianas.djkn.kemenkeu.go.id/"
+                        <a class="text-decoration-none" href="https://dianas.kemenkeu.go.id/"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/Dianas.png" alt="" width="64px" height="64px">
