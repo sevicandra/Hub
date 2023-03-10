@@ -57,7 +57,7 @@ class PemilihanBestEmployeeController extends Controller
     public function pemilihan()
     {
         return view('bestemployee.survei', [
-            'data' => pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'desc')->orderby('bulan', 'asc')->first(),
+            'data' => pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'desc')->orderby('bulan', 'desc')->first(),
             'pemilihan' => '',
             'title' => 'Ternate-Hub || Best Employee',
             'favicon' => '/img/ico/bestemployee.png'
