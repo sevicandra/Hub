@@ -405,9 +405,24 @@
                 {{-- Akhir Capaian Kinerja Lelang --}}
 
                 {{-- Capaian Manajemen Risiko --}}
-                <div class="col-sm-4 mb-1">
+                {{-- <div class="col-sm-4 mb-1">
                     <a class="text-decoration-none"
                         href="https://docs.google.com/presentation/d/1g5gG0UXjlPZIwMmdbDI28BIVQ5xvtcZZGpJgra2BARI/edit?usp=sharing"
+                        target="_blank">
+                        <div class="d-flex justify-content-evenly">
+                            <img src="/img/ico/Manajemen Risiko.png" alt="" width="64px" height="64px">
+                        </div>
+                        <div class="d-flex justify-content-evenly" style="text-align: center">
+                            Manajemen Risiko
+                        </div>
+                    </a>
+                </div> --}}
+                {{-- Akhir Capaian Manajemen Risiko --}}
+
+                {{-- Capaian Manajemen Risiko --}}
+                <div class="col-sm-4 mb-1">
+                    <a class="text-decoration-none"
+                        href="https://docs.google.com/presentation/d/1fqiNV9kJ20N3wphTo3C7CaOMuIvodiVZKi68iZ_BeQc/edit#slide=id.g125079c9e82_0_563"
                         target="_blank">
                         <div class="d-flex justify-content-evenly">
                             <img src="/img/ico/Manajemen Risiko.png" alt="" width="64px" height="64px">
