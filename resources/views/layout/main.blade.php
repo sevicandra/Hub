@@ -262,6 +262,7 @@
                     </a>
                 </div>
                 {{-- Akhir Profil Satker --}}
+                
 
                 {{-- Buku Tamu Digital --}}
                 <div class="col-sm-4 mb-1">
@@ -572,7 +573,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
+                    {{-- <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="http://www.djkn.kemenkeu.go.id/laporandjkn"
                             target="_blank">
                             <div class="d-flex justify-content-evenly">
@@ -582,7 +583,7 @@
                                 KEP-96
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
                         <a class="text-decoration-none" href="https://alika.kemenkeu.go.id/" target="_blank">
                             <div class="d-flex justify-content-evenly">
