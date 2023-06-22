@@ -687,7 +687,7 @@ class cetakDokumen extends Controller
                 $table->addCell(780.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('No.', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                 $table->addCell(2085.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Nomor Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                 $table->addCell(2021.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Tanggal Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(4590.86612541187, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(4740.86612541187, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                 $i = 1;
                 foreach (risalah::orderBy('nomor')->get()->where('penetapan_lelang_id', $request->penetapan_lelang_id) as $key) {
 
@@ -704,7 +704,7 @@ class cetakDokumen extends Controller
                     $table->addCell(780.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($i, $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                     $table->addCell(2085.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($key->nomor, $font);
                     $table->addCell(2021.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText(indonesiaDate($key->tanggal), $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                    $table->addCell(4590.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(4740.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                     $i++;
                 }
                 $templateProcessor->setComplexBlock('table', $table);
