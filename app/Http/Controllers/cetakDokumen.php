@@ -685,9 +685,9 @@ class cetakDokumen extends Controller
                 $table = new Table($fancyTableStyle);
                 $table->addRow();
                 $table->addCell(580.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('No.', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(3085.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Nomor Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(3021.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Tanggal Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                $table->addCell(3590.86612541187, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(2085.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Nomor Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(2021.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Tanggal Risalah', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                $table->addCell(3090.86612541187, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER,))->addText('Keterangan', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                 $i = 1;
                 foreach (risalah::orderBy('nomor')->get()->where('penetapan_lelang_id', $request->penetapan_lelang_id) as $key) {
 
