@@ -701,10 +701,10 @@ class cetakDokumen extends Controller
                         ];
                     }
                     $table->addRow();
-                    $table->addCell(561.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($i, $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                    $table->addCell(3685.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($key->nomor, $font);
-                    $table->addCell(2721.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText(indonesiaDate($key->tanggal), $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
-                    $table->addCell(2590.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(580.25983898419, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($i, $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(2085.03934686589, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText($key->nomor, $font);
+                    $table->addCell(2021.25982537789, array('valign' => \PhpOffice\PhpWord\SimpleType\VerticalJc::CENTER))->addText(indonesiaDate($key->tanggal), $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
+                    $table->addCell(3090.86612541187, $vCell)->addText('Disampaikan dengan hormat dan untuk dipergunakan sebagaimana mestinya', $font, array('alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER,));
                     $i++;
                 }
                 $templateProcessor->setComplexBlock('table', $table);
