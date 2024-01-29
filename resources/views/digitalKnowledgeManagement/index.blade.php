@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-    <div class="col card" style="height: 90%; background-color:#C4C4C4; margin: 2.5% 5px; border-radius:10px; overflow:hidden; border:none">
+    {{-- <div class="col card" style="height: 90%; background-color:#C4C4C4; margin: 2.5% 5px; border-radius:10px; overflow:hidden; border:none">
         <div id="laporanPelaksanaanTugasCard" class="row cardHeader" style="text-align: center; height: fit-content">
             <h4 id="laporanPelaksanaanTugasTitle" class="cardTitle">Laporan Pelaksanaan Tugas</h4>
         </div>
@@ -152,7 +152,7 @@
                 <h1 style="text-align:center; height:fit-content">{{ $laporanPelaksanaanTugasLastMonth->count() }}</h1>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="col card" style="height: 90%; background-color:#C4C4C4; margin: 2.5% 5px; border-radius:10px; overflow:hidden; border:none">
         <div id="notulaCard" class="row cardHeader" style="text-align: center; height: fit-content">
             <h4 id="notulaTitle" class="cardTitle">Notula</h4>
