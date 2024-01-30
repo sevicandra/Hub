@@ -19,7 +19,7 @@ class PemilihanBestEmployeeController extends Controller
     public function index()
     {
         return view('bestemployee.index', [
-            'data' => pemilihanBestEmployee::orderby('tahun', 'asc')->orderby('bulan', 'asc')->get(),
+            'data' => pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
             'nominasi' => User::where('email_verified_at', '!=', null)->orderBy('jabatan', 'asc')->orderBy('NIP', 'asc')->get(),
             'index' => '',
             'title' => 'Ternate-Hub || Best Employee',
