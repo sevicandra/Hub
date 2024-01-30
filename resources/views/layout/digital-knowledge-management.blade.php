@@ -29,11 +29,11 @@
                             <button class="btn" style="min-width: 195px; @if (isset($presentasi)) background-color: rgb(13, 110, 253); color:white @else background-color: white @endif">Presentasi</button>
                         </a>
                     </div>
-                    {{-- <div style="min-width: 195px; max-width:fit-content" >
+                    <div style="min-width: 195px; max-width:fit-content" >
                         <a href="/digital-knowledge-management/laporan-pelaksanaan-tugas">
                             <button class="btn" style="min-width: 195px; @if (isset($laporanpelaksanaantugas)) background-color: rgb(13, 110, 253); color:white @else background-color: white @endif">Laporan Pelaskanaan Tugas</button>
                         </a>
-                    </div> --}}
+                    </div>
                     <div style="min-width: 195px; max-width:fit-content" >
                         <a href="/digital-knowledge-management/notula">
                             <button class="btn" style="min-width: 195px; @if (isset($notula)) background-color: rgb(13, 110, 253); color:white @else background-color: white @endif">Notula</button>
