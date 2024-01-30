@@ -19,7 +19,7 @@ class PemilihanBestEmployeeController extends Controller
     public function index()
     {
         return view('bestemployee.index', [
-            'data' => pemilihanBestEmployee::orderby('tahun', 'desc')->orderby('bulan', 'desc')->get(),
+            'data' => pemilihanBestEmployee::orderby('tahun', 'asc')->orderby('bulan', 'asc')->get(),
             'nominasi' => User::where('email_verified_at', '!=', null)->orderBy('jabatan', 'asc')->orderBy('NIP', 'asc')->get(),
             'index' => '',
             'title' => 'Ternate-Hub || Best Employee',
@@ -57,7 +57,7 @@ class PemilihanBestEmployeeController extends Controller
     public function pemilihan()
     {
         return view('bestemployee.survei', [
-            'data' => pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'desc')->orderby('bulan', 'desc')->first(),
+            'data' => pemilihanBestEmployee::where('status', '2')->orderby('tahun', 'asc')->orderby('bulan', 'asc')->first(),
             'pemilihan' => '',
             'title' => 'Ternate-Hub || Best Employee',
             'favicon' => '/img/ico/bestemployee.png'
