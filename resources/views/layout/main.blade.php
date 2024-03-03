@@ -554,7 +554,7 @@
                         </a>
                     </div>
                     <div class="col-sm-4 mb-1" style="margin-bottom: 10px">
-                        <a class="text-decoration-none" href="http://10.242.77.20/diklat" target="_blank">
+                        <a class="text-decoration-none" href="http://10.216.209.71/diklat/" target="_blank">
                             <div class="d-flex justify-content-evenly">
                                 <img src="/img/ico/diklat.png" alt="" width="64px" height="64px">
                             </div>
